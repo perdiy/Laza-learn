@@ -16,10 +16,10 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
-        // Call the API function here
+        // Call API
         fetchDataFromAPI()
         
-        // Set up the collection view delegate and data source
+        // Set up  collection viewdelegate, datasource
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -27,7 +27,7 @@ class HomeViewController: UIViewController {
         let cellNib = UINib(nibName: "ProductCollectionViewCell", bundle: nil)
         collectionView.register(cellNib, forCellWithReuseIdentifier: "ProductCollectionViewCell")
     }
-    
+    // Apifetch
     func fetchDataFromAPI() {
         guard let url = URL(string: "https://fakestoreapi.com/products") else {
             print("Invalid URL")
@@ -41,7 +41,6 @@ class HomeViewController: UIViewController {
             }
             
             if let data = data {
-                // Handle the response data here
                 do {
                     let jsonResponse = try JSONSerialization.jsonObject(with: data, options: [])
                     if let productsArray = jsonResponse as? [[String: Any]] {
@@ -59,7 +58,6 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
-    // UICollectionViewDataSource methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return products.count
     }
@@ -93,7 +91,6 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
 }
 
 extension HomeViewController: UICollectionViewDelegate {
-    // UICollectionViewDelegate method for handling cell selection
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let product = products[indexPath.item]
         let storyboard = UIStoryboard(name: "Detail", bundle: nil)
