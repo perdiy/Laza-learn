@@ -55,13 +55,13 @@ class ProfileViewController: UIViewController {
             if let currentPassword = alert.textFields?.first?.text,
                let newPassword = alert.textFields?.last?.text {
 
-                // Check if the current password matches the one stored in UserDefaults
+                // Periksa kata sandi saat ini cocok dengan yang disimpan di UserDefaults
                 if let storedPassword = UserDefaults.standard.string(forKey: "password"),
                    storedPassword == currentPassword {
 
-                    // Save the new password to UserDefaults
+                    // Simpan kata sandi baru ke UserDefaults
                     UserDefaults.standard.set(newPassword, forKey: "password")
-                    self.showUserData() // Update the password label after saving
+                    self.showUserData()
                 } else {
                     self.showAlert(title: "Error", message: "Incorrect current password.")
                 }
@@ -77,7 +77,7 @@ class ProfileViewController: UIViewController {
     }
 
     func logout() {
-        // Clear the user defaults
+        // Clear user defaults
         UserDefaults.standard.removeObject(forKey: "username")
         UserDefaults.standard.removeObject(forKey: "password")
         navigateToWelcomeViewController()
