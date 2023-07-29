@@ -25,10 +25,12 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
     }
     @IBAction func createBtn(_ sender: Any) {
-        // Navigasi ke SignUpViewController saat tombol "Create" ditekan
+      
         let storyboard = UIStoryboard(name: "SignUp", bundle: nil)
         if let signupVC = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController {
             navigationController?.pushViewController(signupVC, animated: true)
@@ -36,7 +38,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func signInBtn(_ sender: Any) {
-        // Navigasi ke WelcomeViewController saat tombol "SignIn" ditekan
+     
         let storyboard = UIStoryboard(name: "Welcome", bundle: nil)
         if let welcomeVC = storyboard.instantiateViewController(withIdentifier: "WelcomeViewController") as? WelcomeViewController {
             navigationController?.pushViewController(welcomeVC, animated: true)

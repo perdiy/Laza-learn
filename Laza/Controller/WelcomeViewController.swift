@@ -7,42 +7,53 @@
 
 import UIKit
 
+// Struct untuk mendefinisikan respons dari login API
 struct LoginResponse: Codable {
-    let token: String // API memberikan token respons
+    let token: String
 }
 
 class WelcomeViewController: UIViewController {
+    // Outlets untuk dua text field di layar
     @IBOutlet weak var passwordTf: UITextField!
     @IBOutlet weak var userNameTf: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Sembunyikan tombol "Back" pada navigasi bar
+        navigationItem.hidesBackButton = true
     }
+    
     
     @IBAction func loginBtn(_ sender: Any) {
         login()
     }
     
+    // Fungsi untuk melakukan login
     func login() {
+        // Ambil nilai dari text field untuk username dan password
         guard let username = userNameTf.text,
               let password = passwordTf.text else {
             return
         }
         
+        // URL untuk endpoint login API
         let urlString = "https://fakestoreapi.com/auth/login"
         guard let url = URL(string: urlString) else {
             print("URL tidak valid")
             return
         }
         
+        // Data yang akan dikirim sebagai body request (username dan password)
         let userData: [String: Any] = [
             "username": username,
             "password": password
         ]
         
         do {
+            // Serialize data ke dalam bentuk JSON
             let jsonData = try JSONSerialization.data(withJSONObject: userData)
             
+            // Konfigurasi request untuk login
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -61,12 +72,20 @@ class WelcomeViewController: UIViewController {
                 
                 if let data = data {
                     do {
+                        // Parse data JSON menjadi objek LoginResponse
                         let loginResponse = try JSONDecoder().decode(LoginResponse.self, from: data)
                         print("Login berhasil. Token: \(loginResponse.token)")
                         
-                        // Jika login berhasil, Anda dapat beralih ke halaman HomeViewController
+                        // Simpan token ke UserDefaults untuk penggunaan berikutnya
+                        UserDefaults.standard.set(loginResponse.token, forKey: "token")
+                        // Simpan username dan password ke UserDefaults untuk penggunaan berikutnya
+                        UserDefaults.standard.set(username, forKey: "username")
+                        UserDefaults.standard.set(password, forKey: "password")
+                        
+                        // Jika login berhasil, beralih ke halaman HomeViewController
                         DispatchQueue.main.async {
                             self.goToHome()
+                            self.showAlert(title: "Success", message: "Login berhasil.")
                         }
                     } catch {
                         print("Error parsing JSON: \(error)")
@@ -87,13 +106,13 @@ class WelcomeViewController: UIViewController {
     }
     
     private func goToHome() {
-        // Fungsi untuk beralih ke halaman beranda setelah login berhasil.
         let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
-        if let homeVC = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? HomeViewController {
+        if let homeVC = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController {
             navigationController?.pushViewController(homeVC, animated: true)
         }
     }
     
+    // Fungsi untuk menampilkan pesan peringatan dengan judul dan isi tertentu
     private func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okayAction = UIAlertAction(title: "OK", style: .default, handler: nil)

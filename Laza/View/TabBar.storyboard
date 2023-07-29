@@ -43,21 +43,61 @@
             </objects>
             <point key="canvasLocation" x="685" y="862"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="guG-0Z-ulO">
             <objects>
-                <viewController id="X2A-go-8Vc" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="X2A-go-8Vc" customClass="ProfileViewController" customModule="Laza" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CiA-gO-dAc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="user" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YpQ-Qt-G5S">
+                                <rect key="frame" x="4" y="388" width="389" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAv-r0-a5K">
+                                <rect key="frame" x="4" y="435" width="389" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4wu-I0-m2E">
+                                <rect key="frame" x="160" y="659" width="73" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.91764705879999997" green="0.26274509800000001" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="logout"/>
+                                <connections>
+                                    <action selector="logoutBtn:" destination="X2A-go-8Vc" eventType="touchUpInside" id="3ys-Th-5W3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ONu-Ns-5eB">
+                                <rect key="frame" x="121" y="606" width="155" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="update password"/>
+                                <connections>
+                                    <action selector="updatePasswordBtn:" destination="X2A-go-8Vc" eventType="touchUpInside" id="iuG-BD-Pyt"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="B4Y-Vb-faY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="Vector-3" selectedImage="Vector-3" id="bgq-Ez-wvt"/>
+                    <tabBarItem key="tabBarItem" title="" image="person" catalog="system" selectedImage="person" id="bgq-Ez-wvt"/>
+                    <connections>
+                        <outlet property="logoutBtn" destination="4wu-I0-m2E" id="ORC-bl-YAc"/>
+                        <outlet property="nameLabel" destination="YpQ-Qt-G5S" id="QAm-sM-Vf0"/>
+                        <outlet property="passwordLabel" destination="dAv-r0-a5K" id="S1u-de-2zW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QIZ-Qp-E8k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1385" y="862"/>
+            <point key="canvasLocation" x="1383.9694656488548" y="861.97183098591552"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="q5J-mm-6I5">
@@ -285,9 +325,9 @@
         <image name="Search" width="20" height="20"/>
         <image name="Vector" width="21" height="20"/>
         <image name="Vector-2" width="21" height="22"/>
-        <image name="Vector-3" width="21" height="20"/>
         <image name="Voice" width="24" height="24"/>
         <image name="menu" width="25" height="25"/>
+        <image name="person" catalog="system" width="128" height="121"/>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

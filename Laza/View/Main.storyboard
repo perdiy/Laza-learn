@@ -53,9 +53,6 @@
                                                 <buttonConfiguration key="configuration" style="filled" title="Woman">
                                                     <color key="baseBackgroundColor" red="0.59215686270000001" green="0.45882352939999999" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="womanBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vtT-Ja-NpT"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
