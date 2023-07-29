@@ -112,7 +112,6 @@ class WelcomeViewController: UIViewController {
         }
     }
     
-    // Fungsi untuk menampilkan pesan peringatan dengan judul dan isi tertentu
     private func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okayAction = UIAlertAction(title: "OK", style: .default, handler: nil)
