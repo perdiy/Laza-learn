@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
 
     }
     @IBAction func createBtn(_ sender: Any) {
-      
+
         let storyboard = UIStoryboard(name: "SignUp", bundle: nil)
         if let signupVC = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController {
             navigationController?.pushViewController(signupVC, animated: true)
