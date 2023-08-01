@@ -32,7 +32,7 @@ class MenuViewController: UIViewController {
     
     func updateUsernameLabel() {
         if let username = UserDefaults.standard.string(forKey: "username") {
-            usernameLabel.text = "Hello, \(username)"
+            usernameLabel.text = "\(username)"
         } else {
             usernameLabel.text = "Hello, Guest"
         }

@@ -102,6 +102,44 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		52444CBA2A789AE7000BFC87 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				5267C6432A77426700A44BDD /* MenuSide.storyboard */,
+				52EF388F2A72149200446F31 /* TabBar.storyboard */,
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
+		52444CBB2A789B15000BFC87 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				52444CBC2A789B39000BFC87 /* Home */,
+				52134B9E2A7486BC00B87588 /* ProfileViewController.swift */,
+				523AD8EA2A73B327005FACAD /* BrandCollectionViewCell.swift */,
+				52EF38A72A7225BF00446F31 /* TabBarViewController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		52444CBC2A789B39000BFC87 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				52EF38A92A7229D300446F31 /* HomeViewController.swift */,
+				523AD8EE2A73B43D005FACAD /* DetailViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		52444CBD2A789B59000BFC87 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				523AD8E52A739E41005FACAD /* ProductCollectionViewCell.xib */,
+				523AD8EB2A73B327005FACAD /* BrandCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		526757712A72470B000BB555 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,8 +178,6 @@
 				52EF387E2A72125700446F31 /* Info.plist */,
 				52EF38762A72125400446F31 /* Laza.xcdatamodeld */,
 				52EF389F2A72152900446F31 /* Assets.xcassets */,
-				523AD8EA2A73B327005FACAD /* BrandCollectionViewCell.swift */,
-				523AD8EB2A73B327005FACAD /* BrandCollectionViewCell.xib */,
 				52134B9C2A7477E100B87588 /* UserDefault.swift */,
 				52728AE12A77A21100519DE0 /* HomeViewModel.swift */,
 			);
@@ -151,16 +187,15 @@
 		52EF38912A72149700446F31 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				52444CBD2A789B59000BFC87 /* Cell */,
+				52444CBA2A789AE7000BFC87 /* Item */,
 				52EF389D2A72150C00446F31 /* Main.storyboard */,
 				52EF38872A72146B00446F31 /* LaunchScreen.storyboard */,
 				52EF38892A72148200446F31 /* loginWith.storyboard */,
 				52EF388B2A72148800446F31 /* SignUp.storyboard */,
 				52EF388D2A72148D00446F31 /* Welcome.storyboard */,
-				52EF388F2A72149200446F31 /* TabBar.storyboard */,
 				52EF38A12A72163900446F31 /* ForgotPassword.storyboard */,
-				523AD8E52A739E41005FACAD /* ProductCollectionViewCell.xib */,
 				523AD8F02A73B44B005FACAD /* Detail.storyboard */,
-				5267C6432A77426700A44BDD /* MenuSide.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -168,16 +203,13 @@
 		52EF38922A7214B100446F31 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				52444CBB2A789B15000BFC87 /* TabBar */,
 				52EF38932A7214CC00446F31 /* ViewController.swift */,
 				52EF38972A7214D500446F31 /* SignUpViewController.swift */,
 				52EF38982A7214D600446F31 /* LoginViewController.swift */,
 				52EF38962A7214D500446F31 /* WelcomeViewController.swift */,
 				52EF38A32A72165E00446F31 /* ForgotPwdViewController.swift */,
-				52EF38A72A7225BF00446F31 /* TabBarViewController.swift */,
-				52EF38A92A7229D300446F31 /* HomeViewController.swift */,
 				526757762A726DC3000BB555 /* ProductCollectionViewCell.swift */,
-				523AD8EE2A73B43D005FACAD /* DetailViewController.swift */,
-				52134B9E2A7486BC00B87588 /* ProfileViewController.swift */,
 				5267C6412A77412000A44BDD /* MenuViewController.swift */,
 				5275ABB92A7762FD0016C424 /* FavoriteViewController.swift */,
 			);

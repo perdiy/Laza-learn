@@ -10,11 +10,33 @@ import SideMenu
 
 class HomeViewController: UIViewController {
     
+    // view
+    @IBOutlet weak var unguView: UIView! {
+        didSet {
+            unguView.layer.cornerRadius = 8
+            unguView.layer.masksToBounds = true
+        }
+    }
+    @IBOutlet weak var sideView: UIView!{
+        didSet {
+            sideView.layer.cornerRadius = sideView.bounds.height / 2
+            sideView.layer.masksToBounds = true
+        }
+    }
+    @IBOutlet weak var cartView: UIView!{
+        didSet {
+            cartView.layer.cornerRadius = cartView.bounds.height / 2
+            cartView.layer.masksToBounds = true
+        }
+    }
+    
+    // collection
     @IBOutlet weak var BrandCollectionView: UICollectionView!
     @IBOutlet weak var collectionView: UICollectionView!
     
     var products: [[String: Any]] = []
-    var categories: [Category] = [] // Array untuk menyimpan enum Category
+    // Array untuk menyimpan enum Category
+    var categories: [Category] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -168,7 +190,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // Jika ini adalah BrandCollectionView, setel ukuran sel
         if collectionView == BrandCollectionView {
-            return CGSize(width: 160, height: 50)
+            return CGSize(width: 160, height: 70)
         }
         
         // Jika ini adalah collectionView untuk produk, setel ukuran sel
