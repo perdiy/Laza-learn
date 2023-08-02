@@ -118,7 +118,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yuc-od-1hi">
-                                                <rect key="frame" x="8" y="2" width="50" height="50"/>
+                                                <rect key="frame" x="15" y="2" width="50" height="50"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVo-Ji-4NR">
                                                         <rect key="frame" x="0.6666666666666643" y="5.6666666666666679" width="49" height="39"/>
@@ -147,7 +147,7 @@
                                             <constraint firstItem="Re2-MZ-SIL" firstAttribute="leading" secondItem="uZL-fV-aeF" secondAttribute="trailing" constant="137" id="5rX-gr-0s6"/>
                                             <constraint firstAttribute="trailing" secondItem="yvc-1U-rio" secondAttribute="trailing" constant="27" id="6zs-H4-Oqo"/>
                                             <constraint firstItem="Akl-yr-Lgq" firstAttribute="leading" secondItem="DoY-pZ-bhZ" secondAttribute="trailing" constant="20" id="8hS-WP-7Gs"/>
-                                            <constraint firstItem="yuc-od-1hi" firstAttribute="leading" secondItem="mZc-K2-uml" secondAttribute="leading" constant="8" id="A1H-Mx-7v8"/>
+                                            <constraint firstItem="yuc-od-1hi" firstAttribute="leading" secondItem="mZc-K2-uml" secondAttribute="leading" constant="15" id="A1H-Mx-7v8"/>
                                             <constraint firstItem="DoY-pZ-bhZ" firstAttribute="top" secondItem="01D-AL-N0d" secondAttribute="bottom" constant="62" id="Fir-Ed-Rup"/>
                                             <constraint firstItem="Akl-yr-Lgq" firstAttribute="top" secondItem="Tx6-BK-KTx" secondAttribute="bottom" constant="10" id="IfT-Pj-xFg"/>
                                             <constraint firstAttribute="trailing" secondItem="767-pi-swH" secondAttribute="trailing" id="IyY-A3-q3s"/>

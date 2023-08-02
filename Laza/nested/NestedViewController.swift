@@ -32,14 +32,29 @@ class NestedViewController: UIViewController, UITableViewDataSource, UITableView
             viewUngu.layer.masksToBounds = true
         }
     }
+    @IBAction func sideButtonTapped(_ sender: UIButton) {
+        // Show the menu
+        performSegue(withIdentifier: "SideMenuNavigationController", sender: nil)
+//        present(menu!, animated: true, completion: nil)
+    }
+
     @IBOutlet weak var tableView: UITableView!
     var categories: [String] = []
     var products: [Product] = []
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         // sideMenu
-        menu = SideMenuNavigationController(rootViewController: UIViewController())
+                // Initialize the SideMenuNavigationController with your desired menu view controller
+                let menuViewController = YourMenuViewController() // Replace with your own menu view controller
+                menu = SideMenuNavigationController(rootViewController: menuViewController)
+                
+                // Set the presentation style of the menu to slide in from the left
+                menu?.presentationStyle = .menuSlideIn
+                menu?.menuWidth = view.frame.width * 0.75 // Customize the menu width
+                
+                // Enable gesture to open the menu (optional)
+                SideMenuManager.default.addPanGestureToPresent(toView: view)
+                
         
         // Daftarkan xib CategoryTableViewCell
         let cellCategoryNib = UINib(nibName: "CategoryTableViewCell", bundle: nil)

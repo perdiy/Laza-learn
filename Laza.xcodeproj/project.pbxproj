@@ -24,6 +24,8 @@
 		52444CD92A78BB6E000BFC87 /* ProTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52444CD72A78BB6E000BFC87 /* ProTableViewCell.xib */; };
 		52444CDC2A78BB87000BFC87 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52444CDA2A78BB87000BFC87 /* CategoryTableViewCell.swift */; };
 		52444CDD2A78BB87000BFC87 /* CategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52444CDB2A78BB87000BFC87 /* CategoryTableViewCell.xib */; };
+		52527E442A7A2AAA00CDAD49 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 52527E432A7A2AAA00CDAD49 /* SideMenu */; };
+		52527E462A7A3AF600CDAD49 /* SideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52527E452A7A3AF600CDAD49 /* SideViewController.swift */; };
 		526757702A723DBE000BB555 /* ShopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267576F2A723DBE000BB555 /* ShopModel.swift */; };
 		526757782A726DC3000BB555 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526757762A726DC3000BB555 /* ProductCollectionViewCell.swift */; };
 		5267C6422A77412000A44BDD /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267C6412A77412000A44BDD /* MenuViewController.swift */; };
@@ -71,6 +73,7 @@
 		52444CD72A78BB6E000BFC87 /* ProTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProTableViewCell.xib; sourceTree = "<group>"; };
 		52444CDA2A78BB87000BFC87 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		52444CDB2A78BB87000BFC87 /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTableViewCell.xib; sourceTree = "<group>"; };
+		52527E452A7A3AF600CDAD49 /* SideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideViewController.swift; sourceTree = "<group>"; };
 		5267576F2A723DBE000BB555 /* ShopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopModel.swift; sourceTree = "<group>"; };
 		526757762A726DC3000BB555 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		5267C6412A77412000A44BDD /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52527E442A7A2AAA00CDAD49 /* SideMenu in Frameworks */,
 				95BD1E19824C6C83D4743E49 /* Pods_Laza.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,6 +310,7 @@
 				526757762A726DC3000BB555 /* ProductCollectionViewCell.swift */,
 				5267C6412A77412000A44BDD /* MenuViewController.swift */,
 				5275ABB92A7762FD0016C424 /* FavoriteViewController.swift */,
+				52527E452A7A3AF600CDAD49 /* SideViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -337,6 +342,9 @@
 			dependencies = (
 			);
 			name = Laza;
+			packageProductDependencies = (
+				52527E432A7A2AAA00CDAD49 /* SideMenu */,
+			);
 			productName = Laza;
 			productReference = 52EF386A2A72125400446F31 /* Laza.app */;
 			productType = "com.apple.product-type.application";
@@ -365,6 +373,9 @@
 				Base,
 			);
 			mainGroup = 52EF38612A72125400446F31;
+			packageReferences = (
+				52527E422A7A2AAA00CDAD49 /* XCRemoteSwiftPackageReference "SideMenu" */,
+			);
 			productRefGroup = 52EF386B2A72125400446F31 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -467,6 +478,7 @@
 				52EF38A42A72165E00446F31 /* ForgotPwdViewController.swift in Sources */,
 				52EF389A2A7214D600446F31 /* WelcomeViewController.swift in Sources */,
 				5267C6422A77412000A44BDD /* MenuViewController.swift in Sources */,
+				52527E462A7A3AF600CDAD49 /* SideViewController.swift in Sources */,
 				5275ABBA2A7762FD0016C424 /* FavoriteViewController.swift in Sources */,
 				52EF38942A7214CC00446F31 /* ViewController.swift in Sources */,
 				523AD8EF2A73B43D005FACAD /* DetailViewController.swift in Sources */,
@@ -671,6 +683,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		52527E422A7A2AAA00CDAD49 /* XCRemoteSwiftPackageReference "SideMenu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jonkykong/SideMenu";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		52527E432A7A2AAA00CDAD49 /* SideMenu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 52527E422A7A2AAA00CDAD49 /* XCRemoteSwiftPackageReference "SideMenu" */;
+			productName = SideMenu;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		52EF38762A72125400446F31 /* Laza.xcdatamodeld */ = {
