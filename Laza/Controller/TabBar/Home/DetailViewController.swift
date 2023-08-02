@@ -5,41 +5,46 @@
 //  Created by Perdi Yansyah on 28/07/23.
 //
 
+
 import UIKit
 
 class DetailViewController: UIViewController {
-
-    // IBOutlet connections for UI elements in the DetailViewController (if any)
+    @IBOutlet weak var viewBack: UIView!{
+        didSet {
+            viewBack.layer.cornerRadius = viewBack.bounds.height / 2
+            viewBack.layer.masksToBounds = true
+        }
+    }
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var productImageView: UIImageView!
 
-    var product: [String: Any]?
+    var product: Product?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Update UI with the product details
-        if let product = product,
-           let title = product["title"] as? String,
-           let price = product["price"] as? Double,
-           let description = product["description"] as? String,
-           let imageString = product["image"] as? String,
-           let imageUrl = URL(string: imageString) {
+        if let product = product {
+            titleLabel.text = product.title
+            priceLabel.text = "$ \(product.price)"
+            descriptionLabel.text = product.description
 
-            titleLabel.text = title
-            priceLabel.text = "$ \(price)"
-            descriptionLabel.text = description
-
-            URLSession.shared.dataTask(with: imageUrl) { data, response, error in
-                if let data = data, let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self.productImageView.image = image
+            if let imageUrl = URL(string: product.image) {
+                URLSession.shared.dataTask(with: imageUrl) { data, response, error in
+                    if let data = data, let image = UIImage(data: data) {
+                        DispatchQueue.main.async {
+                            self.productImageView.image = image
+                        }
                     }
-                }
-            }.resume()
+                }.resume()
+            }
         }
     }
-}
 
+    @IBAction func backArrowTapped(_ sender: UIButton) {
+        // Use the navigationController to go back to the previous view controller
+        navigationController?.popViewController(animated: true)
+    }
+}

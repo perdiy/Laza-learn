@@ -53,7 +53,6 @@
                                                 <color key="backgroundColor" red="0.59215686270000001" green="0.45882352939999999" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="pCO-2e-AEE" secondAttribute="trailing" constant="153" id="2Rr-8v-86D"/>
-                                                    <constraint firstAttribute="height" constant="92" id="V1h-ut-Xsg"/>
                                                     <constraint firstAttribute="width" constant="393" id="e7X-DG-GbK"/>
                                                     <constraint firstAttribute="bottom" secondItem="pCO-2e-AEE" secondAttribute="bottom" constant="42" id="gL1-ot-4mn"/>
                                                     <constraint firstItem="pCO-2e-AEE" firstAttribute="top" secondItem="767-pi-swH" secondAttribute="top" constant="29" id="k6h-LX-aan"/>
@@ -118,6 +117,26 @@
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yuc-od-1hi">
+                                                <rect key="frame" x="8" y="2" width="50" height="50"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVo-Ji-4NR">
+                                                        <rect key="frame" x="0.6666666666666643" y="5.6666666666666679" width="49" height="39"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="Arrow - Left" title=""/>
+                                                        <connections>
+                                                            <action selector="backArrowTapped:" destination="Esa-F3-uZt" eventType="touchUpInside" id="JHk-ab-WHe"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                <constraints>
+                                                    <constraint firstItem="fVo-Ji-4NR" firstAttribute="centerY" secondItem="yuc-od-1hi" secondAttribute="centerY" id="APR-n3-EaF"/>
+                                                    <constraint firstItem="fVo-Ji-4NR" firstAttribute="centerX" secondItem="yuc-od-1hi" secondAttribute="centerX" id="LOw-ZJ-at5"/>
+                                                    <constraint firstAttribute="height" constant="50" id="QiT-Ey-O2Q"/>
+                                                    <constraint firstAttribute="width" constant="50" id="k7z-ak-Ahp"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -128,6 +147,7 @@
                                             <constraint firstItem="Re2-MZ-SIL" firstAttribute="leading" secondItem="uZL-fV-aeF" secondAttribute="trailing" constant="137" id="5rX-gr-0s6"/>
                                             <constraint firstAttribute="trailing" secondItem="yvc-1U-rio" secondAttribute="trailing" constant="27" id="6zs-H4-Oqo"/>
                                             <constraint firstItem="Akl-yr-Lgq" firstAttribute="leading" secondItem="DoY-pZ-bhZ" secondAttribute="trailing" constant="20" id="8hS-WP-7Gs"/>
+                                            <constraint firstItem="yuc-od-1hi" firstAttribute="leading" secondItem="mZc-K2-uml" secondAttribute="leading" constant="8" id="A1H-Mx-7v8"/>
                                             <constraint firstItem="DoY-pZ-bhZ" firstAttribute="top" secondItem="01D-AL-N0d" secondAttribute="bottom" constant="62" id="Fir-Ed-Rup"/>
                                             <constraint firstItem="Akl-yr-Lgq" firstAttribute="top" secondItem="Tx6-BK-KTx" secondAttribute="bottom" constant="10" id="IfT-Pj-xFg"/>
                                             <constraint firstAttribute="trailing" secondItem="767-pi-swH" secondAttribute="trailing" id="IyY-A3-q3s"/>
@@ -151,6 +171,7 @@
                                             <constraint firstItem="rKc-vJ-S3y" firstAttribute="top" secondItem="uZL-fV-aeF" secondAttribute="bottom" constant="8" id="okL-Kd-oNX"/>
                                             <constraint firstItem="yvc-1U-rio" firstAttribute="leading" secondItem="MRJ-RO-gA3" secondAttribute="trailing" constant="255" id="oyL-12-XDU"/>
                                             <constraint firstAttribute="trailing" secondItem="01D-AL-N0d" secondAttribute="trailing" id="qJw-XE-Qhp"/>
+                                            <constraint firstItem="yuc-od-1hi" firstAttribute="top" secondItem="mZc-K2-uml" secondAttribute="top" constant="2" id="tZ4-0k-RWt"/>
                                             <constraint firstItem="01D-AL-N0d" firstAttribute="top" secondItem="mZc-K2-uml" secondAttribute="top" id="up1-vc-FiN"/>
                                             <constraint firstAttribute="trailing" secondItem="E1q-qt-1TQ" secondAttribute="trailing" constant="15" id="xkx-9Y-dIN"/>
                                             <constraint firstItem="MRJ-RO-gA3" firstAttribute="leading" secondItem="mZc-K2-uml" secondAttribute="leading" constant="15" id="zz5-kb-9uQ"/>
@@ -180,6 +201,7 @@
                         <outlet property="priceLabel" destination="Tx6-BK-KTx" id="i5o-JK-S6S"/>
                         <outlet property="productImageView" destination="01D-AL-N0d" id="CGq-pn-I79"/>
                         <outlet property="titleLabel" destination="rKc-vJ-S3y" id="Rz2-n3-drO"/>
+                        <outlet property="viewBack" destination="yuc-od-1hi" id="VXU-FE-sin"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3u6-UO-6Hg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -188,9 +210,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Arrow - Left" width="25" height="25"/>
         <image name="Frame 1 1" width="45" height="45"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
