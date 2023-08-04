@@ -2,28 +2,31 @@
 //  VerificationCodeViewController.swift
 //  Laza
 //
-//  Created by Perdi Yansyah on 04/08/23.
+//  Created by Perdi Yansyah on 27/07/23.
 //
 
 import UIKit
 
 class VerificationCodeViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    var email: String?
+    
+    @IBOutlet weak var codeTextField: UITextField! {
+        didSet {
+            codeTextField.addShadow(color: .gray, widht: 0.5, text: codeTextField)
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if let email = email {
+            print("Received email: \(email)")
+            
+        }
     }
-    */
-
+    
+    @IBAction func verifyCodeBtn(_ sender: Any) {
+        
+    }
 }

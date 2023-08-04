@@ -88,7 +88,7 @@
                         <viewLayoutGuide key="safeArea" id="B4Y-Vb-faY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="person" catalog="system" selectedImage="person" id="bgq-Ez-wvt"/>
+                    <tabBarItem key="tabBarItem" title="" image="Vector-3" id="bgq-Ez-wvt"/>
                     <connections>
                         <outlet property="logoutBtn" destination="4wu-I0-m2E" id="ORC-bl-YAc"/>
                         <outlet property="nameLabel" destination="YpQ-Qt-G5S" id="QAm-sM-Vf0"/>
@@ -99,7 +99,7 @@
             </objects>
             <point key="canvasLocation" x="2309.1603053435115" y="861.97183098591552"/>
         </scene>
-        <!--Item-->
+        <!--Nested View Controller-->
         <scene sceneID="jI3-HE-l54">
             <objects>
                 <viewController storyboardIdentifier="NestedViewController" id="tpa-hh-V3t" customClass="NestedViewController" customModule="Laza" customModuleProvider="target" sceneMemberID="viewController">
@@ -220,11 +220,14 @@
                             <constraint firstItem="btx-Vs-REX" firstAttribute="leading" secondItem="Wy0-Hc-eFj" secondAttribute="trailing" constant="12.33" id="ouQ-QJ-fxe"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="pSc-rh-nft"/>
+                    <tabBarItem key="tabBarItem" title="" image="Vector-4" selectedImage="Vector-4" id="pSc-rh-nft">
+                        <color key="badgeColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="BCX-Be-ice"/>
                     <connections>
                         <outlet property="tableView" destination="dZe-xW-2QL" id="kbi-gL-2LS"/>
                         <outlet property="viewCart" destination="hSZ-7R-4Nn" id="2ea-Rr-PGS"/>
+                        <outlet property="viewSide" destination="WBe-4s-8xU" id="3a2-qq-1vL"/>
                         <outlet property="viewUngu" destination="btx-Vs-REX" id="KkS-34-qqt"/>
                         <segue destination="xAK-es-05b" kind="presentation" identifier="SideMenuNavigationController" id="10D-FI-3YE"/>
                     </connections>
@@ -591,7 +594,7 @@
                                         <buttonConfiguration key="configuration" style="plain" image="menu-2" title=""/>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="RPr-BR-sIK" firstAttribute="leading" secondItem="2eV-ee-QCb" secondAttribute="leading" constant="3" id="7gR-bB-m30"/>
                                     <constraint firstAttribute="width" constant="55" id="Gcq-L4-Gee"/>
@@ -661,16 +664,13 @@
         <image name="Setting" width="25" height="25"/>
         <image name="Vector" width="21" height="20"/>
         <image name="Vector-2" width="21" height="22"/>
+        <image name="Vector-3" width="21" height="20"/>
         <image name="Vector-4" width="21" height="22"/>
         <image name="Voice" width="24" height="24"/>
         <image name="Wallet" width="25" height="25"/>
         <image name="menu" width="25" height="25"/>
         <image name="menu-2" width="25" height="25"/>
-        <image name="person" catalog="system" width="128" height="121"/>
         <image name="sun" width="25" height="25"/>
-        <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

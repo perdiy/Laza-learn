@@ -286,7 +286,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="GRL-uV-Vmu" firstAttribute="leading" secondItem="ILR-Ko-MCr" secondAttribute="leading" constant="6" id="8L9-ra-EVL"/>
                                     <constraint firstAttribute="bottom" secondItem="GRL-uV-Vmu" secondAttribute="bottom" constant="6" id="Ax6-O4-rzX"/>
@@ -341,6 +341,9 @@
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -7,7 +7,7 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
-    
+
     // var action button hide
     var iconClick = true
     
@@ -46,7 +46,6 @@ class SignUpViewController: UIViewController {
         }
     }
     
-    // catatan phone adalah confirm password belum sempat diubah, tetapi viturnya berjalan dengan baik yaitu sebagai confim password *TERIMAKASIH*
     @IBOutlet weak var phoneTf: UITextField! {
         didSet {
             phoneTf.addShadow(color: .gray, widht: 0.5, text: phoneTf)
@@ -145,12 +144,23 @@ class SignUpViewController: UIViewController {
                 let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
                     // Print data yang sudah ditambahkan ke UserDefaults
                     self.printUserData()
+                    
+                    // Navigate to NestedViewController
+                    self.navigateToNestedViewController()
                 }
                 alertController.addAction(okAction)
                 present(alertController, animated: true, completion: nil)
             }
         }
     }
+    
+    private func navigateToNestedViewController() {
+            let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
+            guard let nestedViewController = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController else {
+                fatalError("erorr")
+            }
+            navigationController?.pushViewController(nestedViewController, animated: true)
+        }
     
     private func printUserData() {
         // Ambil data dari UserDefaults
