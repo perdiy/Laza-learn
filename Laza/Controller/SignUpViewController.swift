@@ -4,7 +4,6 @@
 //
 //  Created by Perdi Yansyah on 27/07/23.
 //
-
 import UIKit
 
 class SignUpViewController: UIViewController {
@@ -23,12 +22,18 @@ class SignUpViewController: UIViewController {
         iconClick = !iconClick
     }
     
-    
     @IBAction func hideConfirmBtn(_ sender: Any) {
+        if iconClick {
+            iconClick = true
+            phoneTf.isSecureTextEntry = false
+        } else {
+            iconClick = false
+            phoneTf.isSecureTextEntry = true
+        }
+        iconClick = !iconClick
     }
     
     @IBOutlet weak var viewBack: UIView!
-    
     @IBOutlet weak var userNameTf: UITextField! {
         didSet {
             userNameTf.addShadow(color: .gray, widht: 0.5, text: userNameTf)
@@ -41,7 +46,7 @@ class SignUpViewController: UIViewController {
         }
     }
     
-    // passwor confirm
+    // catatan phone adalah confirm password belum sempat diubah, tetapi viturnya berjalan dengan baik yaitu sebagai confim password *TERIMAKASIH*
     @IBOutlet weak var phoneTf: UITextField! {
         didSet {
             phoneTf.addShadow(color: .gray, widht: 0.5, text: phoneTf)
@@ -54,9 +59,17 @@ class SignUpViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var signUpButton: UIButton! {
+        didSet {
+            signUpButton.isEnabled = false
+            signUpButton.alpha = 0.5
+        }
+    }
+    
     @IBAction func backBtn(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
     @IBAction func signUpBtn(_ sender: Any) {
         signUp()
     }
@@ -65,6 +78,15 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         viewBack.layer.cornerRadius = viewBack.bounds.height / 2.0
         viewBack.clipsToBounds = true
+        
+        // Tambahkan target untuk text field untuk melakukan validasi saat text berubah
+        userNameTf.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        emailTf.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        phoneTf.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        passwordTf.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        
+        // Lakukan validasi awal
+        validateTextFields()
     }
     
     private func signUp() {
@@ -72,6 +94,12 @@ class SignUpViewController: UIViewController {
               let email = emailTf.text,
               let phone = phoneTf.text,
               let password = passwordTf.text else {
+            return
+        }
+        
+        // Check if password and confirm password match
+        guard password == phoneTf.text else {
+            showAlert(title: "Password Mismatch", message: "Kata sandi dan konfirmasi kata sandi tidak cocok.")
             return
         }
         
@@ -87,17 +115,17 @@ class SignUpViewController: UIViewController {
         
         // Check if the entered email and password are valid
         if !isEmailValid {
-            showAlert(title: "Invalid Email", message: "Please enter a valid email address.")
+            showAlert(title: "Invalid Email", message: "Silakan isi alamat email. Contoh : perdi@gmail.com")
         } else if !isPasswordValid {
-            showAlert(title: "Invalid Password", message: "Password must be at least 8 characters long and contain at least one letter and one number.")
+            showAlert(title: "Invalid Password", message: "Kata sandi harus minimal 8 karakter dan mengandung setidaknya satu huruf dan satu angka. Contoh: HelloWorld99")
         } else {
-            // Rest of your sign-up logic goes here...
+            
             // Cek apakah data pengguna sudah ada dalam UserDefaults
             let userDefaults = UserDefaults.standard
             let savedUserName = userDefaults.string(forKey: "userName")
             if savedUserName == userName {
                 // Tampilkan pesan kesalahan jika data pengguna sudah ada
-                showAlert(title: "Registration Failed", message: "Username is already taken. Please use a different username.")
+                showAlert(title: "Registration Failed", message: "Nama pengguna sudah digunakan. Harap gunakan nama pengguna yang berbeda.")
             } else {
                 // Jika data pengguna belum ada, simpan data ke UserDefaults
                 userDefaults.set(userName, forKey: "userName")
@@ -138,6 +166,26 @@ class SignUpViewController: UIViewController {
             print("Phone: \(phone)")
             print("Password: \(password)")
         }
+    }
+    
+    @objc private func textFieldDidChange() {
+        validateTextFields()
+    }
+    
+    private func validateTextFields() {
+        // Jika salah satu text field kosong, nonaktifkan tombol sign up dan beri warna abu-abu
+        guard let userName = userNameTf.text, !userName.isEmpty,
+              let email = emailTf.text, !email.isEmpty,
+              let phone = phoneTf.text, !phone.isEmpty,
+              let password = passwordTf.text, !password.isEmpty else {
+            signUpButton.isEnabled = false
+            signUpButton.alpha = 0.5
+            signUpButton.backgroundColor = UIColor.gray
+            return
+        }
+        signUpButton.isEnabled = true
+        signUpButton.alpha = 1.0
+        signUpButton.backgroundColor = UIColor(red: 151/255, green: 117/255, blue: 250/255, alpha: 1.0)
     }
     
     private func showAlert(title: String, message: String) {

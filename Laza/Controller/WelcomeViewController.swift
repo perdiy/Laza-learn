@@ -10,28 +10,56 @@ import UIKit
 // Struct untuk mendefinisikan respons dari login API
 struct LoginResponse: Codable {
     let token: String
-}
+} 
 
 class WelcomeViewController: UIViewController {
+    // hide or no text password
+    var iconClick = true
+    @IBAction func hidePassword(_ sender: Any) {
+        if iconClick {
+            iconClick = true
+            passwordTf.isSecureTextEntry = false
+        } else {
+            iconClick = false
+            passwordTf.isSecureTextEntry = true
+        }
+        iconClick = !iconClick
+        
+    }
+    
+    
+    @IBAction func forgotPasswordBtn(_ sender: Any) {
+        navigateToForgotPassword()
+    }
+    
+    
     // Outlets untuk dua text field di layar
     @IBOutlet weak var passwordTf: UITextField! {
-        didSet{
+        didSet {
             passwordTf.addShadow(color: .gray, widht: 0.5, text: passwordTf)
         }
     }
     
     @IBOutlet weak var userNameTf: UITextField! {
-        didSet{
+        didSet {
             userNameTf.addShadow(color: .gray, widht: 0.5, text: userNameTf)
         }
     }
+    
+    @IBOutlet weak var loginButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Sembunyikan tombol "Back" pada navigasi bar
         navigationItem.hidesBackButton = true
+        
+        // Tambahkan target untuk text field untuk melakukan validasi saat text berubah
+        userNameTf.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        passwordTf.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        
+        // Lakukan validasi awal
+        validateTextFields()
     }
-    
     
     @IBAction func loginBtn(_ sender: Any) {
         login()
@@ -40,8 +68,8 @@ class WelcomeViewController: UIViewController {
     // Fungsi untuk melakukan login
     func login() {
         // Ambil nilai dari text field untuk username dan password
-        guard let username = userNameTf.text,
-              let password = passwordTf.text else {
+        guard let username = userNameTf.text, let password = passwordTf.text, !username.isEmpty, !password.isEmpty else {
+            showAlert(title: "Error", message: "Username dan password tidak boleh kosong.")
             return
         }
         
@@ -53,10 +81,7 @@ class WelcomeViewController: UIViewController {
         }
         
         // Data yang akan dikirim sebagai body request (username dan password)
-        let userData: [String: Any] = [
-            "username": username,
-            "password": password
-        ]
+        let userData: [String: Any] = ["username": username, "password": password]
         
         do {
             // Serialize data ke dalam bentuk JSON
@@ -114,6 +139,26 @@ class WelcomeViewController: UIViewController {
         }
     }
     
+    // Fungsi untuk mengaktifkan atau menonaktifkan tombol login berdasarkan validasi text field
+    @objc func textFieldDidChange() {
+        validateTextFields()
+    }
+    
+    private func validateTextFields() {
+        // Jika salah satu text field kosong, nonaktifkan tombol login dan beri warna abu-abu
+        guard let username = userNameTf.text, !username.isEmpty,
+              let password = passwordTf.text, !password.isEmpty else {
+            loginButton.isEnabled = false
+            loginButton.alpha = 0.5
+            loginButton.backgroundColor = .gray
+            return
+        }
+        // Jika kedua text field tidak kosong, aktifkan tombol login dan beri warna khusus
+        loginButton.isEnabled = true
+        loginButton.alpha = 1.0
+        loginButton.backgroundColor = UIColor(red: 151/255, green: 117/255, blue: 250/255, alpha: 1.0)
+    }
+    
     private func goToHome() {
         let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
         if let homeVC = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController {
@@ -126,5 +171,12 @@ class WelcomeViewController: UIViewController {
         let okayAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(okayAction)
         present(alert, animated: true, completion: nil)
+    }
+    
+    private func navigateToForgotPassword() {
+        let storyboard = UIStoryboard(name: "ForgotPassword", bundle: nil)
+        if let forgotPwdVC = storyboard.instantiateViewController(withIdentifier: "ForgotPwdViewController") as? ForgotPwdViewController {
+            navigationController?.pushViewController(forgotPwdVC, animated: true)
+        }
     }
 }
