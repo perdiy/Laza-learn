@@ -24,6 +24,14 @@ class ViewController: UIViewController {
     }
     
     @IBAction func skipBtn(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "loginWith", bundle: nil)
+        if let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
+            navigationController?.pushViewController(loginVC, animated: true)
+        }
+    }
+     
+    @IBAction func womenBtn
+    (_ sender: Any) {
         let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
         if let loginVC = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController {
             navigationController?.pushViewController(loginVC, animated: true)

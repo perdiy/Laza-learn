@@ -8,7 +8,7 @@
 import UIKit
 
 class CategoryCollectionViewCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var categoryTxt: UILabel!
     @IBOutlet weak var viewCa: UILabel! {
         didSet {
@@ -20,7 +20,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     func configure(with category: String) {
         categoryTxt.text = category.capitalized
     }

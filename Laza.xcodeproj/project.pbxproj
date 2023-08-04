@@ -29,9 +29,18 @@
 		526757702A723DBE000BB555 /* ShopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267576F2A723DBE000BB555 /* ShopModel.swift */; };
 		526757782A726DC3000BB555 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526757762A726DC3000BB555 /* ProductCollectionViewCell.swift */; };
 		5267C6422A77412000A44BDD /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267C6412A77412000A44BDD /* MenuViewController.swift */; };
-		5267C6442A77426700A44BDD /* MenuSide.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5267C6432A77426700A44BDD /* MenuSide.storyboard */; };
 		52728AE22A77A21100519DE0 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52728AE12A77A21100519DE0 /* HomeViewModel.swift */; };
 		5275ABBA2A7762FD0016C424 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5275ABB92A7762FD0016C424 /* FavoriteViewController.swift */; };
+		527F9AF92A7B647D00AC520C /* Reviews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527F9AF82A7B647D00AC520C /* Reviews.storyboard */; };
+		527F9AFB2A7B64BF00AC520C /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F9AFA2A7B64BF00AC520C /* ReviewsViewController.swift */; };
+		527F9AFD2A7B64D400AC520C /* AddReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F9AFC2A7B64D400AC520C /* AddReviewsViewController.swift */; };
+		527F9B012A7B796800AC520C /* SizeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F9AFF2A7B796800AC520C /* SizeCollectionViewCell.swift */; };
+		527F9B022A7B796800AC520C /* SizeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527F9B002A7B796800AC520C /* SizeCollectionViewCell.xib */; };
+		527F9B042A7B7D6D00AC520C /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F9B032A7B7D6D00AC520C /* extension.swift */; };
+		527F9B082A7B90E000AC520C /* ReviewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F9B062A7B90E000AC520C /* ReviewsTableViewCell.swift */; };
+		527F9B092A7B90E000AC520C /* ReviewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527F9B072A7B90E000AC520C /* ReviewsTableViewCell.xib */; };
+		527F9B0D2A7B942C00AC520C /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F9B0C2A7B942C00AC520C /* ReviewViewController.swift */; };
+		527F9B0F2A7BAAFA00AC520C /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F9B0E2A7BAAFA00AC520C /* AddReviewViewController.swift */; };
 		52EF386E2A72125400446F31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF386D2A72125400446F31 /* AppDelegate.swift */; };
 		52EF38702A72125400446F31 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF386F2A72125400446F31 /* SceneDelegate.swift */; };
 		52EF38782A72125400446F31 /* Laza.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52EF38762A72125400446F31 /* Laza.xcdatamodeld */; };
@@ -50,6 +59,9 @@
 		52EF38A42A72165E00446F31 /* ForgotPwdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF38A32A72165E00446F31 /* ForgotPwdViewController.swift */; };
 		52EF38A82A7225BF00446F31 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF38A72A7225BF00446F31 /* TabBarViewController.swift */; };
 		52EF38AA2A7229D300446F31 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF38A92A7229D300446F31 /* HomeViewController.swift */; };
+		52F456D92A7C94B800F565D9 /* VerificationCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F456D82A7C94B800F565D9 /* VerificationCodeViewController.swift */; };
+		52F456DB2A7C951700F565D9 /* NewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F456DA2A7C951700F565D9 /* NewPasswordViewController.swift */; };
+		52F456DD2A7CAEAA00F565D9 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F456DC2A7CAEA900F565D9 /* Slider.swift */; };
 		52FFFF552A78F17E009C07EB /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FFFF542A78F17E009C07EB /* Api.swift */; };
 		95BD1E19824C6C83D4743E49 /* Pods_Laza.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5886F5C889B7EBC36794D9DD /* Pods_Laza.framework */; };
 /* End PBXBuildFile section */
@@ -77,9 +89,18 @@
 		5267576F2A723DBE000BB555 /* ShopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopModel.swift; sourceTree = "<group>"; };
 		526757762A726DC3000BB555 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		5267C6412A77412000A44BDD /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		5267C6432A77426700A44BDD /* MenuSide.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MenuSide.storyboard; sourceTree = "<group>"; };
 		52728AE12A77A21100519DE0 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		5275ABB92A7762FD0016C424 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		527F9AF82A7B647D00AC520C /* Reviews.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reviews.storyboard; sourceTree = "<group>"; };
+		527F9AFA2A7B64BF00AC520C /* ReviewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsViewController.swift; sourceTree = "<group>"; };
+		527F9AFC2A7B64D400AC520C /* AddReviewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewsViewController.swift; sourceTree = "<group>"; };
+		527F9AFF2A7B796800AC520C /* SizeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCollectionViewCell.swift; sourceTree = "<group>"; };
+		527F9B002A7B796800AC520C /* SizeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SizeCollectionViewCell.xib; sourceTree = "<group>"; };
+		527F9B032A7B7D6D00AC520C /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
+		527F9B062A7B90E000AC520C /* ReviewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewCell.swift; sourceTree = "<group>"; };
+		527F9B072A7B90E000AC520C /* ReviewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewsTableViewCell.xib; sourceTree = "<group>"; };
+		527F9B0C2A7B942C00AC520C /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		527F9B0E2A7BAAFA00AC520C /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
 		52EF386A2A72125400446F31 /* Laza.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Laza.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52EF386D2A72125400446F31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52EF386F2A72125400446F31 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +120,9 @@
 		52EF38A32A72165E00446F31 /* ForgotPwdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPwdViewController.swift; sourceTree = "<group>"; };
 		52EF38A72A7225BF00446F31 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		52EF38A92A7229D300446F31 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		52F456D82A7C94B800F565D9 /* VerificationCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeViewController.swift; sourceTree = "<group>"; };
+		52F456DA2A7C951700F565D9 /* NewPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordViewController.swift; sourceTree = "<group>"; };
+		52F456DC2A7CAEA900F565D9 /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
 		52FFFF542A78F17E009C07EB /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		5886F5C889B7EBC36794D9DD /* Pods_Laza.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Laza.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA10B5503970B0BDB046E663 /* Pods-Laza.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Laza.release.xcconfig"; path = "Target Support Files/Pods-Laza/Pods-Laza.release.xcconfig"; sourceTree = "<group>"; };
@@ -129,7 +153,6 @@
 		52444CBA2A789AE7000BFC87 /* Item */ = {
 			isa = PBXGroup;
 			children = (
-				5267C6432A77426700A44BDD /* MenuSide.storyboard */,
 				52EF388F2A72149200446F31 /* TabBar.storyboard */,
 			);
 			path = Item;
@@ -149,8 +172,8 @@
 		52444CBC2A789B39000BFC87 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				527F9AFE2A7B793700AC520C /* Detail */,
 				52EF38A92A7229D300446F31 /* HomeViewController.swift */,
-				523AD8EE2A73B43D005FACAD /* DetailViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -251,6 +274,45 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		527F9AF62A7B546E00AC520C /* Reviews */ = {
+			isa = PBXGroup;
+			children = (
+				527F9AFA2A7B64BF00AC520C /* ReviewsViewController.swift */,
+				527F9AFC2A7B64D400AC520C /* AddReviewsViewController.swift */,
+			);
+			path = Reviews;
+			sourceTree = "<group>";
+		};
+		527F9AF72A7B645C00AC520C /* Reviews */ = {
+			isa = PBXGroup;
+			children = (
+				527F9B052A7B90A800AC520C /* XIB */,
+				527F9AF82A7B647D00AC520C /* Reviews.storyboard */,
+				527F9B0C2A7B942C00AC520C /* ReviewViewController.swift */,
+				527F9B0E2A7BAAFA00AC520C /* AddReviewViewController.swift */,
+			);
+			path = Reviews;
+			sourceTree = "<group>";
+		};
+		527F9AFE2A7B793700AC520C /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				523AD8EE2A73B43D005FACAD /* DetailViewController.swift */,
+				527F9AFF2A7B796800AC520C /* SizeCollectionViewCell.swift */,
+				527F9B002A7B796800AC520C /* SizeCollectionViewCell.xib */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		527F9B052A7B90A800AC520C /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				527F9B062A7B90E000AC520C /* ReviewsTableViewCell.swift */,
+				527F9B072A7B90E000AC520C /* ReviewsTableViewCell.xib */,
+			);
+			path = XIB;
+			sourceTree = "<group>";
+		};
 		52EF38612A72125400446F31 = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +340,8 @@
 				526757712A72470B000BB555 /* Model */,
 				52EF38922A7214B100446F31 /* Controller */,
 				52EF38912A72149700446F31 /* View */,
+				527F9B032A7B7D6D00AC520C /* extension.swift */,
+				52F456DC2A7CAEA900F565D9 /* Slider.swift */,
 			);
 			path = Laza;
 			sourceTree = "<group>";
@@ -285,6 +349,7 @@
 		52EF38912A72149700446F31 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				527F9AF72A7B645C00AC520C /* Reviews */,
 				52444CBD2A789B59000BFC87 /* Cell */,
 				52444CBA2A789AE7000BFC87 /* Item */,
 				52EF389D2A72150C00446F31 /* Main.storyboard */,
@@ -301,18 +366,29 @@
 		52EF38922A7214B100446F31 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				52F456D72A7C947E00F565D9 /* Forgor Password */,
+				527F9AF62A7B546E00AC520C /* Reviews */,
 				52444CBB2A789B15000BFC87 /* TabBar */,
 				52EF38932A7214CC00446F31 /* ViewController.swift */,
 				52EF38972A7214D500446F31 /* SignUpViewController.swift */,
 				52EF38982A7214D600446F31 /* LoginViewController.swift */,
 				52EF38962A7214D500446F31 /* WelcomeViewController.swift */,
-				52EF38A32A72165E00446F31 /* ForgotPwdViewController.swift */,
 				526757762A726DC3000BB555 /* ProductCollectionViewCell.swift */,
 				5267C6412A77412000A44BDD /* MenuViewController.swift */,
 				5275ABB92A7762FD0016C424 /* FavoriteViewController.swift */,
 				52527E452A7A3AF600CDAD49 /* SideViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		52F456D72A7C947E00F565D9 /* Forgor Password */ = {
+			isa = PBXGroup;
+			children = (
+				52EF38A32A72165E00446F31 /* ForgotPwdViewController.swift */,
+				52F456D82A7C94B800F565D9 /* VerificationCodeViewController.swift */,
+				52F456DA2A7C951700F565D9 /* NewPasswordViewController.swift */,
+			);
+			path = "Forgor Password";
 			sourceTree = "<group>";
 		};
 		94E4DEE534302C1C97FF68A9 /* Pods */ = {
@@ -391,10 +467,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				52EF389E2A72150D00446F31 /* Main.storyboard in Resources */,
+				527F9B092A7B90E000AC520C /* ReviewsTableViewCell.xib in Resources */,
 				52EF38902A72149200446F31 /* TabBar.storyboard in Resources */,
 				523AD8ED2A73B327005FACAD /* BrandCollectionViewCell.xib in Resources */,
 				523AD8E72A739E41005FACAD /* ProductCollectionViewCell.xib in Resources */,
 				52444CD92A78BB6E000BFC87 /* ProTableViewCell.xib in Resources */,
+				527F9B022A7B796800AC520C /* SizeCollectionViewCell.xib in Resources */,
 				523AD8F12A73B44B005FACAD /* Detail.storyboard in Resources */,
 				52EF388A2A72148200446F31 /* loginWith.storyboard in Resources */,
 				52444CC52A78B7B2000BFC87 /* CategoryCollectionViewCell.xib in Resources */,
@@ -402,9 +480,9 @@
 				52444CCD2A78B7F4000BFC87 /* ProCollectionViewCell.xib in Resources */,
 				52EF38A22A72163900446F31 /* ForgotPassword.storyboard in Resources */,
 				52444CDD2A78BB87000BFC87 /* CategoryTableViewCell.xib in Resources */,
-				5267C6442A77426700A44BDD /* MenuSide.storyboard in Resources */,
 				52EF38A02A72152900446F31 /* Assets.xcassets in Resources */,
 				52EF388C2A72148800446F31 /* SignUp.storyboard in Resources */,
+				527F9AF92A7B647D00AC520C /* Reviews.storyboard in Resources */,
 				52EF388E2A72148D00446F31 /* Welcome.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,13 +540,18 @@
 				523AD8EC2A73B327005FACAD /* BrandCollectionViewCell.swift in Sources */,
 				52EF389B2A7214D600446F31 /* SignUpViewController.swift in Sources */,
 				52728AE22A77A21100519DE0 /* HomeViewModel.swift in Sources */,
+				527F9B0F2A7BAAFA00AC520C /* AddReviewViewController.swift in Sources */,
+				52F456DD2A7CAEAA00F565D9 /* Slider.swift in Sources */,
 				52EF38782A72125400446F31 /* Laza.xcdatamodeld in Sources */,
 				52444CDC2A78BB87000BFC87 /* CategoryTableViewCell.swift in Sources */,
 				52FFFF552A78F17E009C07EB /* Api.swift in Sources */,
 				52444CD12A78BA09000BFC87 /* NestedViewController.swift in Sources */,
 				52EF386E2A72125400446F31 /* AppDelegate.swift in Sources */,
 				52EF389C2A7214D600446F31 /* LoginViewController.swift in Sources */,
+				527F9AFD2A7B64D400AC520C /* AddReviewsViewController.swift in Sources */,
 				52EF38A82A7225BF00446F31 /* TabBarViewController.swift in Sources */,
+				52F456D92A7C94B800F565D9 /* VerificationCodeViewController.swift in Sources */,
+				527F9B042A7B7D6D00AC520C /* extension.swift in Sources */,
 				52134B9F2A7486BC00B87588 /* ProfileViewController.swift in Sources */,
 				523AD8E92A73B16D005FACAD /* UserModel.swift in Sources */,
 				52444CCC2A78B7F4000BFC87 /* ProCollectionViewCell.swift in Sources */,
@@ -476,13 +559,18 @@
 				52444CD82A78BB6E000BFC87 /* ProTableViewCell.swift in Sources */,
 				526757702A723DBE000BB555 /* ShopModel.swift in Sources */,
 				52EF38A42A72165E00446F31 /* ForgotPwdViewController.swift in Sources */,
+				527F9AFB2A7B64BF00AC520C /* ReviewsViewController.swift in Sources */,
 				52EF389A2A7214D600446F31 /* WelcomeViewController.swift in Sources */,
+				527F9B012A7B796800AC520C /* SizeCollectionViewCell.swift in Sources */,
 				5267C6422A77412000A44BDD /* MenuViewController.swift in Sources */,
+				52F456DB2A7C951700F565D9 /* NewPasswordViewController.swift in Sources */,
 				52527E462A7A3AF600CDAD49 /* SideViewController.swift in Sources */,
 				5275ABBA2A7762FD0016C424 /* FavoriteViewController.swift in Sources */,
 				52EF38942A7214CC00446F31 /* ViewController.swift in Sources */,
 				523AD8EF2A73B43D005FACAD /* DetailViewController.swift in Sources */,
 				526757782A726DC3000BB555 /* ProductCollectionViewCell.swift in Sources */,
+				527F9B0D2A7B942C00AC520C /* ReviewViewController.swift in Sources */,
+				527F9B082A7B90E000AC520C /* ReviewsTableViewCell.swift in Sources */,
 				52444CC42A78B7B2000BFC87 /* CategoryCollectionViewCell.swift in Sources */,
 				52EF38702A72125400446F31 /* SceneDelegate.swift in Sources */,
 			);

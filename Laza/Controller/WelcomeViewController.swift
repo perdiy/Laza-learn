@@ -14,8 +14,17 @@ struct LoginResponse: Codable {
 
 class WelcomeViewController: UIViewController {
     // Outlets untuk dua text field di layar
-    @IBOutlet weak var passwordTf: UITextField!
-    @IBOutlet weak var userNameTf: UITextField!
+    @IBOutlet weak var passwordTf: UITextField! {
+        didSet{
+            passwordTf.addShadow(color: .gray, widht: 0.5, text: passwordTf)
+        }
+    }
+    
+    @IBOutlet weak var userNameTf: UITextField! {
+        didSet{
+            userNameTf.addShadow(color: .gray, widht: 0.5, text: userNameTf)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

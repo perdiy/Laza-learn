@@ -1,16 +1,14 @@
 //
-//  ForgotPwdViewController.swift
+//  AddReviewsViewController.swift
 //  Laza
 //
-//  Created by Perdi Yansyah on 27/07/23.
+//  Created by Perdi Yansyah on 03/08/23.
 //
 
 import UIKit
 
-class ForgotPwdViewController: UIViewController {
+class AddReviewsViewController: UIViewController {
 
-    @IBAction func forgotPasswordBtn(_ sender: Any) {
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
