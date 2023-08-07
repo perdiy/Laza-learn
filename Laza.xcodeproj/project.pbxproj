@@ -42,6 +42,8 @@
 		527F9B092A7B90E000AC520C /* ReviewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527F9B072A7B90E000AC520C /* ReviewsTableViewCell.xib */; };
 		527F9B0D2A7B942C00AC520C /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F9B0C2A7B942C00AC520C /* ReviewViewController.swift */; };
 		527F9B0F2A7BAAFA00AC520C /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F9B0E2A7BAAFA00AC520C /* AddReviewViewController.swift */; };
+		52AAEC7F2A80E00400903342 /* FavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AAEC7D2A80E00400903342 /* FavoriteCollectionViewCell.swift */; };
+		52AAEC802A80E00400903342 /* FavoriteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AAEC7E2A80E00400903342 /* FavoriteCollectionViewCell.xib */; };
 		52EF386E2A72125400446F31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF386D2A72125400446F31 /* AppDelegate.swift */; };
 		52EF38702A72125400446F31 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF386F2A72125400446F31 /* SceneDelegate.swift */; };
 		52EF38782A72125400446F31 /* Laza.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52EF38762A72125400446F31 /* Laza.xcdatamodeld */; };
@@ -105,6 +107,8 @@
 		527F9B072A7B90E000AC520C /* ReviewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewsTableViewCell.xib; sourceTree = "<group>"; };
 		527F9B0C2A7B942C00AC520C /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		527F9B0E2A7BAAFA00AC520C /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
+		52AAEC7D2A80E00400903342 /* FavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
+		52AAEC7E2A80E00400903342 /* FavoriteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCollectionViewCell.xib; sourceTree = "<group>"; };
 		52EF386A2A72125400446F31 /* Laza.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Laza.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52EF386D2A72125400446F31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52EF386F2A72125400446F31 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -185,6 +189,7 @@
 		5234E62D2A80C4ED00F855BD /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
+				52AAEC7C2A80DFD400903342 /* FavoriteCell */,
 				5275ABB92A7762FD0016C424 /* FavoriteViewController.swift */,
 			);
 			path = Favorite;
@@ -370,6 +375,15 @@
 			path = XIB;
 			sourceTree = "<group>";
 		};
+		52AAEC7C2A80DFD400903342 /* FavoriteCell */ = {
+			isa = PBXGroup;
+			children = (
+				52AAEC7D2A80E00400903342 /* FavoriteCollectionViewCell.swift */,
+				52AAEC7E2A80E00400903342 /* FavoriteCollectionViewCell.xib */,
+			);
+			path = FavoriteCell;
+			sourceTree = "<group>";
+		};
 		52EF38612A72125400446F31 = {
 			isa = PBXGroup;
 			children = (
@@ -553,6 +567,7 @@
 				52444CDD2A78BB87000BFC87 /* CategoryTableViewCell.xib in Resources */,
 				520A8DC22A80A0470049FBB1 /* Address.storyboard in Resources */,
 				52EF38A02A72152900446F31 /* Assets.xcassets in Resources */,
+				52AAEC802A80E00400903342 /* FavoriteCollectionViewCell.xib in Resources */,
 				52EF388C2A72148800446F31 /* SignUp.storyboard in Resources */,
 				5234E6292A80ACD800F855BD /* SizeCollectionViewCell.xib in Resources */,
 				527F9AF92A7B647D00AC520C /* Reviews.storyboard in Resources */,
@@ -614,6 +629,7 @@
 				5234E62A2A80ACD800F855BD /* SizeCollectionViewCell.swift in Sources */,
 				523AD8EC2A73B327005FACAD /* BrandCollectionViewCell.swift in Sources */,
 				52EF389B2A7214D600446F31 /* SignUpViewController.swift in Sources */,
+				52AAEC7F2A80E00400903342 /* FavoriteCollectionViewCell.swift in Sources */,
 				520A8DC42A80A06D0049FBB1 /* AddressViewController.swift in Sources */,
 				52728AE22A77A21100519DE0 /* HomeViewModel.swift in Sources */,
 				527F9B0F2A7BAAFA00AC520C /* AddReviewViewController.swift in Sources */,
