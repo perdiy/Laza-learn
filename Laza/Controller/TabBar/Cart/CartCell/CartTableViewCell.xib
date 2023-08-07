@@ -25,7 +25,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOO-tB-vcp">
-                        <rect key="frame" x="125" y="11.999999999999998" width="134" height="31.333333333333329"/>
+                        <rect key="frame" x="125" y="11.999999999999998" width="140" height="31.333333333333329"/>
                         <string key="text">Men's Tie-Dye T-Shirt
 Nike Sportswear</string>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -38,33 +38,12 @@ Nike Sportswear</string>
                         <color key="textColor" systemColor="opaqueSeparatorColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse 768" translatesAutoresizingMaskIntoConstraints="NO" id="Br3-Lq-r7w">
-                        <rect key="frame" x="125" y="86.666666666666671" width="25" height="25"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="25" id="dJF-6M-dGk"/>
-                            <constraint firstAttribute="height" constant="25" id="kOc-2C-gVe"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hib-K6-Lwe">
-                        <rect key="frame" x="165" y="91" width="6" height="16"/>
+                        <rect key="frame" x="164" y="91.666666666666671" width="6" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse 768" translatesAutoresizingMaskIntoConstraints="NO" id="2Td-g2-pxO">
-                        <rect key="frame" x="186" y="86.666666666666671" width="25" height="25"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="25" id="EKk-R2-vGe"/>
-                            <constraint firstAttribute="height" constant="25" id="fcj-6j-Kdl"/>
-                        </constraints>
-                    </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse 768" translatesAutoresizingMaskIntoConstraints="NO" id="mYa-T0-Pwc">
-                        <rect key="frame" x="300" y="80" width="25" height="25"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="25" id="GHv-7y-kEK"/>
-                            <constraint firstAttribute="width" constant="25" id="NAF-bd-Plu"/>
-                        </constraints>
-                    </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udc-Cz-4QA">
                         <rect key="frame" x="306" y="85" width="14" height="15"/>
                         <constraints>
@@ -72,7 +51,9 @@ Nike Sportswear</string>
                             <constraint firstAttribute="width" constant="14" id="yAn-Zu-Tgf"/>
                         </constraints>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="Delete" title=""/>
+                        <buttonConfiguration key="configuration" style="plain" image="trash.circle" catalog="system" title="">
+                            <color key="baseForegroundColor" systemColor="opaqueSeparatorColor"/>
+                        </buttonConfiguration>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V72-Pf-dlL">
                         <rect key="frame" x="130" y="91.666666666666671" width="14" height="15"/>
@@ -81,45 +62,51 @@ Nike Sportswear</string>
                             <constraint firstAttribute="width" constant="14" id="kep-Xx-Eh4"/>
                         </constraints>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="Arrow - Down 4" title=""/>
+                        <buttonConfiguration key="configuration" style="plain" image="chevron.down.circle" catalog="system" title="">
+                            <color key="baseForegroundColor" systemColor="opaqueSeparatorColor"/>
+                        </buttonConfiguration>
+                        <connections>
+                            <action selector="decreaseBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mJk-WR-0MM"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cwD-aW-ZBH">
-                        <rect key="frame" x="191" y="91.666666666666671" width="14" height="15"/>
+                        <rect key="frame" x="190" y="91.666666666666671" width="14" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="14" id="RQl-2w-BD3"/>
-                            <constraint firstAttribute="height" constant="15" id="W0N-cz-6LJ"/>
+                            <constraint firstAttribute="width" constant="14" id="QbH-q5-IiY"/>
+                            <constraint firstAttribute="height" constant="15" id="tIE-Mm-9xb"/>
                         </constraints>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="Arrow - Up 4" title=""/>
+                        <buttonConfiguration key="configuration" style="plain" image="chevron.up.circle" catalog="system" title="">
+                            <color key="baseForegroundColor" systemColor="opaqueSeparatorColor"/>
+                        </buttonConfiguration>
+                        <connections>
+                            <action selector="increaseBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="l5a-8P-jm7"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="2Td-g2-pxO" firstAttribute="leading" secondItem="hib-K6-Lwe" secondAttribute="trailing" constant="15" id="3hO-ul-j8J"/>
+                    <constraint firstItem="hib-K6-Lwe" firstAttribute="leading" secondItem="V72-Pf-dlL" secondAttribute="trailing" constant="20" id="12U-nf-bvP"/>
                     <constraint firstItem="eOO-tB-vcp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="6G1-LD-SvD"/>
-                    <constraint firstItem="mYa-T0-Pwc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="80" id="CZ8-fW-eIg"/>
-                    <constraint firstItem="cwD-aW-ZBH" firstAttribute="top" secondItem="B2U-Hc-Swn" secondAttribute="bottom" constant="25" id="Etv-5O-96M"/>
                     <constraint firstItem="VZR-F7-EtX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="FBK-WC-6Ap"/>
                     <constraint firstAttribute="bottom" secondItem="VZR-F7-EtX" secondAttribute="bottom" constant="10" id="FjI-Jt-dHd"/>
                     <constraint firstItem="udc-Cz-4QA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="85" id="L6p-0l-WB8"/>
-                    <constraint firstItem="Br3-Lq-r7w" firstAttribute="top" secondItem="B2U-Hc-Swn" secondAttribute="bottom" constant="20" id="Mkg-hr-TCN"/>
+                    <constraint firstItem="cwD-aW-ZBH" firstAttribute="top" secondItem="B2U-Hc-Swn" secondAttribute="bottom" constant="25" id="Ljm-Jy-Sgc"/>
                     <constraint firstItem="VZR-F7-EtX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Nmc-wx-b4w"/>
                     <constraint firstItem="V72-Pf-dlL" firstAttribute="leading" secondItem="VZR-F7-EtX" secondAttribute="trailing" constant="20" id="OhW-GP-K1K"/>
                     <constraint firstItem="eOO-tB-vcp" firstAttribute="leading" secondItem="VZR-F7-EtX" secondAttribute="trailing" constant="15" id="TD0-Bw-bkO"/>
                     <constraint firstAttribute="trailing" secondItem="udc-Cz-4QA" secondAttribute="trailing" constant="15" id="XPq-1q-UEa"/>
                     <constraint firstItem="B2U-Hc-Swn" firstAttribute="top" secondItem="eOO-tB-vcp" secondAttribute="bottom" constant="10" id="Z8K-hJ-Cr7"/>
-                    <constraint firstItem="hib-K6-Lwe" firstAttribute="leading" secondItem="Br3-Lq-r7w" secondAttribute="trailing" constant="15" id="bUi-dW-c5S"/>
                     <constraint firstItem="V72-Pf-dlL" firstAttribute="top" secondItem="B2U-Hc-Swn" secondAttribute="bottom" constant="25" id="g9Q-Gl-adl"/>
-                    <constraint firstItem="hib-K6-Lwe" firstAttribute="top" secondItem="B2U-Hc-Swn" secondAttribute="bottom" constant="24.329999999999998" id="gTp-lg-i6y"/>
                     <constraint firstItem="B2U-Hc-Swn" firstAttribute="leading" secondItem="VZR-F7-EtX" secondAttribute="trailing" constant="15" id="hUc-ID-bkS"/>
-                    <constraint firstItem="Br3-Lq-r7w" firstAttribute="leading" secondItem="VZR-F7-EtX" secondAttribute="trailing" constant="15" id="sZx-Ot-Q5J"/>
-                    <constraint firstItem="cwD-aW-ZBH" firstAttribute="leading" secondItem="hib-K6-Lwe" secondAttribute="trailing" constant="20" id="sqw-84-SSU"/>
-                    <constraint firstAttribute="trailing" secondItem="mYa-T0-Pwc" secondAttribute="trailing" constant="10" id="ueG-Nh-Ioz"/>
-                    <constraint firstItem="2Td-g2-pxO" firstAttribute="top" secondItem="B2U-Hc-Swn" secondAttribute="bottom" constant="20" id="zSG-Bb-rWq"/>
+                    <constraint firstAttribute="trailing" secondItem="eOO-tB-vcp" secondAttribute="trailing" constant="70" id="hk1-La-bhv"/>
+                    <constraint firstItem="cwD-aW-ZBH" firstAttribute="leading" secondItem="hib-K6-Lwe" secondAttribute="trailing" constant="20" id="p1N-dl-Ndr"/>
+                    <constraint firstItem="hib-K6-Lwe" firstAttribute="top" secondItem="B2U-Hc-Swn" secondAttribute="bottom" constant="25" id="uQm-GK-roQ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="imgView" destination="VZR-F7-EtX" id="beT-ET-uAO"/>
+                <outlet property="jumlahLabel" destination="hib-K6-Lwe" id="a1y-B6-WLg"/>
                 <outlet property="priceLabel" destination="B2U-Hc-Swn" id="gWY-qT-b84"/>
                 <outlet property="productLabel" destination="eOO-tB-vcp" id="cf8-B0-ARp"/>
             </connections>
@@ -127,11 +114,10 @@ Nike Sportswear</string>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Arrow - Down 4" width="15" height="15"/>
-        <image name="Arrow - Up 4" width="15" height="15"/>
-        <image name="Delete" width="15" height="15"/>
-        <image name="Ellipse 768" width="25" height="25"/>
         <image name="IMG" width="100" height="100"/>
+        <image name="chevron.down.circle" catalog="system" width="128" height="123"/>
+        <image name="chevron.up.circle" catalog="system" width="128" height="123"/>
+        <image name="trash.circle" catalog="system" width="128" height="123"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

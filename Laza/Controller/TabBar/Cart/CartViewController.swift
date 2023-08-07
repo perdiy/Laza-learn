@@ -13,9 +13,9 @@ class CartViewController: UIViewController {
     
     // Placeholder data untuk demonstrasi
     let cartItems: [CartItem] = [
-        CartItem(namaProduk: "Produk A", gambarProduk: UIImage(named: "IMG"), hargaProduk: 20.0),
-        CartItem(namaProduk: "Produk B", gambarProduk: UIImage(named: "IMG"), hargaProduk: 30.0),
-        CartItem(namaProduk: "Produk C", gambarProduk: UIImage(named: "IMG"), hargaProduk: 15.0)
+        CartItem(namaProduk: "Men's Tie-Dye T-Shirt Nike Sportswear", gambarProduk: UIImage(named: "IMG"), hargaProduk: 20.0),
+        CartItem(namaProduk: "Men's Tie-Dye T-Shirt Nike Sportswear", gambarProduk: UIImage(named: "IMG"), hargaProduk: 30.0),
+        CartItem(namaProduk: "Men's Tie-Dye T-Shirt Nike Sportswear", gambarProduk: UIImage(named: "IMG"), hargaProduk: 15.0)
     ]
     
     override func viewDidLoad() {

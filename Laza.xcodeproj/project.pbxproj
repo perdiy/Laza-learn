@@ -37,8 +37,6 @@
 		52728AE22A77A21100519DE0 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52728AE12A77A21100519DE0 /* HomeViewModel.swift */; };
 		5275ABBA2A7762FD0016C424 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5275ABB92A7762FD0016C424 /* FavoriteViewController.swift */; };
 		527F9AF92A7B647D00AC520C /* Reviews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527F9AF82A7B647D00AC520C /* Reviews.storyboard */; };
-		527F9AFB2A7B64BF00AC520C /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F9AFA2A7B64BF00AC520C /* ReviewsViewController.swift */; };
-		527F9AFD2A7B64D400AC520C /* AddReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F9AFC2A7B64D400AC520C /* AddReviewsViewController.swift */; };
 		527F9B042A7B7D6D00AC520C /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F9B032A7B7D6D00AC520C /* extension.swift */; };
 		527F9B082A7B90E000AC520C /* ReviewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F9B062A7B90E000AC520C /* ReviewsTableViewCell.swift */; };
 		527F9B092A7B90E000AC520C /* ReviewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527F9B072A7B90E000AC520C /* ReviewsTableViewCell.xib */; };
@@ -102,8 +100,6 @@
 		52728AE12A77A21100519DE0 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		5275ABB92A7762FD0016C424 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		527F9AF82A7B647D00AC520C /* Reviews.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reviews.storyboard; sourceTree = "<group>"; };
-		527F9AFA2A7B64BF00AC520C /* ReviewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsViewController.swift; sourceTree = "<group>"; };
-		527F9AFC2A7B64D400AC520C /* AddReviewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewsViewController.swift; sourceTree = "<group>"; };
 		527F9B032A7B7D6D00AC520C /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		527F9B062A7B90E000AC520C /* ReviewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewCell.swift; sourceTree = "<group>"; };
 		527F9B072A7B90E000AC520C /* ReviewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewsTableViewCell.xib; sourceTree = "<group>"; };
@@ -186,6 +182,50 @@
 			path = Details;
 			sourceTree = "<group>";
 		};
+		5234E62D2A80C4ED00F855BD /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				5275ABB92A7762FD0016C424 /* FavoriteViewController.swift */,
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
+		5234E62E2A80C50400F855BD /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				520A8DC32A80A06D0049FBB1 /* AddressViewController.swift */,
+				520A8DBF2A8097F90049FBB1 /* OrderConfirmedViewController.swift */,
+				52F546482A80A68A001B3C88 /* CartCell */,
+				520A8DBB2A808E270049FBB1 /* CartViewController.swift */,
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
+		5234E62F2A80C55700F855BD /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				52EF38972A7214D500446F31 /* SignUpViewController.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		5234E6302A80C56300F855BD /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				52EF38982A7214D600446F31 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		5234E6312A80C58200F855BD /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				5267C6412A77412000A44BDD /* MenuViewController.swift */,
+				52527E452A7A3AF600CDAD49 /* SideViewController.swift */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
 		52444CBA2A789AE7000BFC87 /* Item + TabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +238,8 @@
 		52444CBB2A789B15000BFC87 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				5234E62E2A80C50400F855BD /* Cart */,
+				5234E62D2A80C4ED00F855BD /* Favorite */,
 				52444CBC2A789B39000BFC87 /* Home */,
 				52134B9E2A7486BC00B87588 /* ProfileViewController.swift */,
 				523AD8EA2A73B327005FACAD /* BrandCollectionViewCell.swift */,
@@ -304,8 +346,8 @@
 		527F9AF62A7B546E00AC520C /* Reviews */ = {
 			isa = PBXGroup;
 			children = (
-				527F9AFA2A7B64BF00AC520C /* ReviewsViewController.swift */,
-				527F9AFC2A7B64D400AC520C /* AddReviewsViewController.swift */,
+				527F9B0C2A7B942C00AC520C /* ReviewViewController.swift */,
+				527F9B0E2A7BAAFA00AC520C /* AddReviewViewController.swift */,
 			);
 			path = Reviews;
 			sourceTree = "<group>";
@@ -315,8 +357,6 @@
 			children = (
 				527F9B052A7B90A800AC520C /* XIB */,
 				527F9AF82A7B647D00AC520C /* Reviews.storyboard */,
-				527F9B0C2A7B942C00AC520C /* ReviewViewController.swift */,
-				527F9B0E2A7BAAFA00AC520C /* AddReviewViewController.swift */,
 			);
 			path = Reviews;
 			sourceTree = "<group>";
@@ -384,22 +424,16 @@
 		52EF38922A7214B100446F31 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5234E6312A80C58200F855BD /* SideMenu */,
+				5234E6302A80C56300F855BD /* Login */,
+				5234E62F2A80C55700F855BD /* SignUp */,
 				5234E62C2A80ACEC00F855BD /* Details */,
-				52F546482A80A68A001B3C88 /* Cart */,
 				52F456D72A7C947E00F565D9 /* Forgor Password */,
 				527F9AF62A7B546E00AC520C /* Reviews */,
 				52444CBB2A789B15000BFC87 /* TabBar */,
 				52EF38932A7214CC00446F31 /* ViewController.swift */,
-				52EF38972A7214D500446F31 /* SignUpViewController.swift */,
-				52EF38982A7214D600446F31 /* LoginViewController.swift */,
 				52EF38962A7214D500446F31 /* WelcomeViewController.swift */,
 				526757762A726DC3000BB555 /* ProductCollectionViewCell.swift */,
-				5267C6412A77412000A44BDD /* MenuViewController.swift */,
-				5275ABB92A7762FD0016C424 /* FavoriteViewController.swift */,
-				52527E452A7A3AF600CDAD49 /* SideViewController.swift */,
-				520A8DBB2A808E270049FBB1 /* CartViewController.swift */,
-				520A8DBF2A8097F90049FBB1 /* OrderConfirmedViewController.swift */,
-				520A8DC32A80A06D0049FBB1 /* AddressViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -421,13 +455,13 @@
 			path = Payment;
 			sourceTree = "<group>";
 		};
-		52F546482A80A68A001B3C88 /* Cart */ = {
+		52F546482A80A68A001B3C88 /* CartCell */ = {
 			isa = PBXGroup;
 			children = (
 				52F546492A80A6A8001B3C88 /* CartTableViewCell.swift */,
 				52F5464A2A80A6A8001B3C88 /* CartTableViewCell.xib */,
 			);
-			path = Cart;
+			path = CartCell;
 			sourceTree = "<group>";
 		};
 		94E4DEE534302C1C97FF68A9 /* Pods */ = {
@@ -591,7 +625,6 @@
 				52444CD12A78BA09000BFC87 /* NestedViewController.swift in Sources */,
 				52EF386E2A72125400446F31 /* AppDelegate.swift in Sources */,
 				52EF389C2A7214D600446F31 /* LoginViewController.swift in Sources */,
-				527F9AFD2A7B64D400AC520C /* AddReviewsViewController.swift in Sources */,
 				52EF38A82A7225BF00446F31 /* TabBarViewController.swift in Sources */,
 				52F456D92A7C94B800F565D9 /* VerificationCodeViewController.swift in Sources */,
 				527F9B042A7B7D6D00AC520C /* extension.swift in Sources */,
@@ -603,7 +636,6 @@
 				526757702A723DBE000BB555 /* ShopModel.swift in Sources */,
 				52F5464B2A80A6A8001B3C88 /* CartTableViewCell.swift in Sources */,
 				52EF38A42A72165E00446F31 /* ForgotPwdViewController.swift in Sources */,
-				527F9AFB2A7B64BF00AC520C /* ReviewsViewController.swift in Sources */,
 				52EF389A2A7214D600446F31 /* WelcomeViewController.swift in Sources */,
 				5267C6422A77412000A44BDD /* MenuViewController.swift in Sources */,
 				52F456DB2A7C951700F565D9 /* NewPasswordViewController.swift in Sources */,
