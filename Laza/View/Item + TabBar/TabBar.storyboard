@@ -173,8 +173,11 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="Arrow - Right 2" title=""/>
+                                <connections>
+                                    <action selector="paymentBtn:" destination="Bdh-NH-A27" eventType="touchUpInside" id="pmc-7k-yS9"/>
+                                </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle 584" translatesAutoresizingMaskIntoConstraints="NO" id="EuO-KF-LvS">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Frame" translatesAutoresizingMaskIntoConstraints="NO" id="EuO-KF-LvS">
                                 <rect key="frame" x="16" y="554" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="THD-MX-prQ"/>
@@ -931,6 +934,7 @@
         <image name="Bag" width="25" height="25"/>
         <image name="Check-2" width="25" height="25"/>
         <image name="Edit" width="15" height="15"/>
+        <image name="Frame" width="30" height="30"/>
         <image name="Frame 1 1" width="45" height="45"/>
         <image name="Heart" width="25" height="25"/>
         <image name="Info Circle" width="25" height="25"/>

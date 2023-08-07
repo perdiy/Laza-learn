@@ -38,7 +38,7 @@ extension FavoriteViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavoriteCollectionViewCell", for: indexPath) as! FavoriteCollectionViewCell
 
-        cell.productLabel.text = "Nama Produk \(indexPath.row + 1)"
+        cell.productLabel.text = "Produk \(indexPath.row + 1)"
         cell.priceLabel.text = "$19.99"
         cell.imgView.image = UIImage(named: "Rectangle 569")
 

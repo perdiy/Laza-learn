@@ -11,6 +11,7 @@ class CartViewController: UIViewController {
     // Table View
     @IBOutlet weak var tableView: UITableView!
     
+   
     // Placeholder data untuk demonstrasi
     let cartItems: [CartItem] = [
         CartItem(namaProduk: "Men's Tie-Dye T-Shirt Nike Sportswear", gambarProduk: UIImage(named: "IMG"), hargaProduk: 20.0),
@@ -27,7 +28,13 @@ class CartViewController: UIViewController {
         tableView.register(UINib(nibName: "CartTableViewCell", bundle: nil), forCellReuseIdentifier: "CartTableViewCell")
         
     }
-    
+    // payment Button
+    @IBAction func paymentBtn(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Payment", bundle: nil)
+        if let paymentVC = storyboard.instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController {
+            navigationController?.pushViewController(paymentVC, animated: true)
+        }
+    }
     // Addres Button
     @IBAction func addressBtn(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Address", bundle: nil)
