@@ -182,8 +182,8 @@
                                     <constraint firstItem="GCI-ua-JMf" firstAttribute="leading" secondItem="jfb-1R-xif" secondAttribute="leading" constant="6" id="pah-O7-FVV"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9XF-J3-gqZ">
-                                <rect key="frame" x="146" y="71" width="101.66666666666669" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Reviews" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9XF-J3-gqZ">
+                                <rect key="frame" x="12" y="71" width="369" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -216,7 +216,7 @@
                                     <constraint firstAttribute="height" constant="75" id="fn4-ej-SZb"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="ButSubmit Reviewton">
+                                <buttonConfiguration key="configuration" style="filled" title="Submit Review">
                                     <color key="baseBackgroundColor" red="0.59215686270000001" green="0.45882352939999999" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                             </button>
@@ -254,9 +254,9 @@
                             <constraint firstItem="BfU-aI-qvO" firstAttribute="top" secondItem="cUy-kd-Wr9" secondAttribute="bottom" constant="21" id="7Wr-d4-IFi"/>
                             <constraint firstItem="Kgg-bn-p8b" firstAttribute="leading" secondItem="54W-4I-raf" secondAttribute="trailing" constant="10" id="AqR-LP-jSC"/>
                             <constraint firstItem="066-Ch-sSC" firstAttribute="trailing" secondItem="BfU-aI-qvO" secondAttribute="trailing" constant="16" id="B4E-Nu-Rtj"/>
+                            <constraint firstItem="9XF-J3-gqZ" firstAttribute="leading" secondItem="066-Ch-sSC" secondAttribute="leading" constant="12" id="DUt-OJ-AKg"/>
                             <constraint firstItem="jfb-1R-xif" firstAttribute="top" secondItem="066-Ch-sSC" secondAttribute="top" id="EB0-3M-rDf"/>
                             <constraint firstItem="066-Ch-sSC" firstAttribute="trailing" secondItem="cUy-kd-Wr9" secondAttribute="trailing" constant="16" id="ECZ-0Y-tny"/>
-                            <constraint firstItem="066-Ch-sSC" firstAttribute="trailing" secondItem="9XF-J3-gqZ" secondAttribute="trailing" constant="145.33000000000001" id="Exd-Ki-2Jm"/>
                             <constraint firstItem="ndi-GO-pM1" firstAttribute="top" secondItem="d6j-Zn-Fze" secondAttribute="bottom" constant="23" id="Fnu-bD-GbT"/>
                             <constraint firstItem="Kgg-bn-p8b" firstAttribute="top" secondItem="d6j-Zn-Fze" secondAttribute="bottom" constant="7" id="HQU-U2-qGg"/>
                             <constraint firstItem="54W-4I-raf" firstAttribute="leading" secondItem="066-Ch-sSC" secondAttribute="leading" constant="16" id="Pdb-n4-7oB"/>
@@ -266,15 +266,15 @@
                             <constraint firstItem="54W-4I-raf" firstAttribute="top" secondItem="d6j-Zn-Fze" secondAttribute="bottom" constant="23" id="XkG-HM-3WZ"/>
                             <constraint firstItem="1Cv-92-GJb" firstAttribute="trailing" secondItem="066-Ch-sSC" secondAttribute="trailing" id="XwC-eP-q2X"/>
                             <constraint firstItem="jfb-1R-xif" firstAttribute="leading" secondItem="066-Ch-sSC" secondAttribute="leading" constant="16" id="ZiA-be-Itl"/>
+                            <constraint firstItem="066-Ch-sSC" firstAttribute="trailing" secondItem="9XF-J3-gqZ" secondAttribute="trailing" constant="12" id="cDE-OG-L59"/>
                             <constraint firstItem="066-Ch-sSC" firstAttribute="trailing" secondItem="ndi-GO-pM1" secondAttribute="trailing" constant="16" id="jqy-T8-SWC"/>
                             <constraint firstAttribute="bottom" secondItem="1Cv-92-GJb" secondAttribute="bottom" id="n1R-NX-RVu"/>
                             <constraint firstItem="cUy-kd-Wr9" firstAttribute="leading" secondItem="066-Ch-sSC" secondAttribute="leading" constant="16" id="pYh-UU-iXw"/>
                             <constraint firstItem="ndi-GO-pM1" firstAttribute="leading" secondItem="Kgg-bn-p8b" secondAttribute="trailing" constant="10" id="s0J-7P-9c2"/>
-                            <constraint firstItem="9XF-J3-gqZ" firstAttribute="top" secondItem="066-Ch-sSC" secondAttribute="top" constant="12" id="sLi-e1-5Nh"/>
+                            <constraint firstItem="9XF-J3-gqZ" firstAttribute="top" secondItem="066-Ch-sSC" secondAttribute="top" constant="12" id="sL2-Ui-mkk"/>
                             <constraint firstItem="066-Ch-sSC" firstAttribute="trailing" secondItem="d6j-Zn-Fze" secondAttribute="trailing" constant="20" id="sdP-Vd-qaf"/>
                             <constraint firstItem="d6j-Zn-Fze" firstAttribute="leading" secondItem="066-Ch-sSC" secondAttribute="leading" constant="16" id="tFE-zZ-HA8"/>
                             <constraint firstItem="d6j-Zn-Fze" firstAttribute="top" secondItem="BfU-aI-qvO" secondAttribute="bottom" constant="21" id="yIM-tz-Btr"/>
-                            <constraint firstItem="9XF-J3-gqZ" firstAttribute="leading" secondItem="jfb-1R-xif" secondAttribute="trailing" constant="86" id="yzF-y1-FL0"/>
                         </constraints>
                     </view>
                     <connections>
@@ -288,6 +288,11 @@
             <point key="canvasLocation" x="1014.5038167938931" y="3.5211267605633805"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="Kgg-bn-p8b">
+            <size key="intrinsicContentSize" width="-1" height="30"/>
+        </designable>
+    </designables>
     <resources>
         <image name="Arrow - Left" width="25" height="25"/>
         <image name="Edit Square" width="15" height="15"/>
