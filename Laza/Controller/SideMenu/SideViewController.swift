@@ -8,22 +8,19 @@
 import UIKit
 
 class SideViewController: UIViewController {
-
+    // view order
+    @IBOutlet weak var viewOrder: UIView!
+    // view Button
+    @IBOutlet weak var viewButton: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        // view order
+        viewOrder.layer.cornerRadius = 8
+        viewOrder.layer.masksToBounds = true
+        // view Button
+        viewButton.layer.cornerRadius = viewButton.bounds.height / 2
+        viewButton.layer.masksToBounds = true
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

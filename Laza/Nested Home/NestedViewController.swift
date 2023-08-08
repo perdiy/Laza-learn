@@ -6,7 +6,6 @@
 //
 import UIKit
 import SideMenu
-
 class NestedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     // search
