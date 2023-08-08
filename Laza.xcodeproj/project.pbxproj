@@ -35,6 +35,7 @@
 		526757782A726DC3000BB555 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526757762A726DC3000BB555 /* ProductCollectionViewCell.swift */; };
 		5267C6422A77412000A44BDD /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267C6412A77412000A44BDD /* MenuViewController.swift */; };
 		52728AE22A77A21100519DE0 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52728AE12A77A21100519DE0 /* HomeViewModel.swift */; };
+		527466202A81CD3700B97690 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5274661F2A81CD3700B97690 /* WalletViewController.swift */; };
 		5275ABBA2A7762FD0016C424 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5275ABB92A7762FD0016C424 /* FavoriteViewController.swift */; };
 		527F9AF92A7B647D00AC520C /* Reviews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527F9AF82A7B647D00AC520C /* Reviews.storyboard */; };
 		527F9B042A7B7D6D00AC520C /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F9B032A7B7D6D00AC520C /* extension.swift */; };
@@ -103,6 +104,7 @@
 		526757762A726DC3000BB555 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		5267C6412A77412000A44BDD /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		52728AE12A77A21100519DE0 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		5274661F2A81CD3700B97690 /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		5275ABB92A7762FD0016C424 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		527F9AF82A7B647D00AC520C /* Reviews.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reviews.storyboard; sourceTree = "<group>"; };
 		527F9B032A7B7D6D00AC520C /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 		52444CBB2A789B15000BFC87 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				5274661E2A81CD2400B97690 /* Wallet */,
 				5234E62E2A80C50400F855BD /* Cart */,
 				5234E62D2A80C4ED00F855BD /* Favorite */,
 				52444CBC2A789B39000BFC87 /* Home */,
@@ -352,6 +355,14 @@
 				52FFFF542A78F17E009C07EB /* Api.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		5274661E2A81CD2400B97690 /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				5274661F2A81CD3700B97690 /* WalletViewController.swift */,
+			);
+			path = Wallet;
 			sourceTree = "<group>";
 		};
 		527F9AF62A7B546E00AC520C /* Reviews */ = {
@@ -674,6 +685,7 @@
 				526757782A726DC3000BB555 /* ProductCollectionViewCell.swift in Sources */,
 				527F9B0D2A7B942C00AC520C /* ReviewViewController.swift in Sources */,
 				527F9B082A7B90E000AC520C /* ReviewsTableViewCell.swift in Sources */,
+				527466202A81CD3700B97690 /* WalletViewController.swift in Sources */,
 				520A8DC02A8097F90049FBB1 /* OrderConfirmedViewController.swift in Sources */,
 				52444CC42A78B7B2000BFC87 /* CategoryCollectionViewCell.swift in Sources */,
 				52EF38702A72125400446F31 /* SceneDelegate.swift in Sources */,
