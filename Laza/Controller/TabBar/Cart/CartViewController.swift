@@ -53,7 +53,7 @@ class CartViewController: UIViewController {
     // Addres Button
     @IBAction func addressBtn(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Address", bundle: nil)
-        if let orderConfirmedVC = storyboard.instantiateViewController(withIdentifier: "AddressViewController") as? AddressViewController {
+        if let orderConfirmedVC = storyboard.instantiateViewController(withIdentifier: "ListAddressViewController") as? ListAddressViewController {
             navigationController?.pushViewController(orderConfirmedVC, animated: true)
         }
     }

@@ -385,25 +385,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSZ-7R-4Nn">
-                                <rect key="frame" x="326" y="69" width="51" height="50"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Vector-2" translatesAutoresizingMaskIntoConstraints="NO" id="0PN-Oh-btn">
-                                        <rect key="frame" x="14.666666666666686" y="14" width="21" height="22"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="21" id="f6a-wb-3rU"/>
-                                            <constraint firstAttribute="height" constant="22" id="qnx-yu-ohM"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="0PN-Oh-btn" secondAttribute="trailing" constant="15.33" id="Aqs-R3-taP"/>
-                                    <constraint firstAttribute="bottom" secondItem="0PN-Oh-btn" secondAttribute="bottom" constant="14" id="Ffu-yP-h5s"/>
-                                    <constraint firstItem="0PN-Oh-btn" firstAttribute="top" secondItem="hSZ-7R-4Nn" secondAttribute="top" constant="14" id="qll-8r-lrw"/>
-                                    <constraint firstItem="0PN-Oh-btn" firstAttribute="leading" secondItem="hSZ-7R-4Nn" secondAttribute="leading" constant="14.67" id="wjR-Cu-Otp"/>
-                                </constraints>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Qh-eb-H1X">
                                 <rect key="frame" x="16" y="137" width="323" height="34"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
@@ -478,13 +459,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="WBe-4s-8xU" firstAttribute="leading" secondItem="fGj-Lu-DLs" secondAttribute="leading" constant="16" id="1Of-qe-xn4"/>
-                            <constraint firstItem="hSZ-7R-4Nn" firstAttribute="top" secondItem="fGj-Lu-DLs" secondAttribute="top" constant="10" id="28m-mo-ozJ"/>
-                            <constraint firstItem="3Qh-eb-H1X" firstAttribute="top" secondItem="hSZ-7R-4Nn" secondAttribute="bottom" constant="18" id="3u1-VP-6x8"/>
                             <constraint firstItem="fGj-Lu-DLs" firstAttribute="trailing" secondItem="lSX-Nl-FWj" secondAttribute="trailing" constant="54" id="4g4-rq-N6P"/>
                             <constraint firstItem="dZe-xW-2QL" firstAttribute="top" secondItem="Wy0-Hc-eFj" secondAttribute="bottom" constant="7" id="7kk-ml-o0Y"/>
                             <constraint firstItem="fGj-Lu-DLs" firstAttribute="bottom" secondItem="dZe-xW-2QL" secondAttribute="bottom" constant="12" id="8WA-P6-cJc"/>
                             <constraint firstItem="fGj-Lu-DLs" firstAttribute="trailing" secondItem="dZe-xW-2QL" secondAttribute="trailing" constant="16" id="9xV-4n-Hm0"/>
                             <constraint firstItem="fGj-Lu-DLs" firstAttribute="trailing" secondItem="3Qh-eb-H1X" secondAttribute="trailing" constant="54" id="ALe-2v-Q9n"/>
+                            <constraint firstItem="3Qh-eb-H1X" firstAttribute="top" secondItem="WBe-4s-8xU" secondAttribute="bottom" constant="18" id="C4H-dO-id1"/>
                             <constraint firstItem="3Qh-eb-H1X" firstAttribute="leading" secondItem="fGj-Lu-DLs" secondAttribute="leading" constant="16" id="Eb7-rH-aTf"/>
                             <constraint firstItem="Wy0-Hc-eFj" firstAttribute="top" secondItem="lSX-Nl-FWj" secondAttribute="bottom" constant="5" id="FNx-df-ZxA"/>
                             <constraint firstItem="fGj-Lu-DLs" firstAttribute="trailing" secondItem="btx-Vs-REX" secondAttribute="trailing" constant="10" id="H56-7m-vO0"/>
@@ -493,7 +473,6 @@
                             <constraint firstItem="WBe-4s-8xU" firstAttribute="top" secondItem="fGj-Lu-DLs" secondAttribute="top" constant="10" id="PU5-qz-KkJ"/>
                             <constraint firstItem="btx-Vs-REX" firstAttribute="top" secondItem="lSX-Nl-FWj" secondAttribute="bottom" constant="12" id="XfF-Yd-AEi"/>
                             <constraint firstItem="Wy0-Hc-eFj" firstAttribute="leading" secondItem="fGj-Lu-DLs" secondAttribute="leading" constant="6" id="Xou-Cd-mb2"/>
-                            <constraint firstItem="fGj-Lu-DLs" firstAttribute="trailing" secondItem="hSZ-7R-4Nn" secondAttribute="trailing" constant="16" id="cKn-pg-fhM"/>
                             <constraint firstItem="lSX-Nl-FWj" firstAttribute="top" secondItem="3Qh-eb-H1X" secondAttribute="bottom" constant="2" id="gXr-Sx-VZI"/>
                             <constraint firstItem="btx-Vs-REX" firstAttribute="leading" secondItem="Wy0-Hc-eFj" secondAttribute="trailing" constant="12.33" id="ouQ-QJ-fxe"/>
                         </constraints>
@@ -505,7 +484,6 @@
                     <connections>
                         <outlet property="search" destination="Wy0-Hc-eFj" id="TNU-XQ-0Qa"/>
                         <outlet property="tableView" destination="dZe-xW-2QL" id="kbi-gL-2LS"/>
-                        <outlet property="viewCart" destination="hSZ-7R-4Nn" id="2ea-Rr-PGS"/>
                         <outlet property="viewSide" destination="WBe-4s-8xU" id="3a2-qq-1vL"/>
                         <outlet property="viewUngu" destination="btx-Vs-REX" id="KkS-34-qqt"/>
                         <segue destination="xAK-es-05b" kind="presentation" identifier="SideMenuNavigationController" id="10D-FI-3YE"/>

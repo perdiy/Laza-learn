@@ -46,6 +46,9 @@
 		5290BB1C2A8334900042A32A /* PaymentMethodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5290BB1B2A8334900042A32A /* PaymentMethodeViewController.swift */; };
 		5290BB222A83738E0042A32A /* MyCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5290BB202A83738E0042A32A /* MyCardCollectionViewCell.swift */; };
 		5290BB232A83738E0042A32A /* MyCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5290BB212A83738E0042A32A /* MyCardCollectionViewCell.xib */; };
+		5290BB272A83816C0042A32A /* ListAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5290BB262A83816C0042A32A /* ListAddressViewController.swift */; };
+		5290BB2A2A8381850042A32A /* ListAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5290BB282A8381850042A32A /* ListAddressTableViewCell.swift */; };
+		5290BB2B2A8381850042A32A /* ListAddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5290BB292A8381850042A32A /* ListAddressTableViewCell.xib */; };
 		52AAEC7F2A80E00400903342 /* FavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AAEC7D2A80E00400903342 /* FavoriteCollectionViewCell.swift */; };
 		52AAEC802A80E00400903342 /* FavoriteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AAEC7E2A80E00400903342 /* FavoriteCollectionViewCell.xib */; };
 		52AAEC822A80EBCE00903342 /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52AAEC812A80EBCE00903342 /* Payment.storyboard */; };
@@ -121,6 +124,9 @@
 		5290BB1B2A8334900042A32A /* PaymentMethodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodeViewController.swift; sourceTree = "<group>"; };
 		5290BB202A83738E0042A32A /* MyCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		5290BB212A83738E0042A32A /* MyCardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCardCollectionViewCell.xib; sourceTree = "<group>"; };
+		5290BB262A83816C0042A32A /* ListAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAddressViewController.swift; sourceTree = "<group>"; };
+		5290BB282A8381850042A32A /* ListAddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAddressTableViewCell.swift; sourceTree = "<group>"; };
+		5290BB292A8381850042A32A /* ListAddressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListAddressTableViewCell.xib; sourceTree = "<group>"; };
 		52AAEC7D2A80E00400903342 /* FavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
 		52AAEC7E2A80E00400903342 /* FavoriteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCollectionViewCell.xib; sourceTree = "<group>"; };
 		52AAEC812A80EBCE00903342 /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
@@ -231,7 +237,7 @@
 		5234E62E2A80C50400F855BD /* Cart */ = {
 			isa = PBXGroup;
 			children = (
-				520A8DC32A80A06D0049FBB1 /* AddressViewController.swift */,
+				5290BB242A8381110042A32A /* Address */,
 				520A8DBF2A8097F90049FBB1 /* OrderConfirmedViewController.swift */,
 				52F546482A80A68A001B3C88 /* CartCell */,
 				520A8DBB2A808E270049FBB1 /* CartViewController.swift */,
@@ -270,7 +276,6 @@
 				52EF388F2A72149200446F31 /* TabBar.storyboard */,
 				520A8DBD2A8097BD0049FBB1 /* OrderConfimed.storyboard */,
 				523AD8F02A73B44B005FACAD /* Detail.storyboard */,
-				520A8DC12A80A0470049FBB1 /* Address.storyboard */,
 			);
 			path = "Item + TabBar";
 			sourceTree = "<group>";
@@ -456,6 +461,25 @@
 			path = CellMyCard;
 			sourceTree = "<group>";
 		};
+		5290BB242A8381110042A32A /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				520A8DC32A80A06D0049FBB1 /* AddressViewController.swift */,
+				5290BB262A83816C0042A32A /* ListAddressViewController.swift */,
+				5290BB282A8381850042A32A /* ListAddressTableViewCell.swift */,
+				5290BB292A8381850042A32A /* ListAddressTableViewCell.xib */,
+			);
+			path = Address;
+			sourceTree = "<group>";
+		};
+		5290BB252A83812E0042A32A /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				520A8DC12A80A0470049FBB1 /* Address.storyboard */,
+			);
+			path = Address;
+			sourceTree = "<group>";
+		};
 		52AAEC7C2A80DFD400903342 /* FavoriteCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -502,6 +526,7 @@
 		52EF38912A72149700446F31 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5290BB252A83812E0042A32A /* Address */,
 				5290BB192A832D390042A32A /* ToolsLogin */,
 				52F546472A80A436001B3C88 /* Payment */,
 				527F9AF72A7B645C00AC520C /* Reviews */,
@@ -642,6 +667,7 @@
 				52444CC52A78B7B2000BFC87 /* CategoryCollectionViewCell.xib in Resources */,
 				52EF38882A72146B00446F31 /* LaunchScreen.storyboard in Resources */,
 				52444CCD2A78B7F4000BFC87 /* ProCollectionViewCell.xib in Resources */,
+				5290BB2B2A8381850042A32A /* ListAddressTableViewCell.xib in Resources */,
 				52EF38A22A72163900446F31 /* ForgotPassword.storyboard in Resources */,
 				52444CDD2A78BB87000BFC87 /* CategoryTableViewCell.xib in Resources */,
 				520A8DC22A80A0470049FBB1 /* Address.storyboard in Resources */,
@@ -750,8 +776,10 @@
 				527F9B082A7B90E000AC520C /* ReviewsTableViewCell.swift in Sources */,
 				527466202A81CD3700B97690 /* WalletViewController.swift in Sources */,
 				520A8DC02A8097F90049FBB1 /* OrderConfirmedViewController.swift in Sources */,
+				5290BB272A83816C0042A32A /* ListAddressViewController.swift in Sources */,
 				52444CC42A78B7B2000BFC87 /* CategoryCollectionViewCell.swift in Sources */,
 				52EF38702A72125400446F31 /* SceneDelegate.swift in Sources */,
+				5290BB2A2A8381850042A32A /* ListAddressTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

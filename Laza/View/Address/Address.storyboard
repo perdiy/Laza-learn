@@ -8,6 +8,94 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--List Address View Controller-->
+        <scene sceneID="gQ2-Hl-Hj1">
+            <objects>
+                <viewController storyboardIdentifier="ListAddressViewController" id="j10-8j-gSz" customClass="ListAddressViewController" customModule="Laza" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wYk-MX-jno">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Enb-Cf-WZq">
+                                <rect key="frame" x="16" y="59" width="44" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8j6-5d-J7r">
+                                        <rect key="frame" x="6" y="6" width="33" height="32"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="Arrow - Left" title="">
+                                            <color key="baseForegroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="BackBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="vRP-Pg-Hj8"/>
+                                            <action selector="backBtn:" destination="j10-8j-gSz" eventType="touchUpInside" id="n2B-0J-Lcz"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="IEi-Ch-fss"/>
+                                    <constraint firstItem="8j6-5d-J7r" firstAttribute="top" secondItem="Enb-Cf-WZq" secondAttribute="top" constant="6" id="Ol2-h4-aEe"/>
+                                    <constraint firstItem="8j6-5d-J7r" firstAttribute="leading" secondItem="Enb-Cf-WZq" secondAttribute="leading" constant="6" id="URW-0v-xBF"/>
+                                    <constraint firstAttribute="trailing" secondItem="8j6-5d-J7r" secondAttribute="trailing" constant="5" id="Y8b-LF-nXj"/>
+                                    <constraint firstAttribute="bottom" secondItem="8j6-5d-J7r" secondAttribute="bottom" constant="6" id="cdt-D3-1Pp"/>
+                                    <constraint firstAttribute="width" constant="44" id="td1-FP-uka"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sju-a0-lRg">
+                                <rect key="frame" x="12" y="71" width="369" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XPY-L2-9gZ">
+                                <rect key="frame" x="16" y="149" width="361" height="629"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="361" id="BWB-2b-rDP"/>
+                                    <constraint firstAttribute="height" constant="629" id="TEp-0l-1bD"/>
+                                </constraints>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0j-VA-279">
+                                <rect key="frame" x="0.0" y="777" width="393" height="75"/>
+                                <color key="backgroundColor" red="0.59215686270000001" green="0.45882352939999999" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="C5C-ZX-6XU"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Add Addres">
+                                    <color key="baseBackgroundColor" red="0.59215686270000001" green="0.45882352939999999" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="addAdrsBtn:" destination="j10-8j-gSz" eventType="touchUpInside" id="MdH-W7-aRd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="OtW-qM-Wk1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="r0j-VA-279" firstAttribute="trailing" secondItem="OtW-qM-Wk1" secondAttribute="trailing" id="0YC-uV-nWE"/>
+                            <constraint firstItem="OtW-qM-Wk1" firstAttribute="trailing" secondItem="Sju-a0-lRg" secondAttribute="trailing" constant="12" id="0lb-Aw-M4H"/>
+                            <constraint firstItem="OtW-qM-Wk1" firstAttribute="trailing" secondItem="XPY-L2-9gZ" secondAttribute="trailing" constant="16" id="11e-XY-GQb"/>
+                            <constraint firstItem="Sju-a0-lRg" firstAttribute="top" secondItem="OtW-qM-Wk1" secondAttribute="top" constant="12" id="DWn-Ig-r9p"/>
+                            <constraint firstItem="Enb-Cf-WZq" firstAttribute="leading" secondItem="OtW-qM-Wk1" secondAttribute="leading" constant="16" id="GKU-CY-p5D"/>
+                            <constraint firstItem="Sju-a0-lRg" firstAttribute="leading" secondItem="OtW-qM-Wk1" secondAttribute="leading" constant="12" id="H6W-vr-66x"/>
+                            <constraint firstItem="XPY-L2-9gZ" firstAttribute="top" secondItem="Enb-Cf-WZq" secondAttribute="bottom" constant="46" id="LwC-Pm-jnR"/>
+                            <constraint firstItem="OtW-qM-Wk1" firstAttribute="bottom" secondItem="XPY-L2-9gZ" secondAttribute="bottom" constant="40" id="dwh-XI-jC1"/>
+                            <constraint firstItem="r0j-VA-279" firstAttribute="leading" secondItem="OtW-qM-Wk1" secondAttribute="leading" id="eQQ-Ng-XUF"/>
+                            <constraint firstItem="Enb-Cf-WZq" firstAttribute="top" secondItem="OtW-qM-Wk1" secondAttribute="top" id="qKl-io-seN"/>
+                            <constraint firstItem="XPY-L2-9gZ" firstAttribute="leading" secondItem="OtW-qM-Wk1" secondAttribute="leading" constant="16" id="yCi-iW-qAC"/>
+                            <constraint firstAttribute="bottom" secondItem="r0j-VA-279" secondAttribute="bottom" id="zN3-f0-Lwz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backView" destination="Enb-Cf-WZq" id="sLm-Pz-uqE"/>
+                        <outlet property="tableView" destination="XPY-L2-9gZ" id="ujO-LE-6Fy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Qf-U2-zFg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-667.93893129770993" y="7.746478873239437"/>
+        </scene>
         <!--Address View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
