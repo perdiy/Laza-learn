@@ -66,7 +66,22 @@ class NestedViewController: UIViewController, UITableViewDataSource, UITableView
 
         // Setel delegat untuk search bar
         search.delegate = self
+        
+        setupTabBarItemImage()
     }
+    
+    // MARK: Setup BarItem when Clicked Change into Text
+      private func setupTabBarItemImage() {
+        let label = UILabel()
+        label.numberOfLines = 1
+        label.textAlignment = .center
+        label.text = "Home"
+        label.textColor = UIColor(named: "PurpleButton")
+        label.sizeToFit()
+        
+        tabBarItem.standardAppearance?.selectionIndicatorTintColor = UIColor(named: "PurpleButton")
+        tabBarItem.selectedImage = UIImage(view: label)
+      }
 
     // MARK: - UISearchBarDelegate
 

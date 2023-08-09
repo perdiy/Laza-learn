@@ -7,7 +7,7 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
-
+    
     // var action button hide
     var iconClick = true
     
@@ -155,12 +155,12 @@ class SignUpViewController: UIViewController {
     }
     
     private func navigateToNestedViewController() {
-            let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
-            guard let nestedViewController = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController else {
-                fatalError("erorr")
-            }
-            navigationController?.pushViewController(nestedViewController, animated: true)
+        let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
+        guard let nestedViewController = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController else {
+            fatalError("erorr")
         }
+        navigationController?.pushViewController(nestedViewController, animated: true)
+    }
     
     private func printUserData() {
         // Ambil data dari UserDefaults

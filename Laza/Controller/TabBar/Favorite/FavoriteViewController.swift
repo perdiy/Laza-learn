@@ -26,6 +26,20 @@ class FavoriteViewController: UIViewController {
         layout.itemSize = CGSize(width: 150, height: 260
         )
         collectionView.collectionViewLayout = layout
+        
+        setupTabBarItemImage()
+    }
+    
+    private func setupTabBarItemImage() {
+      let label = UILabel()
+      label.numberOfLines = 1
+      label.textAlignment = .center
+      label.text = "Wishlist"
+      label.textColor = UIColor(named: "PurpleButton")
+      label.sizeToFit()
+      
+      tabBarItem.standardAppearance?.selectionIndicatorTintColor = UIColor(named: "PurpleButton")
+      tabBarItem.selectedImage = UIImage(view: label)
     }
 
 }

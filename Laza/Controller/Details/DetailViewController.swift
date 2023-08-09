@@ -54,7 +54,6 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func reviewBtn(_ sender: Any) {
-        // Membuat instance ReviewViewController dari storyboard
         let storyboard = UIStoryboard(name: "Reviews", bundle: nil)
         if let reviewViewController = storyboard.instantiateViewController(withIdentifier: "ReviewViewController") as? ReviewViewController {
             self.navigationController?.pushViewController(reviewViewController, animated: true)
@@ -62,7 +61,6 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func backArrowTapped(_ sender: UIButton) {
-        // Menggunakan navigationController untuk kembali ke view controller sebelumnya
         navigationController?.popViewController(animated: true)
     }
 }
@@ -81,7 +79,6 @@ extension DetailViewController: UICollectionViewDataSource, UICollectionViewDele
         return cell
     }
     
-    // Anda dapat memodifikasi fungsi ini untuk mengatur ukuran setiap cell berdasarkan kebutuhan desain Anda
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 40, height: 40)
     }

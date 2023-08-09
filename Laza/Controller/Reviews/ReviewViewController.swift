@@ -10,13 +10,12 @@ class ReviewViewController: UIViewController {
     
     // viewback
     @IBOutlet weak var viewBack: UIView!
-   
+    
     // back button
     @IBAction func backBtn(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
-    // navigation to AddReviewsViewController
     @IBAction func addReviewBtn(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Reviews", bundle: nil)
         if let addReviewsVC = storyboard.instantiateViewController(withIdentifier: "AddReviewViewController") as? AddReviewViewController {

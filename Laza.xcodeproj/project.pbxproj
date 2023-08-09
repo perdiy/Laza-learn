@@ -14,11 +14,12 @@
 		520A8DC42A80A06D0049FBB1 /* AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520A8DC32A80A06D0049FBB1 /* AddressViewController.swift */; };
 		52134B9D2A7477E100B87588 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52134B9C2A7477E100B87588 /* UserDefault.swift */; };
 		52134B9F2A7486BC00B87588 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52134B9E2A7486BC00B87588 /* ProfileViewController.swift */; };
+		5223473A2A8324490058DE16 /* CreditCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522347382A8324490058DE16 /* CreditCardCollectionViewCell.swift */; };
+		5223473B2A8324490058DE16 /* CreditCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522347392A8324490058DE16 /* CreditCardCollectionViewCell.xib */; };
 		5234E6292A80ACD800F855BD /* SizeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5234E6262A80ACD800F855BD /* SizeCollectionViewCell.xib */; };
 		5234E62A2A80ACD800F855BD /* SizeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234E6272A80ACD800F855BD /* SizeCollectionViewCell.swift */; };
 		5234E62B2A80ACD800F855BD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234E6282A80ACD800F855BD /* DetailViewController.swift */; };
 		523AD8E92A73B16D005FACAD /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523AD8E82A73B16D005FACAD /* UserModel.swift */; };
-		523AD8EC2A73B327005FACAD /* BrandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523AD8EA2A73B327005FACAD /* BrandCollectionViewCell.swift */; };
 		523AD8F12A73B44B005FACAD /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 523AD8F02A73B44B005FACAD /* Detail.storyboard */; };
 		52444CC42A78B7B2000BFC87 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52444CC22A78B7B2000BFC87 /* CategoryCollectionViewCell.swift */; };
 		52444CC52A78B7B2000BFC87 /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52444CC32A78B7B2000BFC87 /* CategoryCollectionViewCell.xib */; };
@@ -32,7 +33,6 @@
 		52527E442A7A2AAA00CDAD49 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 52527E432A7A2AAA00CDAD49 /* SideMenu */; };
 		52527E462A7A3AF600CDAD49 /* SideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52527E452A7A3AF600CDAD49 /* SideViewController.swift */; };
 		526757702A723DBE000BB555 /* ShopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267576F2A723DBE000BB555 /* ShopModel.swift */; };
-		526757782A726DC3000BB555 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526757762A726DC3000BB555 /* ProductCollectionViewCell.swift */; };
 		5267C6422A77412000A44BDD /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267C6412A77412000A44BDD /* MenuViewController.swift */; };
 		52728AE22A77A21100519DE0 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52728AE12A77A21100519DE0 /* HomeViewModel.swift */; };
 		527466202A81CD3700B97690 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5274661F2A81CD3700B97690 /* WalletViewController.swift */; };
@@ -43,11 +43,17 @@
 		527F9B092A7B90E000AC520C /* ReviewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527F9B072A7B90E000AC520C /* ReviewsTableViewCell.xib */; };
 		527F9B0D2A7B942C00AC520C /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F9B0C2A7B942C00AC520C /* ReviewViewController.swift */; };
 		527F9B0F2A7BAAFA00AC520C /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F9B0E2A7BAAFA00AC520C /* AddReviewViewController.swift */; };
+		5290BB1C2A8334900042A32A /* PaymentMethodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5290BB1B2A8334900042A32A /* PaymentMethodeViewController.swift */; };
+		5290BB222A83738E0042A32A /* MyCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5290BB202A83738E0042A32A /* MyCardCollectionViewCell.swift */; };
+		5290BB232A83738E0042A32A /* MyCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5290BB212A83738E0042A32A /* MyCardCollectionViewCell.xib */; };
 		52AAEC7F2A80E00400903342 /* FavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AAEC7D2A80E00400903342 /* FavoriteCollectionViewCell.swift */; };
 		52AAEC802A80E00400903342 /* FavoriteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AAEC7E2A80E00400903342 /* FavoriteCollectionViewCell.xib */; };
 		52AAEC822A80EBCE00903342 /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52AAEC812A80EBCE00903342 /* Payment.storyboard */; };
 		52AAEC842A80EF9800903342 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AAEC832A80EF9800903342 /* PaymentViewController.swift */; };
 		52AAEC862A80EFA900903342 /* AddPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AAEC852A80EFA900903342 /* AddPaymentViewController.swift */; };
+		52B277DD2A82887700614179 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B277DC2A82887700614179 /* Extension.swift */; };
+		52B277E02A82893600614179 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 52B277DF2A82893600614179 /* SDWebImage */; };
+		52B277E22A82893600614179 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 52B277E12A82893600614179 /* SDWebImageMapKit */; };
 		52EF386E2A72125400446F31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF386D2A72125400446F31 /* AppDelegate.swift */; };
 		52EF38702A72125400446F31 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF386F2A72125400446F31 /* SceneDelegate.swift */; };
 		52EF38782A72125400446F31 /* Laza.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52EF38762A72125400446F31 /* Laza.xcdatamodeld */; };
@@ -83,11 +89,12 @@
 		520A8DC32A80A06D0049FBB1 /* AddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewController.swift; sourceTree = "<group>"; };
 		52134B9C2A7477E100B87588 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		52134B9E2A7486BC00B87588 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		522347382A8324490058DE16 /* CreditCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardCollectionViewCell.swift; sourceTree = "<group>"; };
+		522347392A8324490058DE16 /* CreditCardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditCardCollectionViewCell.xib; sourceTree = "<group>"; };
 		5234E6262A80ACD800F855BD /* SizeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SizeCollectionViewCell.xib; sourceTree = "<group>"; };
 		5234E6272A80ACD800F855BD /* SizeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeCollectionViewCell.swift; sourceTree = "<group>"; };
 		5234E6282A80ACD800F855BD /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		523AD8E82A73B16D005FACAD /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		523AD8EA2A73B327005FACAD /* BrandCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandCollectionViewCell.swift; sourceTree = "<group>"; };
 		523AD8F02A73B44B005FACAD /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		52444CC02A78B600000BFC87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Laza/Info.plist; sourceTree = "<group>"; };
 		52444CC22A78B7B2000BFC87 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -101,7 +108,6 @@
 		52444CDB2A78BB87000BFC87 /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTableViewCell.xib; sourceTree = "<group>"; };
 		52527E452A7A3AF600CDAD49 /* SideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideViewController.swift; sourceTree = "<group>"; };
 		5267576F2A723DBE000BB555 /* ShopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopModel.swift; sourceTree = "<group>"; };
-		526757762A726DC3000BB555 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		5267C6412A77412000A44BDD /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		52728AE12A77A21100519DE0 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		5274661F2A81CD3700B97690 /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
@@ -112,11 +118,15 @@
 		527F9B072A7B90E000AC520C /* ReviewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewsTableViewCell.xib; sourceTree = "<group>"; };
 		527F9B0C2A7B942C00AC520C /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		527F9B0E2A7BAAFA00AC520C /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
+		5290BB1B2A8334900042A32A /* PaymentMethodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodeViewController.swift; sourceTree = "<group>"; };
+		5290BB202A83738E0042A32A /* MyCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardCollectionViewCell.swift; sourceTree = "<group>"; };
+		5290BB212A83738E0042A32A /* MyCardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCardCollectionViewCell.xib; sourceTree = "<group>"; };
 		52AAEC7D2A80E00400903342 /* FavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
 		52AAEC7E2A80E00400903342 /* FavoriteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCollectionViewCell.xib; sourceTree = "<group>"; };
 		52AAEC812A80EBCE00903342 /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
 		52AAEC832A80EF9800903342 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		52AAEC852A80EFA900903342 /* AddPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPaymentViewController.swift; sourceTree = "<group>"; };
+		52B277DC2A82887700614179 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extension.swift; path = Laza/Extension.swift; sourceTree = SOURCE_ROOT; };
 		52EF386A2A72125400446F31 /* Laza.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Laza.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52EF386D2A72125400446F31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52EF386F2A72125400446F31 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -152,7 +162,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B277E02A82893600614179 /* SDWebImage in Frameworks */,
 				52527E442A7A2AAA00CDAD49 /* SideMenu in Frameworks */,
+				52B277E22A82893600614179 /* SDWebImageMapKit in Frameworks */,
 				95BD1E19824C6C83D4743E49 /* Pods_Laza.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -172,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				527F9B032A7B7D6D00AC520C /* extension.swift */,
+				52B277DC2A82887700614179 /* Extension.swift */,
 				52F456DC2A7CAEA900F565D9 /* Slider.swift */,
 			);
 			path = Extension;
@@ -182,6 +195,18 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		522347372A8324180058DE16 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				522347382A8324490058DE16 /* CreditCardCollectionViewCell.swift */,
+				52AAEC852A80EFA900903342 /* AddPaymentViewController.swift */,
+				52AAEC832A80EF9800903342 /* PaymentViewController.swift */,
+				522347392A8324490058DE16 /* CreditCardCollectionViewCell.xib */,
+				5290BB1B2A8334900042A32A /* PaymentMethodeViewController.swift */,
+			);
+			path = Payment;
 			sourceTree = "<group>";
 		};
 		5234E62C2A80ACEC00F855BD /* Details */ = {
@@ -244,6 +269,8 @@
 			children = (
 				52EF388F2A72149200446F31 /* TabBar.storyboard */,
 				520A8DBD2A8097BD0049FBB1 /* OrderConfimed.storyboard */,
+				523AD8F02A73B44B005FACAD /* Detail.storyboard */,
+				520A8DC12A80A0470049FBB1 /* Address.storyboard */,
 			);
 			path = "Item + TabBar";
 			sourceTree = "<group>";
@@ -256,7 +283,6 @@
 				5234E62D2A80C4ED00F855BD /* Favorite */,
 				52444CBC2A789B39000BFC87 /* Home */,
 				52134B9E2A7486BC00B87588 /* ProfileViewController.swift */,
-				523AD8EA2A73B327005FACAD /* BrandCollectionViewCell.swift */,
 				52EF38A72A7225BF00446F31 /* TabBarViewController.swift */,
 			);
 			path = TabBar;
@@ -360,6 +386,7 @@
 		5274661E2A81CD2400B97690 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				5290BB1D2A8373540042A32A /* CellMyCard */,
 				5274661F2A81CD3700B97690 /* WalletViewController.swift */,
 			);
 			path = Wallet;
@@ -390,6 +417,43 @@
 				527F9B072A7B90E000AC520C /* ReviewsTableViewCell.xib */,
 			);
 			path = XIB;
+			sourceTree = "<group>";
+		};
+		5290BB182A832CF50042A32A /* welcome */ = {
+			isa = PBXGroup;
+			children = (
+				52EF38962A7214D500446F31 /* WelcomeViewController.swift */,
+			);
+			path = welcome;
+			sourceTree = "<group>";
+		};
+		5290BB192A832D390042A32A /* ToolsLogin */ = {
+			isa = PBXGroup;
+			children = (
+				52EF389D2A72150C00446F31 /* Main.storyboard */,
+				52EF38A12A72163900446F31 /* ForgotPassword.storyboard */,
+				52EF388D2A72148D00446F31 /* Welcome.storyboard */,
+				52EF38872A72146B00446F31 /* LaunchScreen.storyboard */,
+				52EF388B2A72148800446F31 /* SignUp.storyboard */,
+				52EF38892A72148200446F31 /* loginWith.storyboard */,
+			);
+			path = ToolsLogin;
+			sourceTree = "<group>";
+		};
+		5290BB1A2A832E080042A32A /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		5290BB1D2A8373540042A32A /* CellMyCard */ = {
+			isa = PBXGroup;
+			children = (
+				5290BB202A83738E0042A32A /* MyCardCollectionViewCell.swift */,
+				5290BB212A83738E0042A32A /* MyCardCollectionViewCell.xib */,
+			);
+			path = CellMyCard;
 			sourceTree = "<group>";
 		};
 		52AAEC7C2A80DFD400903342 /* FavoriteCell */ = {
@@ -423,6 +487,7 @@
 		52EF386C2A72125400446F31 /* Laza */ = {
 			isa = PBXGroup;
 			children = (
+				5290BB1A2A832E080042A32A /* View Model */,
 				520BEFE42A807DCD00EA612F /* Models */,
 				520BEFE32A807DB100EA612F /* Extension */,
 				52444CC12A78B77E000BFC87 /* Nested Home */,
@@ -437,17 +502,10 @@
 		52EF38912A72149700446F31 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5290BB192A832D390042A32A /* ToolsLogin */,
 				52F546472A80A436001B3C88 /* Payment */,
 				527F9AF72A7B645C00AC520C /* Reviews */,
 				52444CBA2A789AE7000BFC87 /* Item + TabBar */,
-				52EF389D2A72150C00446F31 /* Main.storyboard */,
-				52EF38872A72146B00446F31 /* LaunchScreen.storyboard */,
-				52EF38892A72148200446F31 /* loginWith.storyboard */,
-				52EF388B2A72148800446F31 /* SignUp.storyboard */,
-				52EF388D2A72148D00446F31 /* Welcome.storyboard */,
-				52EF38A12A72163900446F31 /* ForgotPassword.storyboard */,
-				523AD8F02A73B44B005FACAD /* Detail.storyboard */,
-				520A8DC12A80A0470049FBB1 /* Address.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -455,6 +513,8 @@
 		52EF38922A7214B100446F31 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5290BB182A832CF50042A32A /* welcome */,
+				522347372A8324180058DE16 /* Payment */,
 				5234E6312A80C58200F855BD /* SideMenu */,
 				5234E6302A80C56300F855BD /* Login */,
 				5234E62F2A80C55700F855BD /* SignUp */,
@@ -463,10 +523,6 @@
 				527F9AF62A7B546E00AC520C /* Reviews */,
 				52444CBB2A789B15000BFC87 /* TabBar */,
 				52EF38932A7214CC00446F31 /* ViewController.swift */,
-				52EF38962A7214D500446F31 /* WelcomeViewController.swift */,
-				526757762A726DC3000BB555 /* ProductCollectionViewCell.swift */,
-				52AAEC832A80EF9800903342 /* PaymentViewController.swift */,
-				52AAEC852A80EFA900903342 /* AddPaymentViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -527,6 +583,8 @@
 			name = Laza;
 			packageProductDependencies = (
 				52527E432A7A2AAA00CDAD49 /* SideMenu */,
+				52B277DF2A82893600614179 /* SDWebImage */,
+				52B277E12A82893600614179 /* SDWebImageMapKit */,
 			);
 			productName = Laza;
 			productReference = 52EF386A2A72125400446F31 /* Laza.app */;
@@ -558,6 +616,7 @@
 			mainGroup = 52EF38612A72125400446F31;
 			packageReferences = (
 				52527E422A7A2AAA00CDAD49 /* XCRemoteSwiftPackageReference "SideMenu" */,
+				52B277DE2A82893600614179 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 52EF386B2A72125400446F31 /* Products */;
 			projectDirPath = "";
@@ -587,12 +646,14 @@
 				52444CDD2A78BB87000BFC87 /* CategoryTableViewCell.xib in Resources */,
 				520A8DC22A80A0470049FBB1 /* Address.storyboard in Resources */,
 				52EF38A02A72152900446F31 /* Assets.xcassets in Resources */,
+				5290BB232A83738E0042A32A /* MyCardCollectionViewCell.xib in Resources */,
 				52AAEC802A80E00400903342 /* FavoriteCollectionViewCell.xib in Resources */,
 				52AAEC822A80EBCE00903342 /* Payment.storyboard in Resources */,
 				52EF388C2A72148800446F31 /* SignUp.storyboard in Resources */,
 				5234E6292A80ACD800F855BD /* SizeCollectionViewCell.xib in Resources */,
 				527F9AF92A7B647D00AC520C /* Reviews.storyboard in Resources */,
 				52F5464C2A80A6A8001B3C88 /* CartTableViewCell.xib in Resources */,
+				5223473B2A8324490058DE16 /* CreditCardCollectionViewCell.xib in Resources */,
 				52EF388E2A72148D00446F31 /* Welcome.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -648,7 +709,6 @@
 			files = (
 				52134B9D2A7477E100B87588 /* UserDefault.swift in Sources */,
 				5234E62A2A80ACD800F855BD /* SizeCollectionViewCell.swift in Sources */,
-				523AD8EC2A73B327005FACAD /* BrandCollectionViewCell.swift in Sources */,
 				52EF389B2A7214D600446F31 /* SignUpViewController.swift in Sources */,
 				52AAEC7F2A80E00400903342 /* FavoriteCollectionViewCell.swift in Sources */,
 				52AAEC862A80EFA900903342 /* AddPaymentViewController.swift in Sources */,
@@ -659,18 +719,22 @@
 				52EF38782A72125400446F31 /* Laza.xcdatamodeld in Sources */,
 				52444CDC2A78BB87000BFC87 /* CategoryTableViewCell.swift in Sources */,
 				5234E62B2A80ACD800F855BD /* DetailViewController.swift in Sources */,
+				5290BB222A83738E0042A32A /* MyCardCollectionViewCell.swift in Sources */,
 				52FFFF552A78F17E009C07EB /* Api.swift in Sources */,
 				52444CD12A78BA09000BFC87 /* NestedViewController.swift in Sources */,
+				52B277DD2A82887700614179 /* Extension.swift in Sources */,
 				52EF386E2A72125400446F31 /* AppDelegate.swift in Sources */,
 				52EF389C2A7214D600446F31 /* LoginViewController.swift in Sources */,
 				52EF38A82A7225BF00446F31 /* TabBarViewController.swift in Sources */,
 				52F456D92A7C94B800F565D9 /* VerificationCodeViewController.swift in Sources */,
 				527F9B042A7B7D6D00AC520C /* extension.swift in Sources */,
+				5290BB1C2A8334900042A32A /* PaymentMethodeViewController.swift in Sources */,
 				52AAEC842A80EF9800903342 /* PaymentViewController.swift in Sources */,
 				52134B9F2A7486BC00B87588 /* ProfileViewController.swift in Sources */,
 				523AD8E92A73B16D005FACAD /* UserModel.swift in Sources */,
 				52444CCC2A78B7F4000BFC87 /* ProCollectionViewCell.swift in Sources */,
 				52EF38AA2A7229D300446F31 /* HomeViewController.swift in Sources */,
+				5223473A2A8324490058DE16 /* CreditCardCollectionViewCell.swift in Sources */,
 				52444CD82A78BB6E000BFC87 /* ProTableViewCell.swift in Sources */,
 				526757702A723DBE000BB555 /* ShopModel.swift in Sources */,
 				52F5464B2A80A6A8001B3C88 /* CartTableViewCell.swift in Sources */,
@@ -682,7 +746,6 @@
 				52527E462A7A3AF600CDAD49 /* SideViewController.swift in Sources */,
 				5275ABBA2A7762FD0016C424 /* FavoriteViewController.swift in Sources */,
 				52EF38942A7214CC00446F31 /* ViewController.swift in Sources */,
-				526757782A726DC3000BB555 /* ProductCollectionViewCell.swift in Sources */,
 				527F9B0D2A7B942C00AC520C /* ReviewViewController.swift in Sources */,
 				527F9B082A7B90E000AC520C /* ReviewsTableViewCell.swift in Sources */,
 				527466202A81CD3700B97690 /* WalletViewController.swift in Sources */,
@@ -897,6 +960,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		52B277DE2A82893600614179 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -904,6 +975,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 52527E422A7A2AAA00CDAD49 /* XCRemoteSwiftPackageReference "SideMenu" */;
 			productName = SideMenu;
+		};
+		52B277DF2A82893600614179 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 52B277DE2A82893600614179 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		52B277E12A82893600614179 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 52B277DE2A82893600614179 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 
