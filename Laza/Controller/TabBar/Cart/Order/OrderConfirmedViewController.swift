@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnackBar
 
 class OrderConfirmedViewController: UIViewController {
     
@@ -18,6 +19,9 @@ class OrderConfirmedViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        // snackBar
+        SnackBar.make(in: self.view, message: "Berhasil CheckOut", duration: .lengthLong).show()
+        
         backView.layer.cornerRadius = backView.bounds.height / 2.0
         backView.clipsToBounds = true
         

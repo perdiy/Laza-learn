@@ -16,6 +16,9 @@
 		52134B9F2A7486BC00B87588 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52134B9E2A7486BC00B87588 /* ProfileViewController.swift */; };
 		5223473A2A8324490058DE16 /* CreditCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522347382A8324490058DE16 /* CreditCardCollectionViewCell.swift */; };
 		5223473B2A8324490058DE16 /* CreditCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522347392A8324490058DE16 /* CreditCardCollectionViewCell.xib */; };
+		52241F6D2A846FC200E42C11 /* DetailFavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52241F6C2A846FC200E42C11 /* DetailFavViewController.swift */; };
+		52241F702A84772D00E42C11 /* SnackBar in Frameworks */ = {isa = PBXBuildFile; productRef = 52241F6F2A84772D00E42C11 /* SnackBar */; };
+		52241F722A84774F00E42C11 /* SnackBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52241F712A84774F00E42C11 /* SnackBar.swift */; };
 		5234E6292A80ACD800F855BD /* SizeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5234E6262A80ACD800F855BD /* SizeCollectionViewCell.xib */; };
 		5234E62A2A80ACD800F855BD /* SizeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234E6272A80ACD800F855BD /* SizeCollectionViewCell.swift */; };
 		5234E62B2A80ACD800F855BD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234E6282A80ACD800F855BD /* DetailViewController.swift */; };
@@ -94,6 +97,8 @@
 		52134B9E2A7486BC00B87588 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		522347382A8324490058DE16 /* CreditCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		522347392A8324490058DE16 /* CreditCardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditCardCollectionViewCell.xib; sourceTree = "<group>"; };
+		52241F6C2A846FC200E42C11 /* DetailFavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFavViewController.swift; sourceTree = "<group>"; };
+		52241F712A84774F00E42C11 /* SnackBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackBar.swift; sourceTree = "<group>"; };
 		5234E6262A80ACD800F855BD /* SizeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SizeCollectionViewCell.xib; sourceTree = "<group>"; };
 		5234E6272A80ACD800F855BD /* SizeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeCollectionViewCell.swift; sourceTree = "<group>"; };
 		5234E6282A80ACD800F855BD /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +173,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52241F702A84772D00E42C11 /* SnackBar in Frameworks */,
 				52B277E02A82893600614179 /* SDWebImage in Frameworks */,
 				52527E442A7A2AAA00CDAD49 /* SideMenu in Frameworks */,
 				52B277E22A82893600614179 /* SDWebImageMapKit in Frameworks */,
@@ -192,6 +198,7 @@
 				527F9B032A7B7D6D00AC520C /* extension.swift */,
 				52B277DC2A82887700614179 /* Extension.swift */,
 				52F456DC2A7CAEA900F565D9 /* Slider.swift */,
+				52241F712A84774F00E42C11 /* SnackBar.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -215,6 +222,21 @@
 			path = Payment;
 			sourceTree = "<group>";
 		};
+		52241F6A2A846ECF00E42C11 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				520A8DBF2A8097F90049FBB1 /* OrderConfirmedViewController.swift */,
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
+		52241F6B2A846F7200E42C11 /* Detail Fav */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Detail Fav";
+			sourceTree = "<group>";
+		};
 		5234E62C2A80ACEC00F855BD /* Details */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +250,7 @@
 		5234E62D2A80C4ED00F855BD /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
+				52241F6B2A846F7200E42C11 /* Detail Fav */,
 				52AAEC7C2A80DFD400903342 /* FavoriteCell */,
 				5275ABB92A7762FD0016C424 /* FavoriteViewController.swift */,
 			);
@@ -237,8 +260,8 @@
 		5234E62E2A80C50400F855BD /* Cart */ = {
 			isa = PBXGroup;
 			children = (
+				52241F6A2A846ECF00E42C11 /* Order */,
 				5290BB242A8381110042A32A /* Address */,
-				520A8DBF2A8097F90049FBB1 /* OrderConfirmedViewController.swift */,
 				52F546482A80A68A001B3C88 /* CartCell */,
 				520A8DBB2A808E270049FBB1 /* CartViewController.swift */,
 			);
@@ -276,6 +299,7 @@
 				52EF388F2A72149200446F31 /* TabBar.storyboard */,
 				520A8DBD2A8097BD0049FBB1 /* OrderConfimed.storyboard */,
 				523AD8F02A73B44B005FACAD /* Detail.storyboard */,
+				52241F6C2A846FC200E42C11 /* DetailFavViewController.swift */,
 			);
 			path = "Item + TabBar";
 			sourceTree = "<group>";
@@ -610,6 +634,7 @@
 				52527E432A7A2AAA00CDAD49 /* SideMenu */,
 				52B277DF2A82893600614179 /* SDWebImage */,
 				52B277E12A82893600614179 /* SDWebImageMapKit */,
+				52241F6F2A84772D00E42C11 /* SnackBar */,
 			);
 			productName = Laza;
 			productReference = 52EF386A2A72125400446F31 /* Laza.app */;
@@ -642,6 +667,7 @@
 			packageReferences = (
 				52527E422A7A2AAA00CDAD49 /* XCRemoteSwiftPackageReference "SideMenu" */,
 				52B277DE2A82893600614179 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				52241F6E2A84772D00E42C11 /* XCRemoteSwiftPackageReference "SnackBar" */,
 			);
 			productRefGroup = 52EF386B2A72125400446F31 /* Products */;
 			projectDirPath = "";
@@ -740,6 +766,7 @@
 				52AAEC862A80EFA900903342 /* AddPaymentViewController.swift in Sources */,
 				520A8DC42A80A06D0049FBB1 /* AddressViewController.swift in Sources */,
 				52728AE22A77A21100519DE0 /* HomeViewModel.swift in Sources */,
+				52241F722A84774F00E42C11 /* SnackBar.swift in Sources */,
 				527F9B0F2A7BAAFA00AC520C /* AddReviewViewController.swift in Sources */,
 				52F456DD2A7CAEAA00F565D9 /* Slider.swift in Sources */,
 				52EF38782A72125400446F31 /* Laza.xcdatamodeld in Sources */,
@@ -772,6 +799,7 @@
 				52527E462A7A3AF600CDAD49 /* SideViewController.swift in Sources */,
 				5275ABBA2A7762FD0016C424 /* FavoriteViewController.swift in Sources */,
 				52EF38942A7214CC00446F31 /* ViewController.swift in Sources */,
+				52241F6D2A846FC200E42C11 /* DetailFavViewController.swift in Sources */,
 				527F9B0D2A7B942C00AC520C /* ReviewViewController.swift in Sources */,
 				527F9B082A7B90E000AC520C /* ReviewsTableViewCell.swift in Sources */,
 				527466202A81CD3700B97690 /* WalletViewController.swift in Sources */,
@@ -980,6 +1008,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		52241F6E2A84772D00E42C11 /* XCRemoteSwiftPackageReference "SnackBar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ahmedAlmasri/SnackBar.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.2;
+			};
+		};
 		52527E422A7A2AAA00CDAD49 /* XCRemoteSwiftPackageReference "SideMenu" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jonkykong/SideMenu";
@@ -999,6 +1035,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		52241F6F2A84772D00E42C11 /* SnackBar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 52241F6E2A84772D00E42C11 /* XCRemoteSwiftPackageReference "SnackBar" */;
+			productName = SnackBar;
+		};
 		52527E432A7A2AAA00CDAD49 /* SideMenu */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 52527E422A7A2AAA00CDAD49 /* XCRemoteSwiftPackageReference "SideMenu" */;

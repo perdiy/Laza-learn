@@ -23,23 +23,22 @@ class FavoriteViewController: UIViewController {
         
         // Set UICollectionViewFlowLayout properties
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 150, height: 260
-        )
+        layout.itemSize = CGSize(width: 150, height: 260)
         collectionView.collectionViewLayout = layout
         
         setupTabBarItemImage()
     }
     
     private func setupTabBarItemImage() {
-      let label = UILabel()
-      label.numberOfLines = 1
-      label.textAlignment = .center
-      label.text = "Wishlist"
-      label.textColor = UIColor(named: "PurpleButton")
-      label.sizeToFit()
-      
-      tabBarItem.standardAppearance?.selectionIndicatorTintColor = UIColor(named: "PurpleButton")
-      tabBarItem.selectedImage = UIImage(view: label)
+        let label = UILabel()
+        label.numberOfLines = 1
+        label.textAlignment = .center
+        label.text = "Wishlist"
+        label.textColor = UIColor(named: "PurpleButton")
+        label.sizeToFit()
+        
+        tabBarItem.standardAppearance?.selectionIndicatorTintColor = UIColor(named: "PurpleButton")
+        tabBarItem.selectedImage = UIImage(view: label)
     }
 
 }
@@ -61,10 +60,13 @@ extension FavoriteViewController: UICollectionViewDataSource {
 }
 
 extension FavoriteViewController: UICollectionViewDelegate {
-    // Implement any delegate methods if needed
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Detail", bundle: nil)
+        if let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
+            detailViewController.selectedProductIndex = indexPath.row
+            navigationController?.pushViewController(detailViewController, animated: true)
+        }
+    }
 }
 
-extension FavoriteViewController: UICollectionViewDelegateFlowLayout {
-    // Implement layout customization methods if needed
-}
 

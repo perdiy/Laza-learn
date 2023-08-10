@@ -9,13 +9,16 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    
+    // menyimpan produk yg dipilih
+    var selectedProductIndex: Int = 1
+    // IB
     @IBOutlet weak var viewBack: UIView!{
         didSet {
             viewBack.layer.cornerRadius = viewBack.bounds.height / 2
             viewBack.layer.masksToBounds = true
         }
     }
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!

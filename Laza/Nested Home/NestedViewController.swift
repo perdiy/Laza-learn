@@ -6,14 +6,16 @@
 //
 import UIKit
 import SideMenu
-class NestedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+import SnackBar
 
+class NestedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+    
     // search
     @IBOutlet weak var search: UISearchBar!
-
+    
     // sideMenu
     var menu: SideMenuNavigationController?
-
+    
     @IBOutlet weak var viewCart: UIView! {
         didSet {
             viewCart.layer.cornerRadius = viewCart.bounds.height / 2
@@ -37,33 +39,34 @@ class NestedViewController: UIViewController, UITableViewDataSource, UITableView
         performSegue(withIdentifier: "SideMenuNavigationController", sender: nil)
         //        present(menu!, animated: true, completion: nil)
     }
-
+    
     @IBOutlet weak var tableView: UITableView!
     var categories: [String] = []
     var products: [Product] = []
     var filteredProducts: [Product] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        // snackBar
+        SnackBar.make(in: self.view, message: "Anda Berhasil Login", duration: .lengthLong).show()
         // Daftarkan xib CategoryTableViewCell
         let cellCategoryNib = UINib(nibName: "CategoryTableViewCell", bundle: nil)
         self.tableView.register(cellCategoryNib, forCellReuseIdentifier: "CategoryTableViewCell")
-
+        
         // Daftarkan xib ProTableViewCell
         let cellProNib = UINib(nibName: "ProTableViewCell", bundle: nil)
         self.tableView.register(cellProNib, forCellReuseIdentifier: "ProTableViewCell")
-
+        
         // Tentukan data source dan delegate
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.allowsSelection = true
-
+        
         // Ambil data kategori dari API
         fetchCategories()
         // Ambil data produk dari API
         fetchProducts()
-
+        
         // Setel delegat untuk search bar
         search.delegate = self
         
@@ -71,7 +74,7 @@ class NestedViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     // MARK: Setup BarItem when Clicked Change into Text
-      private func setupTabBarItemImage() {
+    private func setupTabBarItemImage() {
         let label = UILabel()
         label.numberOfLines = 1
         label.textAlignment = .center
@@ -81,10 +84,10 @@ class NestedViewController: UIViewController, UITableViewDataSource, UITableView
         
         tabBarItem.standardAppearance?.selectionIndicatorTintColor = UIColor(named: "PurpleButton")
         tabBarItem.selectedImage = UIImage(view: label)
-      }
-
+    }
+    
     // MARK: - UISearchBarDelegate
-
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
             // Jika teks pencarian kosong, tampilkan semua produk
@@ -95,23 +98,23 @@ class NestedViewController: UIViewController, UITableViewDataSource, UITableView
                 return product.title.lowercased().contains(searchText.lowercased())
             }
         }
-
+        
         tableView.reloadData()
     }
-
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         // Bersihkan search bar dan tampilkan semua produk
         search.text = ""
         filteredProducts = products
         tableView.reloadData()
     }
-
+    
     // MARK: - UITableViewDataSource
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Kembalikan jumlah baris untuk kategori dan produk
         if section == 0 {
@@ -120,7 +123,7 @@ class NestedViewController: UIViewController, UITableViewDataSource, UITableView
             return filteredProducts.count
         }
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Buat sel-sel berbeda untuk kategori, produk, dan header
         if indexPath.section == 0 {
@@ -136,19 +139,19 @@ class NestedViewController: UIViewController, UITableViewDataSource, UITableView
             return cell
         }
     }
-
+    
     // Ambil data kategori dari API
     func fetchCategories() {
         if !categories.isEmpty {
             self.tableView.reloadData()
             return
         }
-
+        
         guard let url = URL(string: "https://fakestoreapi.com/products/categories") else { return }
-
+        
         let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
             guard let self = self, let data = data else { return }
-
+            
             do {
                 if let categories = try JSONSerialization.jsonObject(with: data, options: []) as? [String] {
                     DispatchQueue.main.async {
@@ -160,22 +163,22 @@ class NestedViewController: UIViewController, UITableViewDataSource, UITableView
                 print("Error fetching categories: \(error.localizedDescription)")
             }
         }
-
+        
         task.resume()
     }
-
+    
     // Ambil data produk dari API
     func fetchProducts() {
         if !products.isEmpty {
             self.tableView.reloadData()
             return
         }
-
+        
         guard let url = URL(string: "https://fakestoreapi.com/products") else { return }
-
+        
         let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
             guard let self = self, let data = data else { return }
-
+            
             do {
                 let decoder = JSONDecoder()
                 let products = try decoder.decode([Product].self, from: data)
@@ -188,7 +191,7 @@ class NestedViewController: UIViewController, UITableViewDataSource, UITableView
                 print("Error fetching products: \(error.localizedDescription)")
             }
         }
-
+        
         task.resume()
     }
 }

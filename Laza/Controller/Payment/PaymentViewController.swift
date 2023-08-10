@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SnackBar
+
 
 class PaymentViewController: UIViewController, UITextFieldDelegate {
     
@@ -17,6 +19,8 @@ class PaymentViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // snackBar
+        SnackBar.make(in: self.view, message: "Anda Menggunakan Payment Creditcard", duration: .lengthLong).show()
         
         // Register custom cell nib
         let nib = UINib(nibName: "CreditCardCollectionViewCell", bundle: nil)
