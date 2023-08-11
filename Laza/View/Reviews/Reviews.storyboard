@@ -180,7 +180,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="226" id="5go-ZK-3hn"/>
                                 </constraints>
-                                <color key="textColor" name="Font Color"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <userDefinedRuntimeAttributes>
@@ -227,7 +227,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oW-cU-b2S">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oW-cU-b2S">
                                 <rect key="frame" x="17" y="581" width="359" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -267,6 +267,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="rating" destination="4oW-cU-b2S" id="mL7-y7-zLf"/>
                         <outlet property="slider" destination="Kgg-bn-p8b" id="rnU-dU-U9J"/>
                         <outlet property="viewBack" destination="jfb-1R-xif" id="V8r-Pg-pV8"/>
                     </connections>
