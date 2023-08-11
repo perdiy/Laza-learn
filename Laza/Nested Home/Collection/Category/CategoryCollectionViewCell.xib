@@ -28,7 +28,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="oog-Wt-Oq1" firstAttribute="leading" secondItem="0H3-ZK-aH0" secondAttribute="leading" id="3xA-bh-ACy"/>
                             <constraint firstAttribute="trailing" secondItem="oog-Wt-Oq1" secondAttribute="trailing" id="CzK-5H-2B6"/>
@@ -54,9 +54,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

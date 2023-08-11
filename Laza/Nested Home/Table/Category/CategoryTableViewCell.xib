@@ -31,7 +31,7 @@
                     </button>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="jGo-sg-6aq">
                         <rect key="frame" x="0.0" y="60" width="361" height="50"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="wLx-Qe-edB"/>
                         </constraints>
@@ -43,7 +43,7 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                 </subviews>
-                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="L9I-nb-KcC" firstAttribute="leading" secondItem="FLg-XH-vXs" secondAttribute="trailing" constant="149" id="3Zh-dI-NMN"/>
                     <constraint firstItem="jGo-sg-6aq" firstAttribute="top" secondItem="L9I-nb-KcC" secondAttribute="bottom" constant="13" id="5WB-ug-16B"/>

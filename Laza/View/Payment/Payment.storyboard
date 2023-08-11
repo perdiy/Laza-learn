@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,8 +33,8 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cj5-qx-3kr">
                                         <rect key="frame" x="6" y="6" width="33" height="32"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="Arrow - Left" title="">
-                                            <color key="baseForegroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system" title="">
+                                            <color key="baseForegroundColor" name="Font Color"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="backBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="rPd-sx-A3B"/>
@@ -226,8 +227,8 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7W-oT-zmg">
                                         <rect key="frame" x="6" y="6" width="33" height="32"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="Arrow - Left" title="">
-                                            <color key="baseForegroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system" title="">
+                                            <color key="baseForegroundColor" name="Font Color"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="backBtn:" destination="xv5-YR-xi9" eventType="touchUpInside" id="0My-eq-KCI"/>
@@ -391,9 +392,13 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eug-bT-8Dc">
                                         <rect key="frame" x="6" y="6" width="33" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="NUd-Nx-BMW"/>
+                                            <constraint firstAttribute="width" constant="33" id="ze3-UG-TSR"/>
+                                        </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="Arrow - Left" title="">
-                                            <color key="baseForegroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system" title="">
+                                            <color key="baseForegroundColor" name="Font Color"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="backBtn:" destination="nlY-l2-C73" eventType="touchUpInside" id="D3l-au-KyZ"/>
@@ -449,20 +454,25 @@
             <point key="canvasLocation" x="-647" y="-2"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="jE1-Qv-9xx">
+            <size key="intrinsicContentSize" width="259" height="44"/>
+        </designable>
+    </designables>
     <resources>
-        <image name="Arrow - Left" width="25" height="25"/>
         <image name="CREDIT CARD" width="1259" height="1280"/>
+        <image name="arrow.backward" catalog="system" width="128" height="95"/>
         <image name="gopay-integration" width="512" height="512"/>
         <image name="plus.square" catalog="system" width="128" height="114"/>
         <image name="square" catalog="system" width="128" height="114"/>
+        <namedColor name="Font Color">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="secondarySystemGroupedBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

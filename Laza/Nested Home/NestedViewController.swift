@@ -4,76 +4,88 @@
 //
 //  Created by Perdi Yansyah on 01/08/23.
 //
+
 import UIKit
 import SideMenu
 import SnackBar
 
 class NestedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
-    // search
+    // Outlet untuk komponen UI
     @IBOutlet weak var search: UISearchBar!
-    
-    // sideMenu
     var menu: SideMenuNavigationController?
-    
     @IBOutlet weak var viewCart: UIView! {
         didSet {
             viewCart.layer.cornerRadius = viewCart.bounds.height / 2
             viewCart.layer.masksToBounds = true
         }
     }
+    
     @IBOutlet weak var viewSide: UIView! {
         didSet {
             viewSide.layer.cornerRadius = viewSide.bounds.height / 2
             viewSide.layer.masksToBounds = true
         }
     }
+    
     @IBOutlet weak var viewUngu: UIView! {
         didSet {
             viewUngu.layer.cornerRadius = 8
             viewUngu.layer.masksToBounds = true
         }
     }
+    
     @IBAction func sideButtonTapped(_ sender: UIButton) {
-        // Show the menu
         performSegue(withIdentifier: "SideMenuNavigationController", sender: nil)
-        //        present(menu!, animated: true, completion: nil)
     }
     
     @IBOutlet weak var tableView: UITableView!
+    
+    // Variabel untuk menyimpan data kategori dan produk
     var categories: [String] = []
     var products: [Product] = []
     var filteredProducts: [Product] = []
     
+    // Variabel untuk mengatur indikator loading circle
+    var isLoading = false
+    var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // snackBar
+        
+        // Tampilkan pesan snackbar
         SnackBar.make(in: self.view, message: "Anda Berhasil Login", duration: .lengthLong).show()
-        // Daftarkan xib CategoryTableViewCell
+        
+        // Daftarkan xib sel-sel kategori dan produk
         let cellCategoryNib = UINib(nibName: "CategoryTableViewCell", bundle: nil)
         self.tableView.register(cellCategoryNib, forCellReuseIdentifier: "CategoryTableViewCell")
         
-        // Daftarkan xib ProTableViewCell
         let cellProNib = UINib(nibName: "ProTableViewCell", bundle: nil)
         self.tableView.register(cellProNib, forCellReuseIdentifier: "ProTableViewCell")
         
-        // Tentukan data source dan delegate
+        // Tentukan data source dan delegate untuk tabel
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.allowsSelection = true
         
-        // Ambil data kategori dari API
+        setupTabBarItemImage()
+        
+        // Inisialisasi indikator pemuatan
+        activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.color = .gray
+        activityIndicator.hidesWhenStopped = true
+        view.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        // Ambil data kategori dan produk dari API
         fetchCategories()
-        // Ambil data produk dari API
         fetchProducts()
         
-        // Setel delegat untuk search bar
         search.delegate = self
-        
-        setupTabBarItemImage()
     }
     
-    // MARK: Setup BarItem when Clicked Change into Text
     private func setupTabBarItemImage() {
         let label = UILabel()
         label.numberOfLines = 1
@@ -87,13 +99,10 @@ class NestedViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     // MARK: - UISearchBarDelegate
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
-            // Jika teks pencarian kosong, tampilkan semua produk
             filteredProducts = products
         } else {
-            // Filter produk berdasarkan teks pencarian
             filteredProducts = products.filter { product in
                 return product.title.lowercased().contains(searchText.lowercased())
             }
@@ -103,50 +112,55 @@ class NestedViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        // Bersihkan search bar dan tampilkan semua produk
         search.text = ""
         filteredProducts = products
         tableView.reloadData()
     }
     
     // MARK: - UITableViewDataSource
-    
+    // Mengatur jumlah bagian (sections) dalam tabel
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 2 // Kita ingin menampilkan dua bagian: kategori dan daftar produk
     }
     
+    // Mengatur jumlah baris dalam setiap bagian tabel
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Kembalikan jumlah baris untuk kategori dan produk
         if section == 0 {
-            return 1
+            return 1 // Bagian pertama adalah kategori, hanya satu baris untuk sel kategori
         } else {
-            return filteredProducts.count
+            return filteredProducts.count // Bagian kedua adalah produk, jumlah baris sesuai dengan jumlah produk yang difilter
         }
     }
     
+    // Mengisi sel tabel dengan data yang sesuai
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Buat sel-sel berbeda untuk kategori, produk, dan header
         if indexPath.section == 0 {
-            // CategoryTableViewCell
+            // Bagian kategori: Menggunakan sel CategoryTableViewCell untuk menampilkan kategori
             let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryTableViewCell", for: indexPath) as! CategoryTableViewCell
-            cell.configure(data: categories) // Setel data kategori ke CategoryTableViewCell
+            cell.configure(data: categories)
             return cell
         } else {
-            // ProTableViewCell
+            // Bagian produk: Menggunakan sel ProTableViewCell untuk menampilkan produk
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProTableViewCell", for: indexPath) as! ProTableViewCell
-            cell.configure(data: filteredProducts)
-            cell.delegateProductProtocol = self
+            cell.configure(data: filteredProducts) // Mengisi data produk ke dalam sel produk
+            cell.delegateProductProtocol = self // Mengatur delegat untuk menangani interaksi pada produk
             return cell
         }
     }
     
     // Ambil data kategori dari API
     func fetchCategories() {
+        isLoading = true
+        activityIndicator.startAnimating()
+        
         if !categories.isEmpty {
             self.tableView.reloadData()
+            isLoading = false
+            activityIndicator.stopAnimating()
             return
         }
         
+        // URL untuk mengambil data kategori dari API
         guard let url = URL(string: "https://fakestoreapi.com/products/categories") else { return }
         
         let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
@@ -157,23 +171,34 @@ class NestedViewController: UIViewController, UITableViewDataSource, UITableView
                     DispatchQueue.main.async {
                         self.categories = categories
                         self.tableView.reloadData()
+                        self.isLoading = false
+                        self.activityIndicator.stopAnimating()
                     }
                 }
             } catch {
                 print("Error fetching categories: \(error.localizedDescription)")
+                self.isLoading = false
+                self.activityIndicator.stopAnimating()
             }
         }
         
+        // Jalankan task pengambilan data
         task.resume()
     }
     
     // Ambil data produk dari API
     func fetchProducts() {
+        isLoading = true
+        activityIndicator.startAnimating()
+        
         if !products.isEmpty {
             self.tableView.reloadData()
+            isLoading = false
+            activityIndicator.stopAnimating()
             return
         }
         
+        // URL untuk mengambil data produk dari API
         guard let url = URL(string: "https://fakestoreapi.com/products") else { return }
         
         let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
@@ -184,11 +209,15 @@ class NestedViewController: UIViewController, UITableViewDataSource, UITableView
                 let products = try decoder.decode([Product].self, from: data)
                 DispatchQueue.main.async {
                     self.products = products
-                    self.filteredProducts = products // Setel filteredProducts dengan semua produk awal
+                    self.filteredProducts = products
                     self.tableView.reloadData()
+                    self.isLoading = false
+                    self.activityIndicator.stopAnimating()
                 }
             } catch {
                 print("Error fetching products: \(error.localizedDescription)")
+                self.isLoading = false
+                self.activityIndicator.stopAnimating()
             }
         }
         
@@ -205,4 +234,3 @@ extension NestedViewController: ProductCellProtocol {
         }
     }
 }
-

@@ -5,9 +5,11 @@
 //  Created by Perdi Yansyah on 03/08/23.
 //
 import UIKit
+import Cosmos
 
 class ReviewViewController: UIViewController {
     
+    @IBOutlet weak var reviewStar: CosmosView!
     // viewback
     @IBOutlet weak var viewBack: UIView!
     
@@ -27,6 +29,10 @@ class ReviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // review Star
+        reviewStar.rating = 5
+        reviewStar.text = "4.8"
         
         // Register ReviewsTableViewCell.xib to the table view
         let nib = UINib(nibName: "ReviewsTableViewCell", bundle: nil)

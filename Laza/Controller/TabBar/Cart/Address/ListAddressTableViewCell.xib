@@ -3,8 +3,8 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,30 +20,30 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35Q-7W-FaU">
                         <rect key="frame" x="40" y="10" width="45" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" systemColor="placeholderTextColor"/>
+                        <color key="textColor" name="Font Color"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Txy-B3-M8b">
                         <rect key="frame" x="40" y="92" width="31" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" systemColor="placeholderTextColor"/>
+                        <color key="textColor" name="Font Color"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aiC-am-o8Z">
                         <rect key="frame" x="40" y="133" width="115" height="20.333333333333343"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" systemColor="placeholderTextColor"/>
+                        <color key="textColor" name="Font Color"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLz-eB-Vpk">
                         <rect key="frame" x="40" y="173.33333333333334" width="368" height="20.333333333333343"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" systemColor="placeholderTextColor"/>
+                        <color key="textColor" name="Font Color"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9e5-jy-ylp">
                         <rect key="frame" x="10" y="10.999999999999998" width="22" height="19.666666666666664"/>
-                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" name="Font Color"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="22" id="4wj-ap-r8H"/>
                             <constraint firstAttribute="height" constant="21" id="ip5-Nc-d8k"/>
@@ -51,7 +51,7 @@
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flag" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gRt-3x-SQs">
                         <rect key="frame" x="10" y="52.333333333333336" width="22" height="19.000000000000007"/>
-                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" name="Font Color"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="22" id="TRV-fZ-y2W"/>
                             <constraint firstAttribute="height" constant="21" id="ex9-eT-R8f"/>
@@ -59,7 +59,7 @@
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="building.columns" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="lDh-uu-VBS">
                         <rect key="frame" x="10" y="92.666666666666671" width="22" height="20"/>
-                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" name="Font Color"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="vJG-ci-lOo"/>
                             <constraint firstAttribute="width" constant="22" id="zBN-5K-RgB"/>
@@ -67,7 +67,7 @@
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="XIV-8R-fS1">
                         <rect key="frame" x="10" y="134.33333333333334" width="22" height="18.999999999999972"/>
-                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" name="Font Color"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="22" id="G3C-MK-Wuh"/>
                             <constraint firstAttribute="height" constant="21" id="bbB-Yj-VUy"/>
@@ -75,7 +75,7 @@
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rIN-dO-N0P">
                         <rect key="frame" x="10" y="175" width="22" height="19.333333333333314"/>
-                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" name="Font Color"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="22" id="902-SQ-LlW"/>
                             <constraint firstAttribute="height" constant="21" id="hRF-9F-JsX"/>
@@ -84,14 +84,16 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6t6-7v-D6C">
                         <rect key="frame" x="40" y="51" width="61" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" systemColor="placeholderTextColor"/>
+                        <color key="textColor" name="Font Color"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRj-jo-jfB">
                         <rect key="frame" x="362" y="10" width="46" height="34.333333333333336"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="pencil" catalog="system" title=""/>
+                        <buttonConfiguration key="configuration" style="plain" image="pencil" catalog="system" title="">
+                            <color key="baseForegroundColor" name="Font Color"/>
+                        </buttonConfiguration>
                     </button>
                 </subviews>
                 <constraints>
@@ -139,8 +141,8 @@
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="person.circle" catalog="system" width="128" height="123"/>
         <image name="phone" catalog="system" width="128" height="115"/>
-        <systemColor name="placeholderTextColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <namedColor name="Font Color">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
     </resources>
 </document>

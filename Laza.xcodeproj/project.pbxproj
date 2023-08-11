@@ -60,6 +60,7 @@
 		52B277DD2A82887700614179 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B277DC2A82887700614179 /* Extension.swift */; };
 		52B277E02A82893600614179 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 52B277DF2A82893600614179 /* SDWebImage */; };
 		52B277E22A82893600614179 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 52B277E12A82893600614179 /* SDWebImageMapKit */; };
+		52B3F7C32A86197100F1CCED /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 52B3F7C22A86197100F1CCED /* Cosmos */; };
 		52EF386E2A72125400446F31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF386D2A72125400446F31 /* AppDelegate.swift */; };
 		52EF38702A72125400446F31 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF386F2A72125400446F31 /* SceneDelegate.swift */; };
 		52EF38782A72125400446F31 /* Laza.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52EF38762A72125400446F31 /* Laza.xcdatamodeld */; };
@@ -173,6 +174,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B3F7C32A86197100F1CCED /* Cosmos in Frameworks */,
 				52241F702A84772D00E42C11 /* SnackBar in Frameworks */,
 				52B277E02A82893600614179 /* SDWebImage in Frameworks */,
 				52527E442A7A2AAA00CDAD49 /* SideMenu in Frameworks */,
@@ -201,13 +203,6 @@
 				52241F712A84774F00E42C11 /* SnackBar.swift */,
 			);
 			path = Extension;
-			sourceTree = "<group>";
-		};
-		520BEFE42A807DCD00EA612F /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		522347372A8324180058DE16 /* Payment */ = {
@@ -536,7 +531,6 @@
 			isa = PBXGroup;
 			children = (
 				5290BB1A2A832E080042A32A /* View Model */,
-				520BEFE42A807DCD00EA612F /* Models */,
 				520BEFE32A807DB100EA612F /* Extension */,
 				52444CC12A78B77E000BFC87 /* Nested Home */,
 				52444CBE2A78B0DC000BFC87 /* Support */,
@@ -635,6 +629,7 @@
 				52B277DF2A82893600614179 /* SDWebImage */,
 				52B277E12A82893600614179 /* SDWebImageMapKit */,
 				52241F6F2A84772D00E42C11 /* SnackBar */,
+				52B3F7C22A86197100F1CCED /* Cosmos */,
 			);
 			productName = Laza;
 			productReference = 52EF386A2A72125400446F31 /* Laza.app */;
@@ -668,6 +663,7 @@
 				52527E422A7A2AAA00CDAD49 /* XCRemoteSwiftPackageReference "SideMenu" */,
 				52B277DE2A82893600614179 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				52241F6E2A84772D00E42C11 /* XCRemoteSwiftPackageReference "SnackBar" */,
+				52B3F7C12A86197100F1CCED /* XCRemoteSwiftPackageReference "Cosmos" */,
 			);
 			productRefGroup = 52EF386B2A72125400446F31 /* Products */;
 			projectDirPath = "";
@@ -1032,6 +1028,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		52B3F7C12A86197100F1CCED /* XCRemoteSwiftPackageReference "Cosmos" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/Cosmos.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 23.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1054,6 +1058,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 52B277DE2A82893600614179 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImageMapKit;
+		};
+		52B3F7C22A86197100F1CCED /* Cosmos */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 52B3F7C12A86197100F1CCED /* XCRemoteSwiftPackageReference "Cosmos" */;
+			productName = Cosmos;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -3,7 +3,9 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -67,7 +69,7 @@
                                         <rect key="frame" x="175.66666666666666" y="0.0" width="71" height="34.333333333333336"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Signin">
-                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseForegroundColor" name="Font Color"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="signInBtn:" destination="6qF-Rx-LeK" eventType="touchUpInside" id="bJI-Sw-3oC"/>
@@ -78,7 +80,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let’s Get Started" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKR-AE-9q7">
                                 <rect key="frame" x="90" y="116.00000000000001" width="212" height="33.666666666666671"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="Font Color"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJV-t6-gWl">
@@ -96,7 +98,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oMq-DF-vuP"/>
-                        <color key="backgroundColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="mKR-AE-9q7" firstAttribute="leading" secondItem="oMq-DF-vuP" secondAttribute="leading" constant="90" id="2ez-mg-INS"/>
                             <constraint firstItem="oMq-DF-vuP" firstAttribute="trailing" secondItem="mKR-AE-9q7" secondAttribute="trailing" constant="91" id="9FR-ht-7af"/>
@@ -128,5 +130,11 @@
         <image name="Googlegoogle" width="22" height="22"/>
         <image name="Twitter" width="23" height="22"/>
         <image name="fb" width="22" height="22"/>
+        <namedColor name="Font Color">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
