@@ -143,6 +143,7 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mrh Raju" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nvd-jr-dRS">
                                 <rect key="frame" x="20" y="159" width="353" height="50"/>
+                                <color key="backgroundColor" name="textFieldColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="8m9-Y0-Zd9"/>
                                 </constraints>
@@ -160,6 +161,7 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bangladesh" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xmy-GO-dY6">
                                 <rect key="frame" x="20" y="265" width="161" height="50"/>
+                                <color key="backgroundColor" name="textFieldColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="161" id="Nm2-BN-dKU"/>
                                     <constraint firstAttribute="height" constant="50" id="eaJ-I1-8M9"/>
@@ -169,6 +171,7 @@
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sylhet" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NPP-Q2-tqO">
                                 <rect key="frame" x="212" y="265" width="161" height="50"/>
+                                <color key="backgroundColor" name="textFieldColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Qy7-Qo-zfF"/>
                                     <constraint firstAttribute="width" constant="161" id="tgm-6z-Cto"/>
@@ -193,6 +196,7 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="+880 1453-987533" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5kV-ji-SrX">
                                 <rect key="frame" x="20" y="371" width="353" height="50"/>
+                                <color key="backgroundColor" name="textFieldColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Xy4-yF-sNE"/>
                                 </constraints>
@@ -207,6 +211,7 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Chhatak, Sunamgonj 12/8AB" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PPN-XK-VAH">
                                 <rect key="frame" x="20" y="477" width="353" height="50"/>
+                                <color key="backgroundColor" name="textFieldColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ZpN-wW-iEK"/>
                                 </constraints>
@@ -291,6 +296,9 @@
         <image name="arrow.backward" catalog="system" width="128" height="95"/>
         <namedColor name="Font Color">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="textFieldColor">
+            <color red="0.96078431372549022" green="0.96470588235294119" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

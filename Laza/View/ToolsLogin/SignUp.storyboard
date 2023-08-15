@@ -3,7 +3,6 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -79,7 +78,7 @@
                                             <color key="baseForegroundColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="hidePasswordBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="vtx-Ya-VmG"/>
+                                            <action selector="hidePassword:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="w1x-sR-4tJ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -103,7 +102,7 @@
                                             <color key="baseForegroundColor" name="Font Color"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="backBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="g3Z-Zj-kyO"/>
+                                            <action selector="backButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="qs1-CV-Zjx"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -143,7 +142,7 @@
                                             <color key="baseForegroundColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="hideConfirmBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="aOo-Gg-FUG"/>
+                                            <action selector="hideConfirmPssword:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="gAJ-Kt-9qR"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -158,7 +157,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Sign Up"/>
                                 <connections>
-                                    <action selector="signUpBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="akC-Hx-PHa"/>
+                                    <action selector="signUpButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hYb-gI-43p"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -204,12 +203,11 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="emailTf" destination="Dj3-E8-IXE" id="rgw-sa-oao"/>
-                        <outlet property="passwordTf" destination="lDt-Qw-bPy" id="ClB-4u-0tb"/>
-                        <outlet property="phoneTf" destination="YBD-cb-YB8" id="O5M-5i-dvf"/>
-                        <outlet property="signUpButton" destination="Prx-rA-ywi" id="ijG-Qf-H3e"/>
-                        <outlet property="userNameTf" destination="kyG-Dc-Yid" id="HKV-V2-WO8"/>
-                        <outlet property="viewBack" destination="dut-l8-lp4" id="tgH-gz-I8D"/>
+                        <outlet property="confirmPasswordTf" destination="YBD-cb-YB8" id="4hk-8B-IQp"/>
+                        <outlet property="emailTf" destination="Dj3-E8-IXE" id="iiR-He-rOJ"/>
+                        <outlet property="passwordTf" destination="lDt-Qw-bPy" id="Uho-on-Fqz"/>
+                        <outlet property="signUpButton" destination="Prx-rA-ywi" id="YEh-KL-hBu"/>
+                        <outlet property="userNameTf" destination="kyG-Dc-Yid" id="tKT-4H-g7c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

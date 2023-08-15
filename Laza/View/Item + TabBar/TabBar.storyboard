@@ -3,7 +3,6 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -732,6 +731,7 @@
                     <navigationItem key="navigationItem" id="2Os-YX-9eb"/>
                     <size key="freeformSize" width="400" height="832"/>
                     <connections>
+                        <outlet property="userName" destination="qMV-Rz-3rb" id="zBr-iQ-PTw"/>
                         <outlet property="viewButton" destination="2eV-ee-QCb" id="0Pu-UA-hst"/>
                         <outlet property="viewOrder" destination="Zda-3D-Hgf" id="yUL-oo-mqD"/>
                     </connections>

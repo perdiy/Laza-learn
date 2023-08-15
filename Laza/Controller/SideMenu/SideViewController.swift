@@ -11,6 +11,7 @@ class SideViewController: UIViewController {
     @IBAction func sideBtn(_ sender: Any) {
         dismiss(animated: true)
     }
+    @IBOutlet weak var userName: UILabel!
     @IBAction func switchBtn(_ sender: Any) {
         if let window = UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).first?.windows.first {
             if (sender as AnyObject).isOn {

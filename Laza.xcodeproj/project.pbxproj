@@ -35,11 +35,19 @@
 		52444CDD2A78BB87000BFC87 /* CategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52444CDB2A78BB87000BFC87 /* CategoryTableViewCell.xib */; };
 		52527E442A7A2AAA00CDAD49 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 52527E432A7A2AAA00CDAD49 /* SideMenu */; };
 		52527E462A7A3AF600CDAD49 /* SideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52527E452A7A3AF600CDAD49 /* SideViewController.swift */; };
+		52533EAE2A89BC7800D08E82 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52533EAD2A89BC7800D08E82 /* Product.swift */; };
+		52533EB02A89C71A00D08E82 /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52533EAF2A89C71A00D08E82 /* Brand.swift */; };
+		52533EB22A89CBC600D08E82 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52533EB12A89CBC600D08E82 /* Size.swift */; };
 		526757702A723DBE000BB555 /* ShopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267576F2A723DBE000BB555 /* ShopModel.swift */; };
 		5267C6422A77412000A44BDD /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267C6412A77412000A44BDD /* MenuViewController.swift */; };
+		52708F832A89DA2400A9ABCC /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52708F822A89DA2300A9ABCC /* Login.swift */; };
+		52708F852A89E0F700A9ABCC /* Detail Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52708F842A89E0F700A9ABCC /* Detail Products.swift */; };
+		52708F872A8A17B500A9ABCC /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52708F862A8A17B500A9ABCC /* SignUp.swift */; };
+		52708F892A8A282800A9ABCC /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52708F882A8A282800A9ABCC /* SignUpViewModel.swift */; };
 		52728AE22A77A21100519DE0 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52728AE12A77A21100519DE0 /* HomeViewModel.swift */; };
 		527466202A81CD3700B97690 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5274661F2A81CD3700B97690 /* WalletViewController.swift */; };
 		5275ABBA2A7762FD0016C424 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5275ABB92A7762FD0016C424 /* FavoriteViewController.swift */; };
+		527B77232A8B457C00FE04BA /* DPOTPView in Frameworks */ = {isa = PBXBuildFile; productRef = 527B77222A8B457C00FE04BA /* DPOTPView */; };
 		527F9AF92A7B647D00AC520C /* Reviews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527F9AF82A7B647D00AC520C /* Reviews.storyboard */; };
 		527F9B042A7B7D6D00AC520C /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F9B032A7B7D6D00AC520C /* extension.swift */; };
 		527F9B082A7B90E000AC520C /* ReviewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F9B062A7B90E000AC520C /* ReviewsTableViewCell.swift */; };
@@ -61,6 +69,7 @@
 		52B277E02A82893600614179 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 52B277DF2A82893600614179 /* SDWebImage */; };
 		52B277E22A82893600614179 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 52B277E12A82893600614179 /* SDWebImageMapKit */; };
 		52B3F7C32A86197100F1CCED /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 52B3F7C22A86197100F1CCED /* Cosmos */; };
+		52D4D29F2A8B788E00A9AE83 /* NewPassViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D4D29E2A8B788E00A9AE83 /* NewPassViewModel.swift */; };
 		52EF386E2A72125400446F31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF386D2A72125400446F31 /* AppDelegate.swift */; };
 		52EF38702A72125400446F31 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF386F2A72125400446F31 /* SceneDelegate.swift */; };
 		52EF38782A72125400446F31 /* Laza.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52EF38762A72125400446F31 /* Laza.xcdatamodeld */; };
@@ -116,8 +125,15 @@
 		52444CDA2A78BB87000BFC87 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		52444CDB2A78BB87000BFC87 /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTableViewCell.xib; sourceTree = "<group>"; };
 		52527E452A7A3AF600CDAD49 /* SideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideViewController.swift; sourceTree = "<group>"; };
+		52533EAD2A89BC7800D08E82 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		52533EAF2A89C71A00D08E82 /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
+		52533EB12A89CBC600D08E82 /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		5267576F2A723DBE000BB555 /* ShopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopModel.swift; sourceTree = "<group>"; };
 		5267C6412A77412000A44BDD /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		52708F822A89DA2300A9ABCC /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		52708F842A89E0F700A9ABCC /* Detail Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Detail Products.swift"; sourceTree = "<group>"; };
+		52708F862A8A17B500A9ABCC /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		52708F882A8A282800A9ABCC /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		52728AE12A77A21100519DE0 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		5274661F2A81CD3700B97690 /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		5275ABB92A7762FD0016C424 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +155,7 @@
 		52AAEC832A80EF9800903342 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		52AAEC852A80EFA900903342 /* AddPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPaymentViewController.swift; sourceTree = "<group>"; };
 		52B277DC2A82887700614179 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extension.swift; path = Laza/Extension.swift; sourceTree = SOURCE_ROOT; };
+		52D4D29E2A8B788E00A9AE83 /* NewPassViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPassViewModel.swift; sourceTree = "<group>"; };
 		52EF386A2A72125400446F31 /* Laza.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Laza.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52EF386D2A72125400446F31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52EF386F2A72125400446F31 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -180,6 +197,7 @@
 				52527E442A7A2AAA00CDAD49 /* SideMenu in Frameworks */,
 				52B277E22A82893600614179 /* SDWebImageMapKit in Frameworks */,
 				95BD1E19824C6C83D4743E49 /* Pods_Laza.framework in Frameworks */,
+				527B77232A8B457C00FE04BA /* DPOTPView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +292,7 @@
 		5234E6302A80C56300F855BD /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				52EF38932A7214CC00446F31 /* ViewController.swift */,
 				52EF38982A7214D600446F31 /* LoginViewController.swift */,
 			);
 			path = Login;
@@ -403,6 +422,12 @@
 				5267576F2A723DBE000BB555 /* ShopModel.swift */,
 				523AD8E82A73B16D005FACAD /* UserModel.swift */,
 				52FFFF542A78F17E009C07EB /* Api.swift */,
+				52533EAD2A89BC7800D08E82 /* Product.swift */,
+				52533EAF2A89C71A00D08E82 /* Brand.swift */,
+				52533EB12A89CBC600D08E82 /* Size.swift */,
+				52708F822A89DA2300A9ABCC /* Login.swift */,
+				52708F842A89E0F700A9ABCC /* Detail Products.swift */,
+				52708F862A8A17B500A9ABCC /* SignUp.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -467,6 +492,8 @@
 		5290BB1A2A832E080042A32A /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				52708F882A8A282800A9ABCC /* SignUpViewModel.swift */,
+				52D4D29E2A8B788E00A9AE83 /* NewPassViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -565,7 +592,6 @@
 				52F456D72A7C947E00F565D9 /* Forgor Password */,
 				527F9AF62A7B546E00AC520C /* Reviews */,
 				52444CBB2A789B15000BFC87 /* TabBar */,
-				52EF38932A7214CC00446F31 /* ViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -630,6 +656,7 @@
 				52B277E12A82893600614179 /* SDWebImageMapKit */,
 				52241F6F2A84772D00E42C11 /* SnackBar */,
 				52B3F7C22A86197100F1CCED /* Cosmos */,
+				527B77222A8B457C00FE04BA /* DPOTPView */,
 			);
 			productName = Laza;
 			productReference = 52EF386A2A72125400446F31 /* Laza.app */;
@@ -664,6 +691,7 @@
 				52B277DE2A82893600614179 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				52241F6E2A84772D00E42C11 /* XCRemoteSwiftPackageReference "SnackBar" */,
 				52B3F7C12A86197100F1CCED /* XCRemoteSwiftPackageReference "Cosmos" */,
+				527B77212A8B457C00FE04BA /* XCRemoteSwiftPackageReference "DPOTPView" */,
 			);
 			productRefGroup = 52EF386B2A72125400446F31 /* Products */;
 			projectDirPath = "";
@@ -756,6 +784,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52134B9D2A7477E100B87588 /* UserDefault.swift in Sources */,
+				52708F852A89E0F700A9ABCC /* Detail Products.swift in Sources */,
 				5234E62A2A80ACD800F855BD /* SizeCollectionViewCell.swift in Sources */,
 				52EF389B2A7214D600446F31 /* SignUpViewController.swift in Sources */,
 				52AAEC7F2A80E00400903342 /* FavoriteCollectionViewCell.swift in Sources */,
@@ -767,6 +796,8 @@
 				52F456DD2A7CAEAA00F565D9 /* Slider.swift in Sources */,
 				52EF38782A72125400446F31 /* Laza.xcdatamodeld in Sources */,
 				52444CDC2A78BB87000BFC87 /* CategoryTableViewCell.swift in Sources */,
+				52533EB22A89CBC600D08E82 /* Size.swift in Sources */,
+				52708F872A8A17B500A9ABCC /* SignUp.swift in Sources */,
 				5234E62B2A80ACD800F855BD /* DetailViewController.swift in Sources */,
 				5290BB222A83738E0042A32A /* MyCardCollectionViewCell.swift in Sources */,
 				52FFFF552A78F17E009C07EB /* Api.swift in Sources */,
@@ -780,14 +811,18 @@
 				5290BB1C2A8334900042A32A /* PaymentMethodeViewController.swift in Sources */,
 				52AAEC842A80EF9800903342 /* PaymentViewController.swift in Sources */,
 				52134B9F2A7486BC00B87588 /* ProfileViewController.swift in Sources */,
+				52708F832A89DA2400A9ABCC /* Login.swift in Sources */,
+				52533EAE2A89BC7800D08E82 /* Product.swift in Sources */,
 				523AD8E92A73B16D005FACAD /* UserModel.swift in Sources */,
 				52444CCC2A78B7F4000BFC87 /* ProCollectionViewCell.swift in Sources */,
 				52EF38AA2A7229D300446F31 /* HomeViewController.swift in Sources */,
 				5223473A2A8324490058DE16 /* CreditCardCollectionViewCell.swift in Sources */,
+				52708F892A8A282800A9ABCC /* SignUpViewModel.swift in Sources */,
 				52444CD82A78BB6E000BFC87 /* ProTableViewCell.swift in Sources */,
 				526757702A723DBE000BB555 /* ShopModel.swift in Sources */,
 				52F5464B2A80A6A8001B3C88 /* CartTableViewCell.swift in Sources */,
 				52EF38A42A72165E00446F31 /* ForgotPwdViewController.swift in Sources */,
+				52533EB02A89C71A00D08E82 /* Brand.swift in Sources */,
 				52EF389A2A7214D600446F31 /* WelcomeViewController.swift in Sources */,
 				5267C6422A77412000A44BDD /* MenuViewController.swift in Sources */,
 				52F456DB2A7C951700F565D9 /* NewPasswordViewController.swift in Sources */,
@@ -797,6 +832,7 @@
 				52EF38942A7214CC00446F31 /* ViewController.swift in Sources */,
 				52241F6D2A846FC200E42C11 /* DetailFavViewController.swift in Sources */,
 				527F9B0D2A7B942C00AC520C /* ReviewViewController.swift in Sources */,
+				52D4D29F2A8B788E00A9AE83 /* NewPassViewModel.swift in Sources */,
 				527F9B082A7B90E000AC520C /* ReviewsTableViewCell.swift in Sources */,
 				527466202A81CD3700B97690 /* WalletViewController.swift in Sources */,
 				520A8DC02A8097F90049FBB1 /* OrderConfirmedViewController.swift in Sources */,
@@ -1020,6 +1056,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		527B77212A8B457C00FE04BA /* XCRemoteSwiftPackageReference "DPOTPView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Datt1994/DPOTPView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		52B277DE2A82893600614179 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
@@ -1048,6 +1092,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 52527E422A7A2AAA00CDAD49 /* XCRemoteSwiftPackageReference "SideMenu" */;
 			productName = SideMenu;
+		};
+		527B77222A8B457C00FE04BA /* DPOTPView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 527B77212A8B457C00FE04BA /* XCRemoteSwiftPackageReference "DPOTPView" */;
+			productName = DPOTPView;
 		};
 		52B277DF2A82893600614179 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;

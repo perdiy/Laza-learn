@@ -29,7 +29,7 @@ class ForgotPwdViewController: UIViewController {
         }
         
         // Perform the action after validating the email format
-        navigateToVerificationCode(email: email)
+        signUp(email: email)
     }
     
     override func viewDidLoad() {
@@ -74,11 +74,74 @@ class ForgotPwdViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    func signUp(email: String) {
+        let postData: [String: Any] = ["email": email]
+        
+        guard let url = URL(string: "https://lazaapp.shop/auth/forgotpassword") else {
+            showAlert(title: "Error", message: "Invalid URL")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: postData)
+            request.httpBody = jsonData
+            
+            let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+                guard let self = self else { return }
+                
+                if let error = error {
+                    print("Error: \(error)")
+                    DispatchQueue.main.async {
+                        self.showAlert(title: "Error", message: "Gagal melakukan koneksi ke server.")
+                    }
+                    return
+                }
+                
+                if let httpResponse = response as? HTTPURLResponse {
+                    if httpResponse.statusCode == 200 {
+                        DispatchQueue.main.async {
+                            self.navigateToVerificationCode(email: email)
+                        }
+                    } else {
+                        if let data = data {
+                            do {
+                                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                                if let errorMessage = json?["description"] as? String {
+                                    DispatchQueue.main.async {
+                                        self.showAlert(title: "Warning", message: errorMessage)
+                                    }
+                                } else {
+                                    DispatchQueue.main.async {
+                                        self.showAlert(title: "Warning", message: "An error occurred.")
+                                    }
+                                }
+                            } catch {
+                                DispatchQueue.main.async {
+                                    self.showAlert(title: "Warning", message: "An error occurred.")
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            task.resume()
+        } catch {
+            DispatchQueue.main.async {
+                self.showAlert(title: "Error", message: "Terjadi kesalahan saat mengirim data.")
+            }
+        }
+    }
+    
     private func navigateToVerificationCode(email: String) {
         let storyboard = UIStoryboard(name: "ForgotPassword", bundle: nil)
         if let verificationCodeVC = storyboard.instantiateViewController(withIdentifier: "VerificationCodeViewController") as? VerificationCodeViewController {
-            verificationCodeVC.email = email
+            verificationCodeVC.emailUser = email
             navigationController?.pushViewController(verificationCodeVC, animated: true)
         }
     }
+
 }

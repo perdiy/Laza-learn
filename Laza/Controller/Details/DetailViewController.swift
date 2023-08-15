@@ -5,39 +5,39 @@
 //  Created by Perdi Yansyah on 28/07/23.
 //
 
-
 import UIKit
 
 class DetailViewController: UIViewController {
-    // menyimpan produk yg dipilih
-    var selectedProductIndex: Int = 1
-    // IB
-    @IBOutlet weak var viewBack: UIView!{
+    
+    var sizes: [DatumSize] = []
+    
+    @IBOutlet weak var viewBack: UIView! {
         didSet {
             viewBack.layer.cornerRadius = viewBack.bounds.height / 2
             viewBack.layer.masksToBounds = true
         }
     }
-    
+    @IBOutlet weak var comment: UILabel!
+    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var rating: UILabel!
+    @IBOutlet weak var dateCreateRating: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var product: Product?
-    var sizes: [String] = ["XS", "S", "M", "L", "XL"]
+    var product: DatumProdct?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Update UI with the product details
+        // lemparan data
         if let product = product {
-            titleLabel.text = product.title
+            titleLabel.text = product.name
             priceLabel.text = "$ \(product.price)"
-            descriptionLabel.text = product.description
             
-            if let imageUrl = URL(string: product.image) {
+            if let imageUrl = URL(string: product.imageURL) {
                 URLSession.shared.dataTask(with: imageUrl) { data, response, error in
                     if let data = data, let image = UIImage(data: data) {
                         DispatchQueue.main.async {
@@ -48,12 +48,12 @@ class DetailViewController: UIViewController {
             }
         }
         
-        // Set data source and delegate for the collection view
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        // Register the SizeCollectionViewCell
         collectionView.register(UINib(nibName: "SizeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SizeCollectionViewCell")
+        
+        fetchSizes()
     }
     
     @IBAction func reviewBtn(_ sender: Any) {
@@ -66,6 +66,27 @@ class DetailViewController: UIViewController {
     @IBAction func backArrowTapped(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
+    
+    func fetchSizes() {
+        guard let sizeURL = URL(string: "https://lazaapp.shop/size") else { return }
+        
+        let sizeTask = URLSession.shared.dataTask(with: sizeURL) { [weak self] (data, response, error) in
+            guard let self = self, let data = data else { return }
+            
+            do {
+                let decoder = JSONDecoder()
+                let sizeResponse = try decoder.decode(Size.self, from: data)
+                DispatchQueue.main.async {
+                    self.sizes = sizeResponse.data
+                    self.collectionView.reloadData()
+                }
+            } catch {
+                print("Error fetching sizes: \(error.localizedDescription)")
+            }
+        }
+        
+        sizeTask.resume()
+    }
 }
 
 extension DetailViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -77,13 +98,12 @@ extension DetailViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SizeCollectionViewCell", for: indexPath) as! SizeCollectionViewCell
         
-        // Konfigurasi cell dengan data ukuran
-        cell.sizeLabel.text = sizes[indexPath.item]
+        cell.sizeLabel.text = sizes[indexPath.item].size
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 40, height: 40)
     }
-    
 }

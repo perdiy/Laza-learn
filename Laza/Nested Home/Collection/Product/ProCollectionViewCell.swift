@@ -17,13 +17,13 @@ class ProCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var NameProLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
 
-    func configure(with product: Product) {
-        NameProLabel.text = product.title
+    func configure(with product: DatumProdct) {
+        NameProLabel.text = product.name
         priceProLabel.text = "$\(product.price)"
         
         // Fetch the product image from the URL and set it to the imageView
         DispatchQueue.global().async {
-            if let imageURL = URL(string: product.image),
+            if let imageURL = URL(string: product.imageURL),
                let imageData = try? Data(contentsOf: imageURL),
                let image = UIImage(data: imageData) {
                 DispatchQueue.main.async {

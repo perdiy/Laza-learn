@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+ 
 class SizeCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var viewSize: UIView! 

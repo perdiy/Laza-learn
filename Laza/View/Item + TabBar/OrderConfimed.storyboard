@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 420" translatesAutoresizingMaskIntoConstraints="NO" id="SdX-0M-ET2">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group" translatesAutoresizingMaskIntoConstraints="NO" id="SdX-0M-ET2">
                                 <rect key="frame" x="-103" y="149" width="599" height="599"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="599" id="c8m-BR-Rbj"/>
@@ -113,8 +113,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Group 420" width="1500" height="2264"/>
         <image name="arrow.backward" catalog="system" width="128" height="95"/>
+        <image name="group" width="128" height="128"/>
         <namedColor name="Font Color">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
