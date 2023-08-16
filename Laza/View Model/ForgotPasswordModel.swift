@@ -1,41 +1,43 @@
 //
-//  NewPassViewModel.swift
+//  ForgotPasswordModel.swift
 //  Laza
 //
-//  Created by Perdi Yansyah on 15/08/23.
+//  Created by Perdi Yansyah on 16/08/23.
 //
 
 import Foundation
 import UIKit
 
-class NewPasswordViewModel {
+class ForgotPwdViewModel {
     
     var resetPasswordCompletion: ((_ success: Bool, _ message: String) -> Void)?
     
-    func resetPassword(email: String, code: String, newPassword: String, confirmPassword: String) {
-        if newPassword != confirmPassword {
-            resetPasswordCompletion?(false, "Passwords do not match.")
+    func resetPassword(email: String) {
+        let postData: [String: Any] = ["email": email]
+        
+        guard let url = URL(string: "https://lazaapp.shop/auth/forgotpassword") else {
+            resetPasswordCompletion?(false, "Invalid URL")
             return
         }
         
-        let url = URL(string: "https://lazaapp.shop/auth/recover/password?email=\(email)&code=\(code)")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let postData: [String: Any] = [
-            "new_password": newPassword,
-            "re_password": confirmPassword
-        ]
-        
         do {
-            let jsonData = try JSONSerialization.data(withJSONObject: postData, options: [])
+            let jsonData = try JSONSerialization.data(withJSONObject: postData)
             request.httpBody = jsonData
             
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    print("Error: \(error)")
+                    self.resetPasswordCompletion?(false, "Gagal melakukan koneksi ke server.")
+                    return
+                }
+                
                 if let httpResponse = response as? HTTPURLResponse {
                     if httpResponse.statusCode == 200 {
-                        self.resetPasswordCompletion?(true, "Password reset successful.")
+                        self.resetPasswordCompletion?(true, "Reset password email sent successfully.")
                     } else {
                         if let data = data {
                             do {
@@ -50,13 +52,11 @@ class NewPasswordViewModel {
                             }
                         }
                     }
-                } else {
-                    self.resetPasswordCompletion?(false, "An error occurred.")
                 }
             }
             task.resume()
         } catch {
-            self.resetPasswordCompletion?(false, "An error occurred.")
+            self.resetPasswordCompletion?(false, "Terjadi kesalahan saat mengirim data.")
         }
     }
 }

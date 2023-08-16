@@ -160,6 +160,12 @@
                                     <action selector="signUpButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hYb-gI-43p"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Vector-8" translatesAutoresizingMaskIntoConstraints="NO" id="yJO-he-RWy">
+                                <rect key="frame" x="349" y="216" width="14" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="qyF-Bd-C2Q"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -172,6 +178,7 @@
                             <constraint firstItem="kyG-Dc-Yid" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="AN7-3T-4K1"/>
                             <constraint firstItem="h4b-8j-PUe" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="BSf-Jk-5gM"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="dBC-aT-eP1" secondAttribute="trailing" constant="20" id="CVV-CO-Y7a"/>
+                            <constraint firstItem="yJO-he-RWy" firstAttribute="top" secondItem="Lu7-CY-66n" secondAttribute="bottom" constant="11.67" id="D9g-rO-PfW"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="i1v-uh-VHu" secondAttribute="trailing" constant="20" id="EVG-xK-d06"/>
                             <constraint firstItem="dBC-aT-eP1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Hne-mw-HHU"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="GS6-pg-6f6" secondAttribute="trailing" constant="20" id="QJf-5i-U4d"/>
@@ -187,6 +194,7 @@
                             <constraint firstItem="Lu7-CY-66n" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="YLx-ss-6BN"/>
                             <constraint firstItem="ppl-uX-Meg" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="bXl-57-7It"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="pNI-wb-9GQ" secondAttribute="trailing" constant="23" id="bYD-7H-Hbw"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="yJO-he-RWy" secondAttribute="trailing" constant="30" id="dca-Ad-yu2"/>
                             <constraint firstItem="3sw-KB-sv4" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="35" id="hfw-Tr-hGa"/>
                             <constraint firstItem="Dj3-E8-IXE" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="jCs-SV-XPJ"/>
                             <constraint firstItem="Lu7-CY-66n" firstAttribute="top" secondItem="dut-l8-lp4" secondAttribute="bottom" constant="70" id="laj-7Z-wRf"/>
@@ -216,6 +224,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Vector-8" width="14" height="9"/>
         <image name="arrow.backward" catalog="system" width="128" height="95"/>
         <image name="eye" catalog="system" width="128" height="79"/>
         <namedColor name="Font Color">

@@ -6,13 +6,10 @@
 //
 import UIKit
 
-struct LoginResponse: Codable {
-    let token: String
-}
-
 class WelcomeViewController: UIViewController {
     
     var iconClick = true
+    var welcomeViewModel = WelcomeViewModel()
     
     @IBOutlet weak var passwordTf: UITextField! {
         didSet {
@@ -34,6 +31,14 @@ class WelcomeViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        
+        // print token console
+        if let userToken = UserDefaults.standard.string(forKey: "userToken") {
+            print("User Token: \(userToken)")
+        } else {
+            print("User Token not found.")
+        }
+        
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
         userNameTf.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
@@ -51,63 +56,22 @@ class WelcomeViewController: UIViewController {
     }
     
     @IBAction func loginBtn(_ sender: Any) {
-        signUp()
-    }
-    
-    func signUp() {
-        guard let username = userNameTf.text, !username.isEmpty,
-              let password = passwordTf.text, !password.isEmpty else {
-            showAlert( message: "Please fill in all fields.")
+        guard let username = userNameTf.text, let password = passwordTf.text else {
             return
         }
         
-        let postData: [String: Any] = [
-            "username": username,
-            "password": password
-        ]
-        
-        let url = URL(string: "https://lazaapp.shop/login")!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: postData, options: [])
-            let task = URLSession.shared.uploadTask(with: request, from: jsonData) { data, response, error in
-                if let httpResponse = response as? HTTPURLResponse {
-                    if httpResponse.statusCode == 200 {
-                        DispatchQueue.main.async {
-                            self.goToHome()
-                        }
-                    } else {
-                        if let data = data {
-                            do {
-                                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                                if let errorMessage = json?["description"] as? String {
-                                    DispatchQueue.main.async {
-                                        self.showAlert(message: errorMessage)
-                                    }
-                                } else {
-                                    DispatchQueue.main.async {
-                                        self.showAlert(message: "An error occurred.")
-                                    }
-                                }
-                            } catch {
-                                DispatchQueue.main.async {
-                                    self.showAlert(message: "An error occurred.")
-                                }
-                            }
-                        }
-                    }
+        welcomeViewModel.signUp(username: username, password: password)
+        welcomeViewModel.loginCompletion = { [weak self] success in
+            DispatchQueue.main.async {
+                if success {
+                    self?.goToHome()
                 } else {
-                    self.showAlert(message: "An error occurred.")
+                    self?.showAlert(message: "Login failed. Please check your credentials.")
                 }
             }
-            task.resume()
-        } catch {
-            showAlert(message: "An error occurred.")
         }
     }
+    
     @objc func textFieldDidChange() {
         validateTextFields()
     }

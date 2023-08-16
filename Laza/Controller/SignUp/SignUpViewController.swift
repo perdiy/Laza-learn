@@ -9,30 +9,9 @@ import UIKit
 class SignUpViewController: UIViewController {
     
     var iconClick = true
-    var navigation: ((String)-> Void)?
+    var signUpViewModel = SignUpViewModel()
     
-    @IBAction func hidePassword(_ sender: Any) {
-        if iconClick {
-            iconClick = true
-            passwordTf.isSecureTextEntry = false
-        } else {
-            iconClick = false
-            passwordTf.isSecureTextEntry = true
-        }
-        iconClick = !iconClick
-    }
-    
-    @IBAction func hideConfirmPssword(_ sender: Any) {
-        if iconClick {
-            iconClick = true
-            confirmPasswordTf.isSecureTextEntry = false
-        } else {
-            iconClick = false
-            confirmPasswordTf.isSecureTextEntry = true
-        }
-        iconClick = !iconClick
-    }
-    
+    @IBOutlet weak var cekImg: UIImageView!
     @IBOutlet weak var userNameTf: UITextField!{
         didSet {
             userNameTf.addShadow(color: .gray, widht: 0.5, text: userNameTf)
@@ -61,7 +40,6 @@ class SignUpViewController: UIViewController {
         didSet {
             signUpButton.isEnabled = false
             signUpButton.alpha = 0.5
-            signUpButton.backgroundColor = .gray
         }
     }
     
@@ -101,80 +79,30 @@ class SignUpViewController: UIViewController {
         }
         signUpButton.isEnabled = true
         signUpButton.alpha = 1.0
-        
     }
-    // Function to handle signing up
+    
     func signUp() {
-        guard let username = userNameTf.text, !username.isEmpty,
-              let email = emailTf.text, !email.isEmpty,
-              let password = passwordTf.text, !password.isEmpty,
-              let confirmPassword = confirmPasswordTf.text, !confirmPassword.isEmpty else {
-            showAlert(message: "Please fill in all fields.")
+        guard let username = userNameTf.text, let email = emailTf.text, let password = passwordTf.text, let confirmPassword = confirmPasswordTf.text else {
             return
         }
         
-        guard password == confirmPassword else {
-            showAlert(message: "Passwords do not match.")
-            return
-        }
-        
-        let postData: [String: Any] = [
-            "full_name": username,
-            "username": username,
-            "email": email,
-            "password": password
-            // You can add more data if needed
-        ]
-        
-        let url = URL(string: "https://lazaapp.shop/register")!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: postData, options: [])
-            let task = URLSession.shared.uploadTask(with: request, from: jsonData) { data, response, error in
-                if let httpResponse = response as? HTTPURLResponse {
-                    if httpResponse.statusCode == 201 {
-                        // Registrasi berhasil
-                        DispatchQueue.main.async {
-                            self.navigateToWelcome()
-                            self.showAlert(message: "Registration successful!")
-                        }
-                        print("JSO SignUP")
-                    } else {
-                        if let data = data {
-                            do {
-                                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                                if let errorMessage = json?["description"] as? String {
-                                    DispatchQueue.main.async {
-                                        self.showAlert(message: errorMessage)
-                                    }
-                                } else {
-                                    DispatchQueue.main.async {
-                                        self.showAlert(message: "An error occurred.")
-                                    }
-                                }
-                            } catch {
-                                DispatchQueue.main.async {
-                                    self.showAlert(message: "An error occurred.")
-                                }
-                            }
-                        }
-                    }
+        signUpViewModel.signUp(username: username, email: email, password: password, confirmPassword: confirmPassword)
+        signUpViewModel.signUpCompletion = { success, message in
+            DispatchQueue.main.async {
+                if success {
+                    self.navigateToWelcome()
+                    self.showAlert(message: message)
                 } else {
-                    self.showAlert(message: "An error occurred.")
+                    self.showAlert(message: message)
                 }
             }
-            task.resume()
-        } catch {
-            showAlert(message: "An error occurred.")
         }
     }
+    
     func navigateToWelcome() {
-        guard let welcomeViewController = UIStoryboard(name: "Welcome", bundle: nil).instantiateViewController(withIdentifier: "WelcomeViewController") as? WelcomeViewController else { return }
-        navigationController?.pushViewController(welcomeViewController, animated: true)
-        
+        if let welcomeViewController = UIStoryboard(name: "Welcome", bundle: nil).instantiateViewController(withIdentifier: "WelcomeViewController") as? WelcomeViewController {
+            navigationController?.pushViewController(welcomeViewController, animated: true)
+        }
     }
     
     func showAlert(message: String) {

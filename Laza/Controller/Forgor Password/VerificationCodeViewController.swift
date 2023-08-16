@@ -10,6 +10,8 @@ import DPOTPView
 
 class VerificationCodeViewController: UIViewController {
     
+    var viewModel = VerificationCodeViewModel()
+    
     @IBOutlet weak var verifycationTf: DPOTPView!
     var emailUser: String?
     
@@ -26,14 +28,6 @@ class VerificationCodeViewController: UIViewController {
     }
     
     @IBAction func verifyCodeBtn(_ sender: Any) {
-        //        guard let email = emailUser else {
-        //            showAlert(title: "Error", message: "Tidak ada email yang diatur.")
-        //            return
-        //        }
-        verifyCode()
-    }
-    
-    func verifyCode() {
         guard let email = emailUser else {
             print("No email received.")
             return
@@ -44,50 +38,15 @@ class VerificationCodeViewController: UIViewController {
             return
         }
         
-        sendVerificationRequest(email: email, code: code)
-    }
-    
-    func sendVerificationRequest(email: String, code: String) {
-        let url = URL(string: "https://lazaapp.shop/auth/recover/code")!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let postData: [String: Any] = [
-            "email": email,
-            "code": code
-        ]
-        
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: postData, options: [])
-            let task = URLSession.shared.uploadTask(with: request, from: jsonData) { data, response, error in
-                if let httpResponse = response as? HTTPURLResponse {
-                    if httpResponse.statusCode == 202 {
-                        DispatchQueue.main.async {
-                            self.navigateToNewPassword()
-                        }
-                    } else {
-                        if let data = data {
-                            do {
-                                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                                if let errorMessage = json?["description"] as? String {
-                                    print("Warning: \(errorMessage)")
-                                } else {
-                                    print("No valid HTTP response received.")
-                                    print("Warning: An error occurred.")
-                                }
-                            } catch {
-                                print("Warning: An error occurred.")
-                            }
-                        }
-                    }
+        viewModel.verifyCode(email: email, code: code)
+        viewModel.verifyCodeCompletion = { [weak self] success, message in
+            DispatchQueue.main.async {
+                if success {
+                    self?.navigateToNewPassword()
                 } else {
-                    print("Error: Terjadi kesalahan.")
+                    self?.showAlert(title: "Warning", message: message)
                 }
             }
-            task.resume()
-        } catch {
-            print("Error: Terjadi kesalahan.")
         }
     }
     

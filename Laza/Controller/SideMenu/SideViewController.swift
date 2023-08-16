@@ -8,33 +8,50 @@
 import UIKit
 
 class SideViewController: UIViewController {
+    @IBOutlet weak var userName: UILabel!
+    let userProfileViewModel = UserProfileViewModel()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Load user profile information from API
+        loadUserProfile()
+        
+        // Konfigurasi tampilan view order
+        let viewOrder = self.view.viewWithTag(1)
+        viewOrder?.layer.cornerRadius = 8
+        viewOrder?.layer.masksToBounds = true
+        
+        // Konfigurasi tampilan view Button
+        let viewButton = self.view.viewWithTag(2)
+        viewButton?.layer.cornerRadius = viewButton?.bounds.height ?? 0 / 2
+        viewButton?.layer.masksToBounds = true
+    }
+    
     @IBAction func sideBtn(_ sender: Any) {
         dismiss(animated: true)
     }
-    @IBOutlet weak var userName: UILabel!
-    @IBAction func switchBtn(_ sender: Any) {
+    
+    @IBAction func switchBtn(_ sender: UISwitch) {
         if let window = UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).first?.windows.first {
-            if (sender as AnyObject).isOn {
+            if sender.isOn {
                 window.overrideUserInterfaceStyle = .dark
-                return
+            } else {
+                window.overrideUserInterfaceStyle = .light
             }
-            window.overrideUserInterfaceStyle =  .light
-            return
         }
     }
-    // view order
-    @IBOutlet weak var viewOrder: UIView!
-    // view Button
-    @IBOutlet weak var viewButton: UIView!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // view order
-        viewOrder.layer.cornerRadius = 8
-        viewOrder.layer.masksToBounds = true
-        // view Button
-        viewButton.layer.cornerRadius = viewButton.bounds.height / 2
-        viewButton.layer.masksToBounds = true
+    
+    // Load user profile information from API using ViewModel
+    func loadUserProfile() {
+        userProfileViewModel.loadUserProfile { [weak self] error in
+            if let error = error {
+                print("Error loading user profile: \(error)")
+            } else {
+                DispatchQueue.main.async {
+                    self?.userName.text = self?.userProfileViewModel.username
+                }
+            }
+        }
     }
-    
-    
 }

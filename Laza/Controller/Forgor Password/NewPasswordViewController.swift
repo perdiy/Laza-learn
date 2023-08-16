@@ -5,9 +5,10 @@
 //  Created by Perdi Yansyah on 04/08/23.
 //
 
-import UIKit
-
+import UIKit 
 class NewPasswordViewController: UIViewController {
+    
+    var viewModel = NewPasswordViewModel()
     
     var iconClick = true
     var emailNewPass: String?
@@ -55,63 +56,16 @@ class NewPasswordViewController: UIViewController {
             return
         }
         
-        if newPassword != confirmPassword {
-            showAlert(title: "Error", message: "Kata sandi tidak cocok.")
-            return
-        }
-        
-        
-        let url = URL(string: "https://lazaapp.shop/auth/recover/password?email=\(email)&code=\(code)")!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let postData: [String: Any] = [
-            "new_password": newPassword,
-            "re_password": confirmPassword
-        ]
-        
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: postData, options: [])
-            request.httpBody = jsonData
-            
-            let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                if let httpResponse = response as? HTTPURLResponse {
-                    print("HTTP Response Status Code: \(httpResponse.statusCode)")
-                    if httpResponse.statusCode == 200 {
-                        DispatchQueue.main.async {
-                            // Reset kata sandi berhasil, navigasi ke layar sukses
-                            self.navigateToSuccessScreen()
-                        }
-                    } else {
-                        if let data = data {
-                            do {
-                                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                                if let errorMessage = json?["description"] as? String {
-                                    DispatchQueue.main.async {
-                                        self.showAlert(title: "Warning", message: errorMessage)
-                                    }
-                                } else {
-                                    print("No valid HTTP response received.")
-                                    DispatchQueue.main.async {
-                                        self.showAlert(title: "Warning", message: "An error occurred.")
-                                    }
-                                }
-                            } catch {
-                                DispatchQueue.main.async {
-                                    self.showAlert(title: "Warning", message: "An error occurred.")
-                                }
-                            }
-                        }
-                    }
+        viewModel.resetPassword(email: email, code: code, newPassword: newPassword, confirmPassword: confirmPassword)
+        viewModel.resetPasswordCompletion = { [weak self] success, message in
+            DispatchQueue.main.async {
+                if success {
+                    self?.navigateToSuccessScreen()
+                    self?.showAlert(title: "Success", message: message)
                 } else {
-                    self.showAlert(title: "Error", message: "Terjadi kesalahan.")
+                    self?.showAlert(title: "Warning", message: message)
                 }
             }
-            task.resume()
-            print("API request sent")
-        } catch {
-            showAlert(title: "Error", message: "Terjadi kesalahan.")
         }
     }
     

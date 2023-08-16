@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+
     @IBOutlet weak var viewWhite: UIView! {
         didSet {
             // Atur border radius pada viewWhite
@@ -16,20 +16,20 @@ class ViewController: UIViewController {
             viewWhite.layer.masksToBounds = true
         }
     }
-    
-    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
     }
-    
+
     @IBAction func skipBtn(_ sender: Any) {
         let storyboard = UIStoryboard(name: "loginWith", bundle: nil)
         if let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
             navigationController?.pushViewController(loginVC, animated: true)
         }
     }
-     
+
     @IBAction func womenBtn
     (_ sender: Any) {
         let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
@@ -37,7 +37,7 @@ class ViewController: UIViewController {
             navigationController?.pushViewController(loginVC, animated: true)
         }
     }
-    
+
 }
 
 

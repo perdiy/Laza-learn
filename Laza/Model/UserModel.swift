@@ -4,35 +4,27 @@
 //
 //  Created by Perdi Yansyah on 28/07/23.
 //
-
 import Foundation
 
-struct WelcomeElement: Codable {
-    let address: Address
+struct LoginToken: Codable {
+    let status: String
+    let isError: Bool
+    let data: DataClass
+}
+
+// MARK: - DataClass
+struct DataClass: Codable {
     let id: Int
-    let email, username, password: String
-    let name: Name
-    let phone: String
-    let v: Int
+    let fullName, username, email: String
+    let isVerified: Bool
+    let createdAt, updatedAt: String
 
     enum CodingKeys: String, CodingKey {
-        case address, id, email, username, password, name, phone
-        case v = "__v"
+        case id
+        case fullName = "full_name"
+        case username, email
+        case isVerified = "is_verified"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
     }
 }
-
-struct Address: Codable {
-    let geolocation: Geolocation
-    let city, street: String
-    let number: Int
-    let zipcode: String
-}
-
-struct Geolocation: Codable {
-    let lat, long: String
-}
-
-struct Name: Codable {
-    let firstname, lastname: String
-}
-
