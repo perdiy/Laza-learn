@@ -4,6 +4,7 @@
 //
 //  Created by Perdi Yansyah on 27/07/23.
 //
+
 import UIKit
 import DPOTPView
 
@@ -25,10 +26,10 @@ class VerificationCodeViewController: UIViewController {
     }
     
     @IBAction func verifyCodeBtn(_ sender: Any) {
-        guard let email = emailUser else {
-            showAlert(title: "Error", message: "Tidak ada email yang diatur.")
-            return
-        }
+        //        guard let email = emailUser else {
+        //            showAlert(title: "Error", message: "Tidak ada email yang diatur.")
+        //            return
+        //        }
         verifyCode()
     }
     
@@ -38,17 +39,24 @@ class VerificationCodeViewController: UIViewController {
             return
         }
         
-        let code = verifycationTf.text ?? ""
+        guard let code = verifycationTf.text, !code.isEmpty else {
+            print("Harap masukkan kode verifikasi.")
+            return
+        }
+        
+        sendVerificationRequest(email: email, code: code)
+    }
+    
+    func sendVerificationRequest(email: String, code: String) {
+        let url = URL(string: "https://lazaapp.shop/auth/recover/code")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let postData: [String: Any] = [
             "email": email,
             "code": code
         ]
-        
-        let url = URL(string: "https://lazaapp.shop/auth/recover/code")!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: postData, options: [])
@@ -56,48 +64,41 @@ class VerificationCodeViewController: UIViewController {
                 if let httpResponse = response as? HTTPURLResponse {
                     if httpResponse.statusCode == 202 {
                         DispatchQueue.main.async {
-                            self.navigateToNewPassword(email: email, verificationCode: code)
+                            self.navigateToNewPassword()
                         }
                     } else {
                         if let data = data {
                             do {
                                 let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
                                 if let errorMessage = json?["description"] as? String {
-                                    DispatchQueue.main.async {
-                                        self.showAlert(title: "Warning", message: errorMessage)
-                                    }
+                                    print("Warning: \(errorMessage)")
                                 } else {
-                                    DispatchQueue.main.async {
-                                        self.showAlert(title: "Warning", message: "An error occurred.")
-                                    }
+                                    print("No valid HTTP response received.")
+                                    print("Warning: An error occurred.")
                                 }
                             } catch {
-                                DispatchQueue.main.async {
-                                    self.showAlert(title: "Warning", message: "An error occurred.")
-                                }
+                                print("Warning: An error occurred.")
                             }
                         }
                     }
                 } else {
-                    self.showAlert(title: "Error", message: "An error occurred.")
+                    print("Error: Terjadi kesalahan.")
                 }
             }
             task.resume()
         } catch {
-            showAlert(title: "Error", message: "An error occurred.")
+            print("Error: Terjadi kesalahan.")
         }
     }
     
-    func navigateToNewPassword(email: String, verificationCode: String) {
+    func navigateToNewPassword() {
         let storyboard = UIStoryboard(name: "ForgotPassword", bundle: nil)
         if let newPasswordVC = storyboard.instantiateViewController(withIdentifier: "NewPasswordViewController") as? NewPasswordViewController {
-            newPasswordVC.emailUser = email
-            newPasswordVC.verificationCode = verificationCode
+            newPasswordVC.emailNewPass = emailUser
+            newPasswordVC.verificationCode = verifycationTf.text
             navigationController?.pushViewController(newPasswordVC, animated: true)
         }
     }
-    
-    
     
     private func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)

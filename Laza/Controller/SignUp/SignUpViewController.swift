@@ -9,6 +9,7 @@ import UIKit
 class SignUpViewController: UIViewController {
     
     var iconClick = true
+    var navigation: ((String)-> Void)?
     
     @IBAction func hidePassword(_ sender: Any) {
         if iconClick {
@@ -137,8 +138,8 @@ class SignUpViewController: UIViewController {
                     if httpResponse.statusCode == 201 {
                         // Registrasi berhasil
                         DispatchQueue.main.async {
-                            self.showAlert(message: "Registration successful!")
                             self.navigateToWelcome()
+                            self.showAlert(message: "Registration successful!")
                         }
                         print("JSO SignUP")
                     } else {

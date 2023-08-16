@@ -24,7 +24,7 @@ class ForgotPwdViewController: UIViewController {
     @IBAction func emailBtn(_ sender: Any) {
         // Validate the email format using regex
         guard let email = emailTf.text, isValidEmail(email) else {
-            showAlert(title: "Error", message: "Format email tidak valid ")
+            showAlert(title: "Error", message: "Format email tidak valid.")
             return
         }
         
@@ -143,5 +143,4 @@ class ForgotPwdViewController: UIViewController {
             navigationController?.pushViewController(verificationCodeVC, animated: true)
         }
     }
-
 }

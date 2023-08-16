@@ -10,7 +10,7 @@ import UIKit
 class NewPasswordViewController: UIViewController {
     
     var iconClick = true
-    var emailUser: String?
+    var emailNewPass: String?
     var verificationCode: String?
     
     @IBOutlet weak var passwordTf: UITextField! {
@@ -40,8 +40,7 @@ class NewPasswordViewController: UIViewController {
     }
     
     func resetPassword() {
-        print("Reset password button tapped")
-        guard let email = emailUser, let code = verificationCode else {
+        guard let email = emailNewPass, let code = verificationCode else {
             print("Tidak ada email atau kode verifikasi.")
             return
         }
@@ -61,13 +60,14 @@ class NewPasswordViewController: UIViewController {
             return
         }
         
+        
         let url = URL(string: "https://lazaapp.shop/auth/recover/password?email=\(email)&code=\(code)")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let postData: [String: Any] = [
-            "newPassword": newPassword,
+            "new_password": newPassword,
             "re_password": confirmPassword
         ]
         
