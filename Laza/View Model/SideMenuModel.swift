@@ -9,19 +9,19 @@ import Foundation
 
 class UserProfileViewModel {
     var username: String = ""
-    
+
     func loadUserProfile(completion: @escaping (Error?) -> Void) {
-        guard let userToken = UserDefaults.standard.string(forKey: "userToken") else {
+        guard let userToken = KeychainManager.shared.getToken() else {
             let error = NSError(domain: "User Token not found.", code: 0, userInfo: nil)
             completion(error)
             return
         }
-        
+
         let url = URL(string: "https://lazaapp.shop/user/profile")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("Bearer \(userToken)", forHTTPHeaderField: "X-Auth-Token")
-        
+
         let task = URLSession.shared.dataTask(with: request) { data, _, error in
             if let data = data {
                 do {
@@ -37,5 +37,13 @@ class UserProfileViewModel {
         }
         task.resume()
     }
-}
 
+    func logoutUser(completion: @escaping (Error?) -> Void) {
+        do {
+            try KeychainManager.shared.deleteToken()
+            completion(nil)
+        } catch {
+            completion(error)
+        }
+    }
+}

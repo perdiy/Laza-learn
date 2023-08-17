@@ -38,6 +38,7 @@
 		5245483D2A8D096F0055B2D3 /* MyProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5245483C2A8D096F0055B2D3 /* MyProfileModel.swift */; };
 		5245483F2A8D0CB30055B2D3 /* SideMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5245483E2A8D0CB30055B2D3 /* SideMenuModel.swift */; };
 		524548412A8D0DA10055B2D3 /* NestedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524548402A8D0DA10055B2D3 /* NestedViewModel.swift */; };
+		524548432A8DAB5D0055B2D3 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524548422A8DAB5D0055B2D3 /* KeychainManager.swift */; };
 		52527E442A7A2AAA00CDAD49 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 52527E432A7A2AAA00CDAD49 /* SideMenu */; };
 		52527E462A7A3AF600CDAD49 /* SideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52527E452A7A3AF600CDAD49 /* SideViewController.swift */; };
 		52533EAE2A89BC7800D08E82 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52533EAD2A89BC7800D08E82 /* Product.swift */; };
@@ -79,7 +80,6 @@
 		52EF38702A72125400446F31 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF386F2A72125400446F31 /* SceneDelegate.swift */; };
 		52EF38782A72125400446F31 /* Laza.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52EF38762A72125400446F31 /* Laza.xcdatamodeld */; };
 		52EF38882A72146B00446F31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52EF38872A72146B00446F31 /* LaunchScreen.storyboard */; };
-		52EF388A2A72148200446F31 /* loginWith.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52EF38892A72148200446F31 /* loginWith.storyboard */; };
 		52EF388C2A72148800446F31 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52EF388B2A72148800446F31 /* SignUp.storyboard */; };
 		52EF388E2A72148D00446F31 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52EF388D2A72148D00446F31 /* Welcome.storyboard */; };
 		52EF38902A72149200446F31 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52EF388F2A72149200446F31 /* TabBar.storyboard */; };
@@ -134,6 +134,7 @@
 		5245483C2A8D096F0055B2D3 /* MyProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileModel.swift; sourceTree = "<group>"; };
 		5245483E2A8D0CB30055B2D3 /* SideMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuModel.swift; sourceTree = "<group>"; };
 		524548402A8D0DA10055B2D3 /* NestedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestedViewModel.swift; sourceTree = "<group>"; };
+		524548422A8DAB5D0055B2D3 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		52527E452A7A3AF600CDAD49 /* SideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideViewController.swift; sourceTree = "<group>"; };
 		52533EAD2A89BC7800D08E82 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		52533EAF2A89C71A00D08E82 /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
@@ -171,7 +172,6 @@
 		52EF386F2A72125400446F31 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		52EF38772A72125400446F31 /* Laza.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Laza.xcdatamodel; sourceTree = "<group>"; };
 		52EF38872A72146B00446F31 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		52EF38892A72148200446F31 /* loginWith.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = loginWith.storyboard; sourceTree = "<group>"; };
 		52EF388B2A72148800446F31 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		52EF388D2A72148D00446F31 /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 		52EF388F2A72149200446F31 /* TabBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
@@ -358,6 +358,7 @@
 				52EF389F2A72152900446F31 /* Assets.xcassets */,
 				52134B9C2A7477E100B87588 /* UserDefault.swift */,
 				52728AE12A77A21100519DE0 /* HomeViewModel.swift */,
+				524548422A8DAB5D0055B2D3 /* KeychainManager.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -494,7 +495,6 @@
 				52EF388D2A72148D00446F31 /* Welcome.storyboard */,
 				52EF38872A72146B00446F31 /* LaunchScreen.storyboard */,
 				52EF388B2A72148800446F31 /* SignUp.storyboard */,
-				52EF38892A72148200446F31 /* loginWith.storyboard */,
 			);
 			path = ToolsLogin;
 			sourceTree = "<group>";
@@ -720,7 +720,6 @@
 				52444CD92A78BB6E000BFC87 /* ProTableViewCell.xib in Resources */,
 				520A8DBE2A8097BD0049FBB1 /* OrderConfimed.storyboard in Resources */,
 				523AD8F12A73B44B005FACAD /* Detail.storyboard in Resources */,
-				52EF388A2A72148200446F31 /* loginWith.storyboard in Resources */,
 				52444CC52A78B7B2000BFC87 /* CategoryCollectionViewCell.xib in Resources */,
 				52EF38882A72146B00446F31 /* LaunchScreen.storyboard in Resources */,
 				52444CCD2A78B7F4000BFC87 /* ProCollectionViewCell.xib in Resources */,
@@ -812,6 +811,7 @@
 				52444CD12A78BA09000BFC87 /* NestedViewController.swift in Sources */,
 				52B277DD2A82887700614179 /* Extension.swift in Sources */,
 				52EF386E2A72125400446F31 /* AppDelegate.swift in Sources */,
+				524548432A8DAB5D0055B2D3 /* KeychainManager.swift in Sources */,
 				52EF389C2A7214D600446F31 /* LoginViewController.swift in Sources */,
 				52EF38A82A7225BF00446F31 /* TabBarViewController.swift in Sources */,
 				5245483D2A8D096F0055B2D3 /* MyProfileModel.swift in Sources */,

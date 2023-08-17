@@ -36,8 +36,7 @@ class WelcomeViewModel {
                                 let jsonResponse = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
                                 if let dataDict = jsonResponse?["data"] as? [String: Any],
                                    let accessToken = dataDict["access_token"] as? String {
-                                    UserDefaults.standard.setValue(accessToken, forKey: "userToken")
-                                    UserDefaults.standard.synchronize()
+                                    KeychainManager.shared.saveToken(accessToken)
                                     print("User Token: \(accessToken)")
                                     self.loginCompletion?(true)
                                 } else {
@@ -75,4 +74,3 @@ class WelcomeViewModel {
         }
     }
 }
-

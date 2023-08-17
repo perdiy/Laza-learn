@@ -10,7 +10,7 @@ import UIKit
 class SideViewController: UIViewController {
     @IBOutlet weak var userName: UILabel!
     let userProfileViewModel = UserProfileViewModel()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,11 +27,11 @@ class SideViewController: UIViewController {
         viewButton?.layer.cornerRadius = viewButton?.bounds.height ?? 0 / 2
         viewButton?.layer.masksToBounds = true
     }
-    
+
     @IBAction func sideBtn(_ sender: Any) {
         dismiss(animated: true)
     }
-    
+
     @IBAction func switchBtn(_ sender: UISwitch) {
         if let window = UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).first?.windows.first {
             if sender.isOn {
@@ -41,8 +41,22 @@ class SideViewController: UIViewController {
             }
         }
     }
-    
-    // Load user profile information from API using ViewModel
+
+    @IBAction func logoutButton(_ sender: Any) {
+        userProfileViewModel.logoutUser { [weak self] error in
+            if let error = error {
+                print("Error logging out user: \(error)")
+            } else {
+                DispatchQueue.main.async {
+                    let storyboard = UIStoryboard(name: "Welcome", bundle: nil)
+                    if let loginViewController = storyboard.instantiateViewController(withIdentifier: "WelcomeViewController") as? WelcomeViewController {
+                        self?.navigationController?.pushViewController(loginViewController, animated: true)
+                    }
+                }
+            }
+        }
+    }
+
     func loadUserProfile() {
         userProfileViewModel.loadUserProfile { [weak self] error in
             if let error = error {
