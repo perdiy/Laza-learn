@@ -8,33 +8,35 @@
 
 import Foundation
 
+typealias ProductDetailIndex = DetailProduct?
 struct DetailProduct: Codable {
     let status: String
     let isError: Bool
     let data: DataDetailProduct
 }
 
+// MARK: - Data Detail Product
 struct DataDetailProduct: Codable {
     let id: Int
-    let name, description, imageURL: String
-    let price: Double
-    let categoryID: Int
-    let category: [Category]
-    let size: [Size]
+    let name, description: String
+    let imageURL: String
+    let price, brandID: Int
+    let category: Category
+    let size: [SizeDetailProd]
     let reviews: [Review]
     let createdAt, updatedAt: String
-    
+
     enum CodingKeys: String, CodingKey {
         case id, name, description
         case imageURL = "image_url"
         case price
-        case categoryID = "category_id"
+        case brandID = "brand_id"
         case category, size, reviews
         case createdAt = "created_at"
         case updatedAt = "updated_at"
     }
 }
-
+ 
 // MARK: - Category
 struct Category: Codable {
     let id: Int
@@ -46,10 +48,8 @@ struct Review: Codable {
     let id: Int
     let comment: String
     let rating: Double
-    let fullName: String
-    let imageURL: String
-    let createdAt: String
-    
+    let fullName, imageURL, createdAt: String
+
     enum CodingKeys: String, CodingKey {
         case id, comment, rating
         case fullName = "full_name"
@@ -58,4 +58,8 @@ struct Review: Codable {
     }
 }
 
-
+// MARK: - Size
+struct SizeDetailProd: Codable {
+    let id: Int
+    let size: String
+}

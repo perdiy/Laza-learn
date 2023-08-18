@@ -7,7 +7,7 @@
 
 
 import Foundation
-
+ 
 struct Size: Codable {
     let status: String
     let isError: Bool

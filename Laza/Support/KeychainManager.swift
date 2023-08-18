@@ -11,9 +11,10 @@ import KeychainAccess
 class KeychainManager {
     static let shared = KeychainManager()
     
-    private let keychain = Keychain(service: "com.yourapp.laza")
+    private let keychain = Keychain(service: "MS.Laza")
     
     func saveToken(_ token: String) {
+        
         do {
             try keychain.set(token, key: "userToken")
         } catch {

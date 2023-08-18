@@ -5,6 +5,13 @@
 //  Created by Perdi Yansyah on 31/07/23.
 //
 
+//
+//  FavoriteViewController.swift
+//  Laza
+//
+//  Created by Perdi Yansyah on 31/07/23.
+//
+
 import UIKit
 
 class FavoriteViewController: UIViewController {
@@ -45,28 +52,17 @@ class FavoriteViewController: UIViewController {
 
 extension FavoriteViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return 0 // Mengosongkan data
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavoriteCollectionViewCell", for: indexPath) as! FavoriteCollectionViewCell
-
-        cell.productLabel.text = "Produk \(indexPath.row + 1)"
-        cell.priceLabel.text = "$19.99"
-        cell.imgView.image = UIImage(named: "Rectangle 569")
-
-        return cell
+        // Kode sel untuk tampilan sel kosong
+        return UICollectionViewCell()
     }
 }
 
 extension FavoriteViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Detail", bundle: nil)
-        if let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
-//            detailViewController.selectedProductIndex = indexPath.row
-            navigationController?.pushViewController(detailViewController, animated: true)
-        }
+        // Tidak ada navigasi ke DetailViewController
     }
 }
-
-

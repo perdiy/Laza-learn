@@ -25,11 +25,19 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
+        checkLoggedIn()
     }
     
+    private func checkLoggedIn() {
+            if let userToken = UserDefaults.standard.string(forKey: "userToken") {
+                let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
+                if let myProfileVC = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController {
+                    myProfileVC.userToken = userToken
+                    
+                    navigationController?.pushViewController(myProfileVC, animated: false)
+                }
+            }
+        }
     @IBAction func SignUpButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "SignUp", bundle: nil)
         if let signupVC = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController {

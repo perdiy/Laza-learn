@@ -11,39 +11,34 @@ class UserProfileViewModel {
     var username: String = ""
 
     func loadUserProfile(completion: @escaping (Error?) -> Void) {
-        guard let userToken = KeychainManager.shared.getToken() else {
-            let error = NSError(domain: "User Token not found.", code: 0, userInfo: nil)
-            completion(error)
-            return
-        }
+        if let userToken = UserDefaults.standard.string(forKey: "userToken") {
+            let url = URL(string: "https://lazaapp.shop/user/profile")!
+            var request = URLRequest(url: url)
+            request.httpMethod = "GET"
+            request.setValue("Bearer \(userToken)", forHTTPHeaderField: "X-Auth-Token")
 
-        let url = URL(string: "https://lazaapp.shop/user/profile")!
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.setValue("Bearer \(userToken)", forHTTPHeaderField: "X-Auth-Token")
-
-        let task = URLSession.shared.dataTask(with: request) { data, _, error in
-            if let data = data {
-                do {
-                    let userModel = try JSONDecoder().decode(LoginToken.self, from: data)
-                    self.username = userModel.data.username
-                    completion(nil)
-                } catch {
+            let task = URLSession.shared.dataTask(with: request) { data, _, error in
+                if let data = data {
+                    do {
+                        let userModel = try JSONDecoder().decode(LoginToken.self, from: data)
+                        self.username = userModel.data.username
+                        completion(nil)
+                    } catch {
+                        completion(error)
+                    }
+                } else if let error = error {
                     completion(error)
                 }
-            } else if let error = error {
-                completion(error)
             }
+            task.resume()
+        } else {
+            let error = NSError(domain: "User Token not found.", code: 0, userInfo: nil)
+            completion(error)
         }
-        task.resume()
     }
 
     func logoutUser(completion: @escaping (Error?) -> Void) {
-        do {
-            try KeychainManager.shared.deleteToken()
-            completion(nil)
-        } catch {
-            completion(error)
-        }
+        UserDefaults.standard.removeObject(forKey: "userToken")
+        completion(nil)
     }
 }

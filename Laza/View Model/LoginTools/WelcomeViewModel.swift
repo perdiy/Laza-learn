@@ -4,8 +4,8 @@
 //
 //  Created by Perdi Yansyah on 16/08/23.
 //
-import Foundation
 
+import Foundation
 class WelcomeViewModel {
     
     var loginCompletion: ((_ success: Bool) -> Void)?
@@ -36,7 +36,11 @@ class WelcomeViewModel {
                                 let jsonResponse = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
                                 if let dataDict = jsonResponse?["data"] as? [String: Any],
                                    let accessToken = dataDict["access_token"] as? String {
-                                    KeychainManager.shared.saveToken(accessToken)
+                                    
+                                    // Save token to UserDefaults
+                                    UserDefaults.standard.set(accessToken, forKey: "userToken")
+                                    UserDefaults.standard.synchronize()
+                                    
                                     print("User Token: \(accessToken)")
                                     self.loginCompletion?(true)
                                 } else {

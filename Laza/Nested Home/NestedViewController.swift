@@ -171,9 +171,9 @@ extension NestedViewController: ProductCellProtocol {
     func goToDetailProduct(product: DatumProdct) {
         let storyboard = UIStoryboard(name: "Detail", bundle: nil)
         if let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
-            detailViewController.product = product
+            detailViewController.productId = product.id
             navigationController?.pushViewController(detailViewController, animated: true)
         }
     }
 }
- 
+
