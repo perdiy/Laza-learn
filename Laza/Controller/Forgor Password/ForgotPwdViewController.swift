@@ -9,6 +9,7 @@ import UIKit
 
 class ForgotPwdViewController: UIViewController {
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var viewmodel = ForgotPwdViewModel()
     
     @IBOutlet weak var viewBack: UIView!
@@ -25,13 +26,19 @@ class ForgotPwdViewController: UIViewController {
     
     @IBAction func emailBtn(_ sender: Any) {
         guard let email = emailTf.text, isValidEmail(email) else {
-            showAlert(title: "Error", message: "Format email tidak valid.")
+            showAlert(title: "Error", message: "Invalid email format.")
             return
         }
+        
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
         
         viewmodel.resetPassword(email: email)
         viewmodel.resetPasswordCompletion = { [weak self] success, message in
             DispatchQueue.main.async {
+                self?.activityIndicator.stopAnimating()
+                self?.activityIndicator.isHidden = true
+                
                 if success {
                     self?.navigateToVerificationCode(email: email)
                     self?.showAlert(title: "Success", message: message)
@@ -44,6 +51,9 @@ class ForgotPwdViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        activityIndicator.isHidden = true
+        
         viewBack.layer.cornerRadius = viewBack.bounds.height / 2.0
         viewBack.clipsToBounds = true
         

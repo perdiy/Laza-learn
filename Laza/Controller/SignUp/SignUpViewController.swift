@@ -4,6 +4,7 @@
 //
 //  Created by Perdi Yansyah on 27/07/23.
 //
+
 import UIKit
 
 class SignUpViewController: UIViewController {
@@ -11,28 +12,43 @@ class SignUpViewController: UIViewController {
     var iconClick = true
     var signUpViewModel = SignUpViewModel()
     
+    @IBAction func hidePassword(_ sender: Any) {
+        iconClick.toggle()
+        passwordTf.isSecureTextEntry = !iconClick
+    }
+    
+    @IBAction func hideConfirmPassword(_ sender: Any) {
+        iconClick.toggle()
+        confirmPasswordTf.isSecureTextEntry = !iconClick
+    }
+    
+    @IBOutlet weak var strongConfirmPassword: UIImageView!
+    @IBOutlet weak var strongPassword: UIImageView!
     @IBOutlet weak var cekImg: UIImageView!
-    @IBOutlet weak var userNameTf: UITextField!{
+    @IBOutlet weak var userNameTf: UITextField! {
         didSet {
             userNameTf.addShadow(color: .gray, widht: 0.5, text: userNameTf)
         }
     }
     
-    @IBOutlet weak var emailTf: UITextField!{
+    @IBOutlet weak var emailTf: UITextField! {
         didSet {
             emailTf.addShadow(color: .gray, widht: 0.5, text: emailTf)
+            emailTf.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         }
     }
     
     @IBOutlet weak var passwordTf: UITextField! {
         didSet {
             passwordTf.addShadow(color: .gray, widht: 0.5, text: passwordTf)
+            passwordTf.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         }
     }
     
     @IBOutlet weak var confirmPasswordTf: UITextField! {
         didSet {
             confirmPasswordTf.addShadow(color: .gray, widht: 0.5, text: confirmPasswordTf)
+            confirmPasswordTf.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         }
     }
     
@@ -62,10 +78,16 @@ class SignUpViewController: UIViewController {
         passwordTf.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         confirmPasswordTf.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         validateTextFields()
+        validateEmailField()
+        validatePasswordField()
+        validateConfirmPasswordField()
     }
     
     @objc func textFieldDidChange() {
         validateTextFields()
+        validateEmailField()
+        validatePasswordField()
+        validateConfirmPasswordField()
     }
     
     private func validateTextFields() {
@@ -79,6 +101,45 @@ class SignUpViewController: UIViewController {
         }
         signUpButton.isEnabled = true
         signUpButton.alpha = 1.0
+    }
+    
+    private func validateEmailField() {
+        guard let email = emailTf.text, !email.isEmpty else {
+            cekImg.isHidden = true
+            return
+        }
+        
+        if ValidationUtil.isValidEmail(email) {
+            cekImg.isHidden = false
+        } else {
+            cekImg.isHidden = true
+        }
+    }
+    
+    private func validatePasswordField() {
+        guard let password = passwordTf.text, !password.isEmpty else {
+            strongPassword.isHidden = true
+            return
+        }
+        
+        if ValidationUtil.isValidPassword(password) {
+            strongPassword.isHidden = false
+        } else {
+            strongPassword.isHidden = true
+        }
+    }
+    
+    private func validateConfirmPasswordField() {
+        guard let confirmPassword = confirmPasswordTf.text, !confirmPassword.isEmpty else {
+            strongConfirmPassword.isHidden = true
+            return
+        }
+        
+        if ValidationUtil.isValidPassword(confirmPassword) {
+            strongConfirmPassword.isHidden = false
+        } else {
+            strongConfirmPassword.isHidden = true
+        }
     }
     
     func signUp() {

@@ -5,7 +5,8 @@
 //  Created by Perdi Yansyah on 04/08/23.
 //
 
-import UIKit 
+import UIKit
+
 class NewPasswordViewController: UIViewController {
     
     var viewModel = NewPasswordViewModel()
@@ -14,6 +15,7 @@ class NewPasswordViewController: UIViewController {
     var emailNewPass: String?
     var verificationCode: String?
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var passwordTf: UITextField! {
         didSet {
             passwordTf.addShadow(color: .gray, widht: 0.5, text: passwordTf)
@@ -42,23 +44,29 @@ class NewPasswordViewController: UIViewController {
     
     func resetPassword() {
         guard let email = emailNewPass, let code = verificationCode else {
-            print("Tidak ada email atau kode verifikasi.")
+            print("No email or verification code.")
             return
         }
         
         guard let newPassword = passwordTf.text, !newPassword.isEmpty else {
-            showAlert(title: "Error", message: "Harap masukkan kata sandi baru.")
+            showAlert(title: "Error", message: "Please enter a new password.")
             return
         }
         
         guard let confirmPassword = confirmPasswordTf.text, !confirmPassword.isEmpty else {
-            showAlert(title: "Error", message: "Harap konfirmasi kata sandi baru.")
+            showAlert(title: "Error", message: "Please confirm the new password.")
             return
         }
+        
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
         
         viewModel.resetPassword(email: email, code: code, newPassword: newPassword, confirmPassword: confirmPassword)
         viewModel.resetPasswordCompletion = { [weak self] success, message in
             DispatchQueue.main.async {
+                self?.activityIndicator.stopAnimating()
+                self?.activityIndicator.isHidden = true
+                
                 if success {
                     self?.navigateToSuccessScreen()
                     self?.showAlert(title: "Success", message: message)
@@ -69,7 +77,6 @@ class NewPasswordViewController: UIViewController {
         }
     }
     
-    // Setelah pengaturan kata sandi baru berhasil
     func navigateToSuccessScreen() {
         if let successViewController = UIStoryboard(name: "Welcome", bundle: nil).instantiateViewController(withIdentifier: "WelcomeViewController") as? WelcomeViewController {
             navigationController?.pushViewController(successViewController, animated: true)

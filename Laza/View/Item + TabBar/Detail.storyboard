@@ -324,15 +324,9 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="zZv-vx-KMo" id="fEX-Uq-663"/>
-                        <outlet property="comment" destination="X5T-wO-mke" id="fkC-2k-6Dv"/>
-                        <outlet property="dateCreateRating" destination="bbA-W5-8lD" id="CyY-fm-q5T"/>
-                        <outlet property="descriptionLabel" destination="Rfa-Ql-Et4" id="LV8-Kb-q3Y"/>
-                        <outlet property="image" destination="SEw-VF-06G" id="UYf-5S-HwL"/>
                         <outlet property="priceLabel" destination="nJB-Nx-OJw" id="xhF-V6-jAu"/>
                         <outlet property="productImageView" destination="6f8-DB-Yw1" id="NrL-Ne-FR9"/>
-                        <outlet property="rating" destination="9Od-Sj-JYa" id="UPL-7q-Oka"/>
                         <outlet property="titleLabel" destination="1PS-oU-Cky" id="TQr-hV-6Of"/>
-                        <outlet property="viewBack" destination="ILR-Ko-MCr" id="kD5-Iv-kHt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fc2-b5-esS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

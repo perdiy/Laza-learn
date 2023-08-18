@@ -8,22 +8,11 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    
+    var viewModel: DetailViewModel!
     var sizes: [DatumSize] = []
     
-    @IBOutlet weak var viewBack: UIView! {
-        didSet {
-            viewBack.layer.cornerRadius = viewBack.bounds.height / 2
-            viewBack.layer.masksToBounds = true
-        }
-    }
-    @IBOutlet weak var comment: UILabel!
-    @IBOutlet weak var image: UIImageView!
-    @IBOutlet weak var rating: UILabel!
-    @IBOutlet weak var dateCreateRating: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -32,7 +21,6 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // lemparan data
         if let product = product {
             titleLabel.text = product.name
             priceLabel.text = "$ \(product.price)"
@@ -53,7 +41,9 @@ class DetailViewController: UIViewController {
         
         collectionView.register(UINib(nibName: "SizeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SizeCollectionViewCell")
         
-        fetchSizes()
+        viewModel = DetailViewModel()
+        viewModel.delegate = self
+        viewModel.fetchSizes()
     }
     
     @IBAction func reviewBtn(_ sender: Any) {
@@ -66,44 +56,29 @@ class DetailViewController: UIViewController {
     @IBAction func backArrowTapped(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
-    
-    func fetchSizes() {
-        guard let sizeURL = URL(string: "https://lazaapp.shop/size") else { return }
-        
-        let sizeTask = URLSession.shared.dataTask(with: sizeURL) { [weak self] (data, response, error) in
-            guard let self = self, let data = data else { return }
-            
-            do {
-                let decoder = JSONDecoder()
-                let sizeResponse = try decoder.decode(Size.self, from: data)
-                DispatchQueue.main.async {
-                    self.sizes = sizeResponse.data
-                    self.collectionView.reloadData()
-                }
-            } catch {
-                print("Error fetching sizes: \(error.localizedDescription)")
-            }
-        }
-        
-        sizeTask.resume()
-    }
 }
 
 extension DetailViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return sizes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SizeCollectionViewCell", for: indexPath) as! SizeCollectionViewCell
-        
         cell.sizeLabel.text = sizes[indexPath.item].size
-        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 40, height: 40)
+    }
+}
+
+extension DetailViewController: DetailViewModelDelegate {
+    func updateSizes(_ sizes: [DatumSize]) {
+        DispatchQueue.main.async {
+            self.sizes = sizes
+            self.collectionView.reloadData()
+        }
     }
 }
