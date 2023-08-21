@@ -27,7 +27,7 @@
                                             <color key="baseForegroundColor" name="Font Color"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="backBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="DGh-7p-0fR"/>
+                                            <action selector="backButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="T5P-aQ-ide"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -65,7 +65,7 @@
                                     <color key="baseBackgroundColor" red="1" green="0.43921568630000002" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="addReviewBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Gpy-vW-NTa"/>
+                                    <action selector="addReviewsBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="rni-CR-LQA"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ReviewsTableViewCell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="a2R-xp-9lK">
@@ -120,6 +120,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="allReviews" destination="6ao-h8-UnE" id="VKB-Kp-Nd8"/>
                         <outlet property="reviewStar" destination="b9c-V4-UID" id="wCp-Ch-n0C"/>
                         <outlet property="tableView" destination="a2R-xp-9lK" id="xM1-9e-Frv"/>
                         <outlet property="viewBack" destination="IW7-sp-sKB" id="M6F-d8-mEm"/>
@@ -199,6 +200,9 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Submit Review">
                                     <color key="baseBackgroundColor" red="0.59215686270000001" green="0.45882352939999999" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="addReviewButtonTapped:" destination="AKs-og-U8R" eventType="touchUpInside" id="bAz-ix-Cz4"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Star" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6j-Zn-Fze">
                                 <rect key="frame" x="16" y="443" width="357" height="21"/>
@@ -267,6 +271,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="comment" destination="BfU-aI-qvO" id="zpK-Wh-GUa"/>
                         <outlet property="rating" destination="4oW-cU-b2S" id="mL7-y7-zLf"/>
                         <outlet property="slider" destination="Kgg-bn-p8b" id="rnU-dU-U9J"/>
                         <outlet property="viewBack" destination="jfb-1R-xif" id="V8r-Pg-pV8"/>
@@ -290,7 +295,7 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="textFieldColor">
-            <color red="0.96078431372549022" green="0.96470588235294119" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96100002527236938" green="0.9649999737739563" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

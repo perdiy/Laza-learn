@@ -8,7 +8,16 @@
 import UIKit
  
 class CategoryTableViewCell: UITableViewCell {
-    
+     
+    @IBAction func viewAllCategory(_ sender: Any) {
+        if let productAllVC = UIStoryboard(name: "BrandAll", bundle: nil).instantiateViewController(withIdentifier: "BrandAllViewController") as? BrandAllViewController {
+            productAllVC.modalPresentationStyle = .fullScreen
+            productAllVC.receivedData = data
+            if let navigationController = self.window?.rootViewController as? UINavigationController {
+                navigationController.pushViewController(productAllVC, animated: false)
+            }
+        }
+    }
     @IBOutlet weak var collectionCategory: UICollectionView!
     var data: [String] = []
     

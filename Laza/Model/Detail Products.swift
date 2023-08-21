@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias ProductDetailIndex = DetailProduct?
+typealias ProductDetailIndex = DetailProduct? 
 struct DetailProduct: Codable {
     let status: String
     let isError: Bool
@@ -44,19 +44,19 @@ struct Category: Codable {
 }
 
 // MARK: - Review
-struct Review: Codable {
-    let id: Int
-    let comment: String
-    let rating: Double
-    let fullName, imageURL, createdAt: String
-
-    enum CodingKeys: String, CodingKey {
-        case id, comment, rating
-        case fullName = "full_name"
-        case imageURL = "image_url"
-        case createdAt = "created_at"
-    }
-}
+//struct Review: Codable {
+//    let id: Int
+//    let comment: String
+//    let rating: Double
+//    let fullName, imageURL, createdAt: String
+//
+//    enum CodingKeys: String, CodingKey {
+//        case id, comment, rating
+//        case fullName = "full_name"
+//        case imageURL = "image_url"
+//        case createdAt = "created_at"
+//    }
+//}
 
 // MARK: - Size
 struct SizeDetailProd: Codable {

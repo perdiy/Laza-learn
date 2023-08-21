@@ -4,7 +4,7 @@
 //
 //  Created by Perdi Yansyah on 28/07/23.
 //
-
+ 
 import UIKit
 
 class DetailViewController: UIViewController {
@@ -55,32 +55,37 @@ class DetailViewController: UIViewController {
                     
                     if let imageUrl = URL(string: product.imageURL) {
                         URLSession.shared.dataTask(with: imageUrl) { data, response, error in
-                            if let data = data, let image = UIImage(data: data) {
+                             if let data = data, let image = UIImage(data: data) {
                                 DispatchQueue.main.async {
                                     self?.productImageView.image = image
                                 }
                             }
                         }.resume()
                     }
-                    
-                    if let reviewProduct = self?.reviews.first {
-                        self?.ratingLabel.text = String(reviewProduct.rating)
-                        self?.fullNameLabel.text = reviewProduct.fullName
-                        self?.dateLabel.text = reviewProduct.createdAt
-                        self?.commentLabel.text = reviewProduct.comment
-                        
-                        if let imageUrl = URL(string: reviewProduct.imageURL) {
-                            URLSession.shared.dataTask(with: imageUrl) { data, _, error in
-                                if let data = data, let image = UIImage(data: data) {
-                                    DispatchQueue.main.async {
-                                        self?.imageUser.image = image
-                                    }
-                                } else {
-                                    print("Error loading image: \(error?.localizedDescription ?? "Unknown error")")
-                                }
-                            }.resume()
-                        }
+                    if let reviewProductFirst = self?.reviews.first{
+                        self?.ratingLabel.text = String(reviewProductFirst.rating)
+                        self?.fullNameLabel.text = String(reviewProductFirst.fullName)
+                        self?.dateLabel.text = String(reviewProductFirst.createdAt)
+                        self?.commentLabel.text = String(reviewProductFirst.comment)
                     }
+//                    if let reviewProduct = self?.reviews.first {
+//                        self?.ratingLabel.text = String(reviewProduct.rating)
+//                        self?.fullNameLabel.text = reviewProduct.fullName
+//                        self?.dateLabel.text = reviewProduct.createdAt
+//                        self?.commentLabel.text = reviewProduct.comment
+//                        
+//                        if let imageUrl = URL(string: reviewProduct.imageURL) {
+//                            URLSession.shared.dataTask(with: imageUrl) { data, _, error in
+//                                if let data = data, let image = UIImage(data: data) {
+//                                    DispatchQueue.main.async {
+//                                        self?.imageUser.image = image
+//                                    }
+//                                } else {
+//                                    print("Error loading image: \(error?.localizedDescription ?? "Unknown error")")
+//                                }
+//                            }.resume()
+//                        }
+//                    }
                 } else {
                     print("productDetail data is nil")
                 }
@@ -91,6 +96,7 @@ class DetailViewController: UIViewController {
     @IBAction func reviewBtn(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Reviews", bundle: nil)
         if let reviewViewController = storyboard.instantiateViewController(withIdentifier: "ReviewViewController") as? ReviewViewController {
+            reviewViewController.productId = productId
             self.navigationController?.pushViewController(reviewViewController, animated: true)
         }
     }

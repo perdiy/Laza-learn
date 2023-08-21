@@ -60,69 +60,48 @@
                             </label>
                         </subviews>
                     </stackView>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="w4m-wt-3wa">
-                        <rect key="frame" x="280" y="33" width="54" height="10"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="led-ri-pkq">
-                                <rect key="frame" x="0.0" y="-0.33333333333333215" width="10" height="9.6666666666666661"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="10" id="IzJ-SS-jHW"/>
-                                    <constraint firstAttribute="width" constant="10" id="w4r-Oo-rsW"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Uqd-Fp-o0W">
-                                <rect key="frame" x="11" y="-0.33333333333333215" width="10" height="9.6666666666666661"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="10" id="eYo-8B-P57"/>
-                                    <constraint firstAttribute="width" constant="10" id="l8y-Li-DbJ"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ETM-hT-iIz">
-                                <rect key="frame" x="22" y="-0.33333333333333215" width="10" height="9.6666666666666661"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="10" id="S1t-98-rag"/>
-                                    <constraint firstAttribute="width" constant="10" id="bha-n4-9X8"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zSz-dB-i6X">
-                                <rect key="frame" x="33" y="-0.33333333333333215" width="10" height="9.6666666666666661"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="10" id="BZ6-BR-y5E"/>
-                                    <constraint firstAttribute="width" constant="10" id="IfK-cS-cs3"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="baM-Me-vtp">
-                                <rect key="frame" x="44" y="-0.33333333333333215" width="10" height="9.6666666666666661"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="10" id="Ijz-2L-5rH"/>
-                                    <constraint firstAttribute="height" constant="10" id="WEj-Hb-CjF"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                    </stackView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eE-g9-7CL">
                         <rect key="frame" x="84" y="33" width="52.333333333333343" height="13.333333333333336"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wFo-sT-d3K" customClass="CosmosView" customModule="Cosmos">
+                        <rect key="frame" x="264" y="28" width="69" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="BXJ-E5-9OT"/>
+                            <constraint firstAttribute="width" constant="69" id="fa9-SN-bx9"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                <real key="value" value="13"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="updateOnTouch" value="NO"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="wzT-1p-4qc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="8k2-1w-RLS"/>
                     <constraint firstItem="egy-89-ja2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="9Gc-gO-apg"/>
                     <constraint firstItem="2eE-g9-7CL" firstAttribute="top" secondItem="hgk-Cu-vad" secondAttribute="bottom" constant="3" id="9vf-qn-f9U"/>
-                    <constraint firstAttribute="trailing" secondItem="w4m-wt-3wa" secondAttribute="trailing" constant="11" id="ApJ-0G-tOy"/>
                     <constraint firstItem="wzT-1p-4qc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="11" id="K1F-uR-c7E"/>
                     <constraint firstItem="MHw-KR-Buh" firstAttribute="leading" secondItem="wzT-1p-4qc" secondAttribute="trailing" constant="8" id="KWl-UI-ygv"/>
                     <constraint firstItem="2eE-g9-7CL" firstAttribute="leading" secondItem="MHw-KR-Buh" secondAttribute="trailing" constant="4" id="LF6-b8-Q2S"/>
+                    <constraint firstAttribute="trailing" secondItem="wFo-sT-d3K" secondAttribute="trailing" constant="12" id="LSE-Ma-RlE"/>
                     <constraint firstAttribute="trailing" secondItem="egy-89-ja2" secondAttribute="trailing" constant="8" id="RxA-4T-67h"/>
                     <constraint firstItem="hgk-Cu-vad" firstAttribute="leading" secondItem="wzT-1p-4qc" secondAttribute="trailing" constant="8" id="Vcu-Zc-Q64"/>
                     <constraint firstItem="hgk-Cu-vad" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="eTs-cP-nP1"/>
                     <constraint firstItem="49H-kQ-xlm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="frY-Db-Thw"/>
+                    <constraint firstItem="wFo-sT-d3K" firstAttribute="top" secondItem="49H-kQ-xlm" secondAttribute="bottom" id="i8d-tc-N0F"/>
                     <constraint firstAttribute="bottom" secondItem="egy-89-ja2" secondAttribute="bottom" constant="17.670000000000002" id="lwA-9W-7a2"/>
                     <constraint firstAttribute="trailing" secondItem="49H-kQ-xlm" secondAttribute="trailing" constant="10.67" id="ocx-8N-sHb"/>
                     <constraint firstItem="egy-89-ja2" firstAttribute="top" secondItem="MHw-KR-Buh" secondAttribute="bottom" constant="23" id="ot5-m7-X2a"/>
-                    <constraint firstItem="w4m-wt-3wa" firstAttribute="top" secondItem="49H-kQ-xlm" secondAttribute="bottom" constant="5" id="pxP-Ki-3NC"/>
                     <constraint firstItem="egy-89-ja2" firstAttribute="top" secondItem="wzT-1p-4qc" secondAttribute="bottom" constant="19" id="u9L-Ni-Pni"/>
                 </constraints>
             </tableViewCellContentView>
@@ -131,6 +110,8 @@
                 <outlet property="commentLabel" destination="egy-89-ja2" id="XOI-xV-BLB"/>
                 <outlet property="dateLabel" destination="2eE-g9-7CL" id="amP-0z-AJw"/>
                 <outlet property="imgView" destination="wzT-1p-4qc" id="c1P-uw-AXF"/>
+                <outlet property="ratingLabel" destination="kse-QJ-b7D" id="f15-24-qM5"/>
+                <outlet property="star" destination="wFo-sT-d3K" id="bJL-Eh-ZVc"/>
                 <outlet property="userName" destination="hgk-Cu-vad" id="1FS-a9-B3M"/>
             </connections>
             <point key="canvasLocation" x="122.90076335877862" y="129.57746478873241"/>
@@ -139,6 +120,5 @@
     <resources>
         <image name="Frame 1 1" width="45" height="45"/>
         <image name="clock" width="15" height="15"/>
-        <image name="star.fill" catalog="system" width="128" height="116"/>
     </resources>
 </document>
