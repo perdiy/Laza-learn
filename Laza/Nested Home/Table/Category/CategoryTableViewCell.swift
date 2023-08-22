@@ -6,21 +6,21 @@
 //
 
 import UIKit
- 
+
 class CategoryTableViewCell: UITableViewCell {
-     
-    @IBAction func viewAllCategory(_ sender: Any) {
-        if let productAllVC = UIStoryboard(name: "BrandAll", bundle: nil).instantiateViewController(withIdentifier: "BrandAllViewController") as? BrandAllViewController {
-            productAllVC.modalPresentationStyle = .fullScreen
-            productAllVC.receivedData = data
-            if let navigationController = self.window?.rootViewController as? UINavigationController {
-                navigationController.pushViewController(productAllVC, animated: false)
-            }
-        }
-    }
+    
     @IBOutlet weak var collectionCategory: UICollectionView!
     var data: [String] = []
     
+    @IBAction func viewAllButton(_ sender: Any) {if let productAllVC = UIStoryboard(name: "BrandAll", bundle: nil).instantiateViewController(withIdentifier: "BrandAllViewController") as? BrandAllViewController {
+        productAllVC.modalPresentationStyle = .fullScreen
+        productAllVC.receivedData = data
+        if let navigationController = self.window?.rootViewController as? UINavigationController {
+            navigationController.pushViewController(productAllVC, animated: false)
+        }
+    }
+        
+    }
     func configure(data: [String]) {
         self.data = data
         collectionCategory.reloadData()
@@ -38,7 +38,7 @@ extension CategoryTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let dataCell = data[indexPath.item]
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as? CategoryCollectionViewCell else { return UICollectionViewCell() }
@@ -48,9 +48,19 @@ extension CategoryTableViewCell: UICollectionViewDataSource {
 }
 
 extension CategoryTableViewCell: UICollectionViewDelegate {
-
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("CategorySelected")
+        let selectedCategory = data[indexPath.item]
+        navigateToProductByBrand(with: selectedCategory)
+    }
+    
+    func navigateToProductByBrand(with categoryName: String) {
+        if let productByBrandVC = UIStoryboard(name: "ProductByBrand", bundle: nil).instantiateViewController(withIdentifier: "prductByBrandViewController") as? prductByBrandViewController {
+            productByBrandVC.brandName = categoryName
+            
+            if let navigationController = self.window?.rootViewController as? UINavigationController {
+                navigationController.pushViewController(productByBrandVC, animated: true)
+            }
+        }
     }
 }
 
@@ -59,3 +69,8 @@ extension CategoryTableViewCell: UICollectionViewDelegateFlowLayout {
         return CGSize(width: 150, height: 50)
     }
 }
+
+
+
+
+

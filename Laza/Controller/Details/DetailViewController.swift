@@ -6,6 +6,7 @@
 //
  
 import UIKit
+import Cosmos
 
 class DetailViewController: UIViewController {
     var viewModel: DetailViewModel!
@@ -13,6 +14,7 @@ class DetailViewController: UIViewController {
     var productId: Int!
     var reviews = [Review]()
     var product: DatumProdct?
+    var wishlistItem: ProductWishlist?
     @IBOutlet weak var imageUser: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
@@ -24,12 +26,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var descLabel: UILabel!
     
-    @IBOutlet weak var star1: UIImageView!
-    @IBOutlet weak var star2: UIImageView!
-    @IBOutlet weak var star3: UIImageView!
-    @IBOutlet weak var star4: UIImageView!
-    @IBOutlet weak var star5: UIImageView!
+    @IBOutlet weak var star: CosmosView!
     
+     
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,6 +63,7 @@ class DetailViewController: UIViewController {
                     }
                     if let reviewProductFirst = self?.reviews.first{
                         self?.ratingLabel.text = String(reviewProductFirst.rating)
+                        self?.star.rating = Double(reviewProductFirst.rating)
                         self?.fullNameLabel.text = String(reviewProductFirst.fullName)
                         self?.dateLabel.text = String(reviewProductFirst.createdAt)
                         self?.commentLabel.text = String(reviewProductFirst.comment)

@@ -14,18 +14,16 @@ class ProductAllViewController: UIViewController, UICollectionViewDataSource, UI
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var allReview: UILabel!
-    @IBAction func backBtn(_ sender: Any) {
-        self.navigationController?.popViewController(animated: false)
-    }
-    @IBAction func sortButton(_ sender: Any) {
-        // Handle sorting logic here
-    }
     @IBOutlet weak var viewBack: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-        updateAllReviewLabel() // Menampilkan jumlah produk saat tampilan dimuat
+        updateAllReviewLabel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        updateAllReviewLabel()
     }
     
     func showAllProducts(products: [DatumProdct]) {
@@ -72,5 +70,17 @@ class ProductAllViewController: UIViewController, UICollectionViewDataSource, UI
         let totalProducts = allProducts.count
         allReview.text = "\(totalProducts) Items"
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedProduct = allProducts[indexPath.item]
+        navigateToDetailViewController()
+    }
+    
+    func navigateToDetailViewController() {
+        let storyboard = UIStoryboard(name: "Detail", bundle: nil)
+        if let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
+            detailViewController.product = selectedProduct
+            self.navigationController?.pushViewController(detailViewController, animated: true)
+        }
+    }
 }
-

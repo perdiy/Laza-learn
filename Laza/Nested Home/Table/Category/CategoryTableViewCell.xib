@@ -29,7 +29,7 @@
                             <color key="baseForegroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </buttonConfiguration>
                         <connections>
-                            <action selector="viewAllCategory:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="INO-qo-bCW"/>
+                            <action selector="viewAllButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2XP-K8-EEn"/>
                         </connections>
                     </button>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="jGo-sg-6aq">

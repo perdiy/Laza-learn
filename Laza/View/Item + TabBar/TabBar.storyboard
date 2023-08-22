@@ -78,6 +78,7 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="collectionView" destination="9zU-nv-QOB" id="3Ms-bs-H61"/>
+                        <outlet property="jumlahWishlist" destination="k5W-JU-47P" id="t07-uL-hCI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
