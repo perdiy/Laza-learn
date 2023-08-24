@@ -100,6 +100,11 @@
 		52EF19FC2A96F63500C2E6B8 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 52EF19FB2A96F63500C2E6B8 /* GoogleSignIn */; };
 		52EF19FE2A9715B300C2E6B8 /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF19FD2A9715B300C2E6B8 /* CartModel.swift */; };
 		52EF1A002A9716C300C2E6B8 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF19FF2A9716C300C2E6B8 /* UIImage.swift */; };
+		52EF1A032A973E6300C2E6B8 /* VerifycationEmail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52EF1A022A973E6300C2E6B8 /* VerifycationEmail.storyboard */; };
+		52EF1A062A973EF100C2E6B8 /* VerifycationEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF1A052A973EF100C2E6B8 /* VerifycationEmailViewController.swift */; };
+		52EF1A0A2A973F2D00C2E6B8 /* VerifycationEmailCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF1A092A973F2D00C2E6B8 /* VerifycationEmailCodeViewController.swift */; };
+		52EF1A0C2A9742B300C2E6B8 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF1A0B2A9742B300C2E6B8 /* Address.swift */; };
+		52EF1A0E2A9742D900C2E6B8 /* AddressModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF1A0D2A9742D900C2E6B8 /* AddressModelView.swift */; };
 		52EF386E2A72125400446F31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF386D2A72125400446F31 /* AppDelegate.swift */; };
 		52EF38702A72125400446F31 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF386F2A72125400446F31 /* SceneDelegate.swift */; };
 		52EF38782A72125400446F31 /* Laza.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52EF38762A72125400446F31 /* Laza.xcdatamodeld */; };
@@ -214,6 +219,11 @@
 		52EF19F82A96E97B00C2E6B8 /* CartProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartProduct.swift; sourceTree = "<group>"; };
 		52EF19FD2A9715B300C2E6B8 /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
 		52EF19FF2A9716C300C2E6B8 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		52EF1A022A973E6300C2E6B8 /* VerifycationEmail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VerifycationEmail.storyboard; sourceTree = "<group>"; };
+		52EF1A052A973EF100C2E6B8 /* VerifycationEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifycationEmailViewController.swift; sourceTree = "<group>"; };
+		52EF1A092A973F2D00C2E6B8 /* VerifycationEmailCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifycationEmailCodeViewController.swift; sourceTree = "<group>"; };
+		52EF1A0B2A9742B300C2E6B8 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		52EF1A0D2A9742D900C2E6B8 /* AddressModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModelView.swift; sourceTree = "<group>"; };
 		52EF386A2A72125400446F31 /* Laza.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Laza.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52EF386D2A72125400446F31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52EF386F2A72125400446F31 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -504,6 +514,7 @@
 				52D8C4BD2A944E5300EE79B9 /* ProductByBrand.swift */,
 				52D8C4BF2A94804300EE79B9 /* Wishlist.swift */,
 				52EF19F82A96E97B00C2E6B8 /* CartProduct.swift */,
+				52EF1A0B2A9742B300C2E6B8 /* Address.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -552,6 +563,7 @@
 				52EF388D2A72148D00446F31 /* Welcome.storyboard */,
 				52EF38872A72146B00446F31 /* LaunchScreen.storyboard */,
 				52EF388B2A72148800446F31 /* SignUp.storyboard */,
+				52EF1A022A973E6300C2E6B8 /* VerifycationEmail.storyboard */,
 			);
 			path = ToolsLogin;
 			sourceTree = "<group>";
@@ -567,6 +579,7 @@
 				52CE3F372A8DFA8F00BB1F8F /* ReviewsModel.swift */,
 				526F0F5A2A91CAD700B96C4E /* AddReviewsModel.swift */,
 				52EF19FD2A9715B300C2E6B8 /* CartModel.swift */,
+				52EF1A0D2A9742D900C2E6B8 /* AddressModelView.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -649,6 +662,15 @@
 			path = ProductByBrand;
 			sourceTree = "<group>";
 		};
+		52EF1A042A973EA900C2E6B8 /* EmailVerification */ = {
+			isa = PBXGroup;
+			children = (
+				52EF1A052A973EF100C2E6B8 /* VerifycationEmailViewController.swift */,
+				52EF1A092A973F2D00C2E6B8 /* VerifycationEmailCodeViewController.swift */,
+			);
+			path = EmailVerification;
+			sourceTree = "<group>";
+		};
 		52EF38612A72125400446F31 = {
 			isa = PBXGroup;
 			children = (
@@ -699,6 +721,7 @@
 		52EF38922A7214B100446F31 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				52EF1A042A973EA900C2E6B8 /* EmailVerification */,
 				52D8C4B32A944AAE00EE79B9 /* ProductAll */,
 				52D8C4B22A944AA400EE79B9 /* BrandAll */,
 				5290BB182A832CF50042A32A /* welcome */,
@@ -827,6 +850,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52EF1A032A973E6300C2E6B8 /* VerifycationEmail.storyboard in Resources */,
 				52EF389E2A72150D00446F31 /* Main.storyboard in Resources */,
 				527F9B092A7B90E000AC520C /* ReviewsTableViewCell.xib in Resources */,
 				52EF38902A72149200446F31 /* TabBar.storyboard in Resources */,
@@ -947,6 +971,8 @@
 				524548432A8DAB5D0055B2D3 /* KeychainManager.swift in Sources */,
 				52EF389C2A7214D600446F31 /* LoginViewController.swift in Sources */,
 				52EF38A82A7225BF00446F31 /* TabBarViewController.swift in Sources */,
+				52EF1A0A2A973F2D00C2E6B8 /* VerifycationEmailCodeViewController.swift in Sources */,
+				52EF1A062A973EF100C2E6B8 /* VerifycationEmailViewController.swift in Sources */,
 				5245483D2A8D096F0055B2D3 /* MyProfileModel.swift in Sources */,
 				52F456D92A7C94B800F565D9 /* VerificationCodeViewController.swift in Sources */,
 				527F9B042A7B7D6D00AC520C /* extension.swift in Sources */,
@@ -973,6 +999,7 @@
 				52F456DB2A7C951700F565D9 /* NewPasswordViewController.swift in Sources */,
 				52CE3F3A2A8E03A100BB1F8F /* ValidationUtil.swift in Sources */,
 				520A8DBC2A808E270049FBB1 /* CartViewController.swift in Sources */,
+				52EF1A0C2A9742B300C2E6B8 /* Address.swift in Sources */,
 				52527E462A7A3AF600CDAD49 /* SideViewController.swift in Sources */,
 				5275ABBA2A7762FD0016C424 /* FavoriteViewController.swift in Sources */,
 				52EF38942A7214CC00446F31 /* ViewController.swift in Sources */,
@@ -982,6 +1009,7 @@
 				52D4D29F2A8B788E00A9AE83 /* NewPassViewModel.swift in Sources */,
 				527F9B082A7B90E000AC520C /* ReviewsTableViewCell.swift in Sources */,
 				524548392A8CFE4E0055B2D3 /* ForgotPasswordModel.swift in Sources */,
+				52EF1A0E2A9742D900C2E6B8 /* AddressModelView.swift in Sources */,
 				520A8DC02A8097F90049FBB1 /* OrderConfirmedViewController.swift in Sources */,
 				5290BB272A83816C0042A32A /* ListAddressViewController.swift in Sources */,
 				52444CC42A78B7B2000BFC87 /* CategoryCollectionViewCell.swift in Sources */,

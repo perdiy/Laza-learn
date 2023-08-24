@@ -12,6 +12,7 @@ class VerificationCodeViewController: UIViewController {
     
     var viewModel = VerificationCodeViewModel()
     
+    @IBOutlet weak var waktuVerifikasi: UILabel!
     @IBOutlet weak var verifycationTf: DPOTPView!
     var emailUser: String?
     

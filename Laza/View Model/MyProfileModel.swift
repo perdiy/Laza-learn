@@ -21,7 +21,6 @@ class MyProfileViewModel {
             var request = URLRequest(url: url)
             request.httpMethod = "GET"
             request.setValue("Bearer \(userToken)", forHTTPHeaderField: "X-Auth-Token")
-            
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 if let data = data {
                     do {
@@ -32,10 +31,10 @@ class MyProfileViewModel {
                     }
                 }
             }
-            task.resume() 
+            task.resume()
         } else {
             print("User Token not found in UserDefaults.")
         }
     }
 }
- 
+

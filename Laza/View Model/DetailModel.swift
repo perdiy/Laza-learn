@@ -60,7 +60,7 @@ class DetailViewModel {
             print("Invalid url.")
             return
         }
-
+        
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"

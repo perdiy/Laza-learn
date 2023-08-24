@@ -9,14 +9,14 @@ import Foundation
 
 class UserProfileViewModel {
     var username: String = ""
-
+    
     func loadUserProfile(completion: @escaping (Error?) -> Void) {
         if let userToken = UserDefaults.standard.string(forKey: "userToken") {
             let url = URL(string: "https://lazaapp.shop/user/profile")!
             var request = URLRequest(url: url)
             request.httpMethod = "GET"
             request.setValue("Bearer \(userToken)", forHTTPHeaderField: "X-Auth-Token")
-
+            
             let task = URLSession.shared.dataTask(with: request) { data, _, error in
                 if let data = data {
                     do {
@@ -36,7 +36,7 @@ class UserProfileViewModel {
             completion(error)
         }
     }
-
+    
     func logoutUser(completion: @escaping (Error?) -> Void) {
         UserDefaults.standard.removeObject(forKey: "userToken")
         completion(nil)
