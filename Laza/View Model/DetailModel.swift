@@ -54,4 +54,53 @@ class DetailViewModel {
             }
         }.resume()
     }
+    
+    func addProducInCart(ProductId: Int, SizeId: Int, userToken: String, completion: @escaping (CartProduct) -> Void) {
+        guard let url = URL(string: "https://lazaapp.shop/carts?ProductId=\(ProductId)&SizeId=\(SizeId)") else {
+            print("Invalid url.")
+            return
+        }
+
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("Bearer \(userToken)", forHTTPHeaderField: "X-Auth-Token")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error:", error)
+                return
+            }
+            if let data = data {
+                do {
+                    if let jsonResponse = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                        print("Response: \(jsonResponse)")
+                        
+                        if let isError = jsonResponse["isError"] as? Int, isError != 0,
+                           let description = jsonResponse["description"] as? String,
+                           let status = jsonResponse["status"] as? String {
+                            
+                            DispatchQueue.main.async {
+                                
+                            }
+                            print(description, status)
+                        } else {
+                            if let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode == 201 {
+                                DispatchQueue.main.async {
+                                    
+                                    
+                                    print("BerhasilResponse: \(jsonResponse)")
+                                }
+                            } else {
+                                print("Added to cart error: Unexpected Response Code")
+                            }
+                        }
+                    }
+                } catch {
+                    print("JSON Serialization Error: \(error)")
+                }
+            }
+        }.resume()
+    }
+    
 }

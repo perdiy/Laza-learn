@@ -4,50 +4,35 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SizeCollectionViewCell" customModule="Laza" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="67" height="66"/>
+            <rect key="frame" x="0.0" y="0.0" width="94" height="66"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="67" height="66"/>
+                <rect key="frame" x="0.0" y="0.0" width="94" height="66"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" restorationIdentifier="SizeCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="Uow-dY-7hH" customClass="SizeCollectionViewCell" customModule="Laza" customModuleProvider="target">
-                        <rect key="frame" x="2" y="2" width="63" height="62"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pys-p8-sMm">
-                                <rect key="frame" x="15.666666666666668" y="20.666666666666668" width="32" height="21.000000000000004"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemGray5Color"/>
-                        <constraints>
-                            <constraint firstItem="Pys-p8-sMm" firstAttribute="centerY" secondItem="Uow-dY-7hH" secondAttribute="centerY" id="RyS-OS-Ll8"/>
-                            <constraint firstItem="Pys-p8-sMm" firstAttribute="centerX" secondItem="Uow-dY-7hH" secondAttribute="centerX" id="i4K-Rx-eMo"/>
-                        </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRasius">
-                                <real key="value" value="20"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pys-p8-sMm">
+                        <rect key="frame" x="17" y="22" width="59" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="Uow-dY-7hH" secondAttribute="trailing" constant="2" id="3MO-HF-U49"/>
-                <constraint firstItem="Uow-dY-7hH" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="BNu-yW-h4T"/>
-                <constraint firstItem="Uow-dY-7hH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="gzq-tr-OvB"/>
-                <constraint firstAttribute="bottom" secondItem="Uow-dY-7hH" secondAttribute="bottom" constant="2" id="o9i-nE-gF4"/>
+                <constraint firstAttribute="trailing" secondItem="Pys-p8-sMm" secondAttribute="trailing" constant="18" id="IDj-ez-XhZ"/>
+                <constraint firstItem="Pys-p8-sMm" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="17" id="cLk-pv-ewv"/>
+                <constraint firstItem="Pys-p8-sMm" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="22" id="jIb-lx-E9y"/>
+                <constraint firstAttribute="bottom" secondItem="Pys-p8-sMm" secondAttribute="bottom" constant="23" id="rPr-kJ-fQn"/>
             </constraints>
-            <size key="customSize" width="67" height="66"/>
+            <size key="customSize" width="94" height="66"/>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRasius">
                     <real key="value" value="18"/>
@@ -55,14 +40,8 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="sizeLabel" destination="Pys-p8-sMm" id="UA8-3r-VgN"/>
-                <outlet property="viewSize" destination="Uow-dY-7hH" id="9Ut-X2-GIc"/>
             </connections>
-            <point key="canvasLocation" x="113.74045801526717" y="25.35211267605634"/>
+            <point key="canvasLocation" x="134.35114503816794" y="25.35211267605634"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-    </resources>
 </document>

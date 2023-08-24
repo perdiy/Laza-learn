@@ -4,7 +4,7 @@
 //
 //  Created by Perdi Yansyah on 28/07/23.
 //
- 
+
 import UIKit
 import Cosmos
 
@@ -15,6 +15,9 @@ class DetailViewController: UIViewController {
     var reviews = [Review]()
     var product: DatumProdct?
     var wishlistItem: ProductWishlist?
+    var selectedSizeId: Int?
+    
+    
     @IBOutlet weak var imageUser: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
@@ -25,10 +28,24 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var descLabel: UILabel!
-    
     @IBOutlet weak var star: CosmosView!
     
-     
+    @IBAction func addToCart(_ sender: Any) {
+        guard let token = UserDefaults.standard.string(forKey: "userToken") else {
+            print("User token not available.")
+            return
+        }
+        
+        guard let productID = productId, let sizeID = selectedSizeId else {
+            print("Product ID or Size ID is nil.")
+            return
+        }
+        
+        viewModel.addProducInCart(ProductId: productID, SizeId: sizeID, userToken: token) { cartProduct in
+            print("Product added to cart!")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,6 +58,8 @@ class DetailViewController: UIViewController {
         viewModel.delegate = self
         viewModel.fetchSizes(for: productId)
         detailProductApi()
+        
+        
     }
     
     func detailProductApi() {
@@ -54,7 +73,7 @@ class DetailViewController: UIViewController {
                     
                     if let imageUrl = URL(string: product.imageURL) {
                         URLSession.shared.dataTask(with: imageUrl) { data, response, error in
-                             if let data = data, let image = UIImage(data: data) {
+                            if let data = data, let image = UIImage(data: data) {
                                 DispatchQueue.main.async {
                                     self?.productImageView.image = image
                                 }
@@ -68,24 +87,6 @@ class DetailViewController: UIViewController {
                         self?.dateLabel.text = String(reviewProductFirst.createdAt)
                         self?.commentLabel.text = String(reviewProductFirst.comment)
                     }
-//                    if let reviewProduct = self?.reviews.first {
-//                        self?.ratingLabel.text = String(reviewProduct.rating)
-//                        self?.fullNameLabel.text = reviewProduct.fullName
-//                        self?.dateLabel.text = reviewProduct.createdAt
-//                        self?.commentLabel.text = reviewProduct.comment
-//                        
-//                        if let imageUrl = URL(string: reviewProduct.imageURL) {
-//                            URLSession.shared.dataTask(with: imageUrl) { data, _, error in
-//                                if let data = data, let image = UIImage(data: data) {
-//                                    DispatchQueue.main.async {
-//                                        self?.imageUser.image = image
-//                                    }
-//                                } else {
-//                                    print("Error loading image: \(error?.localizedDescription ?? "Unknown error")")
-//                                }
-//                            }.resume()
-//                        }
-//                    }
                 } else {
                     print("productDetail data is nil")
                 }
@@ -104,11 +105,76 @@ class DetailViewController: UIViewController {
     @IBAction func backArrowTapped(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func loveButton(_ sender: Any) {
+        guard let token = UserDefaults.standard.string(forKey: "userToken") else {
+            print("User token not available.")
+            return
+        }
+        
+        addProductToWishlist(productId: productId, token: token)
+        updateCheckBtnImage(sender as! UIButton, isChecked: true)
+    }
+    func addProductToWishlist(productId: Int, token: String) {
+        let urlString = "https://lazaapp.shop/wishlists?ProductId=\(productId)"
+        guard let url = URL(string: urlString) else {
+            print("Invalid URL for adding to wishlist.")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "X-Auth-Token")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error adding product to wishlist: \(error)")
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode == 200 {
+                    print("Product added to wishlist!")
+                    DispatchQueue.main.async {
+                        self.showAddToWishlistAlert()
+                    }
+                } else {
+                    print("Failed to add product to wishlist. Status code: \(httpResponse.statusCode)")
+                    
+                }
+            }
+        }.resume()
+    }
+    private func updateCheckBtnImage(_ button: UIButton, isChecked: Bool) {
+        let systemImageName = isChecked ? "heart.fill" : "heart"
+        if let systemImage = UIImage(systemName: systemImageName) {
+            button.setImage(systemImage, for: .normal)
+        }
+    }
+    func showAddToWishlistAlert() {
+        let alert = UIAlertController(title: "Success", message: "Product added to wishlist!", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
 }
 
 extension DetailViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return sizes.count
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let selectedCell = collectionView.cellForItem(at: indexPath) {
+            selectedCell.backgroundColor = .systemBlue
+        }
+        
+        for cell in collectionView.visibleCells {
+            if let indexPathForCell = collectionView.indexPath(for: cell),
+               indexPathForCell != indexPath {
+                cell.backgroundColor = .gray
+            }
+        }
+        selectedSizeId = sizes[indexPath.item].id
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -118,7 +184,7 @@ extension DetailViewController: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 40, height: 40)
+        return CGSize(width: 60, height: 40)
     }
 }
 

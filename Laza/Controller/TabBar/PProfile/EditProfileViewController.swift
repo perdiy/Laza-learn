@@ -20,6 +20,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var emailTf: UITextField!
     
     var userData: DataClass?
+    
     weak var delegate: EditProfileDelegate?
     
     @IBAction func backButton(_ sender: Any) {
@@ -86,7 +87,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             "email": newEmail
             
         ]
-        
+         
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: updateData, options: [])
         } catch {

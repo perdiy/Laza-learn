@@ -96,6 +96,10 @@
 		52D8C4BC2A944B5B00EE79B9 /* prductByBrandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D8C4BB2A944B5B00EE79B9 /* prductByBrandViewController.swift */; };
 		52D8C4BE2A944E5300EE79B9 /* ProductByBrand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D8C4BD2A944E5300EE79B9 /* ProductByBrand.swift */; };
 		52D8C4C02A94804300EE79B9 /* Wishlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D8C4BF2A94804300EE79B9 /* Wishlist.swift */; };
+		52EF19F92A96E97B00C2E6B8 /* CartProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF19F82A96E97B00C2E6B8 /* CartProduct.swift */; };
+		52EF19FC2A96F63500C2E6B8 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 52EF19FB2A96F63500C2E6B8 /* GoogleSignIn */; };
+		52EF19FE2A9715B300C2E6B8 /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF19FD2A9715B300C2E6B8 /* CartModel.swift */; };
+		52EF1A002A9716C300C2E6B8 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF19FF2A9716C300C2E6B8 /* UIImage.swift */; };
 		52EF386E2A72125400446F31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF386D2A72125400446F31 /* AppDelegate.swift */; };
 		52EF38702A72125400446F31 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF386F2A72125400446F31 /* SceneDelegate.swift */; };
 		52EF38782A72125400446F31 /* Laza.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52EF38762A72125400446F31 /* Laza.xcdatamodeld */; };
@@ -207,6 +211,9 @@
 		52D8C4BB2A944B5B00EE79B9 /* prductByBrandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = prductByBrandViewController.swift; sourceTree = "<group>"; };
 		52D8C4BD2A944E5300EE79B9 /* ProductByBrand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductByBrand.swift; sourceTree = "<group>"; };
 		52D8C4BF2A94804300EE79B9 /* Wishlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wishlist.swift; sourceTree = "<group>"; };
+		52EF19F82A96E97B00C2E6B8 /* CartProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartProduct.swift; sourceTree = "<group>"; };
+		52EF19FD2A9715B300C2E6B8 /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
+		52EF19FF2A9716C300C2E6B8 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		52EF386A2A72125400446F31 /* Laza.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Laza.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52EF386D2A72125400446F31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52EF386F2A72125400446F31 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -242,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52B3F7C32A86197100F1CCED /* Cosmos in Frameworks */,
+				52EF19FC2A96F63500C2E6B8 /* GoogleSignIn in Frameworks */,
 				52241F702A84772D00E42C11 /* SnackBar in Frameworks */,
 				52B277E02A82893600614179 /* SDWebImage in Frameworks */,
 				52527E442A7A2AAA00CDAD49 /* SideMenu in Frameworks */,
@@ -269,6 +277,7 @@
 				52B277DC2A82887700614179 /* Extension.swift */,
 				52F456DC2A7CAEA900F565D9 /* Slider.swift */,
 				52241F712A84774F00E42C11 /* SnackBar.swift */,
+				52EF19FF2A9716C300C2E6B8 /* UIImage.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -494,6 +503,7 @@
 				52CE3F352A8DF9A300BB1F8F /* Reviews.swift */,
 				52D8C4BD2A944E5300EE79B9 /* ProductByBrand.swift */,
 				52D8C4BF2A94804300EE79B9 /* Wishlist.swift */,
+				52EF19F82A96E97B00C2E6B8 /* CartProduct.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -556,6 +566,7 @@
 				52CE3F332A8DF3AD00BB1F8F /* DetailModel.swift */,
 				52CE3F372A8DFA8F00BB1F8F /* ReviewsModel.swift */,
 				526F0F5A2A91CAD700B96C4E /* AddReviewsModel.swift */,
+				52EF19FD2A9715B300C2E6B8 /* CartModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -627,6 +638,17 @@
 			path = "XIB Brand ProductAll";
 			sourceTree = "<group>";
 		};
+		52EF1A012A9737C600C2E6B8 /* ProductByBrand */ = {
+			isa = PBXGroup;
+			children = (
+				52D8C4B52A944B1D00EE79B9 /* ProductByBrand.storyboard */,
+				52D8C4B72A944B3C00EE79B9 /* ProductByBrandCollectionViewCell.swift */,
+				52D8C4B82A944B3C00EE79B9 /* ProductByBrandCollectionViewCell.xib */,
+				52D8C4BB2A944B5B00EE79B9 /* prductByBrandViewController.swift */,
+			);
+			path = ProductByBrand;
+			sourceTree = "<group>";
+		};
 		52EF38612A72125400446F31 = {
 			isa = PBXGroup;
 			children = (
@@ -663,16 +685,13 @@
 		52EF38912A72149700446F31 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				52EF1A012A9737C600C2E6B8 /* ProductByBrand */,
 				52D8C4B42A944ACC00EE79B9 /* XIB Brand ProductAll */,
 				5290BB252A83812E0042A32A /* Address */,
 				5290BB192A832D390042A32A /* ToolsLogin */,
 				52F546472A80A436001B3C88 /* Payment */,
 				527F9AF72A7B645C00AC520C /* Reviews */,
 				52444CBA2A789AE7000BFC87 /* Item + TabBar */,
-				52D8C4B52A944B1D00EE79B9 /* ProductByBrand.storyboard */,
-				52D8C4B72A944B3C00EE79B9 /* ProductByBrandCollectionViewCell.swift */,
-				52D8C4B82A944B3C00EE79B9 /* ProductByBrandCollectionViewCell.xib */,
-				52D8C4BB2A944B5B00EE79B9 /* prductByBrandViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -756,6 +775,7 @@
 				52241F6F2A84772D00E42C11 /* SnackBar */,
 				52B3F7C22A86197100F1CCED /* Cosmos */,
 				527B77222A8B457C00FE04BA /* DPOTPView */,
+				52EF19FB2A96F63500C2E6B8 /* GoogleSignIn */,
 			);
 			productName = Laza;
 			productReference = 52EF386A2A72125400446F31 /* Laza.app */;
@@ -791,6 +811,7 @@
 				52241F6E2A84772D00E42C11 /* XCRemoteSwiftPackageReference "SnackBar" */,
 				52B3F7C12A86197100F1CCED /* XCRemoteSwiftPackageReference "Cosmos" */,
 				527B77212A8B457C00FE04BA /* XCRemoteSwiftPackageReference "DPOTPView" */,
+				52EF19FA2A96F63500C2E6B8 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = 52EF386B2A72125400446F31 /* Products */;
 			projectDirPath = "";
@@ -891,6 +912,7 @@
 				52CE3F342A8DF3AD00BB1F8F /* DetailModel.swift in Sources */,
 				52D8C4BE2A944E5300EE79B9 /* ProductByBrand.swift in Sources */,
 				52708F852A89E0F700A9ABCC /* Detail Products.swift in Sources */,
+				52EF19FE2A9715B300C2E6B8 /* CartModel.swift in Sources */,
 				5234E62A2A80ACD800F855BD /* SizeCollectionViewCell.swift in Sources */,
 				52715C682A931E06001CC747 /* ProductAllViewController.swift in Sources */,
 				52EF389B2A7214D600446F31 /* SignUpViewController.swift in Sources */,
@@ -911,12 +933,14 @@
 				5266BF292A8C7B7C0099A876 /* MyProfileViewController.swift in Sources */,
 				52CE3F382A8DFA8F00BB1F8F /* ReviewsModel.swift in Sources */,
 				52CE3F362A8DF9A300BB1F8F /* Reviews.swift in Sources */,
+				52EF19F92A96E97B00C2E6B8 /* CartProduct.swift in Sources */,
 				52444CDC2A78BB87000BFC87 /* CategoryTableViewCell.swift in Sources */,
 				52533EB22A89CBC600D08E82 /* Size.swift in Sources */,
 				52708F872A8A17B500A9ABCC /* SignUp.swift in Sources */,
 				5234E62B2A80ACD800F855BD /* DetailViewController.swift in Sources */,
 				52FFFF552A78F17E009C07EB /* Api.swift in Sources */,
 				5245483F2A8D0CB30055B2D3 /* SideMenuModel.swift in Sources */,
+				52EF1A002A9716C300C2E6B8 /* UIImage.swift in Sources */,
 				52444CD12A78BA09000BFC87 /* NestedViewController.swift in Sources */,
 				52B277DD2A82887700614179 /* Extension.swift in Sources */,
 				52EF386E2A72125400446F31 /* AppDelegate.swift in Sources */,
@@ -1204,6 +1228,14 @@
 				minimumVersion = 23.0.0;
 			};
 		};
+		52EF19FA2A96F63500C2E6B8 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1236,6 +1268,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 52B3F7C12A86197100F1CCED /* XCRemoteSwiftPackageReference "Cosmos" */;
 			productName = Cosmos;
+		};
+		52EF19FB2A96F63500C2E6B8 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 52EF19FA2A96F63500C2E6B8 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
 		};
 /* End XCSwiftPackageProductDependency section */
 

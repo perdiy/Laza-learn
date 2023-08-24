@@ -10,7 +10,7 @@ import UIKit
 class WelcomeViewController: UIViewController {
     var iconClick = true
     var welcomeViewModel = WelcomeViewModel()
-
+    
     @IBOutlet weak var strongPassword: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var passwordTf: UITextField! {
@@ -19,53 +19,53 @@ class WelcomeViewController: UIViewController {
             passwordTf.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         }
     }
-
+    
     @IBOutlet weak var userNameTf: UITextField! {
         didSet {
             userNameTf.addShadow(color: .gray, widht: 0.5, text: userNameTf)
         }
     }
-
+    
     @IBOutlet weak var loginButton: UIButton! {
         didSet {
             loginButton.isEnabled = false
             loginButton.alpha = 0.5
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         activityIndicator.isHidden = true
-
+        
         navigationItem.hidesBackButton = true
         userNameTf.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         validateTextFields()
     }
-
+    
     @IBAction func hidePassword(_ sender: Any) {
         iconClick.toggle()
         passwordTf.isSecureTextEntry = !iconClick
     }
-
+    
     @IBAction func forgotPasswordBtn(_ sender: Any) {
         navigateToForgotPassword()
     }
-
+    
     @IBAction func loginBtn(_ sender: Any) {
         guard let username = userNameTf.text, let password = passwordTf.text else {
             return
         }
-
+        
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
-
+        
         welcomeViewModel.signUp(username: username, password: password)
         welcomeViewModel.loginCompletion = { [weak self] success in
             DispatchQueue.main.async {
                 self?.activityIndicator.stopAnimating()
                 self?.activityIndicator.isHidden = true
-
+                
                 if success {
                     self?.goToHome()
                 } else {
@@ -74,12 +74,12 @@ class WelcomeViewController: UIViewController {
             }
         }
     }
-
+    
     @objc func textFieldDidChange() {
         validateTextFields()
         validatePasswordField()
     }
-
+    
     private func validateTextFields() {
         guard let username = userNameTf.text, !username.isEmpty,
               let password = passwordTf.text, !password.isEmpty else {
@@ -99,28 +99,27 @@ class WelcomeViewController: UIViewController {
             return
         }
         
-        // Validasi password menggunakan regex
         if ValidationUtil.isValidPassword(password) {
             strongPassword.isHidden = false
         } else {
             strongPassword.isHidden = true
         }
     }
-
+    
     private func goToHome() {
         let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
         if let homeVC = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController {
             navigationController?.pushViewController(homeVC, animated: true)
         }
     }
-
+    
     func showAlert(message: String) {
         let alert = UIAlertController(title: "Warning", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
     }
-
+    
     private func navigateToForgotPassword() {
         let storyboard = UIStoryboard(name: "ForgotPassword", bundle: nil)
         if let forgotPwdVC = storyboard.instantiateViewController(withIdentifier: "ForgotPwdViewController") as? ForgotPwdViewController {

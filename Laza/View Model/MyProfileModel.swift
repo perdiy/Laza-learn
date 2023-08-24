@@ -32,9 +32,10 @@ class MyProfileViewModel {
                     }
                 }
             }
-            task.resume()
+            task.resume() 
         } else {
             print("User Token not found in UserDefaults.")
         }
     }
 }
+ 

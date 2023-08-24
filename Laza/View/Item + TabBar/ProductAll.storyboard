@@ -27,7 +27,7 @@
                                             <color key="baseForegroundColor" name="Font Color"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="backBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="oXd-IH-oLL"/>
+                                            <action selector="backButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hHW-jn-lXZ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -80,9 +80,6 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Sort">
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <action selector="sortButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="qsU-yR-tqE"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>

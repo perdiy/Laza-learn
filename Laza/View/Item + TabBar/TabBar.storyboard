@@ -1009,6 +1009,7 @@
                     <navigationItem key="navigationItem" id="2Os-YX-9eb"/>
                     <size key="freeformSize" width="400" height="832"/>
                     <connections>
+                        <outlet property="imgView" destination="hdj-jq-4Y5" id="4Hg-HA-1iD"/>
                         <outlet property="userName" destination="qMV-Rz-3rb" id="zBr-iQ-PTw"/>
                     </connections>
                 </viewController>

@@ -28,6 +28,10 @@ class FavoriteViewController: UIViewController {
         collectionView.collectionViewLayout = layout
 
         setupTabBarItemImage()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         fetchWishlistItems()
     }
     
@@ -126,5 +130,5 @@ extension FavoriteViewController: UICollectionViewDelegate {
         }
     }
 }
- 
+  
  

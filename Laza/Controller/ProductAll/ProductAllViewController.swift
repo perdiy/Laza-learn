@@ -6,9 +6,12 @@
 //
 
 import UIKit
-
+ 
 class ProductAllViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    @IBAction func backButton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     var allProducts: [DatumProdct] = []
     var selectedProduct: DatumProdct?
     
@@ -29,7 +32,7 @@ class ProductAllViewController: UIViewController, UICollectionViewDataSource, UI
     func showAllProducts(products: [DatumProdct]) {
         allProducts = products
         collectionView.reloadData()
-        updateAllReviewLabel() // Memperbarui label jumlah produk
+        updateAllReviewLabel()
     }
     
     func setupCollectionView() {
@@ -79,7 +82,7 @@ class ProductAllViewController: UIViewController, UICollectionViewDataSource, UI
     func navigateToDetailViewController() {
         let storyboard = UIStoryboard(name: "Detail", bundle: nil)
         if let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
-            detailViewController.product = selectedProduct
+            detailViewController.productId = selectedProduct?.id
             self.navigationController?.pushViewController(detailViewController, animated: true)
         }
     }
