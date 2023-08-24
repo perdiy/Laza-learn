@@ -17,34 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdZ-VI-eJt">
-                                <rect key="frame" x="20" y="330.66666666666669" width="353" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="duw-06-nWG"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="fb" title="Facebook">
-                                    <color key="baseBackgroundColor" red="0.25882352939999997" green="0.4039215686" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="facebookBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="54C-ab-9hg"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7t1-rQ-4xE">
-                                <rect key="frame" x="20" y="390.66666666666669" width="353" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="hsP-Ow-JEk"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="Twitter" title="Twitter">
-                                    <color key="baseBackgroundColor" red="0.1137254902" green="0.63137254899999995" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="twitterBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sgc-N7-hB1"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iUc-L8-Ybs">
-                                <rect key="frame" x="20" y="450.66666666666669" width="353" height="50"/>
+                                <rect key="frame" x="20" y="399.66666666666669" width="353" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Hbe-PT-gHI"/>
                                 </constraints>
@@ -100,23 +74,17 @@
                         <viewLayoutGuide key="safeArea" id="Gee-4E-H1V"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="iUc-L8-Ybs" firstAttribute="top" secondItem="7t1-rQ-4xE" secondAttribute="bottom" constant="10" id="5Df-fT-phQ"/>
                             <constraint firstItem="5Yt-Or-ZRz" firstAttribute="top" secondItem="Gee-4E-H1V" secondAttribute="top" constant="57" id="5LZ-pN-5sz"/>
+                            <constraint firstItem="iUc-L8-Ybs" firstAttribute="top" secondItem="5Yt-Or-ZRz" secondAttribute="bottom" constant="250" id="8pN-QO-rcH"/>
                             <constraint firstItem="vOW-dG-lME" firstAttribute="leading" secondItem="Gee-4E-H1V" secondAttribute="leading" id="8s4-Wa-9ZW"/>
                             <constraint firstItem="Gee-4E-H1V" firstAttribute="trailing" secondItem="iUc-L8-Ybs" secondAttribute="trailing" constant="20" id="Eey-vf-e35"/>
-                            <constraint firstItem="qdZ-VI-eJt" firstAttribute="top" secondItem="5Yt-Or-ZRz" secondAttribute="bottom" constant="181" id="H61-sb-U34"/>
-                            <constraint firstItem="qdZ-VI-eJt" firstAttribute="leading" secondItem="Gee-4E-H1V" secondAttribute="leading" constant="20" id="HoQ-7G-a5x"/>
                             <constraint firstItem="IiU-lI-Qai" firstAttribute="leading" secondItem="Gee-4E-H1V" secondAttribute="leading" constant="73" id="LbA-ET-Jjy"/>
                             <constraint firstAttribute="bottom" secondItem="vOW-dG-lME" secondAttribute="bottom" id="Q75-uY-7uh"/>
                             <constraint firstItem="Gee-4E-H1V" firstAttribute="trailing" secondItem="5Yt-Or-ZRz" secondAttribute="trailing" constant="91" id="RKe-Ko-LVT"/>
                             <constraint firstItem="Gee-4E-H1V" firstAttribute="trailing" secondItem="IiU-lI-Qai" secondAttribute="trailing" constant="73.329999999999998" id="TUO-2C-4vM"/>
                             <constraint firstItem="vOW-dG-lME" firstAttribute="trailing" secondItem="Gee-4E-H1V" secondAttribute="trailing" id="V05-Ck-Xgr"/>
                             <constraint firstItem="5Yt-Or-ZRz" firstAttribute="leading" secondItem="Gee-4E-H1V" secondAttribute="leading" constant="90" id="bwe-lG-QLO"/>
-                            <constraint firstItem="7t1-rQ-4xE" firstAttribute="top" secondItem="qdZ-VI-eJt" secondAttribute="bottom" constant="10" id="eZ6-hw-0A9"/>
-                            <constraint firstItem="7t1-rQ-4xE" firstAttribute="leading" secondItem="Gee-4E-H1V" secondAttribute="leading" constant="20" id="hOa-sf-cKu"/>
                             <constraint firstItem="vOW-dG-lME" firstAttribute="top" secondItem="IiU-lI-Qai" secondAttribute="bottom" constant="25" id="hkB-Qz-igA"/>
-                            <constraint firstItem="Gee-4E-H1V" firstAttribute="trailing" secondItem="qdZ-VI-eJt" secondAttribute="trailing" constant="20" id="sCa-3t-wPe"/>
-                            <constraint firstItem="Gee-4E-H1V" firstAttribute="trailing" secondItem="7t1-rQ-4xE" secondAttribute="trailing" constant="20" id="xuf-Wp-h76"/>
                             <constraint firstItem="iUc-L8-Ybs" firstAttribute="leading" secondItem="Gee-4E-H1V" secondAttribute="leading" constant="20" id="ylB-O8-kqp"/>
                         </constraints>
                     </view>
@@ -147,8 +115,6 @@
     </scenes>
     <resources>
         <image name="Googlegoogle" width="22" height="22"/>
-        <image name="Twitter" width="23" height="22"/>
-        <image name="fb" width="22" height="22"/>
         <namedColor name="Font Color">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
