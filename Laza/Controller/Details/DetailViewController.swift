@@ -17,7 +17,6 @@ class DetailViewController: UIViewController {
     var wishlistItem: ProductWishlist?
     var selectedSizeId: Int?
     
-    
     @IBOutlet weak var imageUser: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
@@ -29,6 +28,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var star: CosmosView!
+    @IBOutlet weak var loveButtonOutlet: UIButton! // Outlet for the love button
     
     @IBAction func addToCart(_ sender: Any) {
         guard let token = UserDefaults.standard.string(forKey: "userToken") else {
@@ -58,8 +58,6 @@ class DetailViewController: UIViewController {
         viewModel.delegate = self
         viewModel.fetchSizes(for: productId)
         detailProductApi()
-        
-        
     }
     
     func detailProductApi() {
@@ -112,9 +110,16 @@ class DetailViewController: UIViewController {
             return
         }
         
-        addProductToWishlist(productId: productId, token: token)
-        updateCheckBtnImage(sender as! UIButton, isChecked: true)
+        if let wishlistItem = wishlistItem {
+            removeProductFromWishlist(wishlistItem, token: token)
+            updateLoveButtonStatus(isInWishlist: false)
+            self.wishlistItem = nil
+        } else {
+            addProductToWishlist(productId: productId, token: token)
+            updateLoveButtonStatus(isInWishlist: true)
+        }
     }
+    
     func addProductToWishlist(productId: Int, token: String) {
         let urlString = "https://lazaapp.shop/wishlists?ProductId=\(productId)"
         guard let url = URL(string: urlString) else {
@@ -140,17 +145,24 @@ class DetailViewController: UIViewController {
                     }
                 } else {
                     print("Failed to add product to wishlist. Status code: \(httpResponse.statusCode)")
-                    
                 }
             }
         }.resume()
     }
-    private func updateCheckBtnImage(_ button: UIButton, isChecked: Bool) {
-        let systemImageName = isChecked ? "heart.fill" : "heart"
+    
+    func removeProductFromWishlist(_ wishlistItem: ProductWishlist, token: String) {
+        // Implement the code to remove a product from the wishlist here
+        // You mentioned that the API doesn't have a delete case for this, so you might need to implement it differently based on the API behavior
+        // For now, I'll leave this as a placeholder
+    }
+    
+    func updateLoveButtonStatus(isInWishlist: Bool) {
+        let systemImageName = isInWishlist ? "heart.fill" : "heart"
         if let systemImage = UIImage(systemName: systemImageName) {
-            button.setImage(systemImage, for: .normal)
+            loveButtonOutlet.setImage(systemImage, for: .normal)
         }
     }
+    
     func showAddToWishlistAlert() {
         let alert = UIAlertController(title: "Success", message: "Product added to wishlist!", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)

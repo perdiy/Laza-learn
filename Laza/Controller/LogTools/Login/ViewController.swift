@@ -52,9 +52,5 @@ class ViewController: UIViewController {
             navigationController?.pushViewController(welcomeVC, animated: true)
         }
     }
-    
-    
-    
-    
 }
 

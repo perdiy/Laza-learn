@@ -315,6 +315,7 @@
                         <outlet property="descLabel" destination="Rfa-Ql-Et4" id="kIB-03-jfE"/>
                         <outlet property="fullNameLabel" destination="3vu-Zx-PZX" id="whG-T7-7j7"/>
                         <outlet property="imageUser" destination="SEw-VF-06G" id="kgj-3F-HxR"/>
+                        <outlet property="loveButtonOutlet" destination="HiL-zM-vdl" id="CA3-1m-M2D"/>
                         <outlet property="priceLabel" destination="nJB-Nx-OJw" id="xhF-V6-jAu"/>
                         <outlet property="productImageView" destination="6f8-DB-Yw1" id="NrL-Ne-FR9"/>
                         <outlet property="ratingLabel" destination="9Od-Sj-JYa" id="s6F-sD-uoS"/>

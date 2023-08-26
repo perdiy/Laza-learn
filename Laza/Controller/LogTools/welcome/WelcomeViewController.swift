@@ -11,6 +11,20 @@ class WelcomeViewController: UIViewController {
     var iconClick = true
     var welcomeViewModel = WelcomeViewModel()
     
+    
+    @IBAction func toggleRemember(_ sender: UISwitch) {
+        if sender.isOn {
+            UserDefaults.standard.set(true, forKey: "RememberMe")
+            UserDefaults.standard.set(userNameTf.text, forKey: "SavedUsername")
+            UserDefaults.standard.set(passwordTf.text, forKey: "SavedPassword")
+            
+        } else {
+            UserDefaults.standard.set(false, forKey: "RememberMe")
+            UserDefaults.standard.removeObject(forKey: "SavedUsername")
+            UserDefaults.standard.removeObject(forKey: "SavedPassword")
+        }
+    }
+
     @IBOutlet weak var strongPassword: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var passwordTf: UITextField! {

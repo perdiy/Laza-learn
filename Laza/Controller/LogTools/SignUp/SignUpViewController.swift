@@ -12,6 +12,8 @@ class SignUpViewController: UIViewController {
     var iconClick = true
     var signUpViewModel = SignUpViewModel()
     
+    @IBOutlet weak var backView: UIView!
+    
     @IBAction func hidePassword(_ sender: Any) {
         iconClick.toggle()
         passwordTf.isSecureTextEntry = !iconClick
@@ -22,6 +24,7 @@ class SignUpViewController: UIViewController {
         confirmPasswordTf.isSecureTextEntry = !iconClick
     }
     
+    @IBOutlet weak var strongUserName: UIImageView!
     @IBOutlet weak var strongConfirmPassword: UIImageView!
     @IBOutlet weak var strongPassword: UIImageView!
     @IBOutlet weak var cekImg: UIImageView!
@@ -70,6 +73,8 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTextFields()
+        backView.applyCircularButtonStyle()
+        backView.applyShadow()
     }
     
     private func setupTextFields() {

@@ -90,7 +90,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pNI-wb-9GQ">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pNI-wb-9GQ">
                                 <rect key="frame" x="321" y="685" width="51" height="31"/>
                             </switch>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dut-l8-lp4">
@@ -182,6 +182,13 @@
                                     <constraint firstAttribute="height" constant="13" id="zr0-9Q-oGg"/>
                                 </constraints>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Vector-8" translatesAutoresizingMaskIntoConstraints="NO" id="Wy7-hP-8fz">
+                                <rect key="frame" x="346" y="219" width="14" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="14" id="DzR-TI-Rip"/>
+                                    <constraint firstAttribute="height" constant="15" id="JTR-ot-yjj"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -195,6 +202,7 @@
                             <constraint firstItem="h4b-8j-PUe" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="BSf-Jk-5gM"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="dBC-aT-eP1" secondAttribute="trailing" constant="20" id="CVV-CO-Y7a"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="i1v-uh-VHu" secondAttribute="trailing" constant="20" id="EVG-xK-d06"/>
+                            <constraint firstItem="Wy7-hP-8fz" firstAttribute="top" secondItem="Lu7-CY-66n" secondAttribute="bottom" constant="14.67" id="FTn-GT-bwQ"/>
                             <constraint firstItem="dBC-aT-eP1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Hne-mw-HHU"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="hhL-ih-jxA" secondAttribute="trailing" constant="28" id="L1k-eG-dnH"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="GS6-pg-6f6" secondAttribute="trailing" constant="20" id="QJf-5i-U4d"/>
@@ -212,6 +220,7 @@
                             <constraint firstItem="ppl-uX-Meg" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="bXl-57-7It"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="pNI-wb-9GQ" secondAttribute="trailing" constant="23" id="bYD-7H-Hbw"/>
                             <constraint firstItem="yJO-he-RWy" firstAttribute="top" secondItem="dBC-aT-eP1" secondAttribute="bottom" constant="13.33" id="d6O-PZ-lUN"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Wy7-hP-8fz" secondAttribute="trailing" constant="33" id="fsP-Wr-PNp"/>
                             <constraint firstItem="3sw-KB-sv4" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="35" id="hfw-Tr-hGa"/>
                             <constraint firstItem="Dj3-E8-IXE" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="jCs-SV-XPJ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="yJO-he-RWy" secondAttribute="trailing" constant="33" id="k62-hX-cKf"/>
@@ -231,6 +240,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backView" destination="dut-l8-lp4" id="cs0-jg-2NT"/>
                         <outlet property="cekImg" destination="yJO-he-RWy" id="5Vw-09-4hy"/>
                         <outlet property="confirmPasswordTf" destination="YBD-cb-YB8" id="4hk-8B-IQp"/>
                         <outlet property="emailTf" destination="Dj3-E8-IXE" id="iiR-He-rOJ"/>
@@ -238,6 +248,7 @@
                         <outlet property="signUpButton" destination="Prx-rA-ywi" id="YEh-KL-hBu"/>
                         <outlet property="strongConfirmPassword" destination="RIs-8I-Pq0" id="wbI-Kc-beU"/>
                         <outlet property="strongPassword" destination="hhL-ih-jxA" id="8yp-ux-AdE"/>
+                        <outlet property="strongUserName" destination="Wy7-hP-8fz" id="5FW-WU-BAp"/>
                         <outlet property="userNameTf" destination="kyG-Dc-Yid" id="tKT-4H-g7c"/>
                     </connections>
                 </viewController>
