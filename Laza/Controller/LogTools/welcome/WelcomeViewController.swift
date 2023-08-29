@@ -126,7 +126,7 @@ class WelcomeViewController: UIViewController {
             navigationController?.pushViewController(homeVC, animated: true)
         }
     }
-    
+     
     func showAlert(message: String) {
         let alert = UIAlertController(title: "Warning", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)

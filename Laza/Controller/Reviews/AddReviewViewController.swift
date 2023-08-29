@@ -4,23 +4,23 @@
 //
 //  Created by Perdi Yansyah on 03/08/23.
 // 
- 
+
 import UIKit
 
 class AddReviewViewController: UIViewController {
     
     @IBOutlet weak var comment: UITextView!
     @IBOutlet weak var rating: UILabel!
-    private let ratingLb: Float = 0.0
     @IBOutlet weak var slider: CustomSlider! {
         didSet {
             slider.sliderHeight = CGFloat(18)
             slider.minimumValue = 0.0
             slider.maximumValue = 5.0
-            slider.value = ratingLb
+            slider.value = viewModel.initialRating
             slider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
         }
     }
+    
     @IBOutlet weak var viewBack: UIView!
     
     var productId: Int = 0
@@ -28,10 +28,12 @@ class AddReviewViewController: UIViewController {
         return UserDefaults.standard.string(forKey: "userToken") ?? ""
     }
     
+    var viewModel = AddReviewViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        slider.value = ratingLb
+        slider.value = viewModel.initialRating
         viewBack.layer.cornerRadius = viewBack.bounds.height / 2.0
         viewBack.clipsToBounds = true
     }
@@ -51,52 +53,18 @@ class AddReviewViewController: UIViewController {
     }
     
     private func uploadReview() {
-        // Prepare the request
-        guard let url = URL(string: "https://lazaapp.shop/products/\(productId)/reviews") else {
-            return
-        }
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("Bearer \(userToken)", forHTTPHeaderField: "X-Auth-Token")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        // Prepare the review data
-        let ratingValue = round(slider.value * 2) / 2
-        let commentText = comment.text ?? ""
-        let reviewData: [String: Any] = [
-            "rating": ratingValue,
-            "comment": commentText
-
-        ]
-        
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: reviewData, options: [])
-        } catch {
-            print("Error serializing review data: \(error)")
-            return
-        }
-        
-        // Perform the API request
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                print("Error submitting review: \(error)")
-                return
-            }
+        viewModel.uploadReview(productId: productId, token: userToken, rating: slider.value, comment: comment.text ?? "") { [weak self] result in
+            guard let self = self else { return }
             
-            if let httpResponse = response as? HTTPURLResponse {
-                if httpResponse.statusCode == 201 {
-                    // Review submitted successfully
-                    print("Review submitted successfully!")
-                    
-                    // Navigate to ReviewViewController on the main thread
-                    DispatchQueue.main.async {
-                        self.navigationController?.popViewController(animated: false)
-                    }
-                } else {
-                    // Handle other status codes if needed
-                    print("Error submitting review: Status code \(httpResponse.statusCode)")
+            switch result {
+            case .success:
+                print("Review berhasil dikirim!")
+                DispatchQueue.main.async {
+                    self.navigationController?.popViewController(animated: false)
                 }
+            case .failure(let error):
+                print("Error mengirim review: \(error)")
             }
-        }.resume()
+        }
     }
 }

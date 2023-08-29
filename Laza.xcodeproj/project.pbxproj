@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3100ABB02A9C80140033F8D6 /* UpdateAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3100ABAF2A9C80140033F8D6 /* UpdateAddressViewController.swift */; };
+		3177BF622A9D80A2001D412D /* AllSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3177BF612A9D80A2001D412D /* AllSize.swift */; };
 		52050CDD2A92F58C0050F46B /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52050CDC2A92F58C0050F46B /* EditProfileViewController.swift */; };
 		520A8DBC2A808E270049FBB1 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520A8DBB2A808E270049FBB1 /* CartViewController.swift */; };
 		520A8DBE2A8097BD0049FBB1 /* OrderConfimed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 520A8DBD2A8097BD0049FBB1 /* OrderConfimed.storyboard */; };
@@ -135,6 +137,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3100ABAF2A9C80140033F8D6 /* UpdateAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAddressViewController.swift; sourceTree = "<group>"; };
+		3177BF612A9D80A2001D412D /* AllSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSize.swift; sourceTree = "<group>"; };
 		52050CDC2A92F58C0050F46B /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		520A8DBB2A808E270049FBB1 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		520A8DBD2A8097BD0049FBB1 /* OrderConfimed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrderConfimed.storyboard; sourceTree = "<group>"; };
@@ -523,6 +527,7 @@
 				52D8C4BF2A94804300EE79B9 /* Wishlist.swift */,
 				52EF19F82A96E97B00C2E6B8 /* CartProduct.swift */,
 				52EF1A0B2A9742B300C2E6B8 /* Address.swift */,
+				3177BF612A9D80A2001D412D /* AllSize.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -600,6 +605,7 @@
 				5290BB262A83816C0042A32A /* ListAddressViewController.swift */,
 				5290BB282A8381850042A32A /* ListAddressTableViewCell.swift */,
 				5290BB292A8381850042A32A /* ListAddressTableViewCell.xib */,
+				3100ABAF2A9C80140033F8D6 /* UpdateAddressViewController.swift */,
 			);
 			path = Address;
 			sourceTree = "<group>";
@@ -833,6 +839,7 @@
 				TargetAttributes = {
 					52EF38692A72125400446F31 = {
 						CreatedOnToolsVersion = 14.3.1;
+						LastSwiftMigration = 1430;
 					};
 				};
 			};
@@ -986,6 +993,7 @@
 				52444CD12A78BA09000BFC87 /* NestedViewController.swift in Sources */,
 				52B277DD2A82887700614179 /* Extension.swift in Sources */,
 				52EF386E2A72125400446F31 /* AppDelegate.swift in Sources */,
+				3100ABB02A9C80140033F8D6 /* UpdateAddressViewController.swift in Sources */,
 				524548432A8DAB5D0055B2D3 /* KeychainManager.swift in Sources */,
 				52EF389C2A7214D600446F31 /* LoginViewController.swift in Sources */,
 				52EF38A82A7225BF00446F31 /* TabBarViewController.swift in Sources */,
@@ -993,6 +1001,7 @@
 				52EF1A062A973EF100C2E6B8 /* VerifycationEmailViewController.swift in Sources */,
 				5245483D2A8D096F0055B2D3 /* MyProfileModel.swift in Sources */,
 				52F456D92A7C94B800F565D9 /* VerificationCodeViewController.swift in Sources */,
+				3177BF622A9D80A2001D412D /* AllSize.swift in Sources */,
 				527F9B042A7B7D6D00AC520C /* extension.swift in Sources */,
 				5290BB1C2A8334900042A32A /* PaymentMethodeViewController.swift in Sources */,
 				52AAEC842A80EF9800903342 /* PaymentViewController.swift in Sources */,
@@ -1162,6 +1171,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1179,6 +1189,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = MS.Laza;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1190,6 +1201,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;

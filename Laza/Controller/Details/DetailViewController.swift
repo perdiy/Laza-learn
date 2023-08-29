@@ -28,7 +28,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var star: CosmosView!
-    @IBOutlet weak var loveButtonOutlet: UIButton! // Outlet for the love button
+    @IBOutlet weak var loveButtonOutlet: UIButton!
     
     @IBAction func addToCart(_ sender: Any) {
         guard let token = UserDefaults.standard.string(forKey: "userToken") else {
@@ -151,9 +151,6 @@ class DetailViewController: UIViewController {
     }
     
     func removeProductFromWishlist(_ wishlistItem: ProductWishlist, token: String) {
-        // Implement the code to remove a product from the wishlist here
-        // You mentioned that the API doesn't have a delete case for this, so you might need to implement it differently based on the API behavior
-        // For now, I'll leave this as a placeholder
     }
     
     func updateLoveButtonStatus(isInWishlist: Bool) {
@@ -187,6 +184,7 @@ extension DetailViewController: UICollectionViewDataSource, UICollectionViewDele
             }
         }
         selectedSizeId = sizes[indexPath.item].id
+        print("opo\(String(describing: selectedSizeId))")
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

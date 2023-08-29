@@ -307,7 +307,12 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="Vector-2" selectedImage="Vector-2" id="EWr-6k-Wpu"/>
                     <connections>
+                        <outlet property="cityLabel" destination="tRf-TK-Twl" id="gep-z2-4Hi"/>
+                        <outlet property="countryLabel" destination="kip-2n-70k" id="eTR-YA-Dz0"/>
+                        <outlet property="shippingCost" destination="fN3-No-LaJ" id="Zra-tX-gIl"/>
+                        <outlet property="subTotal" destination="EGu-4Y-3DU" id="jds-4y-wO1"/>
                         <outlet property="tableView" destination="ikB-US-KAL" id="Xed-OR-lr0"/>
+                        <outlet property="total" destination="hfo-lz-Din" id="dNL-5N-yjO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vtu-sC-eTn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -870,6 +875,9 @@
                                 <buttonConfiguration key="configuration" style="plain" image="bag" catalog="system" title="Cart" imagePadding="10">
                                     <color key="baseForegroundColor" name="Font Color"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="cartBtn:" destination="2OB-Dy-CrO" eventType="touchUpInside" id="46h-Nu-3fs"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJV-gc-Ojz">
                                 <rect key="frame" x="6" y="430.33333333333331" width="388" height="34.333333333333314"/>

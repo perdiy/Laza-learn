@@ -116,16 +116,14 @@
                                     <action selector="loginBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="LXv-NT-2bB"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="CFt-nE-Kvl">
-                                <rect key="frame" x="184.66666666666666" y="416" width="24" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="2sY-Qp-gvB"/>
-                                    <constraint firstAttribute="width" constant="24" id="7HB-cD-KzU"/>
-                                </constraints>
-                            </activityIndicatorView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Strong" translatesAutoresizingMaskIntoConstraints="NO" id="8ZE-kY-yL5">
                                 <rect key="frame" x="332" y="450.66666666666669" width="34" height="12"/>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="CFt-nE-Kvl">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" red="0.11547509766728122" green="0.11600818107881747" blue="0.11760743131342621" alpha="0.40693114403964709" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="color" systemColor="systemGrayColor"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -139,13 +137,16 @@
                             <constraint firstItem="BIP-5Q-9Si" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="3" id="APi-pa-RQx"/>
                             <constraint firstItem="QhL-u2-NWa" firstAttribute="top" secondItem="B3S-h2-G5b" secondAttribute="bottom" constant="10" id="AdY-ls-gle"/>
                             <constraint firstItem="6Ka-au-9qA" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="Az5-TE-sWJ"/>
+                            <constraint firstItem="CFt-nE-Kvl" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Dln-An-fa7"/>
                             <constraint firstItem="BIP-5Q-9Si" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="30" id="FsR-no-1zo"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="04y-kh-27a" secondAttribute="trailing" constant="25" id="HLJ-S6-aMu"/>
+                            <constraint firstAttribute="bottom" secondItem="CFt-nE-Kvl" secondAttribute="bottom" id="I9N-5P-RII"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bYm-LJ-ngr" secondAttribute="trailing" constant="1" id="LFf-1V-vPM"/>
+                            <constraint firstItem="CFt-nE-Kvl" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="OEr-rd-5mi"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="8ZE-kY-yL5" secondAttribute="trailing" constant="27" id="P8D-eH-k00"/>
                             <constraint firstItem="QhL-u2-NWa" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="PDu-mJ-hI6"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="erg-s5-2Pf" secondAttribute="trailing" id="PkR-Ra-tzD"/>
-                            <constraint firstItem="CFt-nE-Kvl" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="R1C-wr-t4X"/>
+                            <constraint firstItem="CFt-nE-Kvl" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="QrM-lW-WRD"/>
                             <constraint firstItem="VBa-c4-Seo" firstAttribute="top" secondItem="bYm-LJ-ngr" secondAttribute="bottom" constant="60" id="SZk-bB-aMG"/>
                             <constraint firstItem="B3S-h2-G5b" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="TbJ-47-Euz"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="BIP-5Q-9Si" secondAttribute="trailing" constant="3" id="UXf-7O-1Y2"/>
@@ -156,7 +157,6 @@
                             <constraint firstItem="04y-kh-27a" firstAttribute="top" secondItem="VBa-c4-Seo" secondAttribute="bottom" constant="88.329999999999998" id="h9c-yH-GRA"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="QhL-u2-NWa" secondAttribute="trailing" constant="25" id="hB5-FU-a8b"/>
                             <constraint firstItem="jxJ-D4-2F0" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="6" id="k2g-bV-ZrF"/>
-                            <constraint firstItem="CFt-nE-Kvl" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="mX4-Ix-UT2"/>
                             <constraint firstItem="8ZE-kY-yL5" firstAttribute="top" secondItem="oPQ-q8-PAM" secondAttribute="bottom" constant="8" id="mvf-JI-TU0"/>
                             <constraint firstItem="bYm-LJ-ngr" firstAttribute="top" secondItem="oPQ-q8-PAM" secondAttribute="bottom" constant="50" id="tzg-lY-lXf"/>
                             <constraint firstItem="erg-s5-2Pf" firstAttribute="top" secondItem="04y-kh-27a" secondAttribute="bottom" constant="25" id="ujC-R6-IDZ"/>
@@ -186,6 +186,9 @@
         <image name="eye" catalog="system" width="128" height="79"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

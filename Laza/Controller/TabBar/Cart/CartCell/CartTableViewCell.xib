@@ -54,6 +54,9 @@ Nike Sportswear</string>
                         <buttonConfiguration key="configuration" style="plain" image="trash.circle" catalog="system" title="">
                             <color key="baseForegroundColor" systemColor="opaqueSeparatorColor"/>
                         </buttonConfiguration>
+                        <connections>
+                            <action selector="deletCart:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="o0H-M3-BvC"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V72-Pf-dlL">
                         <rect key="frame" x="130" y="91.666666666666671" width="14" height="15"/>

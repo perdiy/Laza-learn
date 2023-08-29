@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+ 
 // MARK: - CartProduct
 struct CartProduct: Codable {
     let status: String
@@ -55,3 +55,5 @@ struct ProductCart: Codable {
         case quantity, size
     }
 }
+
+

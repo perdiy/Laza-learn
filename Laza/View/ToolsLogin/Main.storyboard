@@ -30,27 +30,22 @@
                                     <action selector="googleBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Li-Xh-Tci"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IiU-lI-Qai">
-                                <rect key="frame" x="72.999999999999986" y="705.66666666666663" width="246.66666666666663" height="34.333333333333371"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6b-pF-Yvh">
-                                        <rect key="frame" x="0.0" y="0.0" width="175.66666666666666" height="34.333333333333336"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDy-64-J5F">
-                                        <rect key="frame" x="175.66666666666666" y="0.0" width="71" height="34.333333333333336"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Signin">
-                                            <color key="baseForegroundColor" name="Font Color"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="SignInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L11-wG-uEX"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6b-pF-Yvh">
+                                <rect key="frame" x="72.999999999999986" y="705.66666666666663" width="175.66666666666663" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDy-64-J5F">
+                                <rect key="frame" x="248.66666666666663" y="697.66666666666663" width="71" height="34.333333333333371"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Signin">
+                                    <color key="baseForegroundColor" name="Font Color"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="SignInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L11-wG-uEX"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let’s Get Started" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Yt-Or-ZRz">
                                 <rect key="frame" x="90" y="116.00000000000001" width="212" height="33.666666666666671"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
@@ -78,14 +73,15 @@
                             <constraint firstItem="iUc-L8-Ybs" firstAttribute="top" secondItem="5Yt-Or-ZRz" secondAttribute="bottom" constant="250" id="8pN-QO-rcH"/>
                             <constraint firstItem="vOW-dG-lME" firstAttribute="leading" secondItem="Gee-4E-H1V" secondAttribute="leading" id="8s4-Wa-9ZW"/>
                             <constraint firstItem="Gee-4E-H1V" firstAttribute="trailing" secondItem="iUc-L8-Ybs" secondAttribute="trailing" constant="20" id="Eey-vf-e35"/>
-                            <constraint firstItem="IiU-lI-Qai" firstAttribute="leading" secondItem="Gee-4E-H1V" secondAttribute="leading" constant="73" id="LbA-ET-Jjy"/>
                             <constraint firstAttribute="bottom" secondItem="vOW-dG-lME" secondAttribute="bottom" id="Q75-uY-7uh"/>
                             <constraint firstItem="Gee-4E-H1V" firstAttribute="trailing" secondItem="5Yt-Or-ZRz" secondAttribute="trailing" constant="91" id="RKe-Ko-LVT"/>
-                            <constraint firstItem="Gee-4E-H1V" firstAttribute="trailing" secondItem="IiU-lI-Qai" secondAttribute="trailing" constant="73.329999999999998" id="TUO-2C-4vM"/>
+                            <constraint firstItem="O6b-pF-Yvh" firstAttribute="top" secondItem="iUc-L8-Ybs" secondAttribute="bottom" constant="256" id="S0w-Fn-1sL"/>
                             <constraint firstItem="vOW-dG-lME" firstAttribute="trailing" secondItem="Gee-4E-H1V" secondAttribute="trailing" id="V05-Ck-Xgr"/>
                             <constraint firstItem="5Yt-Or-ZRz" firstAttribute="leading" secondItem="Gee-4E-H1V" secondAttribute="leading" constant="90" id="bwe-lG-QLO"/>
-                            <constraint firstItem="vOW-dG-lME" firstAttribute="top" secondItem="IiU-lI-Qai" secondAttribute="bottom" constant="25" id="hkB-Qz-igA"/>
+                            <constraint firstItem="HDy-64-J5F" firstAttribute="top" secondItem="iUc-L8-Ybs" secondAttribute="bottom" constant="248" id="g37-09-rPB"/>
+                            <constraint firstItem="O6b-pF-Yvh" firstAttribute="leading" secondItem="Gee-4E-H1V" secondAttribute="leading" constant="73" id="kni-Jc-q7W"/>
                             <constraint firstItem="iUc-L8-Ybs" firstAttribute="leading" secondItem="Gee-4E-H1V" secondAttribute="leading" constant="20" id="ylB-O8-kqp"/>
+                            <constraint firstItem="Gee-4E-H1V" firstAttribute="trailing" secondItem="HDy-64-J5F" secondAttribute="trailing" constant="73.329999999999998" id="zLt-do-awl"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PGM-ay-CNZ"/>

@@ -4,19 +4,19 @@
 //
 //  Created by Perdi Yansyah on 21/08/23.
 //
- 
+
 import UIKit
 
 class BrandAllViewController: UIViewController {
-  
+    
+    var receivedData: [String] = []
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var jumlahBrand: UILabel!
     @IBAction func backButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: false)
     }
     
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var jumlahBrand: UILabel!
-    
-    var receivedData: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,6 @@ extension BrandAllViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        
         let data = receivedData[indexPath.item]
         cell.nameBrand.text = data
         
@@ -49,7 +48,7 @@ extension BrandAllViewController: UICollectionViewDataSource {
 
 extension BrandAllViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
+        
         return CGSize(width: collectionView.frame.size.width, height: 60)
     }
     

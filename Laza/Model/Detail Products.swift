@@ -43,23 +43,16 @@ struct Category: Codable {
     let category: String
 }
 
-// MARK: - Review
-//struct Review: Codable {
-//    let id: Int
-//    let comment: String
-//    let rating: Double
-//    let fullName, imageURL, createdAt: String
-//
-//    enum CodingKeys: String, CodingKey {
-//        case id, comment, rating
-//        case fullName = "full_name"
-//        case imageURL = "image_url"
-//        case createdAt = "created_at"
-//    }
-//}
+
 
 // MARK: - Size
 struct SizeDetailProd: Codable {
     let id: Int
     let size: String
+}
+
+struct AllSize: Codable {
+    let status: String
+    let isError: Bool
+    let data:[SizeDetailProd]
 }

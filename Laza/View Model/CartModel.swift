@@ -39,4 +39,136 @@ class CartViewModel {
         }.resume()
         
     }
+    
+    
+    func deleteCartItem(productId: Int, sizedId: Int, completion: @escaping () -> Void) {
+        // Fetch token from UserDefaults
+        guard let token = UserDefaults.standard.string(forKey: "userToken") else {
+            print("User token not available.")
+            return
+        }
+        
+        // Buat URL untuk penghapusan item
+        guard let url = URL(string: "https://lazaapp.shop/carts?ProductId=\(productId)&SizeId=\(sizedId)") else {
+            print("Invalid URL")
+            return
+        }
+        print(url)
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        
+        // Setel header token akses
+        let authorizationHeader = "Bearer \(token)"
+        request.setValue(authorizationHeader, forHTTPHeaderField: "X-Auth-Token") // Menggunakan "Authorization" sebagai nama header
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error deleting item: \(error)")
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse {
+                if response.statusCode == 200 {
+                    print("Item deleted successfully")
+                    // Panggil completionHandler setelah penghapusan selesai
+                    completion()
+                } else {
+                    print("Error deleting item. Status code: \(response.statusCode)")
+                }
+            }
+        }.resume()
+    }
+    
+    func getSizeAll(completion:@escaping (AllSize) -> ()) {
+        guard let url = URL(string: "https://lazaapp.shop/size") else {return}
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let data = data else { return }
+            
+            do {
+                let sizeList = try JSONDecoder().decode(AllSize.self, from: data)
+                DispatchQueue.main.async {
+                    completion(sizeList)
+                }
+            } catch {
+                print("Error decoding data: \(error)")
+            }
+        }.resume()
+    }
+    
+    func addCartItemQuantity(productId: Int, sizedId: Int, completion: @escaping () -> Void) {
+        // Fetch token from UserDefaults
+        guard let token = UserDefaults.standard.string(forKey: "userToken") else {
+            print("User token not available.")
+            return
+        }
+        
+        // Create URL for updating item quantity
+        guard let url = URL(string: "https://lazaapp.shop/carts?ProductId=\(productId)&SizeId=\(sizedId)") else {
+            print("Invalid URL")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        // Set authorization header token
+        let authorizationHeader = "Bearer \(token)"
+        request.setValue(authorizationHeader, forHTTPHeaderField: "X-Auth-Token")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error adding item to cart: \(error)")
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse {
+                if response.statusCode == 201 {
+                    print("Item added to cart successfully")
+                    // Call completionHandler after adding item to cart
+                    completion()
+                } else {
+                    print("Error adding item to cart. Status code: \(response.statusCode)")
+                }
+            }
+        }.resume()
+    }
+    
+    func decreaseCartItemQuantity(productId: Int, sizedId: Int, completion: @escaping () -> Void) {
+        // Fetch token from UserDefaults
+        guard let token = UserDefaults.standard.string(forKey: "userToken") else {
+            print("User token not available.")
+            return
+        }
+        
+        // Create URL for updating item quantity
+        guard let url = URL(string: "https://lazaapp.shop/carts?ProductId=\(productId)&SizeId=\(sizedId)") else {
+            print("Invalid URL")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        
+        // Set authorization header token
+        let authorizationHeader = "Bearer \(token)"
+        request.setValue(authorizationHeader, forHTTPHeaderField: "X-Auth-Token")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error adding item to cart: \(error)")
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse {
+                if response.statusCode == 200 {
+                    print("Item added to cart successfully")
+                    // Call completionHandler after adding item to cart
+                    completion()
+                } else {
+                    print("Error adding item to cart. Status code: \(response.statusCode)")
+                }
+            }
+        }.resume()
+    }
+    
 }

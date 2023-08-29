@@ -6,18 +6,18 @@
 //
 
 import UIKit
- 
+
 class ProductAllViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    @IBAction func backButton(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
     var allProducts: [DatumProdct] = []
     var selectedProduct: DatumProdct?
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var allReview: UILabel!
     @IBOutlet weak var viewBack: UIView!
+    @IBAction func backButton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

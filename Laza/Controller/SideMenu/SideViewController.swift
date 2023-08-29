@@ -6,19 +6,26 @@
 //
 
 import UIKit
-
+ 
 class SideViewController: UIViewController {
+    
+   
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var imgView: UIImageView!
     
     let userProfileViewModel = UserProfileViewModel()
-    
+    @IBAction func cartBtn(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
+        if let cartViewController = storyboard.instantiateViewController(withIdentifier: "CartViewController") as? TabBarViewController {
+            navigationController?.pushViewController(cartViewController, animated: true)
+        } 
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadUserProfile()
         
-  
         let viewOrder = self.view.viewWithTag(1)
         viewOrder?.layer.cornerRadius = 8
         viewOrder?.layer.masksToBounds = true
