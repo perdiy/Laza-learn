@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3100ABB02A9C80140033F8D6 /* UpdateAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3100ABAF2A9C80140033F8D6 /* UpdateAddressViewController.swift */; };
 		3177BF622A9D80A2001D412D /* AllSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3177BF612A9D80A2001D412D /* AllSize.swift */; };
+		317AD1812A9ED59800E2C7ED /* GetWhistlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317AD1802A9ED59800E2C7ED /* GetWhistlist.swift */; };
+		317AD1832A9F14AC00E2C7ED /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317AD1822A9F14AC00E2C7ED /* Alert.swift */; };
 		52050CDD2A92F58C0050F46B /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52050CDC2A92F58C0050F46B /* EditProfileViewController.swift */; };
 		520A8DBC2A808E270049FBB1 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520A8DBB2A808E270049FBB1 /* CartViewController.swift */; };
 		520A8DBE2A8097BD0049FBB1 /* OrderConfimed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 520A8DBD2A8097BD0049FBB1 /* OrderConfimed.storyboard */; };
@@ -139,6 +141,8 @@
 /* Begin PBXFileReference section */
 		3100ABAF2A9C80140033F8D6 /* UpdateAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAddressViewController.swift; sourceTree = "<group>"; };
 		3177BF612A9D80A2001D412D /* AllSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSize.swift; sourceTree = "<group>"; };
+		317AD1802A9ED59800E2C7ED /* GetWhistlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWhistlist.swift; sourceTree = "<group>"; };
+		317AD1822A9F14AC00E2C7ED /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		52050CDC2A92F58C0050F46B /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		520A8DBB2A808E270049FBB1 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		520A8DBD2A8097BD0049FBB1 /* OrderConfimed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrderConfimed.storyboard; sourceTree = "<group>"; };
@@ -300,6 +304,7 @@
 				52EF19FF2A9716C300C2E6B8 /* UIImage.swift */,
 				52B274742A9836EF004E9728 /* ImgCompress.swift */,
 				529BF35B2A98963F00FA91D7 /* ViewBack.swift */,
+				317AD1822A9F14AC00E2C7ED /* Alert.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -594,6 +599,7 @@
 				52EF19FD2A9715B300C2E6B8 /* CartModel.swift */,
 				52EF1A0D2A9742D900C2E6B8 /* AddressModelView.swift */,
 				5214950B2A9780310093EBB3 /* whislistViewModel.swift */,
+				317AD1802A9ED59800E2C7ED /* GetWhistlist.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -981,6 +987,7 @@
 				5266BF292A8C7B7C0099A876 /* MyProfileViewController.swift in Sources */,
 				52CE3F382A8DFA8F00BB1F8F /* ReviewsModel.swift in Sources */,
 				52CE3F362A8DF9A300BB1F8F /* Reviews.swift in Sources */,
+				317AD1832A9F14AC00E2C7ED /* Alert.swift in Sources */,
 				52EF19F92A96E97B00C2E6B8 /* CartProduct.swift in Sources */,
 				52444CDC2A78BB87000BFC87 /* CategoryTableViewCell.swift in Sources */,
 				52533EB22A89CBC600D08E82 /* Size.swift in Sources */,
@@ -1041,6 +1048,7 @@
 				52EF1A0E2A9742D900C2E6B8 /* AddressModelView.swift in Sources */,
 				520A8DC02A8097F90049FBB1 /* OrderConfirmedViewController.swift in Sources */,
 				5290BB272A83816C0042A32A /* ListAddressViewController.swift in Sources */,
+				317AD1812A9ED59800E2C7ED /* GetWhistlist.swift in Sources */,
 				52444CC42A78B7B2000BFC87 /* CategoryCollectionViewCell.swift in Sources */,
 				52EF38702A72125400446F31 /* SceneDelegate.swift in Sources */,
 				524548412A8D0DA10055B2D3 /* NestedViewModel.swift in Sources */,

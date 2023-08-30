@@ -6,10 +6,10 @@
 //
 
 import UIKit
- 
+
 class SideViewController: UIViewController {
     
-   
+    
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var imgView: UIImageView!
     
@@ -18,9 +18,9 @@ class SideViewController: UIViewController {
         let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
         if let cartViewController = storyboard.instantiateViewController(withIdentifier: "CartViewController") as? TabBarViewController {
             navigationController?.pushViewController(cartViewController, animated: true)
-        } 
+        }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -72,9 +72,9 @@ class SideViewController: UIViewController {
                 DispatchQueue.main.async {
                     self?.userName.text = self?.userProfileViewModel.username
                     
-//                    if let imageUrl = self?.userProfileViewModel.imageUrl {
-//                        self?.imgView.loadImageFromURL(url: imageUrl)
-//                    }
+                    //                    if let imageUrl = self?.userProfileViewModel.imageUrl {
+                    //                        self?.imgView.loadImageFromURL(url: imageUrl)
+                    //                    }
                 }
             }
         }

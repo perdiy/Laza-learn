@@ -30,3 +30,7 @@ struct DatumProdct: Codable {
         case createdAt = "created_at"
     }
 }
+
+enum ErrorInfo: Error {
+    case Error
+}

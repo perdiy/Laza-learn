@@ -95,16 +95,16 @@ class CartViewController: UIViewController {
             print("Token pengguna tidak tersedia.")
             return
         }
-        
+       
         cartViewModel.getProducInCart(accessTokenKey: token) { [weak self] cartProductData in
             self?.cartProducts = cartProductData.data.products ?? []
             let orderInfo = cartProductData.data.orderInfo
             
             // Setel label total, biaya pengiriman, dan sub-total
             DispatchQueue.main.async {
-                self?.total.text = "$ \(orderInfo.total)"
-                self?.shippingCost.text = "$ \(orderInfo.shippingCost)"
-                self?.subTotal.text = "$ \(orderInfo.subTotal)"
+                self?.total.text = "$ \(orderInfo!.total)"
+                self?.shippingCost.text = "$ \(orderInfo!.shippingCost)"
+                self?.subTotal.text = "$ \(orderInfo!.subTotal)"
                 
                 // Memuat ulang tabel di utas utama
                 self?.tableView.reloadData()
@@ -147,7 +147,6 @@ extension CartViewController: UITableViewDataSource {
         cell.delegate = self
         // Mengambil produk di keranjang untuk baris saat ini
         let cartProduct = cartProducts[indexPath.row]
-        
         // Mengisi sel dengan data produk di keranjang
         cell.productLabel.text = cartProduct.productName
         cell.priceLabel.text = "$ \(cartProduct.price)"
@@ -202,23 +201,17 @@ extension CartViewController: CartTableViewCellDelegate {
         }
     }
     
-    
-    
-    
     // delete Item
     func cartCellDidTapDelete(_ cell: CartTableViewCell) {
         guard let indexPath = tableView.indexPath(for: cell) else {
             return
         }
-        
         let cartProduct = cartProducts[indexPath.row]
         let sizedId = getSizeId(forSize: cartProduct.size)
         
         cartViewModel.deleteCartItem(productId: cartProduct.id, sizedId: sizedId) {
-            // Completion handler, bisa dilakukan aksi seperti memuat ulang data keranjang
             self.fetchCartProducts()
             print("Item deleted successfully")
         }
     }
-    
 }

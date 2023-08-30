@@ -48,7 +48,6 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="L9I-nb-KcC" firstAttribute="leading" secondItem="FLg-XH-vXs" secondAttribute="trailing" constant="149" id="3Zh-dI-NMN"/>
                     <constraint firstItem="jGo-sg-6aq" firstAttribute="top" secondItem="L9I-nb-KcC" secondAttribute="bottom" constant="13" id="5WB-ug-16B"/>
                     <constraint firstItem="jGo-sg-6aq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="5YP-dH-Pbt"/>
                     <constraint firstAttribute="bottom" secondItem="jGo-sg-6aq" secondAttribute="bottom" constant="19" id="TO3-YQ-317"/>

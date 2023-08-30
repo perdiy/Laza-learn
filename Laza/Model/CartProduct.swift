@@ -6,7 +6,7 @@
 //
 
 import Foundation
- 
+
 // MARK: - CartProduct
 struct CartProduct: Codable {
     let status: String
@@ -17,7 +17,7 @@ struct CartProduct: Codable {
 // MARK: - DataCart
 struct DataCart: Codable {
     var products: [ProductCart]?
-    let orderInfo: OrderInfo
+    let orderInfo: OrderInfo?
 
     enum CodingKeys: String, CodingKey {
         case products
@@ -25,10 +25,11 @@ struct DataCart: Codable {
     }
 }
 
+
 // MARK: - OrderInfo
 struct OrderInfo: Codable {
     let subTotal, shippingCost, total: Int
-
+    
     enum CodingKeys: String, CodingKey {
         case subTotal = "sub_total"
         case shippingCost = "shipping_cost"
@@ -45,7 +46,7 @@ struct ProductCart: Codable {
     let brandName: String
     let quantity: Int
     let size: String
-
+    
     enum CodingKeys: String, CodingKey {
         case id
         case productName = "product_name"

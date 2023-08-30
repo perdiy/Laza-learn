@@ -8,10 +8,10 @@
 import UIKit
 
 class FavoriteViewController: UIViewController {
-
     @IBOutlet weak var jumlahWishlist: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var viewModel = FavoriteViewModel()
     var wishlistItems: [ProductWishlist] = []
 
     override func viewDidLoad() {
@@ -30,11 +30,13 @@ class FavoriteViewController: UIViewController {
         setupTabBarItemImage()
         
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         fetchWishlistItems()
+        collectionView.reloadData()
     }
-    
+
     private func setupTabBarItemImage() {
         let label = UILabel()
         label.numberOfLines = 1
@@ -48,37 +50,18 @@ class FavoriteViewController: UIViewController {
     }
 
     func fetchWishlistItems() {
-        guard let apiUrl = URL(string: "https://lazaapp.shop/wishlists") else {
-            return
-        }
-        
-        // Get token from UserDefaults
         guard let token = UserDefaults.standard.string(forKey: "userToken") else {
             print("User token not found.")
             return
         }
         
-        var request = URLRequest(url: apiUrl)
-        request.addValue("Bearer \(token)", forHTTPHeaderField: "X-Auth-Token")
-        
-        URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
-            guard let data = data, error == nil else {
-                print("Error fetching data: \(error?.localizedDescription ?? "Unknown error")")
-                return
+        viewModel.fetchWishlistItems(token: token) { [weak self] wishlistItems in
+            DispatchQueue.main.async {
+                self?.wishlistItems = wishlistItems
+                self?.collectionView.reloadData()
+                self?.updateWishlistCountLabel()
             }
-            
-            do {
-                let wishlistResponse = try JSONDecoder().decode(Wishlist.self, from: data)
-                let wishlistItems = wishlistResponse.data.products
-                DispatchQueue.main.async {
-                    self?.wishlistItems = wishlistItems
-                    self?.collectionView.reloadData()
-                    self?.updateWishlistCountLabel()
-                }
-            } catch {
-                print("Error decoding JSON: \(error)")
-            }
-        }.resume()
+        }
     }
 
     func updateWishlistCountLabel() {

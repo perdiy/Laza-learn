@@ -12,6 +12,8 @@ protocol DetailViewModelDelegate: AnyObject {
 }
 
 class DetailViewModel {
+    var apiAlertDetailProduct: ((String, String) -> Void)?
+    var apiAlertMessage: ((String) -> Void)?
     weak var delegate: DetailViewModelDelegate?
     
     func fetchSizes(for productId: Int) {
@@ -55,53 +57,50 @@ class DetailViewModel {
         }.resume()
     }
     
-    func addProducInCart(ProductId: Int, SizeId: Int, userToken: String, completion: @escaping (CartProduct) -> Void) {
+    func addProducInCart(ProductId: Int, SizeId: Int, userToken: String, completion: @escaping (Result<CartProduct, Error>) -> Void) {
         guard let url = URL(string: "https://lazaapp.shop/carts?ProductId=\(ProductId)&SizeId=\(SizeId)") else {
             print("Invalid url.")
             return
         }
-        
-        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("Bearer \(userToken)", forHTTPHeaderField: "X-Auth-Token")
         
-        URLSession.shared.dataTask(with: request) { data, response, error in
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
-                print("Error:", error)
+                completion(.failure(error))
+                print("error")
                 return
             }
-            if let data = data {
-                do {
-                    if let jsonResponse = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                        print("Response: \(jsonResponse)")
-                        
-                        if let isError = jsonResponse["isError"] as? Int, isError != 0,
-                           let description = jsonResponse["description"] as? String,
-                           let status = jsonResponse["status"] as? String {
-                            
-                            DispatchQueue.main.async {
-                                
-                            }
-                            print(description, status)
-                        } else {
-                            if let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode == 201 {
-                                DispatchQueue.main.async {
-                                    
-                                    
-                                    print("BerhasilResponse: \(jsonResponse)")
-                                }
-                            } else {
-                                print("Added to cart error: Unexpected Response Code")
-                            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                let statusCode = httpResponse.statusCode
+                if statusCode != 201 {
+                    if let data = data,
+                       let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                       let data = jsonResponse["data"] as? String,
+                       let status = jsonResponse["status"] as? String {
+                        DispatchQueue.main.async {
+                            self.apiAlertDetailProduct?(status, data)
+                        }
+                        print("INI ERROR\(jsonResponse)")
+                    }
+                } else {
+                    if let data = data {
+                        do {
+                            let cartProduct = try JSONDecoder().decode(CartProduct.self, from: data)
+                            completion(.success(cartProduct))
+                        } catch {
+                            print("JSON Decoding Error: \(error)")
+                            completion(.failure(error))
                         }
                     }
-                } catch {
-                    print("JSON Serialization Error: \(error)")
                 }
             }
+
         }.resume()
     }
+
     
     func fetchWishlist(token: String, completion: @escaping ([ProductWishlist]) -> Void) {
         guard let apiUrl = URL(string: "https://lazaapp.shop/wishlists") else {
@@ -129,5 +128,65 @@ class DetailViewModel {
             }
         }.resume()
     }
+    // MARK: - Func PUT Wihslist using API
+    func putWishlistUser(productId: Int, userToken: String, completion: @escaping (Result<UpdateWishlist, Error>) -> Void) {
+        
+        guard let components = URLComponents(string: "https://lazaapp.shop/wishlists?ProductId=\(productId)") else {
+            print("Invalid URL.")
+            return
+        }
+        
+        guard let url = components.url else {
+            print("Invalid URL components.")
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.addValue("Bearer \(userToken)", forHTTPHeaderField: "X-Auth-Token")
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                completion(.failure(error))
+                print("error")
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                let statusCode = httpResponse.statusCode
+                if statusCode != 200 {
+                    if let data = data,
+                       let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                       let data = jsonResponse["data"] as? String,
+                       let status = jsonResponse["status"] as? String {
+                        DispatchQueue.main.async {
+                            self.apiAlertDetailProduct?(status, data)
+                        }
+                        print("Update Wishlist\(jsonResponse)")
+                    }
+                    completion(.failure(ErrorInfo.Error))
+                } else {
+                    if let data = data {
+                        if let putWishlistResponse = try? JSONDecoder().decode(UpdateWishlist.self, from: data),
+                           putWishlistResponse.status == "OK",
+                           !putWishlistResponse.isError {
+                            if let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                               let responseData = jsonResponse["data"] as? String,
+                               let status = jsonResponse["status"] as? String {
+                                DispatchQueue.main.async {
+                                    self.apiAlertDetailProduct?(status, responseData)
+                                }
+                            }
+                            completion(.success(putWishlistResponse))
+                        } else {
+                            completion(.failure(ErrorInfo.Error))
+                        }
+                    }
+                    
+                }
+            }
+        }.resume()
+        
+    }
+    
     
 }

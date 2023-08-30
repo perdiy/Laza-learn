@@ -7,15 +7,19 @@
 
 import UIKit
 import Cosmos
+import SnackBar
 
 class DetailViewController: UIViewController {
     var viewModel: DetailViewModel!
+    var viewModelFav = FavoriteViewModel()
     var sizes: [SizeDetailProd] = []
     var productId: Int!
     var reviews = [Review]()
     var product: DatumProdct?
     var wishlistItem: ProductWishlist?
     var selectedSizeId: Int?
+    var imageName: String = ""
+    var wishlistItems: [ProductWishlist] = []
     
     @IBOutlet weak var imageUser: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
@@ -29,22 +33,26 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var star: CosmosView!
     @IBOutlet weak var loveButtonOutlet: UIButton!
-    
     @IBAction func addToCart(_ sender: Any) {
-        guard let token = UserDefaults.standard.string(forKey: "userToken") else {
-            print("User token not available.")
-            return
-        }
-        
-        guard let productID = productId, let sizeID = selectedSizeId else {
-            print("Product ID or Size ID is nil.")
-            return
-        }
-        
-        viewModel.addProducInCart(ProductId: productID, SizeId: sizeID, userToken: token) { cartProduct in
-            print("Product added to cart!")
+        addToCartWithSnackBar()
+    }
+    @IBAction func reviewBtn(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Reviews", bundle: nil)
+        if let reviewViewController = storyboard.instantiateViewController(withIdentifier: "ReviewViewController") as? ReviewViewController {
+            reviewViewController.productId = productId
+            self.navigationController?.pushViewController(reviewViewController, animated: true)
         }
     }
+    
+    @IBAction func backArrowTapped(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func loveButton(_ sender: Any) {
+        updateLoveButtonStatus()
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +66,44 @@ class DetailViewController: UIViewController {
         viewModel.delegate = self
         viewModel.fetchSizes(for: productId)
         detailProductApi()
+        
+        fetchWishlistItems(productId: productId) { isInWishlist in
+            if isInWishlist {
+                self.imageName = "heart.fill"
+            } else {
+                self.imageName = "heart"
+            }
+            DispatchQueue.main.async {
+                // Update the button image
+                let image = UIImage(systemName: self.imageName)
+                self.loveButtonOutlet.setImage(image, for: .normal)
+            }
+        }
     }
+    
+    func addToCartWithSnackBar() {
+        guard let token = UserDefaults.standard.string(forKey: "userToken") else {
+            print("User token not available.")
+            return
+        }
+        
+        guard let productID = productId, let sizeID = selectedSizeId else {
+            print("Product ID or Size ID is nil.")
+            return
+        }
+        
+        viewModel.addProducInCart(ProductId: productID, SizeId: sizeID, userToken: token) { result in
+            switch result {
+            case .success:
+                DispatchQueue.main.async {
+                    SnackBar.make(in: self.view, message: "Product added to cart successfully.", duration: .lengthLong).show()
+                }
+            case .failure(let error):
+                print("Error adding product to cart: \(error)")
+            }
+        }
+    }
+
     
     func detailProductApi() {
         viewModel.getDataDetailProduct(id: productId) { [weak self] productDetail in
@@ -92,80 +137,67 @@ class DetailViewController: UIViewController {
         }
     }
     
-    @IBAction func reviewBtn(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Reviews", bundle: nil)
-        if let reviewViewController = storyboard.instantiateViewController(withIdentifier: "ReviewViewController") as? ReviewViewController {
-            reviewViewController.productId = productId
-            self.navigationController?.pushViewController(reviewViewController, animated: true)
+    
+    func fetchWishlistItems(productId: Int, completion: @escaping (Bool) -> Void) {
+        guard let token = UserDefaults.standard.string(forKey: "userToken") else {
+            print("User token not found.")
+            completion(false)
+            return
+        }
+        
+        viewModelFav.fetchWishlistItems(token: token) { [weak self] wishlistItems in
+            DispatchQueue.main.async {
+                self?.wishlistItems = wishlistItems
+                if wishlistItems.contains(where: { $0.id == productId }) {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+            }
         }
     }
     
-    @IBAction func backArrowTapped(_ sender: UIButton) {
-        navigationController?.popViewController(animated: true)
-    }
-    
-    @IBAction func loveButton(_ sender: Any) {
+    func updateLoveButtonStatus() {
         guard let token = UserDefaults.standard.string(forKey: "userToken") else {
             print("User token not available.")
             return
         }
         
-        if let wishlistItem = wishlistItem {
-            removeProductFromWishlist(wishlistItem, token: token)
-            updateLoveButtonStatus(isInWishlist: false)
-            self.wishlistItem = nil
-        } else {
-            addProductToWishlist(productId: productId, token: token)
-            updateLoveButtonStatus(isInWishlist: true)
-        }
-    }
-    
-    func addProductToWishlist(productId: Int, token: String) {
-        let urlString = "https://lazaapp.shop/wishlists?ProductId=\(productId)"
-        guard let url = URL(string: urlString) else {
-            print("Invalid URL for adding to wishlist.")
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "PUT"
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "X-Auth-Token")
-        
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                print("Error adding product to wishlist: \(error)")
-                return
-            }
-            
-            if let httpResponse = response as? HTTPURLResponse {
-                if httpResponse.statusCode == 200 {
-                    print("Product added to wishlist!")
+        viewModel.putWishlistUser(productId: productId, userToken: token) { result in
+            switch result {
+            case .success:
+                self.viewModel.apiAlertDetailProduct = { status, data in
                     DispatchQueue.main.async {
-                        self.showAddToWishlistAlert()
+                        print(data)
+                        if data.contains("added") {
+                            self.imageName = "heart.fill"
+                        } else {
+                            self.imageName = "heart"
+                        }
+                        let image = UIImage(systemName: self.imageName)
+                        self.loveButtonOutlet.setImage(image, for: .normal) // Update the button image here
+                        
+                        // Show snackbar for success
+                        SnackBar.make(in: self.view, message: data, duration: .lengthLong).show()
                     }
-                } else {
-                    print("Failed to add product to wishlist. Status code: \(httpResponse.statusCode)")
                 }
+                print("sukses add wishlist")
+            case .failure(let error):
+                // Handle the error case here if needed
+                print("API update wishlist Error: \(error)")
             }
-        }.resume()
-    }
-    
-    func removeProductFromWishlist(_ wishlistItem: ProductWishlist, token: String) {
-    }
-    
-    func updateLoveButtonStatus(isInWishlist: Bool) {
-        let systemImageName = isInWishlist ? "heart.fill" : "heart"
-        if let systemImage = UIImage(systemName: systemImageName) {
-            loveButtonOutlet.setImage(systemImage, for: .normal)
         }
     }
     
-    func showAddToWishlistAlert() {
-        let alert = UIAlertController(title: "Success", message: "Product added to wishlist!", preferredStyle: .alert)
+    
+    func showAddToWishlistAlert(message: String) {
+        let alert = UIAlertController(title: "Success", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
     }
+    
+    
 }
 
 extension DetailViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -184,7 +216,7 @@ extension DetailViewController: UICollectionViewDataSource, UICollectionViewDele
             }
         }
         selectedSizeId = sizes[indexPath.item].id
-        print("opo\(String(describing: selectedSizeId))")
+//        print("opo\(String(describing: selectedSizeId))")
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -206,3 +238,4 @@ extension DetailViewController: DetailViewModelDelegate {
         }
     }
 }
+
