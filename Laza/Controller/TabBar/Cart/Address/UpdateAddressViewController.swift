@@ -10,7 +10,6 @@ import UIKit
 class UpdateAddressViewController: UIViewController {
 
     var addressToUpdate: DataAllAddress? // Address data to be updated
-    
     @IBAction func updateBtn(_ sender: Any) {
         updateAddress()
     }
@@ -19,6 +18,8 @@ class UpdateAddressViewController: UIViewController {
     @IBOutlet weak var cityLb: UITextField!
     @IBOutlet weak var countryLb: UITextField!
     @IBOutlet weak var nameLabel: UITextField!
+    @IBOutlet weak var primarySwitch: UISwitch!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,7 @@ class UpdateAddressViewController: UIViewController {
         countryLb.text = address.country
         cityLb.text = address.city
         numberPhoneLb.text = address.phoneNumber
+        primarySwitch.isOn = address.isPrimary ?? false
     }
     
     // Update the address on the server
@@ -54,13 +56,13 @@ class UpdateAddressViewController: UIViewController {
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "X-Auth-Token")
         
         // Create a dictionary with updated address information
-        let updatedAddress: [String: Any] = [
+        var updatedAddress: [String: Any] = [
             "receiver_name": nameLabel.text ?? "",
             "country": countryLb.text ?? "",
             "city": cityLb.text ?? "",
             "phone_number": numberPhoneLb.text ?? ""
         ]
-        
+        updatedAddress["is_primary"] = primarySwitch.isOn
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: updatedAddress, options: [])
             request.httpBody = jsonData
@@ -92,3 +94,4 @@ class UpdateAddressViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
 }
+ 

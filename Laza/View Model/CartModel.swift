@@ -8,6 +8,43 @@
 import Foundation
 
 class CartViewModel {
+    func fetchAddresses(accessToken: String, completion: @escaping ([DataAllAddress]?) -> Void) {
+        let urlString = "https://lazaapp.shop/address"
+        guard let url = URL(string: urlString) else {
+            completion(nil)
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "X-Auth-Token")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error fetching addresses:", error)
+                completion(nil)
+                return
+            }
+            
+            guard let data = data else {
+                print("No data received")
+                completion(nil)
+                return
+            }
+            
+            do {
+                let addressResponse = try JSONDecoder().decode(AllAddress.self, from: data)
+                if let addresses = addressResponse.data {
+                    completion(addresses)
+                } else {
+                    completion(nil)
+                }
+            } catch let error {
+                print("Error decoding data:", error)
+                completion(nil)
+            }
+        }.resume()
+    }
+
     func getProducInCart(accessTokenKey: String, completion: @escaping (CartProduct) -> Void) {
         guard let url = URL(string: "https://lazaapp.shop/carts") else {
             print("Invalid url.")

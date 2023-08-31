@@ -20,6 +20,7 @@ class CartTableViewCell: UITableViewCell {
     weak var delegate: CartTableViewCellDelegate?
 
     
+    @IBOutlet weak var sizeProductLabel: UILabel!
     @IBOutlet weak var productLabel: UILabel!
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
@@ -50,9 +51,6 @@ class CartTableViewCell: UITableViewCell {
     }
     
     @IBAction func decreaseBtnTapped(_ sender: Any) {
-//        if quantityProduct > 0 {
-//            quantityProduct -= 1
-//        }
         
         updateQuantityLabel()
         delegate?.cartCellDidTapDecrease(cell: self, completion: {

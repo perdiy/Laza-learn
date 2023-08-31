@@ -97,10 +97,10 @@ class DetailViewModel {
                     }
                 }
             }
-
+            
         }.resume()
     }
-
+    
     
     func fetchWishlist(token: String, completion: @escaping ([ProductWishlist]) -> Void) {
         guard let apiUrl = URL(string: "https://lazaapp.shop/wishlists") else {

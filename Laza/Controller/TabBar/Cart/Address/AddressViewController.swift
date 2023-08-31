@@ -13,7 +13,8 @@ class AddressViewController: UIViewController {
     @IBOutlet weak var phoneTf: UITextField!
     @IBOutlet weak var cityTf: UITextField!
     @IBOutlet weak var countryTf: UITextField!
-
+    @IBOutlet weak var primarySwitch: UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         backView.layer.cornerRadius = backView.bounds.height / 2.0
@@ -30,6 +31,8 @@ class AddressViewController: UIViewController {
             return
         }
         
+        let isPrimary = primarySwitch.isOn
+         
         let apiURLString = "https://lazaapp.shop/address"
         
         guard let apiURL = URL(string: apiURLString) else {
@@ -46,8 +49,9 @@ class AddressViewController: UIViewController {
             "receiver_name": name,
             "phone_number": phone,
             "city": city,
-            "country": country
-        ]
+            "country": country,
+            "is_primary": isPrimary
+        ] as [String : Any]
         
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: newAddress, options: [])
@@ -84,6 +88,7 @@ class AddressViewController: UIViewController {
             
             task.resume()
         }
+    
     @IBAction func backButtonTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }

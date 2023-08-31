@@ -27,6 +27,7 @@
                                             <color key="baseForegroundColor" name="Font Color"/>
                                         </buttonConfiguration>
                                         <connections>
+                                            <action selector="backBtn:" destination="7YB-vR-83x" eventType="touchUpInside" id="aHp-zP-0SL"/>
                                             <action selector="backButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="rVA-j0-N9M"/>
                                         </connections>
                                     </button>
@@ -75,11 +76,14 @@
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nDQ-kj-qY0">
                                 <rect key="frame" x="321" y="142" width="56" height="34.333333333333343"/>
-                                <color key="tintColor" systemColor="secondarySystemBackgroundColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Sort">
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseBackgroundColor" systemColor="opaqueSeparatorColor"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="sortButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="pXy-3g-LPH"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="za4-qu-4cQ">
                                 <rect key="frame" x="148" y="59" width="96" height="44"/>
@@ -132,9 +136,11 @@
                         <outlet property="collectionView" destination="VFa-lD-4pl" id="cvJ-Os-QtO"/>
                         <outlet property="imgBrand" destination="EmO-uQ-7mS" id="BJB-bB-fXh"/>
                         <outlet property="jumlahProduct" destination="5gn-Sf-ddd" id="TC2-8r-QSX"/>
+                        <outlet property="sortButton" destination="nDQ-kj-qY0" id="yaq-r2-dl1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="7YB-vR-83x" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="129.00763358778624" y="-2.1126760563380285"/>
         </scene>
@@ -144,6 +150,9 @@
         <namedColor name="Font Color">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

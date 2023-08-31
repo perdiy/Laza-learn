@@ -8,16 +8,29 @@
 import UIKit
 
 class prductByBrandViewController: UIViewController {
-    @IBAction func backButton(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
+    
+    var products: [prodByIdBrandEntry] = []
+    var brandName: String = ""
+    var selectedProduct: DatumProdct?
+    var ascSort = true
+    
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var jumlahProduct: UILabel!
     @IBOutlet weak var imgBrand: UIImageView!
+    @IBAction func sortButtonTapped(_ sender: UIButton) {
+        sortProduct()
+    }
+    @IBOutlet weak var sortButton: UIButton!{
+        didSet{
+            sortButton.setImage(UIImage(systemName: "line.3.horizontal"), for: .normal)
+            sortButton.setTitle("Sort", for: .normal)
+        }
+    }
+    @IBAction func backButton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
-    var products: [prodByIdBrandEntry] = []
-    var brandName: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +40,24 @@ class prductByBrandViewController: UIViewController {
         collectionView.register(UINib(nibName: "ProductByBrandCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ProductByBrandCollectionViewCell")
         
         loadDataFromAPI()
+    }
+    
+    func sortProduct() {
+        ascSort.toggle()
+        sortProData()
+    }
+    
+    func sortProData() {
+        if ascSort {
+            products.sort { $0.name < $1.name }
+            sortButton.setTitle("A-Z", for: .normal)
+            sortButton.setImage(UIImage(systemName: "arrow.up"), for: .normal)
+        } else {
+            products.sort { $0.name > $1.name }
+            sortButton.setTitle("Z-A", for: .normal)
+            sortButton.setImage(UIImage(systemName: "arrow.down"), for: .normal)
+        }
+        collectionView.reloadData()
     }
     
     func loadDataFromAPI() {

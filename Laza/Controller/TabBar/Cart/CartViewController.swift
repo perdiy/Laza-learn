@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SnackBar
+
 
 class CartViewController: UIViewController {
     
@@ -26,29 +28,26 @@ class CartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Mendaftarkan sel kustom
         tableView.register(UINib(nibName: "CartTableViewCell", bundle: nil), forCellReuseIdentifier: "CartTableViewCell")
-        
         // Mengonfigurasi penampilan elemen tab bar
         setupTabBarItemImage()
-        
         // Mengatur delegasi sumber data
         tableView.dataSource = self
-        
-        
+        //
         tableView.reloadData()
-        
+        //
         getSizeAll()
-        if let address = selectedAddress {
-            cityLabel.text = address.city
-            countryLabel.text = address.country
-        }
+        
+        
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         // Mengambil produk di keranjang dari server
         fetchCartProducts()
+        //
+        fetchAddresses()
     }
     
     // Fungsi untuk mengatur penampilan elemen tab bar
@@ -59,7 +58,6 @@ class CartViewController: UIViewController {
         label.text = "Keranjang"
         label.textColor = UIColor(named: "PurpleButton")
         label.sizeToFit()
-        
         tabBarItem.standardAppearance?.selectionIndicatorTintColor = UIColor(named: "PurpleButton")
         tabBarItem.selectedImage = UIImage(view: label)
     }
@@ -89,13 +87,30 @@ class CartViewController: UIViewController {
         }
     }
     
+    // MARK: - Fetch Addresses
+    func fetchAddresses() {
+        guard let accessToken = UserDefaults.standard.string(forKey: "userToken") else {
+            // Handle case when access token is not available
+            return
+        }
+        
+        cartViewModel.fetchAddresses(accessToken: accessToken) { [weak self] addresses in
+            if let addresses = addresses, let primaryAddress = addresses.first(where: { $0.isPrimary == true }) {
+                DispatchQueue.main.async {
+                    self?.countryLabel.text = primaryAddress.country
+                    self?.cityLabel.text = primaryAddress.city
+                }
+            }
+        }
+    }
+    
     // Fungsi untuk mengambil produk di keranjang
     func fetchCartProducts() {
         guard let token = UserDefaults.standard.string(forKey: "userToken") else {
             print("Token pengguna tidak tersedia.")
             return
         }
-       
+        
         cartViewModel.getProducInCart(accessTokenKey: token) { [weak self] cartProductData in
             self?.cartProducts = cartProductData.data.products ?? []
             let orderInfo = cartProductData.data.orderInfo
@@ -121,6 +136,7 @@ class CartViewController: UIViewController {
             }
         }
     }
+    
     func getSizeId(forSize size: String) -> Int{
         var sizedId = -1
         guard let allSizeData = allSize?.data else { return sizedId }
@@ -152,6 +168,7 @@ extension CartViewController: UITableViewDataSource {
         cell.priceLabel.text = "$ \(cartProduct.price)"
         cell.imgView.loadImageFromURL(url: cartProduct.imageURL)
         cell.jumlahLabel.text = "\(cartProduct.quantity)"
+        cell.sizeProductLabel.text = "Size \(cartProduct.size)"
         
         return cell
     }
@@ -203,6 +220,7 @@ extension CartViewController: CartTableViewCellDelegate {
     
     // delete Item
     func cartCellDidTapDelete(_ cell: CartTableViewCell) {
+        
         guard let indexPath = tableView.indexPath(for: cell) else {
             return
         }
@@ -212,6 +230,16 @@ extension CartViewController: CartTableViewCellDelegate {
         cartViewModel.deleteCartItem(productId: cartProduct.id, sizedId: sizedId) {
             self.fetchCartProducts()
             print("Item deleted successfully")
+            
+            DispatchQueue.main.async {
+                self.tableView.beginUpdates()
+                self.cartProducts.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
+                self.tableView.endUpdates()
+                
+                SnackBar.make(in: self.view, message: "Item Delete success", duration: .lengthLong).show()
+            }
         }
     }
 }
+

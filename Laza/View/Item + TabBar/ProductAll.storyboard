@@ -75,11 +75,14 @@
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tSf-ox-eu5">
                                 <rect key="frame" x="321" y="142" width="56" height="34.333333333333343"/>
-                                <color key="tintColor" systemColor="secondarySystemBackgroundColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Sort">
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseBackgroundColor" systemColor="opaqueSeparatorColor"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="sortButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="qO1-Ks-792"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -102,6 +105,7 @@
                     <connections>
                         <outlet property="allReview" destination="BvZ-4T-GRz" id="cYs-iE-br2"/>
                         <outlet property="collectionView" destination="6tI-Lw-BkG" id="Qc1-XY-PKW"/>
+                        <outlet property="sortButton" destination="tSf-ox-eu5" id="mvy-gL-otX"/>
                         <outlet property="viewBack" destination="jvv-Ww-21L" id="oFk-iR-VtM"/>
                     </connections>
                 </viewController>
@@ -115,6 +119,9 @@
         <namedColor name="Font Color">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

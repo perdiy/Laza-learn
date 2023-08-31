@@ -17,7 +17,20 @@
                 <rect key="frame" x="0.0" y="0.0" width="335" height="122"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG" translatesAutoresizingMaskIntoConstraints="NO" id="VZR-F7-EtX">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xB8-nn-jhu">
+                        <rect key="frame" x="5" y="5" width="111" height="113"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="113" id="ksl-Fu-1Ae"/>
+                            <constraint firstAttribute="width" constant="111" id="r8v-Mw-s1e"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRasius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG" translatesAutoresizingMaskIntoConstraints="NO" id="VZR-F7-EtX">
                         <rect key="frame" x="10" y="10" width="100" height="100"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="100" id="jM9-tU-y6P"/>
@@ -33,33 +46,33 @@ Nike Sportswear</string>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$45 (-$4.00 Tax)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B2U-Hc-Swn">
-                        <rect key="frame" x="125" y="53.333333333333336" width="89.666666666666686" height="13.333333333333336"/>
+                        <rect key="frame" x="125" y="45.333333333333336" width="89.666666666666686" height="13.333333333333336"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" systemColor="opaqueSeparatorColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hib-K6-Lwe">
-                        <rect key="frame" x="164" y="91.666666666666671" width="6" height="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hib-K6-Lwe">
+                        <rect key="frame" x="159" y="93.666666666666671" width="17" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udc-Cz-4QA">
-                        <rect key="frame" x="306" y="85" width="14" height="15"/>
+                        <rect key="frame" x="306" y="95" width="14" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="Idr-j1-cJk"/>
                             <constraint firstAttribute="width" constant="14" id="yAn-Zu-Tgf"/>
                         </constraints>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" image="trash.circle" catalog="system" title="">
-                            <color key="baseForegroundColor" systemColor="opaqueSeparatorColor"/>
+                            <color key="baseForegroundColor" systemColor="systemPinkColor"/>
                         </buttonConfiguration>
                         <connections>
                             <action selector="deletCart:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="o0H-M3-BvC"/>
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V72-Pf-dlL">
-                        <rect key="frame" x="130" y="91.666666666666671" width="14" height="15"/>
+                        <rect key="frame" x="125" y="93.666666666666671" width="14" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="BNQ-AD-8h5"/>
                             <constraint firstAttribute="width" constant="14" id="kep-Xx-Eh4"/>
@@ -73,7 +86,7 @@ Nike Sportswear</string>
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cwD-aW-ZBH">
-                        <rect key="frame" x="190" y="91.666666666666671" width="14" height="15"/>
+                        <rect key="frame" x="196" y="93.666666666666671" width="14" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="14" id="QbH-q5-IiY"/>
                             <constraint firstAttribute="height" constant="15" id="tIE-Mm-9xb"/>
@@ -86,24 +99,35 @@ Nike Sportswear</string>
                             <action selector="increaseBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="l5a-8P-jm7"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFH-az-G5M">
+                        <rect key="frame" x="125" y="68.666666666666671" width="23" height="13.333333333333329"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="hib-K6-Lwe" firstAttribute="leading" secondItem="V72-Pf-dlL" secondAttribute="trailing" constant="20" id="12U-nf-bvP"/>
                     <constraint firstItem="eOO-tB-vcp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="6G1-LD-SvD"/>
+                    <constraint firstAttribute="bottom" secondItem="xB8-nn-jhu" secondAttribute="bottom" constant="5" id="7AU-Xo-Z4f"/>
                     <constraint firstItem="VZR-F7-EtX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="FBK-WC-6Ap"/>
                     <constraint firstAttribute="bottom" secondItem="VZR-F7-EtX" secondAttribute="bottom" constant="10" id="FjI-Jt-dHd"/>
-                    <constraint firstItem="udc-Cz-4QA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="85" id="L6p-0l-WB8"/>
-                    <constraint firstItem="cwD-aW-ZBH" firstAttribute="top" secondItem="B2U-Hc-Swn" secondAttribute="bottom" constant="25" id="Ljm-Jy-Sgc"/>
+                    <constraint firstItem="xB8-nn-jhu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="HhF-Zs-JVL"/>
+                    <constraint firstItem="udc-Cz-4QA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="95" id="L6p-0l-WB8"/>
+                    <constraint firstItem="cwD-aW-ZBH" firstAttribute="top" secondItem="B2U-Hc-Swn" secondAttribute="bottom" constant="35" id="Ljm-Jy-Sgc"/>
                     <constraint firstItem="VZR-F7-EtX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Nmc-wx-b4w"/>
-                    <constraint firstItem="V72-Pf-dlL" firstAttribute="leading" secondItem="VZR-F7-EtX" secondAttribute="trailing" constant="20" id="OhW-GP-K1K"/>
+                    <constraint firstItem="xB8-nn-jhu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="OTe-2e-gCh"/>
+                    <constraint firstItem="V72-Pf-dlL" firstAttribute="leading" secondItem="VZR-F7-EtX" secondAttribute="trailing" constant="15" id="OhW-GP-K1K"/>
                     <constraint firstItem="eOO-tB-vcp" firstAttribute="leading" secondItem="VZR-F7-EtX" secondAttribute="trailing" constant="15" id="TD0-Bw-bkO"/>
                     <constraint firstAttribute="trailing" secondItem="udc-Cz-4QA" secondAttribute="trailing" constant="15" id="XPq-1q-UEa"/>
-                    <constraint firstItem="B2U-Hc-Swn" firstAttribute="top" secondItem="eOO-tB-vcp" secondAttribute="bottom" constant="10" id="Z8K-hJ-Cr7"/>
-                    <constraint firstItem="V72-Pf-dlL" firstAttribute="top" secondItem="B2U-Hc-Swn" secondAttribute="bottom" constant="25" id="g9Q-Gl-adl"/>
+                    <constraint firstItem="B2U-Hc-Swn" firstAttribute="top" secondItem="eOO-tB-vcp" secondAttribute="bottom" constant="2" id="Z8K-hJ-Cr7"/>
+                    <constraint firstItem="V72-Pf-dlL" firstAttribute="top" secondItem="B2U-Hc-Swn" secondAttribute="bottom" constant="35" id="g9Q-Gl-adl"/>
                     <constraint firstItem="B2U-Hc-Swn" firstAttribute="leading" secondItem="VZR-F7-EtX" secondAttribute="trailing" constant="15" id="hUc-ID-bkS"/>
                     <constraint firstAttribute="trailing" secondItem="eOO-tB-vcp" secondAttribute="trailing" constant="70" id="hk1-La-bhv"/>
                     <constraint firstItem="cwD-aW-ZBH" firstAttribute="leading" secondItem="hib-K6-Lwe" secondAttribute="trailing" constant="20" id="p1N-dl-Ndr"/>
-                    <constraint firstItem="hib-K6-Lwe" firstAttribute="top" secondItem="B2U-Hc-Swn" secondAttribute="bottom" constant="25" id="uQm-GK-roQ"/>
+                    <constraint firstItem="sFH-az-G5M" firstAttribute="top" secondItem="B2U-Hc-Swn" secondAttribute="bottom" constant="10" id="rnw-tz-lza"/>
+                    <constraint firstItem="hib-K6-Lwe" firstAttribute="top" secondItem="B2U-Hc-Swn" secondAttribute="bottom" constant="35" id="uQm-GK-roQ"/>
+                    <constraint firstItem="sFH-az-G5M" firstAttribute="leading" secondItem="VZR-F7-EtX" secondAttribute="trailing" constant="15" id="vUb-9t-2bk"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -112,6 +136,7 @@ Nike Sportswear</string>
                 <outlet property="jumlahLabel" destination="hib-K6-Lwe" id="a1y-B6-WLg"/>
                 <outlet property="priceLabel" destination="B2U-Hc-Swn" id="gWY-qT-b84"/>
                 <outlet property="productLabel" destination="eOO-tB-vcp" id="cf8-B0-ARp"/>
+                <outlet property="sizeProductLabel" destination="sFH-az-G5M" id="YoO-Rk-DZu"/>
             </connections>
             <point key="canvasLocation" x="60.305343511450381" y="47.887323943661976"/>
         </tableViewCell>
@@ -123,6 +148,12 @@ Nike Sportswear</string>
         <image name="trash.circle" catalog="system" width="128" height="123"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -13,8 +13,9 @@ class BrandAllViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var jumlahBrand: UILabel!
-    @IBAction func backButton(_ sender: Any) {
-        self.navigationController?.popViewController(animated: false)
+    
+    @IBAction func backBtn(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     
@@ -26,6 +27,14 @@ class BrandAllViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(UINib(nibName: "BrandAllCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "BrandAllCollectionViewCell")
+    }
+    
+    func navigateToProductByBrand(with brandName: String) {
+        let storyboard = UIStoryboard(name: "ProductByBrand", bundle: nil)
+        if let productByBrandVC = storyboard.instantiateViewController(withIdentifier: "prductByBrandViewController") as? prductByBrandViewController {
+            productByBrandVC.brandName = brandName
+            navigationController?.pushViewController(productByBrandVC, animated: true)
+        }
     }
 }
 
@@ -48,16 +57,17 @@ extension BrandAllViewController: UICollectionViewDataSource {
 
 extension BrandAllViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         return CGSize(width: collectionView.frame.size.width, height: 60)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        // Set the spacing between cells vertically
-        return 10 // Adjust as needed
+        return 100
     }
 }
 
 extension BrandAllViewController: UICollectionViewDelegate {
-    // Implement delegate methods as needed
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedBrand = receivedData[indexPath.item]
+        navigateToProductByBrand(with: selectedBrand)
+    }
 }

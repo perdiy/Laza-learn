@@ -113,16 +113,8 @@ class DetailViewController: UIViewController {
                     self?.titleLabel.text = product.name
                     self?.priceLabel.text = String("$ \(product.price)")
                     self?.descLabel.text = product.description
-                    
-                    if let imageUrl = URL(string: product.imageURL) {
-                        URLSession.shared.dataTask(with: imageUrl) { data, response, error in
-                            if let data = data, let image = UIImage(data: data) {
-                                DispatchQueue.main.async {
-                                    self?.productImageView.image = image
-                                }
-                            }
-                        }.resume()
-                    }
+                    self?.productImageView.loadImageFromURL(url: product.imageURL)
+                   
                     if let reviewProductFirst = self?.reviews.first{
                         self?.ratingLabel.text = String(reviewProductFirst.rating)
                         self?.star.rating = Double(reviewProductFirst.rating)
