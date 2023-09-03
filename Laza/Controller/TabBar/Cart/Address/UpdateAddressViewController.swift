@@ -9,20 +9,25 @@ import UIKit
 
 class UpdateAddressViewController: UIViewController {
 
-    var addressToUpdate: DataAllAddress? // Address data to be updated
+    var addressToUpdate: DataAllAddress?
+    
     @IBAction func updateBtn(_ sender: Any) {
         updateAddress()
     }
-    
     @IBOutlet weak var numberPhoneLb: UITextField!
     @IBOutlet weak var cityLb: UITextField!
     @IBOutlet weak var countryLb: UITextField!
     @IBOutlet weak var nameLabel: UITextField!
     @IBOutlet weak var primarySwitch: UISwitch!
-    
+    @IBAction func backBtn(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    @IBOutlet weak var viewBack: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewBack.layer.cornerRadius = viewBack.bounds.height / 2.0
+        viewBack.clipsToBounds = true
         fillAddressInfo()
     }
     
@@ -42,7 +47,7 @@ class UpdateAddressViewController: UIViewController {
     // Update the address on the server
     func updateAddress() {
         guard let address = addressToUpdate,
-              let accessToken = UserDefaults.standard.string(forKey: "userToken") else {
+              let accessToken = KeychainManager.shared.getAccessToken() else {
             return
         }
         
@@ -94,4 +99,3 @@ class UpdateAddressViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
 }
- 

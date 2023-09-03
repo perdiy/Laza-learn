@@ -3,20 +3,19 @@
 //  Laza
 //
 //  Created by Perdi Yansyah on 16/08/23.
-// 
+//
 
 import Foundation
 
 protocol MyProfileViewModelDelegate: AnyObject {
     func updateUserProfile(_ userData: DataClass)
 }
-
 class MyProfileViewModel {
     
     weak var delegate: MyProfileViewModelDelegate?
     
     func loadUserProfile() {
-        if let userToken = UserDefaults.standard.string(forKey: "userToken") {
+        if let userToken = KeychainManager.shared.getAccessToken(){
             let url = URL(string: "https://lazaapp.shop/user/profile")!
             var request = URLRequest(url: url)
             request.httpMethod = "GET"
@@ -33,8 +32,7 @@ class MyProfileViewModel {
             }
             task.resume()
         } else {
-            print("User Token not found in UserDefaults.")
+            print("User Token not found in Keychain.")
         }
     }
 }
-

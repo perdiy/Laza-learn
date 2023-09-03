@@ -24,7 +24,7 @@ class WelcomeViewController: UIViewController {
             UserDefaults.standard.removeObject(forKey: "SavedPassword")
         }
     }
-
+    
     @IBOutlet weak var strongPassword: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var passwordTf: UITextField! {
@@ -67,28 +67,56 @@ class WelcomeViewController: UIViewController {
     }
     
     @IBAction func loginBtn(_ sender: Any) {
-        guard let username = userNameTf.text, let password = passwordTf.text else {
-            return
-        }
-        
-        activityIndicator.isHidden = false
-        activityIndicator.startAnimating()
-        
-        welcomeViewModel.signUp(username: username, password: password)
-        welcomeViewModel.loginCompletion = { [weak self] success in
-            DispatchQueue.main.async {
-                self?.activityIndicator.stopAnimating()
-                self?.activityIndicator.isHidden = true
-                
-                if success {
-                    self?.goToHome()
-                } else {
-                    self?.showAlert(message: "Login failed. Please check your credentials.")
+        loginAndGetData()
+    }
+    func loginAndGetData() {
+        let username = userNameTf.text ?? ""
+        let password = passwordTf.text ?? ""
+
+        welcomeViewModel.getDataLogin(username: username, password: password) { result in
+            switch result {
+            case .success:
+                DispatchQueue.main.async {
+                    self.goToHome(userProfile: nil) // Passing nil for userProfile
+                }
+            case .failure(let error):
+                self.welcomeViewModel.apiAlertLogin = { status, description in
+                    DispatchQueue.main.async {
+                        if description == "please verify your account" {
+                            print("ini verify email \(description)")
+                            let refreshAlert = UIAlertController(title: "Failed Login", message: "\(description), Send Again Verification Account", preferredStyle: UIAlertController.Style.alert)
+
+                            refreshAlert.addAction(UIAlertAction(title: "Send", style: .default, handler: { [weak self] (action: UIAlertAction!) in
+                                // Ganti "NamaStoryboard" dengan nama storyboard Anda
+                                let storyboard = UIStoryboard(name: "VerifycationEmail", bundle: nil)
+
+                                if let sendEmailVC = storyboard.instantiateViewController(withIdentifier: "VerifycationEmailViewController") as? VerifycationEmailViewController {
+                                    self?.navigationController?.pushViewController(sendEmailVC, animated: true)
+                                }
+                            }))
+
+                            refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+                                refreshAlert.dismiss(animated: true, completion: nil)
+                            }))
+
+                            self.present(refreshAlert, animated: true, completion: nil)
+                        } else {
+                            ShowAlert.signUpApi(on: self, title: "Notification \(status)", message: description)
+                        }
+                        print("JSON Login Error: \(error)")
+                    }
                 }
             }
         }
     }
-    
+
+    private func goToHome(userProfile: DataUseProfile?) {
+        let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
+        if let homeVC = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController {
+            homeVC.userProfile = userProfile
+            navigationController?.pushViewController(homeVC, animated: true)
+        }
+    }
     @objc func textFieldDidChange() {
         validateTextFields()
         validatePasswordField()
@@ -120,13 +148,8 @@ class WelcomeViewController: UIViewController {
         }
     }
     
-    private func goToHome() {
-        let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
-        if let homeVC = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController {
-            navigationController?.pushViewController(homeVC, animated: true)
-        }
-    }
-     
+   
+    
     func showAlert(message: String) {
         let alert = UIAlertController(title: "Warning", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -141,3 +164,9 @@ class WelcomeViewController: UIViewController {
         }
     }
 }
+
+
+
+
+
+

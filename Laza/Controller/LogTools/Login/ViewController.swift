@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     
     // cek sudah login atau belum dengan user token
     private func checkLoggedIn() {
-        if let userToken = UserDefaults.standard.string(forKey: "userToken") {
+        if let userToken = KeychainManager.shared.getAccessToken() {
             let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
             if let myProfileVC = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController {
                 myProfileVC.userToken = userToken

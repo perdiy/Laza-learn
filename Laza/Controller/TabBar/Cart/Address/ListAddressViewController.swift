@@ -42,23 +42,23 @@ class ListAddressViewController: UIViewController, UITableViewDataSource {
     override func viewWillAppear(_ animated: Bool) {
         fetchAddresses()
     }
+     
     func fetchAddresses() {
-            guard let accessToken = UserDefaults.standard.string(forKey: "userToken") else {
-                // Handle case when access token is not available
-                return
-            }
-            
-            viewModel.fetchAddresses(accessToken: accessToken) { [weak self] error in
+            // Panggil metode fetchAddresses dari viewModel
+            viewModel.fetchAddresses { [weak self] error in
                 if let error = error {
-                    // Handle error, maybe show an alert to the user
+                    // Handle error, misalnya menampilkan pesan kesalahan
                     print("Error fetching addresses:", error)
                 } else {
+                    // Update tampilan jika berhasil mengambil alamat
                     DispatchQueue.main.async {
+                        // Reload data tabel atau tindakan lain yang diperlukan
                         self?.tableView.reloadData()
                     }
                 }
             }
         }
+
     
     // MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -110,27 +110,28 @@ extension ListAddressViewController: UITableViewDelegate {
     
     // MARK: - Delete Address
     func deleteAddress(at indexPath: IndexPath) {
-            guard let accessToken = UserDefaults.standard.string(forKey: "userToken") else {
-                return
-            }
-            
-            viewModel.deleteAddress(at: indexPath, accessToken: accessToken) { [weak self] error in
-                if let error = error {
-                    print("Error deleting address:", error)
-                } else {
-                    DispatchQueue.main.async {
-                        self?.viewModel.addresses.remove(at: indexPath.row)
+        guard KeychainManager.shared.getAccessToken() != nil else {
+            return
+        }
+        
+        viewModel.deleteAddress(at: indexPath) { [weak self] error in
+            if let error = error {
+                print("Error deleting address:", error)
+            } else {
+                DispatchQueue.main.async {
+                    self?.viewModel.addresses.remove(at: indexPath.row)
 
-                        // Perform the UI update within a batch update block
-                        self?.tableView.performBatchUpdates({
-                            self?.tableView.deleteRows(at: [indexPath], with: .automatic)
-                        }, completion: nil)
+                    // Perform the UI update within a batch update block
+                    self?.tableView.performBatchUpdates({
+                        self?.tableView.deleteRows(at: [indexPath], with: .automatic)
+                    }, completion: nil)
 
-                        print("Address deleted and table updated")
-                    }
+                    print("Address deleted and table updated")
                 }
             }
         }
+    }
+
     // MARK: - Show Update Address View
     
     func showUpdateAddress(for indexPath: IndexPath) {

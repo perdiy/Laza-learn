@@ -5,15 +5,21 @@
 //  Created by Perdi Yansyah on 24/08/23.
 //
 
+
 import Foundation
 
 class ListAddressViewModel {
     var addresses: [DataAllAddress] = []
-
-    func fetchAddresses(accessToken: String, completion: @escaping (Error?) -> Void) {
+    
+    func fetchAddresses(completion: @escaping (Error?) -> Void) {
+        guard let accessToken = KeychainManager.shared.getAccessToken() else {
+            completion(nil)
+            return
+        }
+        
         let urlString = "https://lazaapp.shop/address"
         guard let url = URL(string: urlString) else {
-            completion(nil) // Handle invalid URL
+            completion(nil)
             return
         }
         
@@ -27,13 +33,13 @@ class ListAddressViewModel {
                 completion(error)
                 return
             }
-
+            
             guard let data = data else {
                 print("No data received")
                 completion(nil)
                 return
             }
-
+            
             do {
                 let addressResponse = try JSONDecoder().decode(AllAddress.self, from: data)
                 if let addresses = addressResponse.data {
@@ -48,16 +54,21 @@ class ListAddressViewModel {
         }.resume()
     }
     
-    func deleteAddress(at indexPath: IndexPath, accessToken: String, completion: @escaping (Error?) -> Void) {
+    func deleteAddress(at indexPath: IndexPath, completion: @escaping (Error?) -> Void) {
         guard indexPath.row < addresses.count else {
             print("Invalid index")
             return
         }
-
+        
         let address = addresses[indexPath.row]
         let urlString = "https://lazaapp.shop/address/\(address.id)"
         guard let url = URL(string: urlString) else {
-            completion(nil) // Handle invalid URL
+            completion(nil)
+            return
+        }
+        
+        guard let accessToken = KeychainManager.shared.getAccessToken() else {
+            completion(nil)
             return
         }
         
@@ -73,8 +84,8 @@ class ListAddressViewModel {
                 return
             }
             
-            completion(nil) // No error
-
+            completion(nil) 
+            
         }.resume()
     }
 }

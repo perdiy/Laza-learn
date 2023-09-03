@@ -113,6 +113,9 @@
                                         <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system" title="">
                                             <color key="baseForegroundColor" name="Font Color"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="backBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Brv-Zh-3H0"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
@@ -283,12 +286,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="backView" destination="mZm-Pk-uwK" id="puT-aG-Xsa"/>
                         <outlet property="cityTf" destination="NPP-Q2-tqO" id="zcI-jH-dad"/>
                         <outlet property="countryTf" destination="Xmy-GO-dY6" id="Z2B-qJ-iGB"/>
                         <outlet property="nameTf" destination="Nvd-jr-dRS" id="awM-kB-r5b"/>
                         <outlet property="phoneTf" destination="5kV-ji-SrX" id="ARM-dA-EcD"/>
                         <outlet property="primarySwitch" destination="GEk-fM-T0X" id="T7H-ax-Y1H"/>
+                        <outlet property="viewBack" destination="het-Yo-e18" id="Ip4-qt-Vw9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -312,6 +315,9 @@
                                         <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system" title="">
                                             <color key="baseForegroundColor" name="Font Color"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="backBtn:" destination="vTg-3P-pEX" eventType="touchUpInside" id="LkH-MR-v01"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
@@ -487,6 +493,7 @@
                         <outlet property="nameLabel" destination="dNP-93-udd" id="WMF-f5-NPe"/>
                         <outlet property="numberPhoneLb" destination="Efd-ls-ozO" id="TEg-iU-fLo"/>
                         <outlet property="primarySwitch" destination="bPG-WV-aXh" id="gHH-k8-MqO"/>
+                        <outlet property="viewBack" destination="bWs-ht-PTA" id="gI7-At-32g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BbR-1o-Obo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

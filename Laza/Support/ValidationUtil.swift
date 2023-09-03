@@ -20,4 +20,5 @@ struct ValidationUtil {
         let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
         return passwordPredicate.evaluate(with: password)
     }
+    
 }

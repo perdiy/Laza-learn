@@ -74,11 +74,19 @@ class MyProfileViewController: UIViewController, UIImagePickerControllerDelegate
         viewModel.loadUserProfile()
     }
     
-    func displayProfileImage(_ imageData: Data) {
-        if let profileImage = UIImage(data: imageData) {
-            DispatchQueue.main.async {
-                self.imageView.image = profileImage
-            }
+    func displayProfileImage(_ imageURL: String) {
+        if let imageUrl = URL(string: imageURL) {
+            URLSession.shared.dataTask(with: imageUrl) { data, response, error in
+                if let data = data {
+                    if let profileImage = UIImage(data: data) {
+                        DispatchQueue.main.async {
+                            self.imageView.image = profileImage
+                        }
+                    }
+                } else if let error = error {
+                    print("Error downloading image: \(error)")
+                }
+            }.resume()
         }
     }
 }
@@ -86,11 +94,11 @@ class MyProfileViewController: UIViewController, UIImagePickerControllerDelegate
 extension MyProfileViewController: MyProfileViewModelDelegate {
     func updateUserProfile(_ userData: DataClass) {
         DispatchQueue.main.async {
-            
             self.usernameLabel.text = "\(userData.username)"
             self.emailLabel.text = "\(userData.email)"
             self.fullnameLabel.text = "\(userData.fullName)"
             self.userData = userData
+            self.displayProfileImage(userData.imageUrl) 
         }
     }
 }

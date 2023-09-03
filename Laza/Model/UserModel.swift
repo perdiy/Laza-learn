@@ -17,14 +17,14 @@ struct DataClass: Codable {
     let id: Int
     let fullName, username, email: String
     let isVerified: Bool
-//    let imageUrl: String
+    let imageUrl: String
     let createdAt, updatedAt: String
 
     enum CodingKeys: String, CodingKey {
         case id
         case fullName = "full_name"
         case username, email
-//        case imageUrl = "image_url"
+        case imageUrl = "image_url"
         case isVerified = "is_verified"
         case createdAt = "created_at"
         case updatedAt = "updated_at"

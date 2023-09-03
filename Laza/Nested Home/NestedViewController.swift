@@ -3,16 +3,19 @@
 //  Laza
 //
 //  Created by Perdi Yansyah on 01/08/23.
-// 
+//
 
 import UIKit
 import SideMenu
 import SnackBar
 
 class NestedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
-   
-    @IBOutlet weak var search: UISearchBar!
+    
     var menu: SideMenuNavigationController?
+    var isValidToken = false
+    
+    
+    @IBOutlet weak var search: UISearchBar!
     @IBOutlet weak var viewCart: UIView! {
         didSet {
             viewCart.layer.cornerRadius = viewCart.bounds.height / 2
@@ -122,48 +125,21 @@ class NestedViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    
+    
     func fetchCategories() {
-        guard let url = URL(string: "https://lazaapp.shop/brand") else { return }
-        
-        let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
-            guard let self = self, let data = data else { return }
-            
-            do {
-                let decoder = JSONDecoder()
-                let brandResponse = try decoder.decode(Brand.self, from: data)
-                let brandNames = brandResponse.description.map { $0.name }
-                DispatchQueue.main.async {
-                    self.categories = brandNames
-                    self.tableView.reloadData()
-                }
-            } catch {
-                print("Error fetching categories: \(error.localizedDescription)")
-            }
+        NestedModel.shared.fetchCategories { [weak self] (brandNames) in
+            self?.categories = brandNames
+            self?.tableView.reloadData()
         }
-        
-        task.resume()
     }
     
     func fetchProducts() {
-        guard let url = URL(string: "https://lazaapp.shop/products") else { return }
-        
-        let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
-            guard let self = self, let data = data else { return }
-            
-            do {
-                let decoder = JSONDecoder()
-                let productResponse = try decoder.decode(Product.self, from: data)
-                DispatchQueue.main.async {
-                    self.products = productResponse.data
-                    self.filteredProducts = productResponse.data
-                    self.tableView.reloadData()
-                }
-            } catch {
-                print("Error fetching products: \(error.localizedDescription)")
-            }
+        NestedModel.shared.fetchProducts { [weak self] (products) in
+            self?.products = products
+            self?.filteredProducts = products
+            self?.tableView.reloadData()
         }
-        
-        task.resume()
     }
 }
 

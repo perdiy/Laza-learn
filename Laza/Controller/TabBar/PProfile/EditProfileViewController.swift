@@ -68,55 +68,32 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     private func updateProfile() {
-        guard let userToken = UserDefaults.standard.string(forKey: "userToken"),
-              let newFullName = fullNameTf.text,
+        guard let newFullName = fullNameTf.text,
               let newUsername = userNameTf.text,
-              let newEmail = emailTf.text else {
+              let newEmail = emailTf.text,
+              let newImage = imgUser.image else {
             return
         }
-        
-        let apiUrl = URL(string: "https://lazaapp.shop/user/update")!
-        var request = URLRequest(url: apiUrl)
-        request.httpMethod = "PUT"
-        request.addValue("Bearer \(userToken)", forHTTPHeaderField: "X-Auth-Token")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let updateData: [String: Any] = [
-            "full_name": newFullName,
-            "username": newUsername,
-            "email": newEmail
-            
-        ]
-         
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: updateData, options: [])
-        } catch {
-            print("Error serializing update data: \(error)")
-            return
-        }
-        
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                print("Error updating profile: \(error)")
-                return
-            }
-            
-            if let httpResponse = response as? HTTPURLResponse {
-                if httpResponse.statusCode == 200 {
-                    print("Profile updated successfully!")
-                    
-                    DispatchQueue.main.async {
-                        
-                        
-                        self.delegate?.profileUpdated()
-                        
-                        self.navigationController?.popViewController(animated: true)
-                    }
-                } else {
-                    print("Error updating profile: Status code \(httpResponse.statusCode)")
-                    
+
+        ProfileService.shared.updateProfile(fullName: newFullName, username: newUsername, email: newEmail, image: newImage) { [weak self] success in
+            if success {
+                print("Profile updated successfully!")
+                DispatchQueue.main.async {
+                    self?.delegate?.profileUpdated()
+                    self?.navigationController?.popViewController(animated: true)
+                }
+            } else {
+                print("Failed to update profile")
+                
+                // Show an alert for failure
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Profile Update Failed", message: "An error occurred while updating your profile.", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    alert.addAction(okAction)
+                    self?.present(alert, animated: true, completion: nil)
                 }
             }
-        }.resume()
+        }
     }
+
 }

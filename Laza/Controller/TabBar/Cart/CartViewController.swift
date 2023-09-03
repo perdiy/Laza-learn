@@ -8,13 +8,10 @@
 import UIKit
 import SnackBar
 
-
 class CartViewController: UIViewController {
     
-    // Array untuk menyimpan produk di keranjang
     var cartProducts: [ProductCart] = []
     var selectedAddress: DataAllAddress?
-    // ViewModel untuk operasi keranjang
     var cartViewModel = CartViewModel()
     var allSize: AllSize?
     var cartModel: CartProduct?
@@ -30,23 +27,16 @@ class CartViewController: UIViewController {
         super.viewDidLoad()
         // Mendaftarkan sel kustom
         tableView.register(UINib(nibName: "CartTableViewCell", bundle: nil), forCellReuseIdentifier: "CartTableViewCell")
-        // Mengonfigurasi penampilan elemen tab bar
+        
         setupTabBarItemImage()
-        // Mengatur delegasi sumber data
         tableView.dataSource = self
-        //
         tableView.reloadData()
-        //
         getSizeAll()
-        
-        
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
-        // Mengambil produk di keranjang dari server
         fetchCartProducts()
-        //
         fetchAddresses()
     }
     
@@ -62,9 +52,7 @@ class CartViewController: UIViewController {
         tabBarItem.selectedImage = UIImage(view: label)
     }
     
-    // Aksi tombol
     @IBAction func paymentBtn(_ sender: Any) {
-        // Pindah ke tampilan metode pembayaran
         let storyboard = UIStoryboard(name: "Payment", bundle: nil)
         if let paymentVC = storyboard.instantiateViewController(withIdentifier: "PaymentMethodeViewController") as? PaymentMethodeViewController {
             navigationController?.pushViewController(paymentVC, animated: true)
@@ -72,7 +60,6 @@ class CartViewController: UIViewController {
     }
     
     @IBAction func addressBtn(_ sender: Any) {
-        // Pindah ke tampilan daftar alamat
         let storyboard = UIStoryboard(name: "Address", bundle: nil)
         if let orderConfirmedVC = storyboard.instantiateViewController(withIdentifier: "ListAddressViewController") as? ListAddressViewController {
             navigationController?.pushViewController(orderConfirmedVC, animated: true)
@@ -80,7 +67,6 @@ class CartViewController: UIViewController {
     }
     
     @IBAction func CheckoutBtn(_ sender: Any) {
-        // Pindah ke tampilan konfirmasi pesanan
         let storyboard = UIStoryboard(name: "OrderConfimed", bundle: nil)
         if let orderConfirmedVC = storyboard.instantiateViewController(withIdentifier: "OrderConfirmedViewController") as? OrderConfirmedViewController {
             navigationController?.pushViewController(orderConfirmedVC, animated: true)
@@ -89,12 +75,12 @@ class CartViewController: UIViewController {
     
     // MARK: - Fetch Addresses
     func fetchAddresses() {
-        guard let accessToken = UserDefaults.standard.string(forKey: "userToken") else {
-            // Handle case when access token is not available
+        // Mengambil token dari Keychain
+        guard let accessToken = KeychainManager.shared.getAccessToken() else {
             return
         }
         
-        cartViewModel.fetchAddresses(accessToken: accessToken) { [weak self] addresses in
+        cartViewModel.fetchAddresses { [weak self] addresses in
             if let addresses = addresses, let primaryAddress = addresses.first(where: { $0.isPrimary == true }) {
                 DispatchQueue.main.async {
                     self?.countryLabel.text = primaryAddress.country
@@ -104,24 +90,20 @@ class CartViewController: UIViewController {
         }
     }
     
+    
     // Fungsi untuk mengambil produk di keranjang
     func fetchCartProducts() {
-        guard let token = UserDefaults.standard.string(forKey: "userToken") else {
+        guard let token = KeychainManager.shared.getAccessToken() else {
             print("Token pengguna tidak tersedia.")
             return
         }
-        
         cartViewModel.getProducInCart(accessTokenKey: token) { [weak self] cartProductData in
             self?.cartProducts = cartProductData.data.products ?? []
             let orderInfo = cartProductData.data.orderInfo
-            
-            // Setel label total, biaya pengiriman, dan sub-total
             DispatchQueue.main.async {
                 self?.total.text = "$ \(orderInfo!.total)"
                 self?.shippingCost.text = "$ \(orderInfo!.shippingCost)"
                 self?.subTotal.text = "$ \(orderInfo!.subTotal)"
-                
-                // Memuat ulang tabel di utas utama
                 self?.tableView.reloadData()
             }
         }
@@ -178,34 +160,26 @@ extension CartViewController: UITableViewDataSource {
 
 // Mengimplementasikan protokol CartTableViewCellDelegate
 extension CartViewController: CartTableViewCellDelegate {
-    
     // kurangi product item
     func cartCellDidTapDecrease(cell: CartTableViewCell, completion: @escaping (Int) -> Void) {
         guard let indexPath = tableView.indexPath(for: cell) else {
             return
         }
-        
         let cartProduct = cartProducts[indexPath.row]
         let sizeId = getSizeId(forSize: cartProduct.size)
-        
         cartViewModel.decreaseCartItemQuantity(productId: cartProduct.id, sizedId: sizeId) {
-            
             self.fetchCartProducts()
             completion(cartProduct.quantity - 1)
         }
     }
-    
     // tambah product item
     func cartCellDidTapIncrease(cell: CartTableViewCell, completion: @escaping (Int) -> Void) {
         guard let indexPath = tableView.indexPath(for: cell) else {
             return
         }
-        
         let cartProduct = cartProducts[indexPath.row]
         let sizeId = getSizeId(forSize: cartProduct.size)
-        
         cartViewModel.addCartItemQuantity(productId: cartProduct.id, sizedId: sizeId) {
-            
             self.fetchCartProducts()
             completion(cartProduct.quantity + 1)
         }

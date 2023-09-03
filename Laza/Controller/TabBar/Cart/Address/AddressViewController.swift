@@ -8,17 +8,22 @@
 import UIKit
 
 class AddressViewController: UIViewController {
-    @IBOutlet weak var backView: UIView!
+
     @IBOutlet weak var nameTf: UITextField!
     @IBOutlet weak var phoneTf: UITextField!
     @IBOutlet weak var cityTf: UITextField!
     @IBOutlet weak var countryTf: UITextField!
     @IBOutlet weak var primarySwitch: UISwitch!
+    @IBOutlet weak var viewBack: UIView!
+    
+    @IBAction func backBtn(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        backView.layer.cornerRadius = backView.bounds.height / 2.0
-        backView.clipsToBounds = true
+        viewBack.layer.cornerRadius = viewBack.bounds.height / 2.0
+        viewBack.clipsToBounds = true
     }
 
     @IBAction func saveAddress(_ sender: Any) {
@@ -26,8 +31,7 @@ class AddressViewController: UIViewController {
               let phone = phoneTf.text,
               let city = cityTf.text,
               let country = countryTf.text,
-              let userToken = UserDefaults.standard.string(forKey: "userToken") else {
-            // Handle missing values or user token
+              let userToken = KeychainManager.shared.getAccessToken() else {
             return
         }
         

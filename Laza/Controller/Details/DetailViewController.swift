@@ -21,6 +21,7 @@ class DetailViewController: UIViewController {
     var imageName: String = ""
     var wishlistItems: [ProductWishlist] = []
     
+    @IBOutlet weak var viewBack: UIView!
     @IBOutlet weak var imageUser: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
@@ -57,6 +58,9 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewBack.layer.cornerRadius = viewBack.bounds.height / 2.0
+        viewBack.clipsToBounds = true
+        
         collectionView.dataSource = self
         collectionView.delegate = self
         
@@ -82,7 +86,7 @@ class DetailViewController: UIViewController {
     }
     
     func addToCartWithSnackBar() {
-        guard let token = UserDefaults.standard.string(forKey: "userToken") else {
+        guard let token = KeychainManager.shared.getAccessToken() else {
             print("User token not available.")
             return
         }
@@ -131,7 +135,7 @@ class DetailViewController: UIViewController {
     
     
     func fetchWishlistItems(productId: Int, completion: @escaping (Bool) -> Void) {
-        guard let token = UserDefaults.standard.string(forKey: "userToken") else {
+        guard let token = KeychainManager.shared.getAccessToken() else {
             print("User token not found.")
             completion(false)
             return
@@ -150,7 +154,7 @@ class DetailViewController: UIViewController {
     }
     
     func updateLoveButtonStatus() {
-        guard let token = UserDefaults.standard.string(forKey: "userToken") else {
+        guard let token = KeychainManager.shared.getAccessToken()else {
             print("User token not available.")
             return
         }

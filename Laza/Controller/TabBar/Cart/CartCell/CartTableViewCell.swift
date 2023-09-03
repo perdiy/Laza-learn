@@ -37,12 +37,11 @@ class CartTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         updateQuantityLabel()
     }
     
     @IBAction func increaseBtnTapped(_ sender: Any) {
-//        quantityProduct += 1
+        quantityProduct += 1
         updateQuantityLabel()
         delegate?.cartCellDidTapIncrease(cell: self, completion: {
             currentNumber in
@@ -51,13 +50,16 @@ class CartTableViewCell: UITableViewCell {
     }
     
     @IBAction func decreaseBtnTapped(_ sender: Any) {
-        
-        updateQuantityLabel()
-        delegate?.cartCellDidTapDecrease(cell: self, completion: {
-            currentNumber in
-            self.quantityProduct = currentNumber
-        })
+        if quantityProduct > 0 {
+            quantityProduct -= 1
+            updateQuantityLabel()
+            
+            delegate?.cartCellDidTapDecrease(cell: self, completion: { currentNumber in
+                self.quantityProduct = currentNumber
+            })
+        }
     }
+
     
     func UpdateLabelQuantityProduct() {
         delegate?.updateCountProduct(cell: self, completion: {

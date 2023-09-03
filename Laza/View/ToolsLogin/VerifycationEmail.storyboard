@@ -71,7 +71,6 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Confirm Mail"/>
                                 <connections>
                                     <action selector="comfirmCode:" destination="Qoq-8z-Qkv" eventType="touchUpInside" id="LoX-8y-BWr"/>
-                                    <action selector="emailBtn:" destination="4Tt-XU-NY5" eventType="touchUpInside" id="Ihw-lY-uwe"/>
                                     <action selector="verifyCodeBtn:" destination="Qoq-8z-Qkv" eventType="touchUpInside" id="win-EE-mNi"/>
                                 </connections>
                             </button>
@@ -199,9 +198,6 @@
                                         <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system" title="">
                                             <color key="baseForegroundColor" name="Font Color"/>
                                         </buttonConfiguration>
-                                        <connections>
-                                            <action selector="backBtn:" destination="4Tt-XU-NY5" eventType="touchUpInside" id="Jbl-EU-bfF"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
@@ -224,17 +220,9 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Confirm Mail"/>
                                 <connections>
-                                    <action selector="confirmMail:" destination="4Tt-XU-NY5" eventType="touchUpInside" id="YdD-Ip-tkN"/>
-                                    <action selector="emailBtn:" destination="4Tt-XU-NY5" eventType="touchUpInside" id="IEE-3P-xtb"/>
+                                    <action selector="verifyEmailBtn:" destination="4Tt-XU-NY5" eventType="touchUpInside" id="7nT-b3-JPW"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Uey-5m-euM">
-                                <rect key="frame" x="186.66666666666666" y="416" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="wDX-Ya-LjO"/>
-                                    <constraint firstAttribute="width" constant="20" id="wIG-8D-AGj"/>
-                                </constraints>
-                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="d5R-4f-UeU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -245,7 +233,6 @@
                             <constraint firstItem="7OI-Nc-9KL" firstAttribute="top" secondItem="Iwh-Y5-zxo" secondAttribute="bottom" constant="25" id="8sW-i7-8Yj"/>
                             <constraint firstItem="d5R-4f-UeU" firstAttribute="trailing" secondItem="Cfy-lb-8hX" secondAttribute="trailing" constant="2" id="Bug-SQ-ZI2"/>
                             <constraint firstItem="698-yU-LK8" firstAttribute="leading" secondItem="d5R-4f-UeU" secondAttribute="leading" constant="84" id="CHQ-HP-UNE"/>
-                            <constraint firstItem="Uey-5m-euM" firstAttribute="centerX" secondItem="VaH-18-aTM" secondAttribute="centerX" id="EeN-Wg-oL6"/>
                             <constraint firstItem="9sq-Lg-LRo" firstAttribute="top" secondItem="d5R-4f-UeU" secondAttribute="top" id="HXA-JD-7oV"/>
                             <constraint firstItem="698-yU-LK8" firstAttribute="top" secondItem="Cfy-lb-8hX" secondAttribute="bottom" constant="60" id="J3q-HE-5Br"/>
                             <constraint firstItem="d5R-4f-UeU" firstAttribute="trailing" secondItem="698-yU-LK8" secondAttribute="trailing" constant="84" id="RDo-ME-oYc"/>
@@ -255,7 +242,6 @@
                             <constraint firstItem="Cfy-lb-8hX" firstAttribute="top" secondItem="d5R-4f-UeU" secondAttribute="top" constant="54" id="cFz-9H-7op"/>
                             <constraint firstItem="TjB-nC-PKq" firstAttribute="top" secondItem="698-yU-LK8" secondAttribute="bottom" constant="72" id="ehN-h9-cGp"/>
                             <constraint firstItem="m1x-bQ-VM4" firstAttribute="leading" secondItem="d5R-4f-UeU" secondAttribute="leading" constant="25" id="kMQ-cb-D47"/>
-                            <constraint firstItem="Uey-5m-euM" firstAttribute="centerY" secondItem="VaH-18-aTM" secondAttribute="centerY" id="kPJ-Tc-3lB"/>
                             <constraint firstItem="7OI-Nc-9KL" firstAttribute="trailing" secondItem="d5R-4f-UeU" secondAttribute="trailing" id="lOU-sM-0mf"/>
                             <constraint firstItem="d5R-4f-UeU" firstAttribute="trailing" secondItem="Iwh-Y5-zxo" secondAttribute="trailing" constant="30" id="r3v-8R-yks"/>
                             <constraint firstItem="TjB-nC-PKq" firstAttribute="leading" secondItem="d5R-4f-UeU" secondAttribute="leading" constant="20" id="rqt-id-Fpi"/>
@@ -264,11 +250,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="Uey-5m-euM" id="Tbv-CF-vaE"/>
-                        <outlet property="emailBtn" destination="7OI-Nc-9KL" id="s8x-Dj-E8m"/>
-                        <outlet property="emailTf" destination="m1x-bQ-VM4" id="eFh-PA-oG2"/>
-                        <outlet property="indicatorLoad" destination="Uey-5m-euM" id="b0U-OE-E4h"/>
-                        <outlet property="viewBack" destination="9sq-Lg-LRo" id="o6F-ah-0bv"/>
+                        <outlet property="emailAddressView" destination="m1x-bQ-VM4" id="t0C-bA-g4T"/>
+                        <outlet property="verifyEmailBtnView" destination="7OI-Nc-9KL" id="1rL-kJ-yTN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uUQ-NN-AkE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

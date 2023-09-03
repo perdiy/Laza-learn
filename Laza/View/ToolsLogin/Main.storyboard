@@ -46,8 +46,8 @@
                                     <action selector="SignInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L11-wG-uEX"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let’s Get Started" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Yt-Or-ZRz">
-                                <rect key="frame" x="90" y="116.00000000000001" width="212" height="33.666666666666671"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let’s Get Started" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Yt-Or-ZRz">
+                                <rect key="frame" x="2" y="116.00000000000001" width="389" height="33.666666666666671"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
                                 <color key="textColor" name="Font Color"/>
                                 <nil key="highlightedColor"/>
@@ -74,10 +74,10 @@
                             <constraint firstItem="vOW-dG-lME" firstAttribute="leading" secondItem="Gee-4E-H1V" secondAttribute="leading" id="8s4-Wa-9ZW"/>
                             <constraint firstItem="Gee-4E-H1V" firstAttribute="trailing" secondItem="iUc-L8-Ybs" secondAttribute="trailing" constant="20" id="Eey-vf-e35"/>
                             <constraint firstAttribute="bottom" secondItem="vOW-dG-lME" secondAttribute="bottom" id="Q75-uY-7uh"/>
-                            <constraint firstItem="Gee-4E-H1V" firstAttribute="trailing" secondItem="5Yt-Or-ZRz" secondAttribute="trailing" constant="91" id="RKe-Ko-LVT"/>
+                            <constraint firstItem="Gee-4E-H1V" firstAttribute="trailing" secondItem="5Yt-Or-ZRz" secondAttribute="trailing" constant="2" id="RKe-Ko-LVT"/>
                             <constraint firstItem="O6b-pF-Yvh" firstAttribute="top" secondItem="iUc-L8-Ybs" secondAttribute="bottom" constant="256" id="S0w-Fn-1sL"/>
                             <constraint firstItem="vOW-dG-lME" firstAttribute="trailing" secondItem="Gee-4E-H1V" secondAttribute="trailing" id="V05-Ck-Xgr"/>
-                            <constraint firstItem="5Yt-Or-ZRz" firstAttribute="leading" secondItem="Gee-4E-H1V" secondAttribute="leading" constant="90" id="bwe-lG-QLO"/>
+                            <constraint firstItem="5Yt-Or-ZRz" firstAttribute="leading" secondItem="Gee-4E-H1V" secondAttribute="leading" constant="2" id="bwe-lG-QLO"/>
                             <constraint firstItem="HDy-64-J5F" firstAttribute="top" secondItem="iUc-L8-Ybs" secondAttribute="bottom" constant="248" id="g37-09-rPB"/>
                             <constraint firstItem="O6b-pF-Yvh" firstAttribute="leading" secondItem="Gee-4E-H1V" secondAttribute="leading" constant="73" id="kni-Jc-q7W"/>
                             <constraint firstItem="iUc-L8-Ybs" firstAttribute="leading" secondItem="Gee-4E-H1V" secondAttribute="leading" constant="20" id="ylB-O8-kqp"/>

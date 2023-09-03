@@ -321,6 +321,7 @@
                         <outlet property="ratingLabel" destination="9Od-Sj-JYa" id="s6F-sD-uoS"/>
                         <outlet property="star" destination="MzC-ir-z5w" id="55u-Bh-BWu"/>
                         <outlet property="titleLabel" destination="1PS-oU-Cky" id="TQr-hV-6Of"/>
+                        <outlet property="viewBack" destination="ILR-Ko-MCr" id="4Ho-gG-rcT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fc2-b5-esS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

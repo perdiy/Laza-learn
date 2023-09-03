@@ -13,7 +13,7 @@
         <tableViewCell contentMode="scaleToFill" restorationIdentifier="CartTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="CartTableViewCell" rowHeight="122" id="KGk-i7-Jjw" customClass="CartTableViewCell" customModule="Laza" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="335" height="122"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="335" height="122"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -38,7 +38,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOO-tB-vcp">
-                        <rect key="frame" x="125" y="11.999999999999998" width="140" height="31.333333333333329"/>
+                        <rect key="frame" x="125" y="11.999999999999998" width="190" height="31.333333333333329"/>
                         <string key="text">Men's Tie-Dye T-Shirt
 Nike Sportswear</string>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -46,22 +46,16 @@ Nike Sportswear</string>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$45 (-$4.00 Tax)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B2U-Hc-Swn">
-                        <rect key="frame" x="125" y="45.333333333333336" width="89.666666666666686" height="13.333333333333336"/>
+                        <rect key="frame" x="125" y="46.333333333333336" width="89.666666666666686" height="13.333333333333336"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" systemColor="opaqueSeparatorColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hib-K6-Lwe">
-                        <rect key="frame" x="159" y="93.666666666666671" width="17" height="16"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udc-Cz-4QA">
                         <rect key="frame" x="306" y="95" width="14" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="15" id="Idr-j1-cJk"/>
-                            <constraint firstAttribute="width" constant="14" id="yAn-Zu-Tgf"/>
+                            <constraint firstAttribute="width" constant="14" id="CET-6S-zdk"/>
+                            <constraint firstAttribute="height" constant="15" id="dce-eV-L9E"/>
                         </constraints>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" image="trash.circle" catalog="system" title="">
@@ -71,64 +65,81 @@ Nike Sportswear</string>
                             <action selector="deletCart:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="o0H-M3-BvC"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V72-Pf-dlL">
-                        <rect key="frame" x="125" y="93.666666666666671" width="14" height="15"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="15" id="BNQ-AD-8h5"/>
-                            <constraint firstAttribute="width" constant="14" id="kep-Xx-Eh4"/>
-                        </constraints>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="chevron.down.circle" catalog="system" title="">
-                            <color key="baseForegroundColor" systemColor="opaqueSeparatorColor"/>
-                        </buttonConfiguration>
-                        <connections>
-                            <action selector="decreaseBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mJk-WR-0MM"/>
-                        </connections>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cwD-aW-ZBH">
-                        <rect key="frame" x="196" y="93.666666666666671" width="14" height="15"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="14" id="QbH-q5-IiY"/>
-                            <constraint firstAttribute="height" constant="15" id="tIE-Mm-9xb"/>
-                        </constraints>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="chevron.up.circle" catalog="system" title="">
-                            <color key="baseForegroundColor" systemColor="opaqueSeparatorColor"/>
-                        </buttonConfiguration>
-                        <connections>
-                            <action selector="increaseBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="l5a-8P-jm7"/>
-                        </connections>
-                    </button>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qvl-rL-JYX">
+                        <rect key="frame" x="125" y="94.666666666666671" width="85" height="15"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V72-Pf-dlL">
+                                <rect key="frame" x="0.0" y="0.0" width="14" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="lcP-sU-ond"/>
+                                    <constraint firstAttribute="width" constant="14" id="sJt-PC-cvR"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.down.circle" catalog="system" title="">
+                                    <color key="baseForegroundColor" systemColor="opaqueSeparatorColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="decreaseBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mJk-WR-0MM"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hib-K6-Lwe">
+                                <rect key="frame" x="34" y="-1" width="17" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="L6q-wd-uN6"/>
+                                    <constraint firstAttribute="width" constant="17" id="zTB-nf-OSz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cwD-aW-ZBH">
+                                <rect key="frame" x="71" y="0.0" width="14" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="P4Z-BH-h2o"/>
+                                    <constraint firstAttribute="width" constant="14" id="PSL-JF-zTk"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.up.circle" catalog="system" title="">
+                                    <color key="baseForegroundColor" systemColor="opaqueSeparatorColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="increaseBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="l5a-8P-jm7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </stackView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFH-az-G5M">
-                        <rect key="frame" x="125" y="68.666666666666671" width="23" height="13.333333333333329"/>
+                        <rect key="frame" x="125" y="64.666666666666671" width="23" height="13.333333333333329"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="hib-K6-Lwe" firstAttribute="leading" secondItem="V72-Pf-dlL" secondAttribute="trailing" constant="20" id="12U-nf-bvP"/>
                     <constraint firstItem="eOO-tB-vcp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="6G1-LD-SvD"/>
                     <constraint firstAttribute="bottom" secondItem="xB8-nn-jhu" secondAttribute="bottom" constant="5" id="7AU-Xo-Z4f"/>
                     <constraint firstItem="VZR-F7-EtX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="FBK-WC-6Ap"/>
                     <constraint firstAttribute="bottom" secondItem="VZR-F7-EtX" secondAttribute="bottom" constant="10" id="FjI-Jt-dHd"/>
                     <constraint firstItem="xB8-nn-jhu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="HhF-Zs-JVL"/>
-                    <constraint firstItem="udc-Cz-4QA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="95" id="L6p-0l-WB8"/>
-                    <constraint firstItem="cwD-aW-ZBH" firstAttribute="top" secondItem="B2U-Hc-Swn" secondAttribute="bottom" constant="35" id="Ljm-Jy-Sgc"/>
+                    <constraint firstItem="qvl-rL-JYX" firstAttribute="leading" secondItem="xB8-nn-jhu" secondAttribute="trailing" constant="9" id="Icj-CX-rx9"/>
+                    <constraint firstItem="udc-Cz-4QA" firstAttribute="top" secondItem="eOO-tB-vcp" secondAttribute="bottom" constant="51.670000000000002" id="MsS-hM-kDB"/>
+                    <constraint firstAttribute="bottom" secondItem="qvl-rL-JYX" secondAttribute="bottom" constant="14.33" id="NTz-j0-3OC"/>
                     <constraint firstItem="VZR-F7-EtX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Nmc-wx-b4w"/>
                     <constraint firstItem="xB8-nn-jhu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="OTe-2e-gCh"/>
-                    <constraint firstItem="V72-Pf-dlL" firstAttribute="leading" secondItem="VZR-F7-EtX" secondAttribute="trailing" constant="15" id="OhW-GP-K1K"/>
                     <constraint firstItem="eOO-tB-vcp" firstAttribute="leading" secondItem="VZR-F7-EtX" secondAttribute="trailing" constant="15" id="TD0-Bw-bkO"/>
-                    <constraint firstAttribute="trailing" secondItem="udc-Cz-4QA" secondAttribute="trailing" constant="15" id="XPq-1q-UEa"/>
-                    <constraint firstItem="B2U-Hc-Swn" firstAttribute="top" secondItem="eOO-tB-vcp" secondAttribute="bottom" constant="2" id="Z8K-hJ-Cr7"/>
-                    <constraint firstItem="V72-Pf-dlL" firstAttribute="top" secondItem="B2U-Hc-Swn" secondAttribute="bottom" constant="35" id="g9Q-Gl-adl"/>
+                    <constraint firstItem="B2U-Hc-Swn" firstAttribute="top" secondItem="eOO-tB-vcp" secondAttribute="bottom" constant="3" id="Z8K-hJ-Cr7"/>
                     <constraint firstItem="B2U-Hc-Swn" firstAttribute="leading" secondItem="VZR-F7-EtX" secondAttribute="trailing" constant="15" id="hUc-ID-bkS"/>
-                    <constraint firstAttribute="trailing" secondItem="eOO-tB-vcp" secondAttribute="trailing" constant="70" id="hk1-La-bhv"/>
-                    <constraint firstItem="cwD-aW-ZBH" firstAttribute="leading" secondItem="hib-K6-Lwe" secondAttribute="trailing" constant="20" id="p1N-dl-Ndr"/>
-                    <constraint firstItem="sFH-az-G5M" firstAttribute="top" secondItem="B2U-Hc-Swn" secondAttribute="bottom" constant="10" id="rnw-tz-lza"/>
-                    <constraint firstItem="hib-K6-Lwe" firstAttribute="top" secondItem="B2U-Hc-Swn" secondAttribute="bottom" constant="35" id="uQm-GK-roQ"/>
+                    <constraint firstAttribute="trailing" secondItem="eOO-tB-vcp" secondAttribute="trailing" constant="20" id="hk1-La-bhv"/>
+                    <constraint firstAttribute="trailing" secondItem="udc-Cz-4QA" secondAttribute="trailing" constant="15" id="ljb-y9-ox8"/>
+                    <constraint firstItem="sFH-az-G5M" firstAttribute="top" secondItem="B2U-Hc-Swn" secondAttribute="bottom" constant="5" id="rnw-tz-lza"/>
                     <constraint firstItem="sFH-az-G5M" firstAttribute="leading" secondItem="VZR-F7-EtX" secondAttribute="trailing" constant="15" id="vUb-9t-2bk"/>
+                    <constraint firstItem="qvl-rL-JYX" firstAttribute="top" secondItem="sFH-az-G5M" secondAttribute="bottom" constant="16.670000000000002" id="wdu-cg-4YC"/>
                 </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRasius">
+                        <real key="value" value="10"/>
+                    </userDefinedRuntimeAttribute>
+                </userDefinedRuntimeAttributes>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>

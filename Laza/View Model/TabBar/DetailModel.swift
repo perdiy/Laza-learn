@@ -128,6 +128,8 @@ class DetailViewModel {
             }
         }.resume()
     }
+    
+    
     // MARK: - Func PUT Wihslist using API
     func putWishlistUser(productId: Int, userToken: String, completion: @escaping (Result<UpdateWishlist, Error>) -> Void) {
         

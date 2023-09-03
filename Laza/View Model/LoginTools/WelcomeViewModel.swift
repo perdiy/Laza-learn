@@ -6,75 +6,117 @@
 //
 
 import Foundation
+
 class WelcomeViewModel {
     
-    var loginCompletion: ((_ success: Bool) -> Void)?
+    var apiAlertLogin: ((String, String) -> Void)?
+    var apiAlertProfile : ((String) -> Void)?
+    //    var token: String?
     
-    func signUp(username: String, password: String) {
-        guard !username.isEmpty, !password.isEmpty else {
-            loginCompletion?(false)
+    func getDataLogin(username: String,
+                      password: String,
+                      completion: @escaping (Result<Data?, Error>) -> Void) {
+        
+        
+        // Membuat URL untuk endpoint login
+        guard let url = URL(string: "https://lazaapp.shop/login") else {
+            completion(.failure(ErrorInfo.Error))
             return
         }
         
-        let postData: [String: Any] = [
-            "username": username,
-            "password": password
-        ]
-        
-        let url = URL(string: "https://lazaapp.shop/login")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = ApiService.getHttpBodyRaw(param: [
+            "username": username,
+            "password": password
+        ])
         
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: postData, options: [])
-            let task = URLSession.shared.uploadTask(with: request, from: jsonData) { data, response, error in
-                if let httpResponse = response as? HTTPURLResponse {
-                    if httpResponse.statusCode == 200 {
-                        if let data = data {
-                            do {
-                                let jsonResponse = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                                if let dataDict = jsonResponse?["data"] as? [String: Any],
-                                   let accessToken = dataDict["access_token"] as? String {
-                                    
-                                    // Save token to UserDefaults
-                                    UserDefaults.standard.set(accessToken, forKey: "userToken")
-                                    UserDefaults.standard.synchronize()
-                                    
-                                    print("User Token: \(accessToken)")
-                                    self.loginCompletion?(true)
-                                } else {
-                                    self.loginCompletion?(false)
-                                    print("Token not found in response.")
-                                }
-                            } catch {
-                                self.loginCompletion?(false)
-                                print("Error parsing JSON.")
-                            }
-                        }
-                    } else {
-                        if let data = data {
-                            do {
-                                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                                if let errorMessage = json?["description"] as? String {
-                                    self.loginCompletion?(false)
-                                    print("Error: \(errorMessage)")
-                                }
-                            } catch {
-                                self.loginCompletion?(false)
-                                print("An error occurred.")
-                            }
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                // Jika terjadi error, kirim error melalui completion handler
+                completion(.failure(error))
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                let statusCode = httpResponse.statusCode
+                if statusCode != 200 {
+                    // Jika status code tidak 200, coba mengekstrak informasi dari response
+                    if let data = data,
+                       let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                       let description = jsonResponse["description"] as? String,
+                       let status = jsonResponse["status"] as? String {
+                        DispatchQueue.main.async {
+                            // Memanggil alert API
+                            self.apiAlertLogin?(status, description)
                         }
                     }
+                    // Jika terjadi error saat login, kirim error melalui completion handler
+                    completion(.failure(ErrorInfo.Error))
                 } else {
-                    self.loginCompletion?(false)
-                    print("An error occurred.")
+                    if let data = data,
+                       let loginResponse = try? JSONDecoder().decode(LoginResponse.self, from: data),
+                       loginResponse.status == "OK",
+                       !loginResponse.isError {
+                        
+                        KeychainManager.shared.saveAccessToken(token: loginResponse.data.access_token)
+                        KeychainManager.shared.saveRefreshToken(token: loginResponse.data.refresh_token)
+                        print("Access Token: \(loginResponse.data.access_token)") 
+                        print("refresh Token: \(loginResponse.data.refresh_token)")
+                        
+                        
+                        
+                        // Menyampaikan hasil berhasil melalui completion handler
+                        completion(.success(data))
+                    } else {
+                        // Jika terjadi error saat login, kirim error melalui completion handler
+                        completion(.failure(ErrorInfo.Error))
+                    }
                 }
             }
-            task.resume()
-        } catch {
-            self.loginCompletion?(false)
-            print("An error occurred.")
-        }
+        }.resume()
     }
+    
+    
+    
+    func getUserProfile(completion: @escaping (Result<DataUseProfile?, Error>) -> Void) {
+        // Memastikan token autentikasi tersedia dalam UserDefaults
+        print("ini prfile")
+        
+        guard let url = URL(string: "https://lazaapp.shop/user/profile") else {return}
+        
+        // Membuat permintaan URLRequest dengan menambahkan token ke header
+        guard let accesToken = KeychainManager.shared.getAccessToken() else { return }
+        var request = URLRequest(url: url)
+        request.setValue("Bearer \(accesToken)", forHTTPHeaderField: "X-Auth-Token")
+        
+        // Memulai permintaan HTTP untuk mengambil profil pengguna
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                // Jika terjadi error saat permintaan, kirim error
+                completion(.failure(error))
+                return
+            }
+            
+            // Memastikan respons adalah HTTPURLResponse dan kode status 200 (sukses)
+            guard let httpResponse = response as? HTTPURLResponse,
+                  httpResponse.statusCode == 200,
+                  let data = data else {
+                // Jika respons tidak valid, kirim error
+                completion(.failure(ErrorInfo.Error))
+                return
+            }
+            
+            do {
+                // Mendekode data JSON respons ke dalam tipe DataUseProfile
+                let userProfile = try JSONDecoder().decode(profileUser.self, from: data)
+                // Mengirim hasil yang berhasil kepada completion handler
+                completion(.success(userProfile.data))
+            } catch {
+                // Jika terjadi kesalahan dekode maka akan kirim error
+                completion(.failure(error))
+            }
+        }.resume()
+    }
+    
 }

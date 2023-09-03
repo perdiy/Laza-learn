@@ -50,7 +50,7 @@ class FavoriteViewController: UIViewController {
     }
 
     func fetchWishlistItems() {
-        guard let token = UserDefaults.standard.string(forKey: "userToken") else {
+        guard let token = KeychainManager.shared.getAccessToken() else {
             print("User token not found.")
             return
         }

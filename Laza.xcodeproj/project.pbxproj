@@ -8,9 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		3100ABB02A9C80140033F8D6 /* UpdateAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3100ABAF2A9C80140033F8D6 /* UpdateAddressViewController.swift */; };
+		312CCA9A2AA336DB00614276 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312CCA992AA336DB00614276 /* EditProfileViewModel.swift */; };
+		316F2AEC2AA4453500287D77 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316F2AEB2AA4453500287D77 /* Response.swift */; };
 		3177BF622A9D80A2001D412D /* AllSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3177BF612A9D80A2001D412D /* AllSize.swift */; };
 		317AD1812A9ED59800E2C7ED /* GetWhistlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317AD1802A9ED59800E2C7ED /* GetWhistlist.swift */; };
 		317AD1832A9F14AC00E2C7ED /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317AD1822A9F14AC00E2C7ED /* Alert.swift */; };
+		31AECB5C2AA17FC2008E1435 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 31AECB5B2AA17FC2008E1435 /* JWTDecode */; };
+		31AECB5E2AA18952008E1435 /* VerifycationEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AECB5D2AA18952008E1435 /* VerifycationEmailViewModel.swift */; };
+		31AECB602AA18BA4008E1435 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AECB5F2AA18BA4008E1435 /* ApiService.swift */; };
+		31AECB622AA19D5C008E1435 /* AllUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AECB612AA19D5C008E1435 /* AllUser.swift */; };
+		31AECB642AA19E1B008E1435 /* Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AECB632AA19E1B008E1435 /* Validate.swift */; };
+		31AECB662AA1E5CD008E1435 /* RefreshToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AECB652AA1E5CD008E1435 /* RefreshToken.swift */; };
+		31DE98712AA4190000A80D9F /* ApiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE98702AA4190000A80D9F /* ApiCell.swift */; };
+		31DE98762AA420F200A80D9F /* ChangePassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31DE98752AA420F200A80D9F /* ChangePassword.storyboard */; };
+		31DE98782AA4213200A80D9F /* ChangePassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE98772AA4213200A80D9F /* ChangePassViewController.swift */; };
+		31DE987A2AA42A2600A80D9F /* ChangePasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE98792AA42A2600A80D9F /* ChangePasswordModel.swift */; };
 		52050CDD2A92F58C0050F46B /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52050CDC2A92F58C0050F46B /* EditProfileViewController.swift */; };
 		520A8DBC2A808E270049FBB1 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520A8DBB2A808E270049FBB1 /* CartViewController.swift */; };
 		520A8DBE2A8097BD0049FBB1 /* OrderConfimed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 520A8DBD2A8097BD0049FBB1 /* OrderConfimed.storyboard */; };
@@ -53,7 +65,6 @@
 		5266BF242A8C6E4C0099A876 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5266BF232A8C6E4C0099A876 /* WelcomeViewModel.swift */; };
 		5266BF292A8C7B7C0099A876 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5266BF282A8C7B7C0099A876 /* MyProfileViewController.swift */; };
 		5266BF2B2A8C9A9F0099A876 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5266BF2A2A8C9A9F0099A876 /* UserManager.swift */; };
-		526757702A723DBE000BB555 /* ShopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267576F2A723DBE000BB555 /* ShopModel.swift */; };
 		5267C6422A77412000A44BDD /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267C6412A77412000A44BDD /* MenuViewController.swift */; };
 		526F0F5B2A91CAD700B96C4E /* AddReviewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526F0F5A2A91CAD700B96C4E /* AddReviewsModel.swift */; };
 		52708F832A89DA2400A9ABCC /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52708F822A89DA2300A9ABCC /* Login.swift */; };
@@ -134,15 +145,25 @@
 		52F456DD2A7CAEAA00F565D9 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F456DC2A7CAEA900F565D9 /* Slider.swift */; };
 		52F5464B2A80A6A8001B3C88 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F546492A80A6A8001B3C88 /* CartTableViewCell.swift */; };
 		52F5464C2A80A6A8001B3C88 /* CartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52F5464A2A80A6A8001B3C88 /* CartTableViewCell.xib */; };
-		52FFFF552A78F17E009C07EB /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FFFF542A78F17E009C07EB /* Api.swift */; };
 		95BD1E19824C6C83D4743E49 /* Pods_Laza.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5886F5C889B7EBC36794D9DD /* Pods_Laza.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3100ABAF2A9C80140033F8D6 /* UpdateAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAddressViewController.swift; sourceTree = "<group>"; };
+		312CCA992AA336DB00614276 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
+		316F2AEB2AA4453500287D77 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		3177BF612A9D80A2001D412D /* AllSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSize.swift; sourceTree = "<group>"; };
 		317AD1802A9ED59800E2C7ED /* GetWhistlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWhistlist.swift; sourceTree = "<group>"; };
 		317AD1822A9F14AC00E2C7ED /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		31AECB5D2AA18952008E1435 /* VerifycationEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifycationEmailViewModel.swift; sourceTree = "<group>"; };
+		31AECB5F2AA18BA4008E1435 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		31AECB612AA19D5C008E1435 /* AllUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUser.swift; sourceTree = "<group>"; };
+		31AECB632AA19E1B008E1435 /* Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validate.swift; sourceTree = "<group>"; };
+		31AECB652AA1E5CD008E1435 /* RefreshToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshToken.swift; sourceTree = "<group>"; };
+		31DE98702AA4190000A80D9F /* ApiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCell.swift; sourceTree = "<group>"; };
+		31DE98752AA420F200A80D9F /* ChangePassword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChangePassword.storyboard; sourceTree = "<group>"; };
+		31DE98772AA4213200A80D9F /* ChangePassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassViewController.swift; sourceTree = "<group>"; };
+		31DE98792AA42A2600A80D9F /* ChangePasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordModel.swift; sourceTree = "<group>"; };
 		52050CDC2A92F58C0050F46B /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		520A8DBB2A808E270049FBB1 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		520A8DBD2A8097BD0049FBB1 /* OrderConfimed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrderConfimed.storyboard; sourceTree = "<group>"; };
@@ -184,7 +205,6 @@
 		5266BF232A8C6E4C0099A876 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		5266BF282A8C7B7C0099A876 /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
 		5266BF2A2A8C9A9F0099A876 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
-		5267576F2A723DBE000BB555 /* ShopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopModel.swift; sourceTree = "<group>"; };
 		5267C6412A77412000A44BDD /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		526F0F5A2A91CAD700B96C4E /* AddReviewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewsModel.swift; sourceTree = "<group>"; };
 		52708F822A89DA2300A9ABCC /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -261,7 +281,6 @@
 		52F456DC2A7CAEA900F565D9 /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
 		52F546492A80A6A8001B3C88 /* CartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
 		52F5464A2A80A6A8001B3C88 /* CartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartTableViewCell.xib; sourceTree = "<group>"; };
-		52FFFF542A78F17E009C07EB /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		5886F5C889B7EBC36794D9DD /* Pods_Laza.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Laza.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA10B5503970B0BDB046E663 /* Pods-Laza.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Laza.release.xcconfig"; path = "Target Support Files/Pods-Laza/Pods-Laza.release.xcconfig"; sourceTree = "<group>"; };
 		DC968D2C60741F3CBD7BE4F4 /* Pods-Laza.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Laza.debug.xcconfig"; path = "Target Support Files/Pods-Laza/Pods-Laza.debug.xcconfig"; sourceTree = "<group>"; };
@@ -274,6 +293,7 @@
 			files = (
 				52B3F7C32A86197100F1CCED /* Cosmos in Frameworks */,
 				52EF19FC2A96F63500C2E6B8 /* GoogleSignIn in Frameworks */,
+				31AECB5C2AA17FC2008E1435 /* JWTDecode in Frameworks */,
 				52241F702A84772D00E42C11 /* SnackBar in Frameworks */,
 				52B277E02A82893600614179 /* SDWebImage in Frameworks */,
 				52527E442A7A2AAA00CDAD49 /* SideMenu in Frameworks */,
@@ -286,6 +306,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31DE98732AA41E0800A80D9F /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				5245483C2A8D096F0055B2D3 /* MyProfileModel.swift */,
+				5245483E2A8D0CB30055B2D3 /* SideMenuModel.swift */,
+				524548402A8D0DA10055B2D3 /* NestedViewModel.swift */,
+				52CE3F332A8DF3AD00BB1F8F /* DetailModel.swift */,
+				52CE3F372A8DFA8F00BB1F8F /* ReviewsModel.swift */,
+				526F0F5A2A91CAD700B96C4E /* AddReviewsModel.swift */,
+				52EF19FD2A9715B300C2E6B8 /* CartModel.swift */,
+				52EF1A0D2A9742D900C2E6B8 /* AddressModelView.swift */,
+				5214950B2A9780310093EBB3 /* whislistViewModel.swift */,
+				317AD1802A9ED59800E2C7ED /* GetWhistlist.swift */,
+				312CCA992AA336DB00614276 /* EditProfileViewModel.swift */,
+				31DE98792AA42A2600A80D9F /* ChangePasswordModel.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		31DE98742AA4209000A80D9F /* ChangePassword */ = {
+			isa = PBXGroup;
+			children = (
+				31DE98752AA420F200A80D9F /* ChangePassword.storyboard */,
+			);
+			path = ChangePassword;
+			sourceTree = "<group>";
+		};
 		396038A84B9454DC65AADC3E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,6 +352,8 @@
 				52B274742A9836EF004E9728 /* ImgCompress.swift */,
 				529BF35B2A98963F00FA91D7 /* ViewBack.swift */,
 				317AD1822A9F14AC00E2C7ED /* Alert.swift */,
+				31AECB5F2AA18BA4008E1435 /* ApiService.swift */,
+				31DE98702AA4190000A80D9F /* ApiCell.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -438,6 +487,7 @@
 				52728AE12A77A21100519DE0 /* HomeViewModel.swift */,
 				524548422A8DAB5D0055B2D3 /* KeychainManager.swift */,
 				52CE3F392A8E03A100BB1F8F /* ValidationUtil.swift */,
+				31AECB632AA19E1B008E1435 /* Validate.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -518,9 +568,7 @@
 		526757712A72470B000BB555 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5267576F2A723DBE000BB555 /* ShopModel.swift */,
 				523AD8E82A73B16D005FACAD /* UserModel.swift */,
-				52FFFF542A78F17E009C07EB /* Api.swift */,
 				52533EAD2A89BC7800D08E82 /* Product.swift */,
 				52533EAF2A89C71A00D08E82 /* Brand.swift */,
 				52533EB12A89CBC600D08E82 /* Size.swift */,
@@ -533,6 +581,8 @@
 				52EF19F82A96E97B00C2E6B8 /* CartProduct.swift */,
 				52EF1A0B2A9742B300C2E6B8 /* Address.swift */,
 				3177BF612A9D80A2001D412D /* AllSize.swift */,
+				31AECB612AA19D5C008E1435 /* AllUser.swift */,
+				316F2AEB2AA4453500287D77 /* Response.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -589,17 +639,8 @@
 		5290BB1A2A832E080042A32A /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				31DE98732AA41E0800A80D9F /* TabBar */,
 				52CE3F322A8DF36A00BB1F8F /* LoginTools */,
-				5245483C2A8D096F0055B2D3 /* MyProfileModel.swift */,
-				5245483E2A8D0CB30055B2D3 /* SideMenuModel.swift */,
-				524548402A8D0DA10055B2D3 /* NestedViewModel.swift */,
-				52CE3F332A8DF3AD00BB1F8F /* DetailModel.swift */,
-				52CE3F372A8DFA8F00BB1F8F /* ReviewsModel.swift */,
-				526F0F5A2A91CAD700B96C4E /* AddReviewsModel.swift */,
-				52EF19FD2A9715B300C2E6B8 /* CartModel.swift */,
-				52EF1A0D2A9742D900C2E6B8 /* AddressModelView.swift */,
-				5214950B2A9780310093EBB3 /* whislistViewModel.swift */,
-				317AD1802A9ED59800E2C7ED /* GetWhistlist.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -648,11 +689,13 @@
 		52CE3F322A8DF36A00BB1F8F /* LoginTools */ = {
 			isa = PBXGroup;
 			children = (
-				5266BF232A8C6E4C0099A876 /* WelcomeViewModel.swift */,
 				5245483A2A8CFEC40055B2D3 /* VerificationModel.swift */,
+				5266BF232A8C6E4C0099A876 /* WelcomeViewModel.swift */,
 				524548382A8CFE4E0055B2D3 /* ForgotPasswordModel.swift */,
 				52D4D29E2A8B788E00A9AE83 /* NewPassViewModel.swift */,
 				52708F882A8A282800A9ABCC /* SignUpViewModel.swift */,
+				31AECB5D2AA18952008E1435 /* VerifycationEmailViewModel.swift */,
+				31AECB652AA1E5CD008E1435 /* RefreshToken.swift */,
 			);
 			path = LoginTools;
 			sourceTree = "<group>";
@@ -740,6 +783,7 @@
 		52EF38912A72149700446F31 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				31DE98742AA4209000A80D9F /* ChangePassword */,
 				52EF1A012A9737C600C2E6B8 /* ProductByBrand */,
 				52D8C4B42A944ACC00EE79B9 /* XIB Brand ProductAll */,
 				5290BB252A83812E0042A32A /* Address */,
@@ -762,6 +806,7 @@
 				5234E62C2A80ACEC00F855BD /* Details */,
 				527F9AF62A7B546E00AC520C /* Reviews */,
 				52444CBB2A789B15000BFC87 /* TabBar */,
+				31DE98772AA4213200A80D9F /* ChangePassViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -828,6 +873,7 @@
 				52B3F7C22A86197100F1CCED /* Cosmos */,
 				527B77222A8B457C00FE04BA /* DPOTPView */,
 				52EF19FB2A96F63500C2E6B8 /* GoogleSignIn */,
+				31AECB5B2AA17FC2008E1435 /* JWTDecode */,
 			);
 			productName = Laza;
 			productReference = 52EF386A2A72125400446F31 /* Laza.app */;
@@ -865,6 +911,7 @@
 				52B3F7C12A86197100F1CCED /* XCRemoteSwiftPackageReference "Cosmos" */,
 				527B77212A8B457C00FE04BA /* XCRemoteSwiftPackageReference "DPOTPView" */,
 				52EF19FA2A96F63500C2E6B8 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				31AECB5A2AA17FC1008E1435 /* XCRemoteSwiftPackageReference "JWTDecode" */,
 			);
 			productRefGroup = 52EF386B2A72125400446F31 /* Products */;
 			projectDirPath = "";
@@ -893,6 +940,7 @@
 				52EF38882A72146B00446F31 /* LaunchScreen.storyboard in Resources */,
 				52444CCD2A78B7F4000BFC87 /* ProCollectionViewCell.xib in Resources */,
 				5290BB2B2A8381850042A32A /* ListAddressTableViewCell.xib in Resources */,
+				31DE98762AA420F200A80D9F /* ChangePassword.storyboard in Resources */,
 				52EF38A22A72163900446F31 /* ForgotPassword.storyboard in Resources */,
 				52444CDD2A78BB87000BFC87 /* CategoryTableViewCell.xib in Resources */,
 				520A8DC22A80A0470049FBB1 /* Address.storyboard in Resources */,
@@ -978,11 +1026,14 @@
 				52241F722A84774F00E42C11 /* SnackBar.swift in Sources */,
 				52D8C4BC2A944B5B00EE79B9 /* prductByBrandViewController.swift in Sources */,
 				52D8C4B02A934C0400EE79B9 /* BrandAllCollectionViewCell.swift in Sources */,
+				31DE98782AA4213200A80D9F /* ChangePassViewController.swift in Sources */,
+				31AECB5E2AA18952008E1435 /* VerifycationEmailViewModel.swift in Sources */,
 				52D8C4C02A94804300EE79B9 /* Wishlist.swift in Sources */,
 				527F9B0F2A7BAAFA00AC520C /* AddReviewViewController.swift in Sources */,
 				5245483B2A8CFEC40055B2D3 /* VerificationModel.swift in Sources */,
 				52F456DD2A7CAEAA00F565D9 /* Slider.swift in Sources */,
 				526F0F5B2A91CAD700B96C4E /* AddReviewsModel.swift in Sources */,
+				316F2AEC2AA4453500287D77 /* Response.swift in Sources */,
 				52EF38782A72125400446F31 /* Laza.xcdatamodeld in Sources */,
 				5266BF292A8C7B7C0099A876 /* MyProfileViewController.swift in Sources */,
 				52CE3F382A8DFA8F00BB1F8F /* ReviewsModel.swift in Sources */,
@@ -994,21 +1045,24 @@
 				529BF35C2A98963F00FA91D7 /* ViewBack.swift in Sources */,
 				52708F872A8A17B500A9ABCC /* SignUp.swift in Sources */,
 				5234E62B2A80ACD800F855BD /* DetailViewController.swift in Sources */,
-				52FFFF552A78F17E009C07EB /* Api.swift in Sources */,
 				5245483F2A8D0CB30055B2D3 /* SideMenuModel.swift in Sources */,
 				52EF1A002A9716C300C2E6B8 /* UIImage.swift in Sources */,
 				52444CD12A78BA09000BFC87 /* NestedViewController.swift in Sources */,
 				52B277DD2A82887700614179 /* Extension.swift in Sources */,
 				52EF386E2A72125400446F31 /* AppDelegate.swift in Sources */,
+				31DE987A2AA42A2600A80D9F /* ChangePasswordModel.swift in Sources */,
 				3100ABB02A9C80140033F8D6 /* UpdateAddressViewController.swift in Sources */,
 				524548432A8DAB5D0055B2D3 /* KeychainManager.swift in Sources */,
+				31AECB602AA18BA4008E1435 /* ApiService.swift in Sources */,
 				52EF389C2A7214D600446F31 /* LoginViewController.swift in Sources */,
 				52EF38A82A7225BF00446F31 /* TabBarViewController.swift in Sources */,
 				52EF1A0A2A973F2D00C2E6B8 /* VerifycationEmailCodeViewController.swift in Sources */,
 				52EF1A062A973EF100C2E6B8 /* VerifycationEmailViewController.swift in Sources */,
 				5245483D2A8D096F0055B2D3 /* MyProfileModel.swift in Sources */,
+				31AECB622AA19D5C008E1435 /* AllUser.swift in Sources */,
 				52F456D92A7C94B800F565D9 /* VerificationCodeViewController.swift in Sources */,
 				3177BF622A9D80A2001D412D /* AllSize.swift in Sources */,
+				31AECB642AA19E1B008E1435 /* Validate.swift in Sources */,
 				527F9B042A7B7D6D00AC520C /* extension.swift in Sources */,
 				5290BB1C2A8334900042A32A /* PaymentMethodeViewController.swift in Sources */,
 				52AAEC842A80EF9800903342 /* PaymentViewController.swift in Sources */,
@@ -1024,7 +1078,6 @@
 				5266BF242A8C6E4C0099A876 /* WelcomeViewModel.swift in Sources */,
 				5266BF2B2A8C9A9F0099A876 /* UserManager.swift in Sources */,
 				52444CD82A78BB6E000BFC87 /* ProTableViewCell.swift in Sources */,
-				526757702A723DBE000BB555 /* ShopModel.swift in Sources */,
 				52F5464B2A80A6A8001B3C88 /* CartTableViewCell.swift in Sources */,
 				52050CDD2A92F58C0050F46B /* EditProfileViewController.swift in Sources */,
 				52EF38A42A72165E00446F31 /* ForgotPwdViewController.swift in Sources */,
@@ -1032,6 +1085,7 @@
 				52EF389A2A7214D600446F31 /* WelcomeViewController.swift in Sources */,
 				5267C6422A77412000A44BDD /* MenuViewController.swift in Sources */,
 				52F456DB2A7C951700F565D9 /* NewPasswordViewController.swift in Sources */,
+				31AECB662AA1E5CD008E1435 /* RefreshToken.swift in Sources */,
 				52CE3F3A2A8E03A100BB1F8F /* ValidationUtil.swift in Sources */,
 				520A8DBC2A808E270049FBB1 /* CartViewController.swift in Sources */,
 				52B274752A9836EF004E9728 /* ImgCompress.swift in Sources */,
@@ -1040,10 +1094,12 @@
 				5275ABBA2A7762FD0016C424 /* FavoriteViewController.swift in Sources */,
 				52EF38942A7214CC00446F31 /* ViewController.swift in Sources */,
 				52715C6D2A9327E8001CC747 /* ProductAllCollectionViewCell.swift in Sources */,
+				31DE98712AA4190000A80D9F /* ApiCell.swift in Sources */,
 				52241F6D2A846FC200E42C11 /* DetailFavViewController.swift in Sources */,
 				527F9B0D2A7B942C00AC520C /* ReviewViewController.swift in Sources */,
 				52D4D29F2A8B788E00A9AE83 /* NewPassViewModel.swift in Sources */,
 				527F9B082A7B90E000AC520C /* ReviewsTableViewCell.swift in Sources */,
+				312CCA9A2AA336DB00614276 /* EditProfileViewModel.swift in Sources */,
 				524548392A8CFE4E0055B2D3 /* ForgotPasswordModel.swift in Sources */,
 				52EF1A0E2A9742D900C2E6B8 /* AddressModelView.swift in Sources */,
 				520A8DC02A8097F90049FBB1 /* OrderConfirmedViewController.swift in Sources */,
@@ -1256,6 +1312,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		31AECB5A2AA17FC1008E1435 /* XCRemoteSwiftPackageReference "JWTDecode" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/JWTDecode.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		52241F6E2A84772D00E42C11 /* XCRemoteSwiftPackageReference "SnackBar" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ahmedAlmasri/SnackBar.swift";
@@ -1307,6 +1371,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		31AECB5B2AA17FC2008E1435 /* JWTDecode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 31AECB5A2AA17FC1008E1435 /* XCRemoteSwiftPackageReference "JWTDecode" */;
+			productName = JWTDecode;
+		};
 		52241F6F2A84772D00E42C11 /* SnackBar */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 52241F6E2A84772D00E42C11 /* XCRemoteSwiftPackageReference "SnackBar" */;

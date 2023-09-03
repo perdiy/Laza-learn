@@ -8,7 +8,13 @@
 import Foundation
 
 class addProductToWishlist {
-    func addProductToWishlist(productId: Int, token: String) {
+    
+    func addProductToWishlist(productId: Int) {
+        guard let token = KeychainManager.shared.getAccessToken()else {
+            print("User token not found in Keychain.")
+            return
+        }
+        
         let urlString = "https://lazaapp.shop/wishlists?ProductId=\(productId)"
         guard let url = URL(string: urlString) else {
             print("Invalid URL for adding to wishlist.")
@@ -39,32 +45,32 @@ class addProductToWishlist {
     }
     
     var wishlistItems: [ProductWishlist] = []
+    
+    func fetchWishlistItems(completion: @escaping ([ProductWishlist]) -> Void) {
+        guard let token = KeychainManager.shared.getAccessToken(),
+              let apiUrl = URL(string: "https://lazaapp.shop/wishlists") else {
+            completion([])
+            return
+        }
         
-        func fetchWishlistItems(token: String, completion: @escaping ([ProductWishlist]) -> Void) {
-            guard let apiUrl = URL(string: "https://lazaapp.shop/wishlists") else {
+        var request = URLRequest(url: apiUrl)
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "X-Auth-Token")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print("Error fetching data: \(error?.localizedDescription ?? "Unknown error")")
                 completion([])
                 return
             }
             
-            var request = URLRequest(url: apiUrl)
-            request.addValue("Bearer \(token)", forHTTPHeaderField: "X-Auth-Token")
-            
-            URLSession.shared.dataTask(with: request) { data, response, error in
-                guard let data = data, error == nil else {
-                    print("Error fetching data: \(error?.localizedDescription ?? "Unknown error")")
-                    completion([])
-                    return
-                }
-                
-                do {
-                    let wishlistResponse = try JSONDecoder().decode(Wishlist.self, from: data)
-                    let wishlistItems = wishlistResponse.data.products
-                    completion(wishlistItems)
-                } catch {
-                    print("Error decoding JSON: \(error)")
-                    completion([])
-                }
-            }.resume()
-        }
+            do {
+                let wishlistResponse = try JSONDecoder().decode(Wishlist.self, from: data)
+                let wishlistItems = wishlistResponse.data.products
+                completion(wishlistItems)
+            } catch {
+                print("Error decoding JSON: \(error)")
+                completion([])
+            }
+        }.resume()
     }
-
+}
