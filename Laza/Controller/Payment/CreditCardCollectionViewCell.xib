@@ -36,7 +36,7 @@
             </constraints>
             <size key="customSize" width="300" height="200"/>
             <connections>
-                <outlet property="cardCreditView" destination="WwK-uJ-fjE" id="ri3-uh-AZy"/>
+                <outlet property="listCard" destination="WwK-uJ-fjE" id="vjb-bp-96x"/>
             </connections>
             <point key="canvasLocation" x="13.740458015267174" y="72.535211267605632"/>
         </collectionViewCell>

@@ -50,11 +50,11 @@ class CartViewController: UIViewController {
         label.sizeToFit()
         tabBarItem.standardAppearance?.selectionIndicatorTintColor = UIColor(named: "PurpleButton")
         tabBarItem.selectedImage = UIImage(view: label)
-    }
+    }  
     
     @IBAction func paymentBtn(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Payment", bundle: nil)
-        if let paymentVC = storyboard.instantiateViewController(withIdentifier: "PaymentMethodeViewController") as? PaymentMethodeViewController {
+        if let paymentVC = storyboard.instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController {
             navigationController?.pushViewController(paymentVC, animated: true)
         }
     }

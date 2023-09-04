@@ -42,6 +42,7 @@ class ChangePassViewController: UIViewController {
         viewBack.layer.cornerRadius = viewBack.bounds.height / 2.0
         viewBack.clipsToBounds = true
         textFieldDidChange()
+        
     }
     
     @objc func textFieldDidChange() {

@@ -9,7 +9,10 @@
 /* Begin PBXBuildFile section */
 		3100ABB02A9C80140033F8D6 /* UpdateAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3100ABAF2A9C80140033F8D6 /* UpdateAddressViewController.swift */; };
 		312CCA9A2AA336DB00614276 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312CCA992AA336DB00614276 /* EditProfileViewModel.swift */; };
+		315D289A2AA57B5C0010D402 /* CoreDataM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D28992AA57B5C0010D402 /* CoreDataM.swift */; };
+		315D289C2AA57CD30010D402 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D289B2AA57CD30010D402 /* Payment.swift */; };
 		316F2AEC2AA4453500287D77 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316F2AEB2AA4453500287D77 /* Response.swift */; };
+		31716B842AA5D58200B8F89B /* LazaCore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3114D3622AA5CDD000EC6E8C /* LazaCore.xcdatamodeld */; };
 		3177BF622A9D80A2001D412D /* AllSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3177BF612A9D80A2001D412D /* AllSize.swift */; };
 		317AD1812A9ED59800E2C7ED /* GetWhistlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317AD1802A9ED59800E2C7ED /* GetWhistlist.swift */; };
 		317AD1832A9F14AC00E2C7ED /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317AD1822A9F14AC00E2C7ED /* Alert.swift */; };
@@ -125,7 +128,6 @@
 		52EF1A0E2A9742D900C2E6B8 /* AddressModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF1A0D2A9742D900C2E6B8 /* AddressModelView.swift */; };
 		52EF386E2A72125400446F31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF386D2A72125400446F31 /* AppDelegate.swift */; };
 		52EF38702A72125400446F31 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF386F2A72125400446F31 /* SceneDelegate.swift */; };
-		52EF38782A72125400446F31 /* Laza.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52EF38762A72125400446F31 /* Laza.xcdatamodeld */; };
 		52EF38882A72146B00446F31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52EF38872A72146B00446F31 /* LaunchScreen.storyboard */; };
 		52EF388C2A72148800446F31 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52EF388B2A72148800446F31 /* SignUp.storyboard */; };
 		52EF388E2A72148D00446F31 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52EF388D2A72148D00446F31 /* Welcome.storyboard */; };
@@ -150,7 +152,10 @@
 
 /* Begin PBXFileReference section */
 		3100ABAF2A9C80140033F8D6 /* UpdateAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAddressViewController.swift; sourceTree = "<group>"; };
+		3114D3632AA5CDD000EC6E8C /* LazaCore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LazaCore.xcdatamodel; sourceTree = "<group>"; };
 		312CCA992AA336DB00614276 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
+		315D28992AA57B5C0010D402 /* CoreDataM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataM.swift; sourceTree = "<group>"; };
+		315D289B2AA57CD30010D402 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		316F2AEB2AA4453500287D77 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		3177BF612A9D80A2001D412D /* AllSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSize.swift; sourceTree = "<group>"; };
 		317AD1802A9ED59800E2C7ED /* GetWhistlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWhistlist.swift; sourceTree = "<group>"; };
@@ -261,7 +266,6 @@
 		52EF386A2A72125400446F31 /* Laza.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Laza.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52EF386D2A72125400446F31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52EF386F2A72125400446F31 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		52EF38772A72125400446F31 /* Laza.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Laza.xcdatamodel; sourceTree = "<group>"; };
 		52EF38872A72146B00446F31 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52EF388B2A72148800446F31 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		52EF388D2A72148D00446F31 /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
@@ -306,6 +310,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		315D28982AA57B440010D402 /* CoreDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				3114D3622AA5CDD000EC6E8C /* LazaCore.xcdatamodeld */,
+				315D28992AA57B5C0010D402 /* CoreDataM.swift */,
+			);
+			path = CoreDataManager;
+			sourceTree = "<group>";
+		};
 		31DE98732AA41E0800A80D9F /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -481,7 +494,6 @@
 			children = (
 				52EF386D2A72125400446F31 /* AppDelegate.swift */,
 				52EF386F2A72125400446F31 /* SceneDelegate.swift */,
-				52EF38762A72125400446F31 /* Laza.xcdatamodeld */,
 				52EF389F2A72152900446F31 /* Assets.xcassets */,
 				52134B9C2A7477E100B87588 /* UserDefault.swift */,
 				52728AE12A77A21100519DE0 /* HomeViewModel.swift */,
@@ -583,6 +595,7 @@
 				3177BF612A9D80A2001D412D /* AllSize.swift */,
 				31AECB612AA19D5C008E1435 /* AllUser.swift */,
 				316F2AEB2AA4453500287D77 /* Response.swift */,
+				315D289B2AA57CD30010D402 /* Payment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -769,6 +782,7 @@
 		52EF386C2A72125400446F31 /* Laza */ = {
 			isa = PBXGroup;
 			children = (
+				315D28982AA57B440010D402 /* CoreDataManager */,
 				5290BB1A2A832E080042A32A /* View Model */,
 				520BEFE32A807DB100EA612F /* Extension */,
 				52444CC12A78B77E000BFC87 /* Nested Home */,
@@ -1019,6 +1033,7 @@
 				52715C682A931E06001CC747 /* ProductAllViewController.swift in Sources */,
 				52EF389B2A7214D600446F31 /* SignUpViewController.swift in Sources */,
 				52715C6A2A931E17001CC747 /* BrandAllViewController.swift in Sources */,
+				31716B842AA5D58200B8F89B /* LazaCore.xcdatamodeld in Sources */,
 				52AAEC7F2A80E00400903342 /* FavoriteCollectionViewCell.swift in Sources */,
 				52AAEC862A80EFA900903342 /* AddPaymentViewController.swift in Sources */,
 				520A8DC42A80A06D0049FBB1 /* AddressViewController.swift in Sources */,
@@ -1034,7 +1049,6 @@
 				52F456DD2A7CAEAA00F565D9 /* Slider.swift in Sources */,
 				526F0F5B2A91CAD700B96C4E /* AddReviewsModel.swift in Sources */,
 				316F2AEC2AA4453500287D77 /* Response.swift in Sources */,
-				52EF38782A72125400446F31 /* Laza.xcdatamodeld in Sources */,
 				5266BF292A8C7B7C0099A876 /* MyProfileViewController.swift in Sources */,
 				52CE3F382A8DFA8F00BB1F8F /* ReviewsModel.swift in Sources */,
 				52CE3F362A8DF9A300BB1F8F /* Reviews.swift in Sources */,
@@ -1061,6 +1075,7 @@
 				5245483D2A8D096F0055B2D3 /* MyProfileModel.swift in Sources */,
 				31AECB622AA19D5C008E1435 /* AllUser.swift in Sources */,
 				52F456D92A7C94B800F565D9 /* VerificationCodeViewController.swift in Sources */,
+				315D289C2AA57CD30010D402 /* Payment.swift in Sources */,
 				3177BF622A9D80A2001D412D /* AllSize.swift in Sources */,
 				31AECB642AA19E1B008E1435 /* Validate.swift in Sources */,
 				527F9B042A7B7D6D00AC520C /* extension.swift in Sources */,
@@ -1088,6 +1103,7 @@
 				31AECB662AA1E5CD008E1435 /* RefreshToken.swift in Sources */,
 				52CE3F3A2A8E03A100BB1F8F /* ValidationUtil.swift in Sources */,
 				520A8DBC2A808E270049FBB1 /* CartViewController.swift in Sources */,
+				315D289A2AA57B5C0010D402 /* CoreDataM.swift in Sources */,
 				52B274752A9836EF004E9728 /* ImgCompress.swift in Sources */,
 				52EF1A0C2A9742B300C2E6B8 /* Address.swift in Sources */,
 				52527E462A7A3AF600CDAD49 /* SideViewController.swift in Sources */,
@@ -1414,13 +1430,13 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		52EF38762A72125400446F31 /* Laza.xcdatamodeld */ = {
+		3114D3622AA5CDD000EC6E8C /* LazaCore.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				52EF38772A72125400446F31 /* Laza.xcdatamodel */,
+				3114D3632AA5CDD000EC6E8C /* LazaCore.xcdatamodel */,
 			);
-			currentVersion = 52EF38772A72125400446F31 /* Laza.xcdatamodel */;
-			path = Laza.xcdatamodeld;
+			currentVersion = 3114D3632AA5CDD000EC6E8C /* LazaCore.xcdatamodel */;
+			path = LazaCore.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
