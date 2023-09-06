@@ -17,7 +17,7 @@ struct DataClass: Codable {
     let id: Int
     let fullName, username, email: String
     let isVerified: Bool
-    let imageUrl: String
+    let imageUrl: String?
     let createdAt, updatedAt: String
 
     enum CodingKeys: String, CodingKey {
