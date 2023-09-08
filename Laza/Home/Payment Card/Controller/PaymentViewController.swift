@@ -48,6 +48,7 @@ class PaymentViewController: UIViewController, UITextFieldDelegate, UICollection
             cvvTf.isEnabled = false
         }
     }
+    @IBOutlet weak var empyLb: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +75,8 @@ class PaymentViewController: UIViewController, UITextFieldDelegate, UICollection
         collectionView.reloadData()
         
         collectionView.delegate = self
+        
+        empyLb.isHidden = true
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
@@ -157,6 +160,11 @@ class PaymentViewController: UIViewController, UITextFieldDelegate, UICollection
 extension PaymentViewController : UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print("total card \(cardModels.count)")
+        if cardModels.count == 0 {
+            empyLb.isHidden = false
+        } else {
+            empyLb.isHidden = true
+        }
         return cardModels.count
     }
     

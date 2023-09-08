@@ -9,18 +9,13 @@ import UIKit
 
 protocol ProductCellProtocol {
     func goToDetailProduct(product: DatumProdct)
+    func goToAllProduct(productAll: [DatumProdct])
 }
 
 class ProTableViewCell: UITableViewCell {
     
     @IBAction func allProductButton(_ sender: Any) {
-        if let productAllVC = UIStoryboard(name: "ProductAll", bundle: nil).instantiateViewController(withIdentifier: "ProductAllViewController") as? ProductAllViewController {
-            productAllVC.modalPresentationStyle = .fullScreen
-            productAllVC.allProducts = products
-            if let navigationController = self.window?.rootViewController as? UINavigationController {
-                navigationController.pushViewController(productAllVC, animated: false)
-            }
-        }
+        delegateProductProtocol?.goToAllProduct(productAll: self.products)
     }
     @IBOutlet weak var collectionView: UICollectionView!
     var products: [DatumProdct] = []

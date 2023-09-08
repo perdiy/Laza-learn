@@ -25,8 +25,9 @@ class AddReviewViewController: UIViewController {
     
     var productId: Int = 0
     var userToken: String {
-        return UserDefaults.standard.string(forKey: "userToken") ?? ""
+        return KeychainManager.shared.getAccessToken() ?? ""
     }
+
     
     var viewModel = AddReviewViewModel()
     

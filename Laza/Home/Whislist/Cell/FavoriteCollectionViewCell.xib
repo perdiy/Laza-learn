@@ -38,6 +38,11 @@
                                     <constraint firstAttribute="height" constant="174" id="5bO-SQ-55j"/>
                                     <constraint firstAttribute="width" constant="139" id="N43-St-0o2"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRasius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>

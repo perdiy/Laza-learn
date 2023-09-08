@@ -40,6 +40,11 @@
                                     <constraint firstAttribute="height" constant="183" id="4vv-nu-LsE"/>
                                     <constraint firstAttribute="width" constant="175" id="nyb-vX-I2D"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRasius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" name="textFieldColor"/>

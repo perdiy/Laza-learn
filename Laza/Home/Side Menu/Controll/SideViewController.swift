@@ -7,9 +7,20 @@
 
 import UIKit
 
+protocol protocolTabBarDelegate: AnyObject {
+  func protocolGoToWishlist()
+  func protocolGoToCart()
+  func protocolGoToProfile()
+  func protocolGoToChangePassword()
+}
+
+
 class SideViewController: UIViewController {
     
-    // Outlet untuk elemen-elemen tampilan
+    weak var delegate: protocolTabBarDelegate?
+    
+     // Outlet untuk elemen-elemen tampilan
+    @IBOutlet weak var switchBtn: UISwitch!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var viewBack: UIView!
@@ -34,20 +45,49 @@ class SideViewController: UIViewController {
         }
     }
     
+    @IBAction func whistlistBtn(_ sender: Any) {
+        let performMyTabBar = UIStoryboard(name: "TabBar", bundle: nil)
+                let tabbar: UITabBarController = performMyTabBar.instantiateViewController(withIdentifier: "TabBarViewController") as! TabBarViewController
+                tabbar.selectedIndex = 1
+                self.navigationController?.pushViewController(tabbar, animated: true)
+    }
+    
+    @IBAction func cartB(_ sender: Any) {
+        let performMyTabBar = UIStoryboard(name: "TabBar", bundle: nil)
+                let tabbar: UITabBarController = performMyTabBar.instantiateViewController(withIdentifier: "TabBarViewController") as! TabBarViewController
+                tabbar.selectedIndex = 2
+                self.navigationController?.pushViewController(tabbar, animated: true)
+    }
+    
+    @IBAction func profilebtn(_ sender: Any) {
+        let performMyTabBar = UIStoryboard(name: "TabBar", bundle: nil)
+                let tabbar: UITabBarController = performMyTabBar.instantiateViewController(withIdentifier: "TabBarViewController") as! TabBarViewController
+                tabbar.selectedIndex = 3
+                self.navigationController?.pushViewController(tabbar, animated: true)
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Mengatur sudut lengkungan untuk latar belakang
         viewBack.layer.cornerRadius = viewBack.bounds.height / 2.0
         viewBack.clipsToBounds = true
         
-        // Memuat profil pengguna
-        loadUserProfile()
+        // Memeriksa dan memperbarui token akses jika diperlukan
+        ApiCallRefreshToken().refreshTokenIfNeeded { [weak self] in
+            self?.loadUserProfile()
+        } onError: { errorMessage in
+            print(errorMessage)
+        }
         
         // Mengatur sudut lengkungan untuk gambar profil
         imgView.layer.cornerRadius = imgView.frame.width / 2
         imgView.layer.masksToBounds = true
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        checkDarkMode()
+    }
     // Tombol untuk menutup tampilan samping
     @IBAction func sideBtn(_ sender: Any) {
         dismiss(animated: true)
@@ -55,15 +95,21 @@ class SideViewController: UIViewController {
     
     // Tombol untuk mengganti tema tampilan
     @IBAction func switchBtn(_ sender: UISwitch) {
-        if let window = UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).first?.windows.first {
-            if sender.isOn {
-                window.overrideUserInterfaceStyle = .dark
-            } else {
-                window.overrideUserInterfaceStyle = .light
-            }
-        }
-    }
-    
+        if sender.isOn {
+               if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                   let appDelegate = windowScene.windows.first
+                   appDelegate?.overrideUserInterfaceStyle = .dark
+               }
+               UserDefaults.standard.setValue(true, forKey: "darkmode")
+           } else {
+               if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                   let appDelegate = windowScene.windows.first
+                   appDelegate?.overrideUserInterfaceStyle = .light
+               }
+               UserDefaults.standard.setValue(false, forKey: "darkmode")
+           }
+       }
+     
     // Tombol untuk logout pengguna
     @IBAction func logoutButton(_ sender: Any) {
         let alert = UIAlertController(title: "Konfirmasi Logout", message: "Anda yakin ingin logout?", preferredStyle: .alert)
@@ -76,17 +122,17 @@ class SideViewController: UIViewController {
     
     // Melakukan proses logout pengguna
     func performLogout() {
-        userProfileViewModel.logout { [weak self] error in
-            if let error = error {
-                print("Logout error: \(error.localizedDescription)")
-            } else {
-                print("Logout berhasil")
-                if let welcomeViewController = UIStoryboard(name: "Welcome", bundle: nil).instantiateViewController(withIdentifier: "WelcomeViewController") as? WelcomeViewController {
-                    self?.navigationController?.pushViewController(welcomeViewController, animated: true)
+            userProfileViewModel.logout { [weak self] error in
+                if let error = error {
+                    print("Logout error: \(error.localizedDescription)")
+                } else {
+                    print("Logout berhasil")
+                    if let welcomeViewController = UIStoryboard(name: "Welcome", bundle: nil).instantiateViewController(withIdentifier: "WelcomeViewController") as? WelcomeViewController {
+                        self?.navigationController?.pushViewController(welcomeViewController, animated: true)
+                    }
                 }
             }
         }
-    }
     
     // Memuat profil pengguna
     func loadUserProfile() {
@@ -103,4 +149,20 @@ class SideViewController: UIViewController {
             }
         }
     }
+    func checkDarkMode() {
+            let isDarkMode = UserDefaults.standard.bool(forKey: "darkmode")
+            if isDarkMode {
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                    let appDelegate = windowScene.windows.first
+                    appDelegate?.overrideUserInterfaceStyle = .dark
+                }
+                switchBtn.isOn = true
+            } else {
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                    let appDelegate = windowScene.windows.first
+                    appDelegate?.overrideUserInterfaceStyle = .light
+                }
+                switchBtn.isOn = false
+            }
+        }
 }

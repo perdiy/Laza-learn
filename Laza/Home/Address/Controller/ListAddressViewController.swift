@@ -9,7 +9,7 @@ import UIKit
 
 // Protokol yang digunakan untuk mengirim pemilihan alamat dari ListAddressViewController ke objek lain.
 protocol chooseAddressProtocol: AnyObject {
-    func didSelectAddress(country: String, city: String)
+    func didSelectAddress(country: String, city: String, addressId: Int)
 }
 
 // Kelas ListAddressViewController, turunan dari UIViewController dan mengadopsi UITableViewDataSource.
@@ -54,6 +54,8 @@ class ListAddressViewController: UIViewController, UITableViewDataSource {
         
         // Mendaftarkan nib sel untuk digunakan dalam tabel.
         tableView.register(UINib(nibName: "ListAddressTableViewCell", bundle: nil), forCellReuseIdentifier: "ListAddressTableViewCell")
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,9 +88,7 @@ class ListAddressViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Mendapatkan sel tabel yang sesuai dan mengisi data alamat ke dalamnya.
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListAddressTableViewCell", for: indexPath) as! ListAddressTableViewCell
-        
         let address = viewModel.addresses[indexPath.row]
-        
         cell.nameLabel.text = address.receiverName
         cell.countryLabel.text = address.country
         cell.cityLabel.text = address.city
@@ -115,7 +115,7 @@ extension ListAddressViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Meng-handle pemilihan alamat dan mengirimkannya melalui delegat.
         let address = viewModel.addresses[indexPath.row]
-        delegate?.didSelectAddress(country: address.country, city: address.city)
+        delegate?.didSelectAddress(country: address.country, city: address.city, addressId: address.id)
         print("dapet nih bang: \(address)")
         self.navigationController?.popViewController(animated: true)
     }
@@ -153,7 +153,6 @@ extension ListAddressViewController: UITableViewDelegate {
                 DispatchQueue.main.async {
                     self?.viewModel.addresses.remove(at: indexPath.row)
 
-                    // Melakukan pembaruan UI dalam blok pembaruan batch.
                     self?.tableView.performBatchUpdates({
                         self?.tableView.deleteRows(at: [indexPath], with: .automatic)
                     }, completion: nil)

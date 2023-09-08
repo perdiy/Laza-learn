@@ -63,7 +63,6 @@ class PaymentMethodeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updatePaymentButtonState()
-        
         // Mengatur sudut lengkungan dan meng-clip viewBack agar berbentuk bulat
         viewBack.layer.cornerRadius = viewBack.bounds.height / 2.0
         viewBack.clipsToBounds = true

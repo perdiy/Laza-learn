@@ -18,6 +18,11 @@ class CartViewController: UIViewController {
     var chooseCard: String = ""
     var selectedAdd: String = ""
     var selectedCount: String = ""
+    var addressId: Int = 0
+    var productId: Int = 0
+    var prodIndexpath: IndexPath?
+    var resultsProductOrder = [DataProduct]()
+    var cartArrayModel = [ProductCart]()
     
     @IBOutlet weak var numCardLb: UILabel!
     @IBOutlet weak var nameBankLb: UILabel!
@@ -27,6 +32,7 @@ class CartViewController: UIViewController {
     @IBOutlet weak var shippingCost: UILabel!
     @IBOutlet weak var subTotal: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var emptyLb: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +43,8 @@ class CartViewController: UIViewController {
         tableView.dataSource = self
         tableView.reloadData()
         getSizeAll()
+        
+        emptyLb.isHidden = true
     }
     
     
@@ -73,12 +81,43 @@ class CartViewController: UIViewController {
     }
     
     @IBAction func CheckoutBtn(_ sender: Any) {
+        postOrder()
+    }
+    
+    func  CheckoutBtn(){
         let storyboard = UIStoryboard(name: "OrderConfimed", bundle: nil)
         if let orderConfirmedVC = storyboard.instantiateViewController(withIdentifier: "OrderConfirmedViewController") as? OrderConfirmedViewController {
+            orderConfirmedVC.delegate = self
             navigationController?.pushViewController(orderConfirmedVC, animated: true)
         }
     }
     
+    func postOrder() {
+        let productList = self.resultsProductOrder
+        let addressId = self.addressId
+        let bank = "BNI"
+        print("Order Result All Cart: \(productList)")
+        print("Order ID Address: \(addressId)")
+        print("Order bank: \(bank)")
+
+        cartViewModel.postOrder(product: productList, address_id: addressId, bank: bank)
+        { result in
+                switch result {
+                case .success :
+                    DispatchQueue.main.async {
+                        self.CheckoutBtn()
+                    }
+                    print("Sukses Checkout")
+                case .failure(let error):
+                    self.cartViewModel.apiCarts = { status, data in
+                        DispatchQueue.main.async {
+                            ShowAlert.performAlertApi(on: self, title: status, message: data)
+                        }
+                    }
+                    print("Error fetching order user: \(error.localizedDescription)")
+            }
+        }
+    }
     
     // Fungsi untuk mengambil produk di keranjang
     func fetchCartProducts() {
@@ -124,15 +163,19 @@ class CartViewController: UIViewController {
 }
 // Mengimplementasikan metode sumber data untuk tabel
 extension CartViewController: UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if cartProducts.count == 0 {
+            emptyLb.isHidden = false
+        } else {
+            emptyLb.isHidden = true
+        }
         return cartProducts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CartTableViewCell", for: indexPath) as! CartTableViewCell
         cell.delegate = self
-        // Mengambil produk di keranjang untuk baris saat ini
+        // Mengambil produk di keranjang
         let cartProduct = cartProducts[indexPath.row]
         // Mengisi sel dengan data produk di keranjang
         cell.productLabel.text = cartProduct.productName
@@ -143,12 +186,17 @@ extension CartViewController: UITableViewDataSource {
         
         return cell
     }
-    
-    
 }
 
 // Mengimplementasikan protokol CartTableViewCellDelegate
-extension CartViewController: CartTableViewCellDelegate {
+extension CartViewController: CartTableViewCellDelegate, chooseAddressProtocol{
+    func didSelectAddress(country: String, city: String, addressId: Int) {
+        countryLabel.text = country
+        cityLabel.text = city
+        self.addressId = addressId
+        print("sudah ada city \(city)")
+    }
+    
     // kurangi product item
     func cartCellDidTapDecrease(cell: CartTableViewCell, completion: @escaping (Int) -> Void) {
         guard let indexPath = tableView.indexPath(for: cell) else {
@@ -193,7 +241,6 @@ extension CartViewController: CartTableViewCellDelegate {
         cartViewModel.deleteCartItem(productId: cartProduct.id, sizedId: sizedId) {
             self.fetchCartProducts()
             print("Item deleted successfully")
-            
             DispatchQueue.main.async {
                 self.tableView.beginUpdates()
                 self.cartProducts.remove(at: indexPath.row)
@@ -212,11 +259,15 @@ extension CartViewController : choosePaymentProtocol{
         print("Sudah ada delegate \(cardNumber)")
     }
 }
-
-extension CartViewController: chooseAddressProtocol {
-    func didSelectAddress(country: String, city: String) {
-        countryLabel.text = country
-        cityLabel.text = city
-        print("sudah ada city \(city)")
+  
+extension CartViewController: checkoutProtocol {
+    func goTohome() {
+        print("goToHome")
+        self.tabBarController?.selectedIndex = 0
     }
+    
+    func goToCart() {
+        self.tabBarController?.selectedIndex = 2
+    }
+    
 }

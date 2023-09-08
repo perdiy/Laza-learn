@@ -84,7 +84,7 @@ class ListAddressViewModel {
                 return
             }
             
-            completion(nil) 
+            completion(nil)
             
         }.resume()
     }

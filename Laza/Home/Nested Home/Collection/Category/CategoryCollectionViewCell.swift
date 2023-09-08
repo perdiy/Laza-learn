@@ -9,6 +9,7 @@ import UIKit
 
 class CategoryCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var imageBrand: UIImageView!
     @IBOutlet weak var categoryTxt: UILabel!
     @IBOutlet weak var viewCa: UILabel! {
         didSet {
@@ -18,11 +19,11 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
-    func configure(with category: String) {
+    func configure(with category: String, imgBrand: String) {
         categoryTxt.text = category.capitalized
+        imageBrand.loadImageFromURL(url: imgBrand)
     }
 }
 

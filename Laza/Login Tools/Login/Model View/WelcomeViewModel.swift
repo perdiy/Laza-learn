@@ -77,8 +77,6 @@ class WelcomeViewModel {
         }.resume()
     }
     
-      
-    
     func getUserProfile(completion: @escaping (Result<DataUseProfile?, Error>) -> Void) {
         // Memastikan token autentikasi tersedia dalam UserDefaults
         print("ini prfile")
@@ -104,9 +102,10 @@ class WelcomeViewModel {
                   let data = data else {
                 // Jika respons tidak valid, kirim error
                 completion(.failure(ErrorInfo.Error))
+                
                 return
             }
-            
+             
             do {
                 // Mendekode data JSON respons ke dalam tipe DataUseProfile
                 let userProfile = try JSONDecoder().decode(profileUser.self, from: data)

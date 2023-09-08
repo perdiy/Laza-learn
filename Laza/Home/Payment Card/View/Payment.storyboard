@@ -85,6 +85,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="NaA-ZW-FcN"/>
                                 </constraints>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -100,6 +101,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="geV-Kh-xiv"/>
                                 </constraints>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -119,6 +121,7 @@
                                     <constraint firstAttribute="height" constant="50" id="DIZ-gl-1NB"/>
                                     <constraint firstAttribute="width" constant="160" id="HRy-ns-yeF"/>
                                 </constraints>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -138,10 +141,11 @@
                                     <constraint firstAttribute="width" constant="160" id="2Uq-w7-3BD"/>
                                     <constraint firstAttribute="height" constant="50" id="3f7-LX-EmX"/>
                                 </constraints>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ovz-KB-G8u">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ovz-KB-G8u">
                                 <rect key="frame" x="0.0" y="123" width="393" height="262"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -150,6 +154,13 @@
                                 <collectionViewLayout key="collectionViewLayout" id="qaB-fo-YmN"/>
                                 <cells/>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EMPTY DATA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1IT-ZZ-8Zm">
+                                <rect key="frame" x="10" y="133" width="361" height="280"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="ColorBtn"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FG5-kY-EsF">
                                 <rect key="frame" x="333" y="59" width="44" height="44"/>
                                 <subviews>
@@ -236,6 +247,7 @@
                         <outlet property="addView" destination="FG5-kY-EsF" id="vWN-yh-zYc"/>
                         <outlet property="collectionView" destination="Ovz-KB-G8u" id="5Qe-M1-8fW"/>
                         <outlet property="cvvTf" destination="CIo-ER-VQK" id="fUJ-wq-4Tf"/>
+                        <outlet property="empyLb" destination="1IT-ZZ-8Zm" id="vSS-Qs-QdM"/>
                         <outlet property="numberCardTf" destination="KgL-kZ-ZeQ" id="lm5-8a-ToA"/>
                         <outlet property="ownerCardTf" destination="6at-dJ-b9N" id="8K8-sG-StM"/>
                         <outlet property="viewBack" destination="tLT-9A-1er" id="XlJ-pB-1fm"/>
@@ -637,6 +649,9 @@
         <image name="gopay-integration" width="512" height="512"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square" catalog="system" width="128" height="114"/>
+        <namedColor name="ColorBtn">
+            <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Font Color">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>

@@ -8,20 +8,31 @@
 import UIKit
 import SnackBar
 
+protocol checkoutProtocol: AnyObject {
+    func goTohome()
+    func goToCart()
+}
+
 class OrderConfirmedViewController: UIViewController {
     
-    // viewback
-    @IBOutlet weak var backView: UIView!
+    weak var delegate: checkoutProtocol?
     
-    // back button
+    @IBOutlet weak var backView: UIView!
     @IBAction func backBtn(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    @IBAction func goToorderBtn(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func continurBtn(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+        delegate?.goTohome()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // snackBar
         SnackBar.make(in: self.view, message: "Berhasil CheckOut", duration: .lengthLong).show()
-        
         backView.layer.cornerRadius = backView.bounds.height / 2.0
         backView.clipsToBounds = true
         

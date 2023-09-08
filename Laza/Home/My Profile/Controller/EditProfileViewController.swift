@@ -42,7 +42,9 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+         
+        viewBack.layer.cornerRadius = viewBack.bounds.height / 2.0
+        viewBack.clipsToBounds = true
         // Mengatur tampilan gambar profil
         imgUser.layer.cornerRadius = imgUser.frame.width / 2
         imgUser.layer.masksToBounds = true
@@ -52,7 +54,13 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             userNameTf.text = userData.username
             fullNameTf.text = userData.fullName
             emailTf.text = userData.email
+            displayProfileImage(userData.imageUrl ?? "")
         }
+    }
+    
+    // Mendapatkan dan menampilkan gambar profil pengguna dari URL
+    func displayProfileImage(_ imageURL: String) {
+        imgUser.loadImageFromURL(url: imageURL)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -61,7 +69,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         } else if let selectedImage = info[.originalImage] as? UIImage {
             imgUser.image = selectedImage
         }
-        
+
         picker.dismiss(animated: true, completion: nil) // Menutup pemilih gambar
     }
     

@@ -8,6 +8,8 @@
 import Foundation
 
 class CartViewModel {
+    var apiCarts: ((String, String) -> Void)? 
+    
     func fetchAddresses(completion: @escaping ([DataAllAddress]?) -> Void) {
         
         guard let accessToken = KeychainManager.shared.getAccessToken() else {
@@ -196,6 +198,57 @@ class CartViewModel {
                     completion()
                 } else {
                     print("Error adding item to cart. Status code: \(response.statusCode)")
+                }
+            }
+        }.resume()
+    }
+    
+    
+    func postOrder(product: [DataProduct], address_id: Int, bank: String, completion: @escaping (Result<Data?, Error>) -> Void) {
+        guard let url = URL(string: Endpoints.Gets.order.url) else {
+            completion(.failure(ErrorInfo.Error))
+            return
+        }
+        guard let accessToken = KeychainManager.shared.getAccessToken() else { return }
+        
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "X-Auth-Token")
+        request.httpMethod = "POST"
+        
+        do {
+            let checkoutBody = CheckoutBody(products: product, addressId: address_id, bank: bank)
+            let encoder = JSONEncoder()
+            let json = try encoder.encode(checkoutBody)
+            request.httpBody = json
+        } catch {
+            print("Error checkout JSON")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                let statusCode = httpResponse.statusCode
+                if statusCode != 201 {
+                    print("Checkout Status Respons: \(statusCode)")
+                    if let data = data,
+                       let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                       let description = jsonResponse["description"] as? String,
+                       let status = jsonResponse["status"] as? String {
+                        
+                        DispatchQueue.main.async {
+                            self.apiCarts?(status, description)
+                        }
+                    }
+                    completion(.failure(ErrorInfo.Error))
+                } else {
+                    print("Berhasil checkout")
+                    completion(.success(data))
                 }
             }
         }.resume()

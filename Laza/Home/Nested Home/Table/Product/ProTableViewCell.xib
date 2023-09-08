@@ -33,7 +33,7 @@
                             <action selector="allProductButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="6GF-Dg-YZx"/>
                         </connections>
                     </button>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="w5A-x0-lvm">
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="w5A-x0-lvm">
                         <rect key="frame" x="11" y="47" width="338" height="509"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>

@@ -37,6 +37,62 @@ class KeychainManager {
         
     }
     
+    // save User
+    func saveDataProfile(profile: DataUseProfile) {
+        guard let data = try? JSONEncoder().encode(profile) else {
+            print("encode erorr")
+            return
+        }
+        let queary = [
+            kSecAttrService: "userData",
+            kSecAttrAccount: "laza-account",
+            kSecClass: kSecClassGenericPassword,
+            kSecValueData: data
+        ] as [CFString : Any]
+         let status = SecItemAdd(queary as CFDictionary, nil)
+        
+        let quearyUpdate = [
+            kSecAttrService: "userData",
+            kSecAttrAccount: "laza-account",
+            kSecClass: kSecClassGenericPassword,
+        ] as [CFString : Any]
+        let updateStatus = SecItemUpdate(quearyUpdate as CFDictionary, [kSecValueData: data] as CFDictionary)
+        if updateStatus == errSecSuccess {
+            print("Update, \(status)")
+        }
+        else if status == errSecSuccess {
+            print("User saved successfully in the keychain")
+        } else {
+            print("Something went wrong trying to save the user in the keychain")
+        }
+        
+    }
+    
+    //Mendapatkan data profile
+        func getProfileFromKeychain() -> DataUseProfile? {
+            let getquery = [
+                kSecAttrService: "userData",
+                kSecAttrAccount: "laza-account",
+                kSecClass: kSecClassGenericPassword,
+                kSecReturnData: true
+            ] as [CFString : Any] as CFDictionary
+            
+            var ref: CFTypeRef?
+            let status = SecItemCopyMatching(getquery, &ref)
+            guard status == errSecSuccess else {
+                // Error
+                print("Error retrieving refresh token from keychain, status: \(status)")
+                return nil
+            }
+            let data = ref as! Data
+            guard let dataProfile = try? JSONDecoder().decode(DataUseProfile.self, from: data) else {
+                print("Encode error")
+                return nil
+            }
+            return dataProfile
+        }
+    
+    
     func getAccessToken() -> String? {
         let queary = [
             kSecAttrService: "access-token",

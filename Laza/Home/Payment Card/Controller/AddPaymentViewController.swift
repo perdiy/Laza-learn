@@ -110,6 +110,9 @@ class AddPaymentViewController: UIViewController, STPPaymentCardTextFieldDelegat
     
     // Fungsi untuk menyimpan model kartu ke Core Data
     func saveCardModelToCoreData() {
+        
+        guard let dataUser = KeychainManager.shared.getProfileFromKeychain() else {return}
+        
         let cardOwner = cardOwner.text ?? ""
         let cardNumber = textField.cardNumber ?? ""
         let cardExpMonth = textField.expirationMonth
@@ -117,12 +120,14 @@ class AddPaymentViewController: UIViewController, STPPaymentCardTextFieldDelegat
         let cardCvv = Int(textField.cvc ?? "123") ?? 133
         
         let newCard = CreditCard(
+            userId: Int32(dataUser.id),
             cardOwner: cardOwner,
             cardNumber: cardNumber,
             cardExpMonth: Int16(cardExpMonth),
             cardExpYear: Int16(cardYear),
             cardCvv: Int16(cardCvv)
         )
+        
         
         // Menyimpan model kartu ke Core Data
         coredataManage.create(newCard)

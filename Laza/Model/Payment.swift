@@ -7,6 +7,7 @@
 
 import Foundation
 struct CreditCard : Codable {
+    var userId : Int32 = 0
     var cardOwner : String = ""
     var cardNumber : String = ""
     var cardExpMonth : Int16 = 0

@@ -31,7 +31,6 @@ class ViewController: UIViewController {
             let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
             if let myProfileVC = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController {
                 myProfileVC.userToken = userToken
-                
                 navigationController?.pushViewController(myProfileVC, animated: false)
             }
         }

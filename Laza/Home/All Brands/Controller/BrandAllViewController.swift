@@ -8,9 +8,10 @@
 import UIKit
 
 class BrandAllViewController: UIViewController {
-    
+     
     // Data yang akan diterima dan ditampilkan di koleksi
-    var receivedData: [String] = []
+    var receivedNames: [String] = []
+    var receivedLogoURLs: [String] = []
     
     // Outlet untuk elemen-elemen tampilan
     @IBOutlet weak var viewBack: UIView!
@@ -19,7 +20,7 @@ class BrandAllViewController: UIViewController {
     
     // Aksi yang akan dipanggil saat tombol kembali ditekan
     @IBAction func backBtn(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     // Fungsi yang dipanggil saat tampilan dimuat
@@ -31,7 +32,7 @@ class BrandAllViewController: UIViewController {
         viewBack.clipsToBounds = true
         
         // Mengatur teks jumlah merek yang akan ditampilkan
-        jumlahBrand.text = "\(receivedData.count) Items"
+        jumlahBrand.text = "\(receivedNames.count) Items"
         
         // Mengatur dataSource dan delegate untuk koleksi
         collectionView.dataSource = self
@@ -42,10 +43,11 @@ class BrandAllViewController: UIViewController {
     }
     
     // Fungsi untuk navigasi ke tampilan produk berdasarkan merek
-    func navigateToProductByBrand(with brandName: String) {
+    func navigateToProductByBrand(with brandName: String, imageURL: String) {
         let storyboard = UIStoryboard(name: "ProductByBrand", bundle: nil)
         if let productByBrandVC = storyboard.instantiateViewController(withIdentifier: "prductByBrandViewController") as? prductByBrandViewController {
             productByBrandVC.brandName = brandName
+            productByBrandVC.imgUrl = imageURL
             navigationController?.pushViewController(productByBrandVC, animated: true)
         }
     }
@@ -54,7 +56,7 @@ class BrandAllViewController: UIViewController {
 // Ekstensi untuk mengimplementasikan UICollectionViewDataSource
 extension BrandAllViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return receivedData.count
+        return receivedNames.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -62,8 +64,10 @@ extension BrandAllViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        let data = receivedData[indexPath.item]
-        cell.nameBrand.text = data
+        let name = receivedNames[indexPath.item]
+        let logoURL = receivedLogoURLs[indexPath.item]
+        cell.nameBrand.text = name
+        cell.imageBrand.loadImageFromURL(url: logoURL)
         
         return cell
     }
@@ -76,14 +80,16 @@ extension BrandAllViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 100
+        return 30
     }
 }
 
-// Ekstensi untuk menangani pemilihan item dalam koleksi
 extension BrandAllViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedBrand = receivedData[indexPath.item]
-        navigateToProductByBrand(with: selectedBrand)
+        let selectedBrand = receivedNames[indexPath.item]
+        let selectedImageURL = receivedLogoURLs[indexPath.item]
+        navigateToProductByBrand(with: selectedBrand, imageURL: selectedImageURL)
     }
+
 }
+

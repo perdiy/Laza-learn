@@ -17,8 +17,8 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pys-p8-sMm">
-                        <rect key="frame" x="17" y="22" width="59" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="26" y="22" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -27,8 +27,8 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="Pys-p8-sMm" secondAttribute="trailing" constant="18" id="IDj-ez-XhZ"/>
-                <constraint firstItem="Pys-p8-sMm" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="17" id="cLk-pv-ewv"/>
+                <constraint firstAttribute="trailing" secondItem="Pys-p8-sMm" secondAttribute="trailing" constant="26" id="IDj-ez-XhZ"/>
+                <constraint firstItem="Pys-p8-sMm" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="26" id="cLk-pv-ewv"/>
                 <constraint firstItem="Pys-p8-sMm" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="22" id="jIb-lx-E9y"/>
                 <constraint firstAttribute="bottom" secondItem="Pys-p8-sMm" secondAttribute="bottom" constant="23" id="rPr-kJ-fQn"/>
             </constraints>

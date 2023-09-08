@@ -45,11 +45,11 @@ class DetailViewController: UIViewController {
             self.navigationController?.pushViewController(reviewViewController, animated: true)
         }
     }
-    
+
     @IBAction func backArrowTapped(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
-    
+     
     @IBAction func loveButton(_ sender: Any) {
         updateLoveButtonStatus()
     }
@@ -224,9 +224,9 @@ extension DetailViewController: UICollectionViewDataSource, UICollectionViewDele
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 60, height: 40)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: 60, height: 40)
+//    }
 }
 
 extension DetailViewController: DetailViewModelDelegate {

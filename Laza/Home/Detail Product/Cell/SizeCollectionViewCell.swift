@@ -9,8 +9,6 @@ import UIKit
  
 class SizeCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var viewSize: UIView! 
-    
     @IBOutlet weak var sizeLabel: UILabel!
     
     override func awakeFromNib() {

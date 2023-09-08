@@ -85,7 +85,7 @@ class ProfileViewController: UIViewController {
     
     func navigateToWelcomeViewController() {
         let storyboard = UIStoryboard(name: "Welcome", bundle: nil)
-        if let welcomeVC = storyboard.instantiateViewController(withIdentifier: "WelcomeViewController") as? WelcomeViewController {
+        if let welcomeVC = storyboard.instantiateViewController(withIdentifier: "ViewController") as? ViewController {
             navigationItem.hidesBackButton = true
             navigationController?.pushViewController(welcomeVC, animated: true)
         }

@@ -12,6 +12,12 @@ class WelcomeViewController: UIViewController {
     var welcomeViewModel = WelcomeViewModel()
     
     
+    @IBAction func signUpBtn(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "SignUp", bundle: nil)
+        if let signupVC = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController {
+            navigationController?.pushViewController(signupVC, animated: true)
+        }
+    }
     @IBAction func toggleRemember(_ sender: UISwitch) {
         if sender.isOn {
             UserDefaults.standard.set(true, forKey: "RememberMe")
@@ -55,6 +61,18 @@ class WelcomeViewController: UIViewController {
         navigationItem.hidesBackButton = true
         userNameTf.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         validateTextFields()
+        checkLoggedIn()
+        strongPassword.isHidden = true
+    }
+    
+    private func checkLoggedIn() {
+        if let userToken = KeychainManager.shared.getAccessToken() {
+            let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
+            if let myProfileVC = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController {
+                myProfileVC.userToken = userToken
+                navigationController?.pushViewController(myProfileVC, animated: false)
+            }
+        }
     }
     
     @IBAction func hidePassword(_ sender: Any) {
@@ -69,15 +87,28 @@ class WelcomeViewController: UIViewController {
     @IBAction func loginBtn(_ sender: Any) {
         loginAndGetData()
     }
+    
+    
     func loginAndGetData() {
         let username = userNameTf.text ?? ""
         let password = passwordTf.text ?? ""
-
+        
         welcomeViewModel.getDataLogin(username: username, password: password) { result in
             switch result {
             case .success:
-                DispatchQueue.main.async {
-                    self.goToHome(userProfile: nil) 
+                self.welcomeViewModel.getUserProfile { result in
+                    switch result {
+                        
+                    case .success(let profileUser):
+                        guard let dataProfile = profileUser else {return}
+                        KeychainManager.shared.saveDataProfile(profile: dataProfile)
+                        print("data profile", dataProfile)
+                        DispatchQueue.main.async {
+                                self.goToHome(userProfile: nil)
+                        }
+                    case .failure(let errorr):
+                        print("erorr mas\(errorr.localizedDescription)")
+                    }
                 }
             case .failure(let error):
                 self.welcomeViewModel.apiAlertLogin = { status, description in
@@ -85,20 +116,20 @@ class WelcomeViewController: UIViewController {
                         if description == "please verify your account" {
                             print("ini verify email \(description)")
                             let refreshAlert = UIAlertController(title: "Failed Login", message: "\(description), Send Again Verification Account", preferredStyle: UIAlertController.Style.alert)
-
+                            
                             refreshAlert.addAction(UIAlertAction(title: "Send", style: .default, handler: { [weak self] (action: UIAlertAction!) in
                                 // Ganti "NamaStoryboard" dengan nama storyboard Anda
                                 let storyboard = UIStoryboard(name: "VerifycationEmail", bundle: nil)
-
+                                
                                 if let sendEmailVC = storyboard.instantiateViewController(withIdentifier: "VerifycationEmailViewController") as? VerifycationEmailViewController {
                                     self?.navigationController?.pushViewController(sendEmailVC, animated: true)
                                 }
                             }))
-
+                            
                             refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
                                 refreshAlert.dismiss(animated: true, completion: nil)
                             }))
-
+                            
                             self.present(refreshAlert, animated: true, completion: nil)
                         } else {
                             ShowAlert.signUpApi(on: self, title: "Notification \(status)", message: description)
@@ -109,12 +140,17 @@ class WelcomeViewController: UIViewController {
             }
         }
     }
-
+    
     private func goToHome(userProfile: DataUseProfile?) {
         let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
         if let homeVC = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController {
             homeVC.userProfile = userProfile
             navigationController?.pushViewController(homeVC, animated: true)
+            
+            let successAlert = UIAlertController(title: "Login Successful", message: "Anda telah berhasil login!", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            successAlert.addAction(okAction)
+            homeVC.present(successAlert, animated: true, completion: nil)
         }
     }
     @objc func textFieldDidChange() {
@@ -148,7 +184,7 @@ class WelcomeViewController: UIViewController {
         }
     }
     
-   
+    
     
     func showAlert(message: String) {
         let alert = UIAlertController(title: "Warning", message: message, preferredStyle: .alert)

@@ -43,14 +43,12 @@ class NestedViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBOutlet weak var tableView: UITableView!
     
-    var categories: [String] = []
+    var categories : Brand?
     var products: [DatumProdct] = []
     var filteredProducts: [DatumProdct] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        SnackBar.make(in: self.view, message: "Anda Berhasil Login", duration: .lengthLong).show()
         
         let cellCategoryNib = UINib(nibName: "CategoryTableViewCell", bundle: nil)
         self.tableView.register(cellCategoryNib, forCellReuseIdentifier: "CategoryTableViewCell")
@@ -115,7 +113,8 @@ class NestedViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryTableViewCell", for: indexPath) as! CategoryTableViewCell
-            cell.configure(data: categories)
+            cell.delegate = self
+            cell.configure(data: categories?.description ?? [])
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProTableViewCell", for: indexPath) as! ProTableViewCell
@@ -128,8 +127,8 @@ class NestedViewController: UIViewController, UITableViewDataSource, UITableView
     
     
     func fetchCategories() {
-        NestedModel.shared.fetchCategories { [weak self] (brandNames) in
-            self?.categories = brandNames
+        NestedModel.shared.fetchCategories { [weak self] (brand) in
+            self?.categories = brand
             self?.tableView.reloadData()
         }
     }
@@ -144,12 +143,42 @@ class NestedViewController: UIViewController, UITableViewDataSource, UITableView
 }
 
 extension NestedViewController: ProductCellProtocol {
+    func goToAllProduct(productAll: [DatumProdct]) {
+        if let prodAllVC = UIStoryboard(name: "ProductAll", bundle: nil).instantiateViewController(withIdentifier: "ProductAllViewController") as? ProductAllViewController {
+            prodAllVC.allProducts = products
+            prodAllVC.navigationItem.hidesBackButton = true
+            navigationController?.pushViewController(prodAllVC, animated: true)
+        }
+        
+    }
+    
     func goToDetailProduct(product: DatumProdct) {
-        let storyboard = UIStoryboard(name: "Detail", bundle: nil)
-        if let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
-            detailViewController.productId = product.id
-            navigationController?.pushViewController(detailViewController, animated: true)
+        if let detailProVC = UIStoryboard(name: "Detail", bundle: nil).instantiateViewController(identifier: "DetailViewController") as? DetailViewController {
+            detailProVC.productId = product.id
+            detailProVC.navigationItem.hidesBackButton = true
+            navigationController?.pushViewController(detailProVC, animated: true)
         }
     }
+}
+
+extension NestedViewController: navigateToDetailBrand {
+    func goToViewAllBrand(names: [String], logoURLs: [String]) {
+        let storyboard = UIStoryboard(name: "BrandAll", bundle: nil)
+        if let brandAllVC = storyboard.instantiateViewController(withIdentifier: "BrandAllViewController") as? BrandAllViewController {
+            brandAllVC.receivedNames = names
+            brandAllVC.receivedLogoURLs = logoURLs
+            navigationController?.pushViewController(brandAllVC, animated: true)
+        }
+    }
+    
+    func goToDetailBrand(branName: String, brandLogoUrl: String) {
+        guard let productByBrandVC = UIStoryboard(name: "ProductByBrand", bundle: nil).instantiateViewController(withIdentifier: "prductByBrandViewController") as? prductByBrandViewController else {return}
+        productByBrandVC.brandName = branName
+        productByBrandVC.imgUrl = brandLogoUrl
+        productByBrandVC.navigationItem.hidesBackButton = true
+        navigationController?.pushViewController(productByBrandVC, animated: true)
+        
+    }
+    
 }
 

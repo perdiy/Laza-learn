@@ -8,14 +8,17 @@
 import UIKit
 
 class prductByBrandViewController: UIViewController {
-    
+      
     var products: [prodByIdBrandEntry] = []
     var brandName: String = ""
+    var imgUrl : String = ""
     var selectedProduct: DatumProdct?
     var ascSort = true
     
-    @IBOutlet weak var viewBack: UIView!
     
+    @IBOutlet weak var viewBack: UIView!
+    @IBOutlet weak var emptyLb: UILabel!
+    @IBOutlet weak var isAmptyLb: UICollectionView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var jumlahProduct: UILabel!
     @IBOutlet weak var imgBrand: UIImageView!
@@ -29,12 +32,14 @@ class prductByBrandViewController: UIViewController {
         }
     }
     @IBAction func backButton(_ sender: Any) {
+        //        self.dismiss(animated: true)
         self.navigationController?.popViewController(animated: true)
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        emptyLb.isHidden = true
         viewBack.layer.cornerRadius = viewBack.bounds.height / 2.0
         viewBack.clipsToBounds = true
         collectionView.dataSource = self
@@ -79,7 +84,8 @@ class prductByBrandViewController: UIViewController {
                         self.products = productsResponse.data
                         DispatchQueue.main.async {
                             self.collectionView.reloadData()
-                            self.jumlahProduct.text = "Total Products: \(self.products.count)"
+                            self.jumlahProduct.text = "\(self.products.count) Items"
+                            self.imgBrand.loadImageFromURL(url: self.imgUrl)
                         }
                     } catch {
                         print("Error decoding JSON: \(error)")
@@ -92,6 +98,11 @@ class prductByBrandViewController: UIViewController {
 
 extension prductByBrandViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if products.count == 0 {
+            emptyLb.isHidden = false
+        } else {
+            emptyLb.isHidden = true
+        }
         return products.count
     }
     

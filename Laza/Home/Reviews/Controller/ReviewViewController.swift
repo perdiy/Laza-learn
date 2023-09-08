@@ -19,18 +19,18 @@ class ReviewViewController: UIViewController {
     @IBOutlet weak var viewBack: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBAction func backButton(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func addReviewsBtn(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Reviews", bundle: nil)
         if let addReviewsVC = storyboard.instantiateViewController(withIdentifier: "AddReviewViewController") as? AddReviewViewController {
             addReviewsVC.productId = productId
-            navigationController?.pushViewController(addReviewsVC, animated: true)
+            self.navigationController?.pushViewController(addReviewsVC, animated: true)
         }
     }
     
-    
+     
     override func viewDidLoad() {
         super.viewDidLoad()
         

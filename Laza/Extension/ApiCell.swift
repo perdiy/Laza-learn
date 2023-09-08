@@ -42,12 +42,14 @@ enum Endpoints {
         case deleteCarts(idProduct: Int, idSize: Int)
         case updateCarts(idProduct: Int, idSize: Int)
         case sizeAll
+        case order
         case addressAll
         case addAddress
         case updateAddresss(idAddress: Int)
         case deleteAddress(idAddress: Int)
         case chnagePassword
         case refreshToken
+      
         public var url: String {
             switch self {
             case .login:
@@ -100,6 +102,8 @@ enum Endpoints {
                 return "\(API.APIAddress(isMockApi: false))address/\(idAddress)"
             case .chnagePassword:
                 return "\(API.APIAddress(isMockApi: false))user/change-password"
+            case .order:
+                return "\(API.APIAddress(isMockApi: false))order/bank"
             case .refreshToken:
                 return "\(API.APIAddress(isMockApi: false))auth/refresh"
             }

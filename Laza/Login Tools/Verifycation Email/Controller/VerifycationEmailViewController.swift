@@ -117,8 +117,8 @@ class VerifycationEmailViewController: UIViewController {
     
     func loginVc() {
         // Replace "NamaStoryboardAnda" with the actual name of your storyboard
-        let storyboard = UIStoryboard(name: "Welcome", bundle: nil)
-        let welcomeViewController = storyboard.instantiateViewController(withIdentifier: "WelcomeViewController") as! WelcomeViewController
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let welcomeViewController = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
         welcomeViewController.navigationItem.hidesBackButton = true
         self.navigationController?.pushViewController(welcomeViewController, animated: true)
     }

@@ -23,7 +23,7 @@ class ChangePassViewController: UIViewController {
     @IBAction func backBtn(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-     
+    
     @IBOutlet weak var newPasswordTf: UITextField! {
         didSet {
             newPasswordTf.addShadow(color: .gray, widht: 0.5, text: newPasswordTf)
@@ -83,6 +83,7 @@ class ChangePassViewController: UIViewController {
     
     @IBAction func buttonChangePasswordTapped(_ sender: Any) {
         putChangePassword()
+        
     }
     
     func putChangePassword() {
@@ -95,7 +96,14 @@ class ChangePassViewController: UIViewController {
                 // Panggil metode untuk berpindah ke view controller selanjutnya
                 self.viewModel.alertChangePassword = { successMessage in
                     DispatchQueue.main.async {
-                        ShowAlert.performAlertApi(on: self, title: "Notification", message: successMessage)
+                        // Tampilkan alert ketika berhasil mengganti kata sandi
+                        let successAlert = UIAlertController(title: "Success", message: successMessage, preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
+                            // Kembali ke tampilan sebelumnya atau lakukan navigasi yang sesuai
+                            self.navigationController?.popViewController(animated: true)
+                        })
+                        successAlert.addAction(okAction)
+                        self.present(successAlert, animated: true, completion: nil)
                     }
                 }
                 print("Response JSON: \(String(describing: json))")

@@ -12,7 +12,7 @@ class NestedModel {
     
     private init() {}
     
-    func fetchCategories(completion: @escaping ([String]) -> Void) {
+    func fetchCategories(completion: @escaping (Brand) -> Void) {
         guard let url = URL(string: "https://lazaapp.shop/brand") else { return }
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -22,8 +22,9 @@ class NestedModel {
                 let decoder = JSONDecoder()
                 let brandResponse = try decoder.decode(Brand.self, from: data)
                 let brandNames = brandResponse.description.map { $0.name }
+//                completion(brandResponse)
                 DispatchQueue.main.async {
-                    completion(brandNames)
+                    completion(brandResponse)
                 }
             } catch {
                 print("Error fetching categories: \(error.localizedDescription)")

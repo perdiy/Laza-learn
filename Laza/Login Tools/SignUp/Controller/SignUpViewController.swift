@@ -18,7 +18,7 @@ class SignUpViewController: UIViewController {
         iconClick.toggle()
         passwordTf.isSecureTextEntry = !iconClick
     }
-    
+     
     @IBAction func hideConfirmPassword(_ sender: Any) {
         iconClick.toggle()
         confirmPasswordTf.isSecureTextEntry = !iconClick
@@ -31,6 +31,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var userNameTf: UITextField! {
         didSet {
             userNameTf.addShadow(color: .gray, widht: 0.5, text: userNameTf)
+            userNameTf.addTarget(self, action: #selector(userNameTextFieldDidChange), for: .editingChanged)
         }
     }
     
@@ -75,6 +76,7 @@ class SignUpViewController: UIViewController {
         setupTextFields()
         backView.applyCircularButtonStyle()
         backView.applyShadow()
+        strongUserName.isHidden = true
     }
     
     private func setupTextFields() {
@@ -93,6 +95,14 @@ class SignUpViewController: UIViewController {
         validateEmailField()
         validatePasswordField()
         validateConfirmPasswordField()
+        
+    }
+    @objc func userNameTextFieldDidChange() {
+        if let text = userNameTf.text, !text.isEmpty, text.count >= 5 {
+            strongUserName.isHidden = false
+        } else {
+            strongUserName.isHidden = true
+        }
     }
     
     private func validateTextFields() {
@@ -134,6 +144,8 @@ class SignUpViewController: UIViewController {
         }
     }
     
+    
+    
     private func validateConfirmPasswordField() {
         guard let confirmPassword = confirmPasswordTf.text, !confirmPassword.isEmpty else {
             strongConfirmPassword.isHidden = true
@@ -166,13 +178,13 @@ class SignUpViewController: UIViewController {
     }
     
     func navigateToWelcome() {
-        if let welcomeViewController = UIStoryboard(name: "Welcome", bundle: nil).instantiateViewController(withIdentifier: "WelcomeViewController") as? WelcomeViewController {
-            navigationController?.pushViewController(welcomeViewController, animated: true)
+        if let ViewController = UIStoryboard(name: "Welcome", bundle: nil).instantiateViewController(withIdentifier: "WelcomeViewController") as? WelcomeViewController {
+            navigationController?.pushViewController(ViewController, animated: true)
         }
     }
     
     func showAlert(message: String) {
-        let alert = UIAlertController(title: "Warning", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Notice", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)

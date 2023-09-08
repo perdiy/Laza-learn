@@ -25,6 +25,7 @@
 		31AECB622AA19D5C008E1435 /* AllUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AECB612AA19D5C008E1435 /* AllUser.swift */; };
 		31AECB642AA19E1B008E1435 /* Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AECB632AA19E1B008E1435 /* Validate.swift */; };
 		31AECB662AA1E5CD008E1435 /* RefreshToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AECB652AA1E5CD008E1435 /* RefreshToken.swift */; };
+		31D7EA652AA8AB0D00DB4BA2 /* Order Modell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D7EA642AA8AB0D00DB4BA2 /* Order Modell.swift */; };
 		31DE98712AA4190000A80D9F /* ApiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE98702AA4190000A80D9F /* ApiCell.swift */; };
 		31DE98762AA420F200A80D9F /* ChangePassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31DE98752AA420F200A80D9F /* ChangePassword.storyboard */; };
 		31DE98782AA4213200A80D9F /* ChangePassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE98772AA4213200A80D9F /* ChangePassViewController.swift */; };
@@ -170,6 +171,7 @@
 		31AECB612AA19D5C008E1435 /* AllUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUser.swift; sourceTree = "<group>"; };
 		31AECB632AA19E1B008E1435 /* Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validate.swift; sourceTree = "<group>"; };
 		31AECB652AA1E5CD008E1435 /* RefreshToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshToken.swift; sourceTree = "<group>"; };
+		31D7EA642AA8AB0D00DB4BA2 /* Order Modell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Order Modell.swift"; sourceTree = "<group>"; };
 		31DE98702AA4190000A80D9F /* ApiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCell.swift; sourceTree = "<group>"; };
 		31DE98752AA420F200A80D9F /* ChangePassword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChangePassword.storyboard; sourceTree = "<group>"; };
 		31DE98772AA4213200A80D9F /* ChangePassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassViewController.swift; sourceTree = "<group>"; };
@@ -1124,6 +1126,7 @@
 				31AECB612AA19D5C008E1435 /* AllUser.swift */,
 				316F2AEB2AA4453500287D77 /* Response.swift */,
 				315D289B2AA57CD30010D402 /* Payment.swift */,
+				31D7EA642AA8AB0D00DB4BA2 /* Order Modell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1422,6 +1425,7 @@
 				317AD1832A9F14AC00E2C7ED /* Alert.swift in Sources */,
 				52EF19F92A96E97B00C2E6B8 /* CartProduct.swift in Sources */,
 				52444CDC2A78BB87000BFC87 /* CategoryTableViewCell.swift in Sources */,
+				31D7EA652AA8AB0D00DB4BA2 /* Order Modell.swift in Sources */,
 				52533EB22A89CBC600D08E82 /* Size.swift in Sources */,
 				529BF35C2A98963F00FA91D7 /* ViewBack.swift in Sources */,
 				52708F872A8A17B500A9ABCC /* SignUp.swift in Sources */,

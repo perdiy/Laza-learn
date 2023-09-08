@@ -51,7 +51,7 @@ class MyProfileViewController: UIViewController, UIImagePickerControllerDelegate
         
         // Memeriksa dan memperbarui token akses jika diperlukan
         ApiCallRefreshToken().refreshTokenIfNeeded { [weak self] in
-            self?.viewModel.loadUserProfile() // Memuat ulang profil setelah pembaruan token
+            self?.viewModel.loadUserProfile()
         } onError: { errorMessage in
             print(errorMessage)
         }
@@ -62,7 +62,7 @@ class MyProfileViewController: UIViewController, UIImagePickerControllerDelegate
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = true
-        present(imagePicker, animated: true, completion: nil) // Membuka pemilih gambar
+        present(imagePicker, animated: true, completion: nil)
     }
     
     // Mendapatkan gambar yang dipilih oleh pengguna
@@ -92,24 +92,12 @@ class MyProfileViewController: UIViewController, UIImagePickerControllerDelegate
     
     // Implementasi EditProfileDelegate untuk mendeteksi pembaruan profil
     func profileUpdated() {
-        viewModel.loadUserProfile() // Memuat ulang profil setelah pembaruan
+        viewModel.loadUserProfile()
     }
     
     // Mendapatkan dan menampilkan gambar profil pengguna dari URL
     func displayProfileImage(_ imageURL: String) {
-        if let imageUrl = URL(string: imageURL) {
-            URLSession.shared.dataTask(with: imageUrl) { data, response, error in
-                if let data = data {
-                    if let profileImage = UIImage(data: data) {
-                        DispatchQueue.main.async {
-                            self.imageView.image = profileImage // Menampilkan gambar profil
-                        }
-                    }
-                } else if let error = error {
-                    print("Error downloading image: \(error)")
-                }
-            }.resume()
-        }
+        imageView.loadImageFromURL(url: imageURL)
     }
 }
 
