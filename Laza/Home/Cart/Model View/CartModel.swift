@@ -8,51 +8,9 @@
 import Foundation
 
 class CartViewModel {
-    var apiCarts: ((String, String) -> Void)? 
+    var apiCarts: ((String, String) -> Void)?
     
-    func fetchAddresses(completion: @escaping ([DataAllAddress]?) -> Void) {
-        
-        guard let accessToken = KeychainManager.shared.getAccessToken() else {
-            completion(nil)
-            return
-        }
-        
-        let urlString = "https://lazaapp.shop/address"
-        guard let url = URL(string: urlString) else {
-            completion(nil)
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "X-Auth-Token")
-        
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                print("Error fetching addresses:", error)
-                completion(nil)
-                return
-            }
-            
-            guard let data = data else {
-                print("No data received")
-                completion(nil)
-                return
-            }
-            
-            do {
-                let addressResponse = try JSONDecoder().decode(AllAddress.self, from: data)
-                if let addresses = addressResponse.data {
-                    completion(addresses)
-                } else {
-                    completion(nil)
-                }
-            } catch let error {
-                print("Error decoding data:", error)
-                completion(nil)
-            }
-        }.resume()
-    }
-    
+    // get Product
     func getProducInCart(accessTokenKey: String, completion: @escaping (CartProduct) -> Void) {
         guard let url = URL(string: Endpoints.Gets.cartsAll.url) else {
             print("Invalid url.")
@@ -85,7 +43,7 @@ class CartViewModel {
         
     }
     
-    
+    // delete cart
     func deleteCartItem(productId: Int, sizedId: Int, completion: @escaping () -> Void) {
         guard let token = KeychainManager.shared.getAccessToken() else {
             print("User token not available.")
@@ -93,7 +51,7 @@ class CartViewModel {
         }
         
         // Buat URL untuk penghapusan item
-        guard let url = URL(string: "https://lazaapp.shop/carts?ProductId=\(productId)&SizeId=\(sizedId)") else {
+        guard let url = URL(string: Endpoints.Gets.deleteCarts(idProduct: productId, idSize: sizedId).url) else {
             print("Invalid URL")
             return
         }
@@ -121,6 +79,7 @@ class CartViewModel {
         }.resume()
     }
     
+    // get all size
     func getSizeAll(completion:@escaping (AllSize) -> ()) {
         guard let url = URL(string: Endpoints.Gets.sizeAll.url) else {return}
         URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -204,6 +163,7 @@ class CartViewModel {
     }
     
     
+    // order
     func postOrder(product: [DataProduct], address_id: Int, bank: String, completion: @escaping (Result<Data?, Error>) -> Void) {
         guard let url = URL(string: Endpoints.Gets.order.url) else {
             completion(.failure(ErrorInfo.Error))

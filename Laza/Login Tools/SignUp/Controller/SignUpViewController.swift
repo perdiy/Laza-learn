@@ -18,7 +18,7 @@ class SignUpViewController: UIViewController {
         iconClick.toggle()
         passwordTf.isSecureTextEntry = !iconClick
     }
-     
+    
     @IBAction func hideConfirmPassword(_ sender: Any) {
         iconClick.toggle()
         confirmPasswordTf.isSecureTextEntry = !iconClick
@@ -165,13 +165,15 @@ class SignUpViewController: UIViewController {
         }
         
         signUpViewModel.signUp(username: username, email: email, password: password, confirmPassword: confirmPassword)
-        signUpViewModel.signUpCompletion = { success, message in
+        // [weak self] Ini akan membantu menghindari potensi masalah seperti strong reference cycle.
+        // Menetapkan closure untuk menangani hasil sign-up
+        signUpViewModel.signUpCompletion = { [weak self] success, message in
             DispatchQueue.main.async {
                 if success {
-                    self.navigateToWelcome()
-                    self.showAlert(message: message)
+                    self?.navigateToWelcome()
+                    self?.showAlert(message: message)
                 } else {
-                    self.showAlert(message: message)
+                    self?.showAlert(message: message)
                 }
             }
         }
@@ -190,4 +192,4 @@ class SignUpViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
 }
-  
+

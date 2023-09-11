@@ -11,6 +11,8 @@
 		312CCA9A2AA336DB00614276 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312CCA992AA336DB00614276 /* EditProfileViewModel.swift */; };
 		315D289A2AA57B5C0010D402 /* CoreDataM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D28992AA57B5C0010D402 /* CoreDataM.swift */; };
 		315D289C2AA57CD30010D402 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D289B2AA57CD30010D402 /* Payment.swift */; };
+		316288402AAED7740029A1BF /* Brand all View Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3162883F2AAED7740029A1BF /* Brand all View Model.swift */; };
+		316288422AAF14BF0029A1BF /* Add Address View Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316288412AAF14BF0029A1BF /* Add Address View Model.swift */; };
 		316BBDE82AA839B500BD1C87 /* ProductByBrandModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316BBDE72AA839B500BD1C87 /* ProductByBrandModelView.swift */; };
 		316F2AEC2AA4453500287D77 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316F2AEB2AA4453500287D77 /* Response.swift */; };
 		31716B842AA5D58200B8F89B /* LazaCore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3114D3622AA5CDD000EC6E8C /* LazaCore.xcdatamodeld */; };
@@ -159,6 +161,8 @@
 		312CCA992AA336DB00614276 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
 		315D28992AA57B5C0010D402 /* CoreDataM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataM.swift; sourceTree = "<group>"; };
 		315D289B2AA57CD30010D402 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
+		3162883F2AAED7740029A1BF /* Brand all View Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Brand all View Model.swift"; sourceTree = "<group>"; };
+		316288412AAF14BF0029A1BF /* Add Address View Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Add Address View Model.swift"; sourceTree = "<group>"; };
 		316BBDE72AA839B500BD1C87 /* ProductByBrandModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductByBrandModelView.swift; sourceTree = "<group>"; };
 		316F2AEB2AA4453500287D77 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		3177BF612A9D80A2001D412D /* AllSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSize.swift; sourceTree = "<group>"; };
@@ -323,6 +327,14 @@
 				315D28992AA57B5C0010D402 /* CoreDataM.swift */,
 			);
 			path = CoreDataManager;
+			sourceTree = "<group>";
+		};
+		3162883E2AAED7520029A1BF /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				3162883F2AAED7740029A1BF /* Brand all View Model.swift */,
+			);
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 		317A67952AA6BF84008FD6B4 /* Login */ = {
@@ -538,6 +550,7 @@
 			isa = PBXGroup;
 			children = (
 				52EF1A0D2A9742D900C2E6B8 /* AddressModelView.swift */,
+				316288412AAF14BF0029A1BF /* Add Address View Model.swift */,
 			);
 			path = "Model View";
 			sourceTree = "<group>";
@@ -1161,6 +1174,7 @@
 		52EF1A012A9737C600C2E6B8 /* ProductByBrand */ = {
 			isa = PBXGroup;
 			children = (
+				3162883E2AAED7520029A1BF /* View Model */,
 				52D8C4B52A944B1D00EE79B9 /* ProductByBrand.storyboard */,
 				52D8C4B72A944B3C00EE79B9 /* ProductByBrandCollectionViewCell.swift */,
 				52D8C4B82A944B3C00EE79B9 /* ProductByBrandCollectionViewCell.xib */,
@@ -1394,6 +1408,7 @@
 			files = (
 				52134B9D2A7477E100B87588 /* UserDefault.swift in Sources */,
 				52D8C4B92A944B3C00EE79B9 /* ProductByBrandCollectionViewCell.swift in Sources */,
+				316288422AAF14BF0029A1BF /* Add Address View Model.swift in Sources */,
 				52CE3F342A8DF3AD00BB1F8F /* DetailModel.swift in Sources */,
 				52D8C4BE2A944E5300EE79B9 /* ProductByBrand.swift in Sources */,
 				52708F852A89E0F700A9ABCC /* Detail Products.swift in Sources */,
@@ -1483,6 +1498,7 @@
 				52EF38942A7214CC00446F31 /* ViewController.swift in Sources */,
 				52715C6D2A9327E8001CC747 /* ProductAllCollectionViewCell.swift in Sources */,
 				31DE98712AA4190000A80D9F /* ApiCell.swift in Sources */,
+				316288402AAED7740029A1BF /* Brand all View Model.swift in Sources */,
 				52241F6D2A846FC200E42C11 /* DetailFavViewController.swift in Sources */,
 				527F9B0D2A7B942C00AC520C /* ReviewViewController.swift in Sources */,
 				52D4D29F2A8B788E00A9AE83 /* NewPassViewModel.swift in Sources */,

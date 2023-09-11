@@ -8,26 +8,28 @@
 import UIKit
 
 class VerifycationEmailViewController: UIViewController {
-
+    
+    // Outlets
     @IBOutlet weak var emailAddressView: UITextField!
     @IBOutlet weak var verifyEmailBtnView: UIButton!
     
+    // ViewModel untuk verifikasi email
     let verifyEmailViewModel = VerifyEmailViewModel()
+    
+    // Indikator aktivitas untuk tampilan loading
     var activityIndicator: UIActivityIndicatorView!
     
-    //Back Button
+    // Tombol Kembali
     private lazy var backBtn : UIButton = {
-        //call back button
+        // Membuat tombol kembali
         let backBtn = UIButton.init(type: .custom)
-        backBtn.setImage(UIImage(named:"Back"), for: .normal)
+        backBtn.setImage(UIImage(named: "Back"), for: .normal)
         backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
         backBtn.frame = CGRect(x: 0, y: 0, width: 45, height: 45)
-        
-        
         return backBtn
     }()
     
-    //Back Button
+    // Aksi untuk tombol Kembali
     @objc func backBtnAct(){
         self.navigationController?.popViewController(animated: true)
     }
@@ -35,28 +37,29 @@ class VerifycationEmailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //back button
+        // Menambahkan tombol kembali kustom ke bilah navigasi
         let backBarBtn = UIBarButtonItem(customView: backBtn)
-        self.navigationItem.leftBarButtonItem  = backBarBtn
+        self.navigationItem.leftBarButtonItem = backBarBtn
         
-        // Initialize activity indicator
+        // Menginisialisasi indikator aktivitas
         activityIndicator = UIActivityIndicatorView(style: .medium)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(activityIndicator)
         
-        // Configure constraints for the activity indicator
+        // Mengonfigurasi constraints untuk indikator aktivitas
         NSLayoutConstraint.activate([
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
         
-        
+        // Menonaktifkan tombol verifikasi email pada awalnya
         verifyEmailBtnView.isEnabled = false
-        emailAddressView.addTarget(self, action:  #selector(cekValidasi),  for:.editingChanged )
         
+        // Menambahkan target ke field alamat email untuk memicu validasi
+        emailAddressView.addTarget(self, action: #selector(cekValidasi), for: .editingChanged)
     }
     
-    // MARK: - Func Validasi
+    // MARK: - Fungsi Validasi Email
     @objc private func cekValidasi() {
         let isEmailValid = emailAddressView.validEmail(emailAddressView.text ?? "")
         
@@ -71,9 +74,8 @@ class VerifycationEmailViewController: UIViewController {
             verifyEmailBtnView.backgroundColor = UIColor.systemRed
         }
     }
-
     
-    // MARK: - Func Start Loading
+    // MARK: - Fungsi Memulai Loading
     private func startLoading() {
         DispatchQueue.main.async {
             self.activityIndicator.startAnimating()
@@ -81,7 +83,7 @@ class VerifycationEmailViewController: UIViewController {
         }
     }
 
-    // MARK: - Func Stop Loading
+    // MARK: - Fungsi Menghentikan Loading
     private func stopLoading() {
         DispatchQueue.main.async {
             self.activityIndicator.stopAnimating()
@@ -89,34 +91,36 @@ class VerifycationEmailViewController: UIViewController {
         }
     }
     
-    // MARK: - Func getPassEmail
-    // Panggil Func getPassEmail
+    // MARK: - Fungsi Verifikasi Email API
     func verifyEmailApi() {
         let email = emailAddressView.text ?? ""
-        verifyEmailViewModel.sendVeifyEmail (email: email) { result in
+        verifyEmailViewModel.sendVeifyEmail(email: email) { result in
             self.stopLoading()
             switch result {
             case .success :
                 DispatchQueue.main.async {
-                    ShowAlert.performAlertApi(on: self, title: "Successfully", message: "Please check your email and click the verify account link")
+                    // Menampilkan pesan sukses
+                    ShowAlert.performAlertApi(on: self, title: "Berhasil", message: "Silakan periksa email Anda dan klik tautan verifikasi akun")
+                    // Navigasi ke tampilan login
                     self.loginVc()
                 }
                 
             case .failure(let error):
                 self.verifyEmailViewModel.apiVerifyEmail = { description in
                     DispatchQueue.main.async {
-                        print("Alert showing for failure case - errorMessage: \(description)")
-                        ShowAlert.forgotPassApi(on: self, title: "Error Message", message: description)
+                        print("Tampil pesan kesalahan untuk kasus kegagalan - Pesan kesalahan: \(description)")
+                        // Menampilkan pesan kesalahan
+                        ShowAlert.forgotPassApi(on: self, title: "Pesan Kesalahan", message: description)
                     }
                 }
                 print("Error: \(error)")
-                // Handle error appropriately
             }
         }
     }
     
+    // Navigasi ke Tampilan Login
     func loginVc() {
-        // Replace "NamaStoryboardAnda" with the actual name of your storyboard
+        // Ganti "NamaStoryboardAnda" dengan nama storyboard sesungguhnya
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let welcomeViewController = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
         welcomeViewController.navigationItem.hidesBackButton = true
@@ -128,5 +132,4 @@ class VerifycationEmailViewController: UIViewController {
         startLoading()
         verifyEmailApi()
     }
-    
 }

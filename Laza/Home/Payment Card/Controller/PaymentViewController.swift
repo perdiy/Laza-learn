@@ -80,10 +80,11 @@ class PaymentViewController: UIViewController, UITextFieldDelegate, UICollection
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         retrieveCard()
-        collectionView.reloadData()
+        
     } 
     
     func retrieveCard() {
@@ -110,8 +111,8 @@ class PaymentViewController: UIViewController, UITextFieldDelegate, UICollection
         let chooseBank = bank
         print("nomer kartu: \(chooseCardNumber), \(chooseBank)")
         self.delegate?.delegatCardPayment(cardNumber: chooseCardNumber, bankName: chooseBank)
-    self.navigationController?.popViewController(animated: true)
-
+        self.navigationController?.popViewController(animated: true)
+        
     }
     
     @IBAction func deleteCard(_ sender: Any) {
@@ -128,14 +129,47 @@ class PaymentViewController: UIViewController, UITextFieldDelegate, UICollection
     }
     
     func deleteCard(indexPath: IndexPath) {
-        let card = cardModels[indexPath.row]
+        // Mendapatkan kartu yang akan dihapus dari cardModels berdasarkan indexPath
+        let card = cardModels[indexPath.item]
+        
+        // Menghapus kartu dari CoreData menggunakan coreDataManage
         coreDataManage.delete(card) { [weak self] in
-            DispatchQueue.main.async {
-                self?.cardModels.remove(at: indexPath.row)
-                self?.collectionView.deleteItems(at: [indexPath])
+            guard let self = self else { return }
+            
+            // hapus kartu dari array cardModels
+            self.cardModels.remove(at: indexPath.item)
+            
+            // periksa apakah array cardModels sekarang kosong
+            if self.cardModels.isEmpty {
+                // Jika array sekarang kosong, tangani sesuai
+                DispatchQueue.main.async {
+                    // Menampilkan tampilan default karena tidak ada kartu tersisa
+                    self.performCardInTextfield(indexPath: nil)
+                    
+                    // Memuat ulang koleksi kartu pembayaran
+                    self.collectionView.reloadData()
+                }
+            } else {
+                // Jika masih ada kartu yang tersisa, perbarui tampilan dan pilih item baru
+                DispatchQueue.main.async {
+                    // hapus item kartu yang dihapus dari tampilan koleksi
+                    self.collectionView.deleteItems(at: [indexPath])
+                    
+                    // Memeriksa jika ada item terakhir yang terlihat dalam tampilan koleksi
+                    if let lastRow = self.collectionView.indexPathsForVisibleItems.last {
+                        // Membuat indeks baru untuk item yang akan dipilih
+                        let newIndex = IndexPath(item: min(lastRow.item, self.cardModels.count - 1), section: 0)
+                        
+                        // panggil func performCardInTextfield untuk menampilkan kartu yang baru dipilih
+                        self.performCardInTextfield(indexPath: newIndex)
+                        
+                        // pilih item yang baru dipilih dalam tampilan koleksi
+                        self.collectionView.selectItem(at: newIndex, animated: true, scrollPosition: .centeredHorizontally)
+                    }
+                    print("Berhasil menghapus kartu")
+                }
             }
         }
-        print("successfully delete card")
     }
     
     @IBAction func editCard(_ sender: Any) {
@@ -185,7 +219,11 @@ extension PaymentViewController : UICollectionViewDelegateFlowLayout, UICollecti
         
         let card = cardModels[indexPath.item]
         
-        listPayCell.fillCardDataFromCoreData(card: card)
+        // untuk langsung menampilkan card semua 
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+            listPayCell.fillCardDataFromCoreData(card: card)
+        }
+       
         return listPayCell
         
     }
@@ -199,14 +237,30 @@ extension PaymentViewController : UICollectionViewDelegateFlowLayout, UICollecti
         
     }
     //Func untuk menampilkan informasi crad di tetfield
-    func performCardInTextfield(indexPath: IndexPath){
-        selectedCellIndex = indexPath
-        let card = cardModels[indexPath.item]
-        self.numberCardChoose = card.cardNumber
-        ownerCardTf.text = card.cardOwner
-        numberCardTf.text = card.cardNumber
-        ExpTF.text = "\(card.cardExpYear)/\(card.cardExpMonth)"
-        cvvTf.text = String(card.cardCvv)
+    // MARK: - Fungsi Tampilkan Kartu di TextField
+    // Fungsi untuk menampilkan informasi kartu dalam teks field
+    func performCardInTextfield(indexPath: IndexPath?) {
+        // Periksa apakah indexPath tidak nil dan berada dalam rentang valid cardModels
+        if let indexPath = indexPath, indexPath.item < cardModels.count {
+            // Atur selectedCellIndex ke indexPath yang diberikan
+            selectedCellIndex = indexPath
+            
+            // Akses data kartu berdasarkan indexPath
+            let card = cardModels[indexPath.item]
+            self.numberCardChoose = card.cardNumber
+            ownerCardTf.text = card.cardOwner
+            numberCardTf.text = card.cardNumber
+            ExpTF.text = "\(card.cardExpYear)/\(card.cardExpMonth)"
+            cvvTf.text = String(card.cardCvv)
+        } else {
+            // Hapus selectedCellIndex karena tidak ada pilihan yang valid
+            selectedCellIndex = nil
+            self.numberCardChoose = nil
+            ownerCardTf.text = ""
+            numberCardTf.text = ""
+            ExpTF.text = ""
+            cvvTf.text = ""
+        }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

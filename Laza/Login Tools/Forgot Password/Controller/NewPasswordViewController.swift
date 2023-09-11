@@ -8,25 +8,34 @@
 import UIKit
 
 class NewPasswordViewController: UIViewController {
+    var iconClick = true
+    
+    @IBAction func hidePasswordbtn(_ sender: Any) {
+        iconClick.toggle()
+        passwordTf.isSecureTextEntry = !iconClick
+    }
+    
+    @IBAction func hideConfirmPass(_ sender: Any) {
+        iconClick.toggle()
+        confirmPasswordTf.isSecureTextEntry = !iconClick
+    }
+    @IBOutlet weak var strongPass: UILabel!
+    @IBOutlet weak var strongConfirmPass: UILabel!
     
     // ViewModel untuk mengatur logika tampilan
     var viewModel = NewPasswordViewModel()
     
-    // Variabel untuk mengatur visibilitas password
-    var iconClick = true
     
     // Variabel untuk menyimpan email dan kode verifikasi
     var emailNewPass: String?
     var verificationCode: String?
     
-    // Indikator aktivitas saat mengirim permintaan reset password
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
     // Teksfield untuk memasukkan password baru
     @IBOutlet weak var passwordTf: UITextField! {
         didSet {
             // Menambahkan shadow pada textfield
-            passwordTf.addShadow(color: .gray, widht: 0.5, text: passwordTf)
+            passwordTf.addShadow(color: .gray, width: 0.5, text: passwordTf)
+            passwordTf.delegate = self // Mengatur delegate untuk passwordTf
         }
     }
     
@@ -34,16 +43,8 @@ class NewPasswordViewController: UIViewController {
     @IBOutlet weak var confirmPasswordTf: UITextField! {
         didSet {
             // Menambahkan shadow pada textfield
-            confirmPasswordTf.addShadow(color: .gray, widht: 0.5, text: confirmPasswordTf)
+            confirmPasswordTf.addShadow(color: .gray, width: 0.5, text: confirmPasswordTf)
         }
-    }
-    
-    // Tampilan untuk tombol back
-    @IBOutlet weak var viewBack: UIView!
-    
-    // Aksi saat tombol back ditekan
-    @IBAction func backBtn(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
     }
     
     // Aksi saat tombol reset password ditekan
@@ -54,12 +55,8 @@ class NewPasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Menampilkan indikator aktivitas
-        activityIndicator.isHidden = false
-        activityIndicator.startAnimating()
-        
-        viewBack.applyCircularButtonStyle()
-        viewBack.applyShadow()
+        strongPass.isHidden = true
+        strongConfirmPass.isHidden = true // Sembunyikan strongConfirmPass label
     }
     
     // Fungsi untuk mengirim permintaan reset password
@@ -82,16 +79,11 @@ class NewPasswordViewController: UIViewController {
             return
         }
         
-       
-        
         // Memanggil fungsi resetPassword dari viewmodel
         viewModel.resetPassword(email: email, code: code, newPassword: newPassword, confirmPassword: confirmPassword)
+        // [weak self] Ini akan membantu menghindari potensi masalah seperti strong reference cycle.
         viewModel.resetPasswordCompletion = { [weak self] success, message in
             DispatchQueue.main.async {
-                // Menghentikan indikator aktivitas
-                self?.activityIndicator.stopAnimating()
-                self?.activityIndicator.isHidden = true
-                
                 // Menampilkan pesan berdasarkan hasil reset password
                 if success {
                     self?.navigateToSuccessScreen()
@@ -116,5 +108,36 @@ class NewPasswordViewController: UIViewController {
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
+    }
+}
+
+// Ekstensi untuk mengimplementasikan UITextFieldDelegate
+extension NewPasswordViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == passwordTf {
+            // Menghitung panjang teks saat ini dalam passwordTf
+            let currentText = (textField.text ?? "") as NSString
+            let newText = currentText.replacingCharacters(in: range, with: string) as String
+            
+            // Memeriksa jika panjang teks mencapai 8 karakter atau lebih
+            if newText.count >= 8 {
+                strongPass.isHidden = false // Menampilkan strongPass label
+            } else {
+                strongPass.isHidden = true // Sembunyikan strongPass label jika kurang dari 8 karakter
+            }
+        } else if textField == confirmPasswordTf {
+            // Menghitung panjang teks saat ini dalam confirmPasswordTf
+            let currentText = (textField.text ?? "") as NSString
+            let newText = currentText.replacingCharacters(in: range, with: string) as String
+            
+            // Memeriksa jika panjang teks mencapai 8 karakter atau lebih
+            if newText.count >= 8 {
+                strongConfirmPass.isHidden = false // Menampilkan strongConfirmPass label
+            } else {
+                strongConfirmPass.isHidden = true // Sembunyikan strongConfirmPass label jika kurang dari 8 karakter
+            }
+        }
+        
+        return true
     }
 }

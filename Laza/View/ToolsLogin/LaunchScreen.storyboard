@@ -40,7 +40,7 @@
     <resources>
         <image name="Logolaza" width="59" height="36"/>
         <namedColor name="splashScreen">
-            <color red="0.59215686274509804" green="0.45882352941176469" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.59200000762939453" green="0.45899999141693115" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

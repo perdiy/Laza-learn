@@ -11,6 +11,7 @@ import Foundation
 class ListAddressViewModel {
     var addresses: [DataAllAddress] = []
     
+    // list adress
     func fetchAddresses(completion: @escaping (Error?) -> Void) {
         guard let accessToken = KeychainManager.shared.getAccessToken() else {
             completion(nil)

@@ -49,6 +49,7 @@ class MyProfileViewController: UIViewController, UIImagePickerControllerDelegate
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // [weak self] Ini akan membantu menghindari potensi masalah seperti strong reference cycle.
         // Memeriksa dan memperbarui token akses jika diperlukan
         ApiCallRefreshToken().refreshTokenIfNeeded { [weak self] in
             self?.viewModel.loadUserProfile()

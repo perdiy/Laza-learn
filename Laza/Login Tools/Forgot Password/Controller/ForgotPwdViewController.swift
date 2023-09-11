@@ -40,7 +40,6 @@ class ForgotPwdViewController: UIViewController {
             DispatchQueue.main.async {
                 self?.activityIndicator.stopAnimating()
                 self?.activityIndicator.isHidden = true
-                
                 // Menampilkan pesan berdasarkan hasil reset password
                 if success {
                     self?.navigateToVerificationCode(email: email)

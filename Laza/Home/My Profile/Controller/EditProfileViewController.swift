@@ -18,8 +18,13 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var imgUser: UIImageView!
     @IBOutlet weak var userNameTf: UITextField!
     @IBOutlet weak var fullNameTf: UITextField!
-    @IBOutlet weak var emailTf: UITextField!
-    
+    @IBOutlet weak var emailTf: UITextField!{
+        didSet{
+            emailTf.isEnabled = false
+        }
+    }
+     
+    // MARK: - Properties
     var userData: DataClass?
     
     weak var delegate: EditProfileDelegate? // Delegate yang akan menerima pembaruan profil
@@ -77,6 +82,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         picker.dismiss(animated: true, completion: nil) // Menutup pemilih gambar jika dibatalkan
     }
     
+    // MARK: - Profile Update
     // Method untuk mengupdate profil pengguna
     private func updateProfile() {
         guard let newFullName = fullNameTf.text,
@@ -86,6 +92,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             return
         }
 
+        // [weak self] Ini akan membantu menghindari potensi masalah seperti strong reference cycle.
         ProfileService.shared.updateProfile(fullName: newFullName, username: newUsername, email: newEmail, image: newImage) { [weak self] success in
             if success {
                 print("Profile updated successfully!")

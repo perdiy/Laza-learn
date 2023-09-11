@@ -57,6 +57,7 @@ class FavoriteViewController: UIViewController {
             return
         }
         
+        // [weak self] Ini akan membantu menghindari potensi masalah seperti strong reference cycle.
         viewModel.fetchWishlistItems(token: token) { [weak self] wishlistItems in
             DispatchQueue.main.async {
                 self?.wishlistItems = wishlistItems

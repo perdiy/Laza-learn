@@ -10,6 +10,7 @@ import SnackBar
 
 class CartViewController: UIViewController {
     
+    // Variabel untuk menyimpan data keranjang
     var cartProducts: [ProductCart] = []
     var selectedAddress: DataAllAddress?
     var cartViewModel = CartViewModel()
@@ -24,6 +25,7 @@ class CartViewController: UIViewController {
     var resultsProductOrder = [DataProduct]()
     var cartArrayModel = [ProductCart]()
     
+    // Outlet untuk elemen UI
     @IBOutlet weak var numCardLb: UILabel!
     @IBOutlet weak var nameBankLb: UILabel!
     @IBOutlet weak var countryLabel: UILabel!
@@ -42,6 +44,7 @@ class CartViewController: UIViewController {
         setupTabBarItemImage()
         tableView.dataSource = self
         tableView.reloadData()
+        // Mengambil data ukuran produk
         getSizeAll()
         
         emptyLb.isHidden = true
@@ -49,6 +52,7 @@ class CartViewController: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
+        // Memuat produk dari keranjang saat tampilan akan muncul
         fetchCartProducts()
     }
     
@@ -64,6 +68,7 @@ class CartViewController: UIViewController {
         tabBarItem.selectedImage = UIImage(view: label)
     }
     
+    // Handler tombol pembayaran
     @IBAction func paymentBtn(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Payment", bundle: nil)
         if let paymentVC = storyboard.instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController {
@@ -72,6 +77,7 @@ class CartViewController: UIViewController {
         }
     }
     
+    // Handler tombol alamat
     @IBAction func addressBtn(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Address", bundle: nil)
         if let orderConfirmedVC = storyboard.instantiateViewController(withIdentifier: "ListAddressViewController") as? ListAddressViewController {
@@ -80,10 +86,12 @@ class CartViewController: UIViewController {
         }
     }
     
+    // Handler tombol Checkout
     @IBAction func CheckoutBtn(_ sender: Any) {
         postOrder()
     }
     
+    // Fungsi untuk mengeksekusi checkout
     func  CheckoutBtn(){
         let storyboard = UIStoryboard(name: "OrderConfimed", bundle: nil)
         if let orderConfirmedVC = storyboard.instantiateViewController(withIdentifier: "OrderConfirmedViewController") as? OrderConfirmedViewController {
@@ -99,22 +107,23 @@ class CartViewController: UIViewController {
         print("Order Result All Cart: \(productList)")
         print("Order ID Address: \(addressId)")
         print("Order bank: \(bank)")
-
+        
+        // Memanggil fungsi untuk melakukan pemesanan
         cartViewModel.postOrder(product: productList, address_id: addressId, bank: bank)
         { result in
-                switch result {
-                case .success :
+            switch result {
+            case .success :
+                DispatchQueue.main.async {
+                    self.CheckoutBtn()
+                }
+                print("Sukses Checkout")
+            case .failure(let error):
+                self.cartViewModel.apiCarts = { status, data in
                     DispatchQueue.main.async {
-                        self.CheckoutBtn()
+                        ShowAlert.performAlertApi(on: self, title: status, message: data)
                     }
-                    print("Sukses Checkout")
-                case .failure(let error):
-                    self.cartViewModel.apiCarts = { status, data in
-                        DispatchQueue.main.async {
-                            ShowAlert.performAlertApi(on: self, title: status, message: data)
-                        }
-                    }
-                    print("Error fetching order user: \(error.localizedDescription)")
+                }
+                print("Error fetching order user: \(error.localizedDescription)")
             }
         }
     }
@@ -137,7 +146,7 @@ class CartViewController: UIViewController {
         }
     }
     
-    
+    // Fungsi untuk mengambil ukuran semua produk
     func getSizeAll(){
         cartViewModel.getSizeAll { allSize in
             DispatchQueue.main.async { [weak self] in
@@ -147,6 +156,7 @@ class CartViewController: UIViewController {
         }
     }
     
+    // Fungsi untuk mengambil ID ukuran berdasarkan nama ukuran
     func getSizeId(forSize size: String) -> Int{
         var sizedId = -1
         guard let allSizeData = allSize?.data else { return sizedId }
@@ -159,8 +169,8 @@ class CartViewController: UIViewController {
         }
         return sizedId
     }
-    
 }
+
 // Mengimplementasikan metode sumber data untuk tabel
 extension CartViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -175,8 +185,10 @@ extension CartViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CartTableViewCell", for: indexPath) as! CartTableViewCell
         cell.delegate = self
+        
         // Mengambil produk di keranjang
         let cartProduct = cartProducts[indexPath.row]
+        
         // Mengisi sel dengan data produk di keranjang
         cell.productLabel.text = cartProduct.productName
         cell.priceLabel.text = "$ \(cartProduct.price)"
@@ -209,7 +221,8 @@ extension CartViewController: CartTableViewCellDelegate, chooseAddressProtocol{
             completion(cartProduct.quantity - 1)
         }
     }
-    // tambah product item
+    
+    // Mengurangi jumlah item produk di keranjang
     func cartCellDidTapIncrease(cell: CartTableViewCell, completion: @escaping (Int) -> Void) {
         guard let indexPath = tableView.indexPath(for: cell) else {
             return
@@ -252,6 +265,7 @@ extension CartViewController: CartTableViewCellDelegate, chooseAddressProtocol{
     }
 }
 
+// Ekstensi untuk mengimplementasikan protokol checkoutProtocol
 extension CartViewController : choosePaymentProtocol{
     func delegatCardPayment(cardNumber: String, bankName: String) {
         numCardLb.text = cardNumber
@@ -259,13 +273,15 @@ extension CartViewController : choosePaymentProtocol{
         print("Sudah ada delegate \(cardNumber)")
     }
 }
-  
+
 extension CartViewController: checkoutProtocol {
+    // Handler untuk menuju halaman utama
     func goTohome() {
         print("goToHome")
         self.tabBarController?.selectedIndex = 0
     }
     
+    // Handler untuk menuju halaman keranjang
     func goToCart() {
         self.tabBarController?.selectedIndex = 2
     }

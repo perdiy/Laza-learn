@@ -135,6 +135,8 @@ class EditCardViewController: UIViewController, STPPaymentCardTextFieldDelegate 
             print("Kosong")
             return
         }
+        guard let dataUser = KeychainManager.shared.getProfileFromKeychain() else {return}
+        
         let cardOwner = cardOwner.text ?? ""
         let cardNumber = textField.cardNumber ?? ""
         let cardExpMonth = textField.expirationMonth
@@ -142,6 +144,7 @@ class EditCardViewController: UIViewController, STPPaymentCardTextFieldDelegate 
         let cardCvv = Int(textField.cvc ?? "101") ?? 101
 
         let editCard = CreditCard(
+            userId: Int32(dataUser.id),
             cardOwner: cardOwner,
             cardNumber: cardNumber,
             cardExpMonth: Int16(cardExpMonth),

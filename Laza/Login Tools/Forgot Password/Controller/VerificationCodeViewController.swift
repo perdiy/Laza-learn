@@ -10,11 +10,15 @@ import DPOTPView
 
 class VerificationCodeViewController: UIViewController {
     
+    var remainingTimeInSeconds = 300 // 5 menit
+    var countdownTimer: Timer?
+    var emailUser: String?
     var viewModel = VerificationCodeViewModel()
     
     @IBOutlet weak var waktuVerifikasi: UILabel!
     @IBOutlet weak var verifycationTf: DPOTPView!
-    var emailUser: String?
+    
+    @IBOutlet weak var labelHitungMundul: UILabel!
     
     @IBAction func backBtn(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -26,6 +30,8 @@ class VerificationCodeViewController: UIViewController {
         super.viewDidLoad()
         viewBack.layer.cornerRadius = viewBack.bounds.height / 2.0
         viewBack.clipsToBounds = true
+        
+        startCountdown() 
     }
     
     @IBAction func verifyCodeBtn(_ sender: Any) {
@@ -50,6 +56,27 @@ class VerificationCodeViewController: UIViewController {
             }
         }
     }
+    
+    func startCountdown() {
+        countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountdownLabel), userInfo: nil, repeats: true)
+    }
+
+    @objc func updateCountdownLabel() {
+        if remainingTimeInSeconds > 0 {
+            remainingTimeInSeconds -= 1
+            let minutes = remainingTimeInSeconds / 60
+            let seconds = remainingTimeInSeconds % 60
+            labelHitungMundul.text = String(format: "%02d:%02d", minutes, seconds)
+        } else {
+            stopCountdown()
+        }
+    }
+
+    func stopCountdown() {
+        countdownTimer?.invalidate()
+        labelHitungMundul.text = "Waktu habis"
+    }
+
     
     func navigateToNewPassword() {
         let storyboard = UIStoryboard(name: "ForgotPassword", bundle: nil)

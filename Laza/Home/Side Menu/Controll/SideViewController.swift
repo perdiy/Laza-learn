@@ -127,7 +127,7 @@ class SideViewController: UIViewController {
                     print("Logout error: \(error.localizedDescription)")
                 } else {
                     print("Logout berhasil")
-                    if let welcomeViewController = UIStoryboard(name: "Welcome", bundle: nil).instantiateViewController(withIdentifier: "WelcomeViewController") as? WelcomeViewController {
+                    if let welcomeViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WelcomeViewController") as? WelcomeViewController {
                         self?.navigationController?.pushViewController(welcomeViewController, animated: true)
                     }
                 }
