@@ -7,6 +7,7 @@
 
 import UIKit
 
+// Protokol untuk mengirimkan aksi navigasi terkait merek (brand) ke tampilan utama.
 protocol navigateToDetailBrand: AnyObject {
     func goToDetailBrand(branName: String, brandLogoUrl: String)
     func goToViewAllBrand(names: [String], logoURLs: [String])
@@ -16,15 +17,18 @@ class CategoryTableViewCell: UITableViewCell {
     
     @IBOutlet weak var collectionCategory: UICollectionView!
     
-    var data: [Description] = []
+    var data: [Description] = [] // Data merek yang akan ditampilkan dalam sel.
     
-    weak var delegate: navigateToDetailBrand?
+    weak var delegate: navigateToDetailBrand? // Delegat untuk mengirimkan aksi navigasi.
     
+    // Metode yang dipanggil saat tombol "View All" ditekan.
     @IBAction func viewAllButton(_ sender: Any) {
+        // Mengumpulkan nama merek dan URL logo untuk dikirimkan ke tampilan utama.
             let names = data.map { $0.name }
             let logoURLs = data.map { $0.logoURL }
             delegate?.goToViewAllBrand(names: names, logoURLs: logoURLs)
         }
+    // Mengatur sel tampilan merek berdasarkan data yang diberikan.
     func configure(data: [Description]) {
         self.data = data
         collectionCategory.reloadData()
@@ -53,10 +57,8 @@ extension CategoryTableViewCell: UICollectionViewDataSource {
 
 extension CategoryTableViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let cell = collectionView.cellForItem(at: indexPath)
         let selectedCategory = data[indexPath.item]
         delegate?.goToDetailBrand(branName: selectedCategory.name, brandLogoUrl: selectedCategory.logoURL)
-        //        navigateToProductByBrand(with: selectedCategory.name, imageUrl: selectedCategory.logoURL)
     }
     
     func navigateToProductByBrand(with categoryName: String, imageUrl: String) {

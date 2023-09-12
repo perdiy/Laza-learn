@@ -973,6 +973,7 @@
 		520BEFE32A807DB100EA612F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				31AECB652AA1E5CD008E1435 /* RefreshToken.swift */,
 				527F9B032A7B7D6D00AC520C /* extension.swift */,
 				52B277DC2A82887700614179 /* Extension.swift */,
 				52F456DC2A7CAEA900F565D9 /* Slider.swift */,
@@ -1166,7 +1167,6 @@
 		52CE3F322A8DF36A00BB1F8F /* LoginTools */ = {
 			isa = PBXGroup;
 			children = (
-				31AECB652AA1E5CD008E1435 /* RefreshToken.swift */,
 			);
 			path = LoginTools;
 			sourceTree = "<group>";

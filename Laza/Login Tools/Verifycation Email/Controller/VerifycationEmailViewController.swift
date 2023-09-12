@@ -120,9 +120,8 @@ class VerifycationEmailViewController: UIViewController {
     
     // Navigasi ke Tampilan Login
     func loginVc() {
-        // Ganti "NamaStoryboardAnda" dengan nama storyboard sesungguhnya
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let welcomeViewController = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        let welcomeViewController = storyboard.instantiateViewController(withIdentifier: "WelcomeViewController") as! WelcomeViewController
         welcomeViewController.navigationItem.hidesBackButton = true
         self.navigationController?.pushViewController(welcomeViewController, animated: true)
     }

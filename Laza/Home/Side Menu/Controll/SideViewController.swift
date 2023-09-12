@@ -74,7 +74,7 @@ class SideViewController: UIViewController {
         viewBack.layer.cornerRadius = viewBack.bounds.height / 2.0
         viewBack.clipsToBounds = true
         
-        // Memeriksa dan memperbarui token akses jika diperlukan
+        // Memeriksa dan memperbarui token akses
         ApiCallRefreshToken().refreshTokenIfNeeded { [weak self] in
             self?.loadUserProfile()
         } onError: { errorMessage in

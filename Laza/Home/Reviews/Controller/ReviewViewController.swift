@@ -54,6 +54,7 @@ class ReviewViewController: UIViewController {
     }
     
     func fetchReviews() {
+        // [weak self] Ini akan membantu menghindari potensi masalah seperti strong reference cycle.
         viewModel.fetchReviews(productId: productId) { [weak self] result in
             guard let self = self else { return }
             

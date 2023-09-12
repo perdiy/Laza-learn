@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// Forgot Password send email
 class ForgotPwdViewModel {
     
     var resetPasswordCompletion: ((_ success: Bool, _ message: String) -> Void)?

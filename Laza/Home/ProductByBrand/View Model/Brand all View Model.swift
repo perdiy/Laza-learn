@@ -7,27 +7,35 @@
 
 import Foundation
 
-class BrandProductsViewModel {
+class ProductByBrandViewModel {
+    
     var products: [prodByIdBrandEntry] = []
-
-    func fetchProducts(for brandName: String, imgUrl: String, completion: @escaping () -> Void) {
+    var brandName: String = ""
+    var imgUrl: String = ""
+    
+    // Closure untuk memberi tahu tampilan bahwa data telah diambil
+    var dataLoaded: (() -> Void)?
+    
+    func loadDataFromAPI() {
         let apiURLString = "https://lazaapp.shop/products/brand?name=\(brandName)"
-
+        
         if let apiURL = URL(string: apiURLString) {
-            URLSession.shared.dataTask(with: apiURL) { data, response, error in
+            URLSession.shared.dataTask(with: apiURL) { [weak self] data, response, error in
                 if let error = error {
                     print("Error fetching data: \(error)")
                     return
                 }
-
+                
                 if let data = data {
                     do {
                         let decoder = JSONDecoder()
                         let productsResponse = try decoder.decode(prudctByIdBrandResponse.self, from: data)
-                        self.products = productsResponse.data
-                        DispatchQueue.main.async {
-                            completion()
-                        }
+                        
+                        // Menyimpan data produk
+                        self?.products = productsResponse.data
+                        
+                        // Memberitahu tampilan bahwa data telah diambil
+                        self?.dataLoaded?()
                     } catch {
                         print("Error decoding JSON: \(error)")
                     }

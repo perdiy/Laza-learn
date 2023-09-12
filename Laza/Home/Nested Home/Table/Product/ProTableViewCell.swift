@@ -7,8 +7,9 @@
 
 import UIKit
 
+// Protokol untuk mengirimkan aksi dari sel tampilan produk (cell) ke tampilan utama (view controller).
 protocol ProductCellProtocol {
-    func goToDetailProduct(product: DatumProdct)
+    func goToDetailProduct(product: DatumProdct) // Variabel untuk menyimpan data produk.
     func goToAllProduct(productAll: [DatumProdct])
 }
 
@@ -18,9 +19,10 @@ class ProTableViewCell: UITableViewCell {
         delegateProductProtocol?.goToAllProduct(productAll: self.products)
     }
     @IBOutlet weak var collectionView: UICollectionView!
-    var products: [DatumProdct] = []
-    var delegateProductProtocol : ProductCellProtocol?
+    var products: [DatumProdct] = [] // Delegat untuk mengirim aksi ke tampilan utama.
+    var delegateProductProtocol : ProductCellProtocol? 
     
+    // Mengatur tampilan sel tampilan produk berdasarkan data yang diberikan.
     func configure(data: [DatumProdct]){
         products = data
         collectionView.reloadData()
@@ -34,6 +36,7 @@ class ProTableViewCell: UITableViewCell {
     }
 }
 
+// Mengimplementasikan sumber data koleksi untuk koleksi produk di dalam sel.
 extension ProTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return products.count
@@ -56,9 +59,8 @@ extension ProTableViewCell: UICollectionViewDataSource {
     }
 }
 
-// navigate detail
+// Mengimplementasikan delegat koleksi untuk menangani tindakan pemilihan sel produk. ke detail
 extension ProTableViewCell: UICollectionViewDelegate {
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegateProductProtocol?.goToDetailProduct(product: products[indexPath.item])
     }

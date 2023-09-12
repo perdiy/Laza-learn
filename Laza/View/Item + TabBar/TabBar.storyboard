@@ -56,8 +56,8 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Empty Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WBN-aH-jBy">
-                                <rect key="frame" x="35" y="205" width="343" height="601"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Empty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WBN-aH-jBy">
+                                <rect key="frame" x="25" y="205" width="353" height="601"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" name="ColorBtn"/>
@@ -76,6 +76,7 @@
                             <constraint firstItem="EJ2-Bi-gg3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="12" id="U9G-cH-A6l"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="EJ2-Bi-gg3" secondAttribute="trailing" constant="12" id="ULN-N1-hCh"/>
                             <constraint firstItem="k5W-JU-47P" firstAttribute="top" secondItem="EJ2-Bi-gg3" secondAttribute="bottom" constant="36" id="ak4-EH-iSG"/>
+                            <constraint firstItem="WBN-aH-jBy" firstAttribute="top" secondItem="4QJ-2D-aDO" secondAttribute="bottom" constant="30" id="lRL-Ny-vEZ"/>
                             <constraint firstItem="4QJ-2D-aDO" firstAttribute="top" secondItem="k5W-JU-47P" secondAttribute="bottom" constant="8" id="pCB-Ju-GcK"/>
                             <constraint firstItem="9zU-nv-QOB" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="w0B-GL-c8Y"/>
                         </constraints>

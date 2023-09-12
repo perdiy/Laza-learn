@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import DPOTPView 
 
+// send code verify
 class VerificationCodeViewModel {
     
     var verifyCodeCompletion: ((_ success: Bool, _ message: String) -> Void)?

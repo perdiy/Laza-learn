@@ -50,7 +50,7 @@ class MyProfileViewController: UIViewController, UIImagePickerControllerDelegate
         super.viewWillAppear(animated)
         
         // [weak self] Ini akan membantu menghindari potensi masalah seperti strong reference cycle.
-        // Memeriksa dan memperbarui token akses jika diperlukan
+        // Memeriksa dan memperbarui token akses
         ApiCallRefreshToken().refreshTokenIfNeeded { [weak self] in
             self?.viewModel.loadUserProfile()
         } onError: { errorMessage in

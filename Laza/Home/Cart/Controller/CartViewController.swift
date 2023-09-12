@@ -134,6 +134,7 @@ class CartViewController: UIViewController {
             print("Token pengguna tidak tersedia.")
             return
         }
+        // [weak self] Ini akan membantu menghindari potensi masalah seperti strong reference cycle.
         cartViewModel.getProducInCart(accessTokenKey: token) { [weak self] cartProductData in
             self?.cartProducts = cartProductData.data.products ?? []
             let orderInfo = cartProductData.data.orderInfo
@@ -188,7 +189,6 @@ extension CartViewController: UITableViewDataSource {
         
         // Mengambil produk di keranjang
         let cartProduct = cartProducts[indexPath.row]
-        
         // Mengisi sel dengan data produk di keranjang
         cell.productLabel.text = cartProduct.productName
         cell.priceLabel.text = "$ \(cartProduct.price)"

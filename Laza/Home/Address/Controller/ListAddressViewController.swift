@@ -27,6 +27,7 @@ class ListAddressViewController: UIViewController, UITableViewDataSource {
     // Outlets ke elemen antarmuka pengguna.
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var emptyLb: UILabel!
     
     // Tombol kembali untuk kembali ke layar sebelumnya.
     @IBAction func backBtn(_ sender: Any) {
@@ -55,7 +56,7 @@ class ListAddressViewController: UIViewController, UITableViewDataSource {
         // Mendaftarkan nib sel untuk digunakan dalam tabel.
         tableView.register(UINib(nibName: "ListAddressTableViewCell", bundle: nil), forCellReuseIdentifier: "ListAddressTableViewCell")
         
-        
+        emptyLb.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,8 +82,12 @@ class ListAddressViewController: UIViewController, UITableViewDataSource {
 
     // MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Mengembalikan jumlah baris dalam tabel sesuai dengan jumlah alamat dalam ViewModel.
-        return viewModel.addresses.count
+        if addresses.count == 0 {
+            emptyLb.isHidden = false
+        } else {
+            emptyLb.isHidden = true
+        }
+        return addresses.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

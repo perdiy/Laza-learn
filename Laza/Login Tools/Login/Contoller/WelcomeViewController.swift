@@ -88,41 +88,54 @@ class WelcomeViewController: UIViewController {
         loginAndGetData()
     }
     
-    
+    // Fungsi untuk melakukan login dan mendapatkan data
     func loginAndGetData() {
+        // Mengambil nilai dari field
         let username = userNameTf.text ?? ""
         let password = passwordTf.text ?? ""
         
-        welcomeViewModel.getDataLogin(username: username, password: password) { result in
+        // Memanggil ViewModel untuk mengelola permintaan login
+        welcomeViewModel.getDataLogin(username: username, password: password) { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
             case .success:
-                self.welcomeViewModel.getUserProfile { result in
+                // Jika login berhasil, ambil data profil pengguna
+                self.welcomeViewModel.getUserProfile { [weak self] result in
+                    guard let self = self else { return }
                     switch result {
-                        
                     case .success(let profileUser):
-                        guard let dataProfile = profileUser else {return}
+                        // Jika data profil pengguna berhasil diambil
+                        guard let dataProfile = profileUser else { return }
+                        // Menyimpan data profil pengguna di penyimpanan aman (Keychain)
                         KeychainManager.shared.saveDataProfile(profile: dataProfile)
                         print("data profile", dataProfile)
                         DispatchQueue.main.async {
-                                self.goToHome(userProfile: nil)
+                            // Navigasi ke halaman utama aplikasi
+                            self.goToHome(userProfile: nil)
                         }
                     case .failure(let errorr):
                         print("erorr mas\(errorr.localizedDescription)")
                     }
                 }
             case .failure(let error):
-                self.welcomeViewModel.apiAlertLogin = { status, description in
+                // Jika terjadi kesalahan dalam login, tampilkan pesan kesalahan
+                self.welcomeViewModel.apiAlertLogin = { [weak self] status, description in
+                    guard let self = self else { return }
+                    
                     DispatchQueue.main.async {
                         if description == "please verify your account" {
+                            // Jika pesan kesalahan adalah "please verify your account"
                             print("ini verify email \(description)")
+                            // Tampilkan opsi untuk mengirim ulang email verifikasi
                             let refreshAlert = UIAlertController(title: "Failed Login", message: "\(description), Send Again Verification Account", preferredStyle: UIAlertController.Style.alert)
                             
+                            // Menambahkan tindakan "Send" untuk mengirim ulang email verifikasi
                             refreshAlert.addAction(UIAlertAction(title: "Send", style: .default, handler: { [weak self] (action: UIAlertAction!) in
-                                // Ganti "NamaStoryboard" dengan nama storyboard Anda
+                                guard let self = self else { return }
                                 let storyboard = UIStoryboard(name: "VerifycationEmail", bundle: nil)
-                                
                                 if let sendEmailVC = storyboard.instantiateViewController(withIdentifier: "VerifycationEmailViewController") as? VerifycationEmailViewController {
-                                    self?.navigationController?.pushViewController(sendEmailVC, animated: true)
+                                    self.navigationController?.pushViewController(sendEmailVC, animated: true)
                                 }
                             }))
                             
@@ -140,6 +153,7 @@ class WelcomeViewController: UIViewController {
             }
         }
     }
+    
     
     private func goToHome(userProfile: DataUseProfile?) {
         let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
@@ -183,7 +197,6 @@ class WelcomeViewController: UIViewController {
             strongPassword.isHidden = true
         }
     }
-    
     
     
     func showAlert(message: String) {

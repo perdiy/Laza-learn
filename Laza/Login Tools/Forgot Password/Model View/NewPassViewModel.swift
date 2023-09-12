@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// New password send new password
 class NewPasswordViewModel {
     
     var resetPasswordCompletion: ((_ success: Bool, _ message: String) -> Void)?
